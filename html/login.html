@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Smart Book - Login</title>
+    <link rel="stylesheet" type="text/css" media="screen" href="../css/signup.css">
+    <script src="../js/account.js"></script>
+</head>
+
+<body style="margin: 0; padding: 0;">
+    <script>
+        window.onload = function() {
+            createAdmin();
+        }
+    </script>
+    <div id="container">
+        <div id="header">
+            <h2 style="margin: 0;">Login</h2>
+        </div>
+        <form action="" id="main" onsubmit="return login();">
+            <div>
+                <label class="txt" for="username">Username</label>
+                <input id="usernamelogin" class="inp" type="text" placeholder="Username">
+            </div>
+            <div>
+                <label class="txt" for="password">Password</label>
+                <input id="passwordlogin" class="inp" type="password" placeholder="Password" onclick="this.select()" onfocus="this.select()">
+            </div>
+            <div style="text-align: right; padding-right: 23px;">
+                <a href="signup.html">Sign Up</a>
+            </div>
+            <div id="foot">
+                <input type="submit" id="submit" value="Login">
+            </div>
+        </form>
+    </div>
+</body>
+</html>
