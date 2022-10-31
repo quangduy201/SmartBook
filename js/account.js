@@ -47,7 +47,7 @@ function signup() {
     var username = document.getElementById('username');
     var email = document.getElementById('email');
     var password = document.getElementById('password');
-    var confirm = document.getElementById('confirmpassword');
+    var confirm = document.getElementById('confirm');
     if (username.value == "") {
         alert("Please enter your username.");
         username.focus();
@@ -72,7 +72,7 @@ function signup() {
         return false;
     }
     createNewUser();
-    alert("Sign up successfully");
+    alert("Sign up successfully.");
     return true;
 }
 function checkLogin() {
@@ -90,18 +90,18 @@ function login() {
     var username = document.getElementById('usernamelogin');
     var password = document.getElementById('passwordlogin');
     if (username.value == "") {
-        alert("Vui lòng nhập tên tài khoản");
+        alert("Please enter your username.");
         username.focus();
         return false;
     } else if (password.value == "") {
-        alert("Vui lòng nhập password");
+        alert("Please enter your password.");
         password.focus();
         return false;
     } else if (!checkLogin()) {
-        alert("Username or password invalid");
+        alert("Username or password invalid.");
         username.focus();
         return false;
     }
-    alert("Log in successfully");
+    alert("Log in successfully.");
     return true;
 }

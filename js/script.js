@@ -13,7 +13,7 @@ function runbanner() {
         index = arrImg.length - 1;
     document.getElementById("banner").style.backgroundImage = arrImg[index];
     if (clicked == false) {
-        setTimeout(runbanner, 2000);
+        setTimeout(runbanner, 1500);
         index++;
     }
     clicked = false;
