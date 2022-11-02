@@ -29,7 +29,7 @@
     background-color: rgb(39, 110, 160);
     height: 40px;
     line-height: 40px;
-    color:white;
+    color: white;
     border-bottom: black solid;
 }
 
@@ -61,7 +61,7 @@
     height: 40px;
     margin-bottom: 10px;
 }
-#main-login i{
+#main-login i {
     cursor: pointer;
     position: absolute;
     top: 167px;
