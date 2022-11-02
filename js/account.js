@@ -3,51 +3,49 @@ function createAdmin() {
     if (localStorage.getItem('user') == null) {
         var user = {
             username: "admin",
-            email:    "smartbook@store.com",
+            email:    "smartbookStore@gmail.com",
             password: "admin",
-            usertype: "admin"
+            status:   "enabled",
+            type:     "Admin"
         };
         userArray.push(user);
-        console.log(userArray);
         localStorage.setItem('user', JSON.stringify(userArray));
     }
 }
-function createNewUser() {
+function createNewUser(username, email, password) {
     var userArray = JSON.parse(localStorage.getItem('user'));
-    user = {
-        username: document.getElementById('username').value,
-        email:    document.getElementById('email').value,
-        password: document.getElementById('password').value,
-        usertype: "KH"
+    var user = {
+        username: username.value,
+        email:    email.value,
+        password: password.value,
+        status:   "enabled",
+        type:     "Customer"
     };
-    console.log(user.username);
-    console.log("Type user: ");
-    console.log(typeof(user));
     userArray.push(user);
     localStorage.setItem('user', JSON.stringify(userArray));
 }
 function checkSignUp() {
-    var username = document.getElementById('username').value;
-    var email = document.getElementById('email').value;
+    var username = document.getElementById('username-signup').value;
+    var email = document.getElementById('email-signup').value;
     var userArray = JSON.parse(localStorage.getItem('user'));
     for (var i = 0; i < userArray.length; i++) {
         if (username == userArray[i].username) {
             alert("'" + username + "' has been used.\nYou can use '" + username + "123' or '" + username + "xyz'.");
-            document.getElementById('username').focus();
+            document.getElementById('username-signup').focus();
             return false;
         } else if (email == userArray[i].email) {
             alert("Your email has been used");
-            document.getElementById('email').focus();
+            document.getElementById('email-signup').focus();
             return false;
         }
     }
     return true;
 }
 function signup() {
-    var username = document.getElementById('username');
-    var email = document.getElementById('email');
-    var password = document.getElementById('password');
-    var confirm = document.getElementById('confirm');
+    var username = document.getElementById('username-signup');
+    var email = document.getElementById('email-signup');
+    var password = document.getElementById('password-signup');
+    var confirm = document.getElementById('confirm-signup');
     if (username.value == "") {
         alert("Please enter your username.");
         username.focus();
@@ -71,13 +69,13 @@ function signup() {
     } else if (!checkSignUp()) {
         return false;
     }
-    createNewUser();
+    createNewUser(username, email, password);
     alert("Sign up successfully.");
     return true;
 }
 function checkLogin() {
-    var username = document.getElementById('usernamelogin').value;
-    var password = document.getElementById('passwordlogin').value;
+    var username = document.getElementById('username-login').value;
+    var password = document.getElementById('password-login').value;
     var userArray = JSON.parse(localStorage.getItem('user'));
     for (var i = 0; i < userArray.length; i++) {
         if (username == userArray[i].username && password == userArray[i].password) {
@@ -87,8 +85,8 @@ function checkLogin() {
     return false
 }
 function login() {
-    var username = document.getElementById('usernamelogin');
-    var password = document.getElementById('passwordlogin');
+    var username = document.getElementById('username-login');
+    var password = document.getElementById('password-login');
     if (username.value == "") {
         alert("Please enter your username.");
         username.focus();

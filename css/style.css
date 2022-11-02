@@ -1,58 +1,50 @@
-*{
+* {
     margin: 0;
     padding: 0;
     box-sizing: border-box;
     @import url('https://fonts.googleapis.com/css2?family=Open+Sans:wght@400;600&display=swap');
-    
 }
-html{
+html {
     font-family: Verdana, Geneva, Tahoma, sans-serif;
 }
-a{   
+a {
     display: inline;
     color: white;
     text-decoration: none;
 }
-div,ul,li,h2,h3{
-    padding: 0;
-    margin: 0;
-}
-h2{
+h2 {
     color: white;
 }
-#header{
-    position: relative;
+#header {
+    display: flex;
     width: 100%;
     background-color: rgb(39, 110, 160);
     height: 75px;
     position: sticky;
-    top: 0px;
+    top: 0; 
     z-index: 1;
 }
-#logo{
-    padding-top: 2px;
-    padding-bottom: 2px;
+#logo {
+    padding: 2px 0px;
     line-height: 75px;
     margin: auto;
-    width: 16%;
-    float: left;
-    align-items: center;
+    width: 10%;
     text-align: center;
     height: 75px;
 }
-#logo img{
+#logo img {
     max-width: 100%;
     max-height: 100%;
 }
-#topmenu{
+#topmenu {
     font-weight: bold;
     width: 50%;
-    float: left;
+    /* float: left; */
     list-style: none;
     display: flex;
 }
-/*Menu cha*/
-.parent-menu{
+/* Menu cha */
+.parent-menu {
     position: relative;
     text-align: center;
     display: inline-table;
@@ -60,39 +52,39 @@ h2{
     height: 75px;
     width: 20%;
 }
-#topmenu a{
+#topmenu a {
     display: block;
     text-decoration: none;
 }
-#topmenu li:hover > a{
+#topmenu li:hover > a {
     color:black;
 } 
-#topmenu li:hover{
+#topmenu li:hover {
     background-color: rgb(247, 225, 194);
 }
-/*Menu cấp 1*/
-#topmenu ul.sub-topmenu{
+/* Menu cấp 1 */
+#topmenu ul.sub-topmenu {
     border: 1px solid rgb(79, 77, 77);
     text-align: left;
     list-style: none;
     position: absolute;
-    top:75px;
+    top: 75px;
     background-color: rgb(39, 110, 160);
     width: 300px;
-    display: none; /*Ẩn các menu con khi không được di chuột đến*/
+    display: none; /* Ẩn các menu con khi không được di chuột đến */
 }
-#topmenu li:hover >ul.sub-topmenu{ /*khi chuột đi đến li nào thì sẽ hiện sub menu của li đó toán tử '>'*/
+#topmenu li:hover > ul.sub-topmenu { /* Khi chuột đi đến li nào thì sẽ hiện sub menu của li đó toán tử '>' */
     display: block;
 }
-#topmenu ul.sub-topmenu a{
+#topmenu ul.sub-topmenu a {
     padding-left: 10px;
     border-bottom: 1px solid rgb(79, 77, 77);
 }
-#topmenu ul.sub-topmenu li:last-child a{
+#topmenu ul.sub-topmenu li:last-child a {
     border-bottom: none;
 }
-/*Menu cấp 2*/
-#topmenu ul.sub-topmenu ul.sub-topmenu{
+/* Menu cấp 2 */
+#topmenu ul.sub-topmenu ul.sub-topmenu {
     top: 69px;
     left: 299px;
     text-align: left;
@@ -100,89 +92,83 @@ h2{
     background-color: rgb(39, 110, 160);
     width: 300px;
 }
-#search{
-    padding-left: 10px;
-    padding-right: 10px;
+#search {
+    height: 35px;
+    width: 20%;
+    padding: 0px 10px;
     background-color: rgb(211, 211, 208);
     border-radius: 15px;
-    text-align: center;
     margin-top: 20px;
-    margin-left: 20px;
-    float: left;
+    margin-left: 30px;
 }
-#search :focus{
-    outline: black;
+#search form {
+    width: 100%;
 }
-#search input{
+#search input {
+    width: 80%;
     background-color: rgb(211, 211, 208);
-    line-height: 35px;
     border-radius: 10px;
     border: rgb(211, 211, 208);
     height: 35px;
 }
-#search input:focus{
+#search input:focus {
     outline: none;
 }
-#user i{
+#user {
+    padding-top: 5px;
+    padding-right: 10px;
+    margin-left: 10px;
+    width: 10%;
+    color: white;
+    text-align: right;
+}
+#user i {
+    cursor: pointer;
     font-size: 25px;
     color: white;
 }
-#user i:hover{
+#user i:hover {
     color: rgb(211, 211, 208);
 }
-#user{
-    color: white;
-    position: absolute;
-    top: 5px;
-    right: 20px;
-    display: inline-table;
-    text-align: center;
-}
-#username{
-    display: inline;
+#username {
+    display: block;
     font-family:'Poppins';
-    font-size: 16px;
+    font-size: 12px;
 }
-#banner{
+#banner {
     clear: both;
     width: 100%;
     height: 550px;
     overflow: hidden;
-    background-image: url(../assets/images/banner/banner1.jpg);
     background-position: center;
     background-repeat: no-repeat;
     background-size: cover;
     justify-content: center;
 }
-#previous{ 
+
+#previous-banner,
+#next-banner {
     display: inline;
-    padding-left: 20px;
     height: 550px;
     line-height: 550px;
     font-size: 50px;
     cursor: pointer;
     color: black;
+}
+#previous-banner {
+    padding-left: 20px;
     float: left;
 }
-#previous i:hover{ 
-    color: rgb(111, 111, 110);
-
-}
-#next{ 
-    display: inline;
-    margin-right: 20px;
-    height: 550px;
-    line-height: 550px;
-    font-size: 50px;
-    cursor: pointer;
-    color: black;
+#next-banner {
+    padding-right: 20px;
     float: right;
 }
-#next :hover{ 
+
+#previous i:hover,
+#next i:hover {
     color: rgb(111, 111, 110);
 }
-#content{
-    position: static;
+#content {
     font-family: 'Open Sans', sans-serif;
     font-size: 14px;
     line-height: 1.15;
@@ -192,10 +178,10 @@ h2{
     margin-left: 100px;
     margin-right: 100px;
 }
-.headline{
+.headline {
     margin: 40px 0px;
 }
-#content h3{
+#content h3 {
     font-size: 18px;
     color: #bebebe;
     padding: 10px 20px;
@@ -205,33 +191,33 @@ h2{
     color: #555;
     font-weight: 600;
 }
-.products{
+.products {
     display: flex;
     flex-wrap: wrap;
     justify-content: space-between;
     list-style: none;
 }
-.products li{
+.products li {
     flex-basis: 25%;
     padding-left: 15px;
     padding-right: 15px;
     box-sizing: border-box;
     margin-bottom: 30px;
 }
-.products li img{
+.products li img {
     max-width: 100%;
     height: auto;
 }
-.product-info{
+.product-info {
     padding: 10px 0px;
 }
-.product-info .product-cat{
+.product-info .product-cat {
     display: block;
     text-transform: uppercase;
     font-size: 11px;
     color:#9e9e9e;
 }
-.product-info .product-name{
+.product-info .product-name {
     font-weight: 600;
     display: block;
     text-transform: uppercase;
@@ -239,11 +225,11 @@ h2{
     font-size: 15px;
     padding: 6px 0px;
 }
-.product-info .product-price{
+.product-info .product-price {
     font-weight: 600;
     padding: 3px 0px;
 }
-.product-top .buynow{
+.product-top .buynow {
     text-transform: uppercase;
     text-decoration: none;
     display: block;
@@ -252,51 +238,45 @@ h2{
     padding: 10px 0px;
     position: absolute;
     width: 100%;
-    bottom: -36px;  /* ban đầu sẽ xuất hiện trôi nổi ngoài product-top*/
+    bottom: -36px;  /* Ban đầu sẽ xuất hiện trôi nổi ngoài product-top*/
     transition: 0.25s ease-in-out; /* Làm chậm quá trình hiện mua ngay */
     opacity: 0.85;
 }
-.product-top .product-thumb img{
+.product-top .product-thumb img {
     display: block;
 }
-.product-top .product-thumb{
+.product-top .product-thumb {
     display: block;
 }
-.product-top{
+.product-top {
     position: relative;
     overflow: hidden; /* Phần nào bên ngoài product-top sẽ ẩn đi vì buynow đang nằm trôi nổi bên ngoài */
 }
-.products li :hover > .buynow{
-    bottom: 0px; /* xuất hiện trong product-top */
+.products li :hover > .buynow {
+    bottom: 0px; /* Xuất hiện trong product-top */
 }
-.products li :hover > .product-thumb img{
-    filter: opacity(80%); /* làm mờ hình khi hover vào li */
+.products li :hover > .product-thumb img {
+    filter: opacity(80%); /* Làm mờ hình khi hover vào li */
 }
-#footer{
+#footer {
     position: relative;
+    display: flex;
+    justify-content: space-between;
     background-color: rgb(39, 110, 160);
     width: 100%;
-    height: 300px;
-    display: inline-table;
-    /* justify-content: space-between; */
 }
-#aboutus{
+#aboutus {
+    flex-direction: column;
     padding-top: 30px;
     padding-left: 100px; 
-    display: inline-table;
+    padding-bottom: 30px;
     width: 50%;
     float: left;
 }
-#aboutus div div{
+#aboutus p {
     color: white;
-    margin-top: 30px;
-    height: 40px;
-    line-height: 40px;
-    padding-left: 10px;
-    float: left;
 }
-#aboutus i{
-    clear: both; 
+#aboutus i {
     margin-top: 30px;
     text-align: center;
     width: 40px;
@@ -305,10 +285,9 @@ h2{
     background-color: white;
     border-radius: 50px;
     font-size: 20px;
-    float: left;
+    color: black;
 }
-#contact{
-    display: inline-table;
+#contact {
     font-family: 'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif;
     font-style: italic;
     padding-top: 100px;
@@ -319,23 +298,23 @@ h2{
     text-align: center;
     color: white;
 }
-#contact div{
+#contact div {
     margin-top: 20px;
     font-size: 30px;
 }
-#contact i{
+#contact i {
     color: black;
 }
-#contact i:hover{
-    color: white
+#contact i:hover {
+    color: white;
 }
-#copyright{
+#copyright {
     font-size: 11px;
     position: absolute;
     bottom: 5px;
     right: 20px;
 }
-#backtotop{
+#backtotop {
     font-size: 30px;
     width: 50px;
     height: 50px;
@@ -350,9 +329,64 @@ h2{
     justify-content: center;
     border-radius: 50%;
 }
-#backtotop a:hover{
+#backtotop:hover {
+    background-color: white;
+}
+#backtotop a:hover {
     color:rgb(239, 175, 66) ;
 }
-#backtotop:hover{
-    background-color: white;
+
+/*  */
+@media only screen and (max-width: 1456px) {
+    #aboutus {
+        padding-left: 10px;
+    }
+    #contact {
+        padding-right: 10px;
+    }
+}
+@media only screen and (max-width: 1274px) {
+    #footer {
+        flex-direction: column;
+    }
+    #aboutus {
+        width: 100%;
+        text-align: center;
+    }
+    #contact {
+        padding-top: 0px;
+        padding-left: 200px;
+        padding-right: 200px;
+        width: 100%;
+        text-align: center;
+    }
+}
+@media only screen and (max-width: 926px) {
+    #header {
+        flex-direction: column;
+        height: auto;
+    }
+    #search {
+        display: none;
+    }
+    #topmenu {
+        width: 100%;
+    }
+    #username {
+        display: none;
+    }
+    #user {
+        padding: 0;
+        right: 10px;
+        top: 5px;
+        position: absolute;
+        height: auto;
+    }
+    .products li {
+        flex-basis: 50%;
+        padding-left: 15px;
+        padding-right: 15px;
+        box-sizing: border-box;
+        margin-bottom: 30px;
+    }
 }
