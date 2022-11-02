@@ -103,3 +103,14 @@ function login() {
     alert("Log in successfully.");
     return true;
 }
+function togglePass() {
+    var x = document.getElementById("password-login");
+    var y = document.getElementById("eyes");
+    if (x.type === "password") {
+        x.type = "text";
+        y.className = "fas fa-sharp fa-solid fa-eye";
+    } else {
+        x.type = "password";
+        y.className = "fas fa-solid fa-eye-slash";
+    }
+}
