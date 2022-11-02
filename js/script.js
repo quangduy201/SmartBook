@@ -1,30 +1,44 @@
 var index = 0;
 var clicked = false;
-var arrImg = [  "url(assets/images/banner/banner1.jpg)",
-                "url(assets/images/banner/banner2.jpg)",
-                "url(assets/images/banner/banner3.jpg)",
-                "url(assets/images/banner/banner4.jpg)",
-                "url(assets/images/banner/banner5.jpg)"];
-function runbanner() {
-    console.log(arrImg);
-    if (index >= arrImg.length)
+var imageArray = [];
+function initBanner() {
+    for (var i = 1; i <= 5; i++) {
+        imageArray.push("url(assets/images/banner/banner" + i + ".jpg)");
+    }
+}
+function runBanner() {
+    if (index >= imageArray.length)
         index = 0;
     if (index < 0)
-        index = arrImg.length - 1;
-    document.getElementById("banner").style.backgroundImage = arrImg[index];
+        index = imageArray.length - 1;
+    document.getElementById("banner").style.backgroundImage = imageArray[index];
     if (clicked == false) {
-        setTimeout(runbanner, 1500);
+        setTimeout(runBanner, 1500);
         index++;
     }
     clicked = false;
 }
-function prev() {
+function prevBanner() {
     index -= 2;
     clicked = true;
-    runbanner();
+    runBanner();
 }
-function next() {
+function nextBanner() {
     index++;
     clicked = true;
-    runbanner();
+    runBanner();
+}
+function showLogin() {
+    document.getElementById("container").style.display = "block";
+    document.getElementById("login").style.display = "block";
+    document.getElementById("signup").style.display = "none";
+}
+function showSignUp() {
+    document.getElementById("login").style.display = "none";
+    document.getElementById("signup").style.display = "block";
+}
+function backFromLogin() {
+    document.getElementById("container").style.display = "none";
+    document.getElementById("login").style.display = "none";
+    document.getElementById("signup").style.display = "none";
 }

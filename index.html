@@ -6,15 +6,19 @@
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <title>Smart Book</title>
     <link rel="stylesheet" href="css/style.css">
+    <link rel="stylesheet" href="css/login.css">
     <link rel="stylesheet" href="assets/icons/all.css">
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
     <script src="js/script.js"></script>
+    <script src="js/account.js"></script>
 </head>
 
 <body>
     <script>
         window.onload = function() {
-            runbanner();
+            createAdmin();
+            initBanner();
+            runBanner();
         }
     </script>
     <div>
@@ -73,27 +77,29 @@
                 </li>
             </ul>
 
-            <form action="" id="search">
-                <i class="fas fa-solid fa-magnifying-glass"></i>&nbsp;
-                <input type="search" size="20%" placeholder="Tìm kiếm">
-            </form>
+            <div id="search">
+                <form action="">
+                    <i class="fas fa-solid fa-magnifying-glass"></i>&nbsp;
+                    <input type="search" size="20%" placeholder="Tìm kiếm">
+                </form>
+            </div>
 
             <div id="user">
-                <div id="username">
+                <p id="username">
+                    Nguyễn Văn A
 
-
-                </div>&nbsp;&nbsp;
-                <a href="" ><i class="fas fa-solid fa-bell"></i></a>&nbsp;&nbsp;
-                <a href="html/login.html" target="_parent" title="Login"><i class="fas fa-solid fa-right-to-bracket"></i></a>
+                </p>&nbsp;
+                <i class="fas fa-solid fa-bell" title="Thông báo"></i>&nbsp;
+                <i class="fas fa-solid fa-right-to-bracket" id="icon-login" title="Đăng nhập" onclick="showLogin()"></i>
             </div>
         </div>
 
-        <div id="banner" >
-            <div id="previous" >
-                <i class="fas fa-regular fa-angle-left" title="Previous" onclick="prev()"></i>
+        <div id="banner">
+            <div id="previous-banner">
+                <i class="fas fa-regular fa-angle-left" title="Ảnh sau" onclick="prevBanner()"></i>
             </div>
-            <div id="next">
-                <i class="fas fa-regular fa-angle-right" title="Next" onclick="next()"></i>
+            <div id="next-banner">
+                <i class="fas fa-regular fa-angle-right" title="Ảnh trước" onclick="nextBanner()"></i>
             </div>
         </div>
         <div id="content">
@@ -235,53 +241,169 @@
                         </div>
                     </div>
                 </li>
+
+                <li>
+                    <div class="product-item">
+                        <div class="product-top">
+                            <a href="" class="product-thumb">
+                                <img src="assets/images/product/product-tst.jpg" alt="">
+                            </a>
+                            <a href="" class="buynow">Mua Ngay</a>
+                        </div>
+
+                        <div class="product-info">
+                            <a href="" class="product-cat">Sách Kinh Tế</a>
+                            <a href="" class="product-name">Chết vì chứng khoán</a>
+                            <div class="product-price">200.000 ₫</div>
+                        </div>
+                    </div>
+                </li>
+
+                <li>
+                    <div class="product-item">
+                        <div class="product-top">
+                            <a href="" class="product-thumb">
+                                <img src="assets/images/product/product-tst.jpg" alt="">
+                            </a>
+                            <a href="" class="buynow">Mua Ngay</a>
+                        </div>
+
+                        <div class="product-info">
+                            <a href="" class="product-cat">Sách Kinh Tế</a>
+                            <a href="" class="product-name">Chết vì chứng khoán</a>
+                            <div class="product-price">200.000 ₫</div>
+                        </div>
+                    </div>
+                </li>
+
+                <li>
+                    <div class="product-item">
+                        <div class="product-top">
+                            <a href="" class="product-thumb">
+                                <img src="assets/images/product/product-tst.jpg" alt="">
+                            </a>
+                            <a href="" class="buynow">Mua Ngay</a>
+                        </div>
+
+                        <div class="product-info">
+                            <a href="" class="product-cat">Sách Kinh Tế</a>
+                            <a href="" class="product-name">Chết vì chứng khoán</a>
+                            <div class="product-price">200.000 ₫</div>
+                        </div>
+                    </div>
+                </li>
+
+                <li>
+                    <div class="product-item">
+                        <div class="product-top">
+                            <a href="" class="product-thumb">
+                                <img src="assets/images/product/product-tst.jpg" alt="">
+                            </a>
+                            <a href="" class="buynow">Mua Ngay</a>
+                        </div>
+
+                        <div class="product-info">
+                            <a href="" class="product-cat">Sách Kinh Tế</a>
+                            <a href="" class="product-name">Chết vì chứng khoán</a>
+                            <div class="product-price">200.000 ₫</div>
+                        </div>
+                    </div>
+                </li>
             </ul>
         </div>
 
         <div id="footer">
             <div id="aboutus">
                 <h2>Thông tin liên hệ</h2>
-
                 <div>
-                    <i class="fas fa-solid fa-map-location-dot"></i>
-                    <div>
+                    <p>
+                        <i class="fas fa-solid fa-map-location-dot"></i>
                         <b>273 An Dương Vương, Phường 3, Quận 5, Thành phố Hồ Chí Minh</b>
-                    </div>
-                </div>
-
-                <div>
-                    <i class="fas fa-solid fa-phone-flip"></i>
-                    <div>
+                    </p>
+                    <p>
+                        <i class="fas fa-solid fa-phone-flip"></i>
                         <b>0123456789</b>
-                    </div>
-                </div>
-
-                <div>
-                    <i class="fas fa-solid fa-envelope"></i>
-                    <div>
-                       <b>smartbookStore@gmail.com</b> 
-                    </div>
+                    </p>
+                    <p>
+                        <i class="fas fa-solid fa-envelope"></i>
+                        <b>smartbookStore@gmail.com</b> 
+                    </p>
                 </div>
             </div>
 
             <div id="contact">
-                <b>“</b>
-                A house without books is like a room without windows. No man has a right to bring up his children without surrounding them with books, if he has the means to buy them. It is a wrong to his family. He cheats them! Children learn to read by being in the presence of books. The love of knowledge comes with reading and grows upon it.
-                <b>”</b>
+                <p>
+                    <b>“</b>
+                    A house without books is like a room without windows. No man has a right to bring up his children without surrounding them with books, if he has the means to buy them. It is a wrong to his family. He cheats them! Children learn to read by being in the presence of books. The love of knowledge comes with reading and grows upon it.
+                    <b>”</b>
+                </p>
                 <div>
                     <a href=""><i class="fas fa-brands fa-facebook"></i></a>
                     <a href=""><i class="fas fa-brands fa-instagram"></i></a>
                 </div>
             </div>
 
-            <div id="copyright">
+            <p id="copyright">
                 Copyright &copy;2022 Nhà sách Smart Book
-            </div>
+            </p>
         </div>
 
         <div title="Về đầu trang" id="backtotop">
             <a href="#"><i class="fas fa-arrow-circle-up"></i></a>
         </div>
+    </div>
+    <div id="container" onclick="backFromLogin()">
+
+    </div>
+    <div id="login">
+        <div id="header-login">
+            <h2>Login</h2>
+        </div>
+        <form action="/" id="main-login" onsubmit="return login();">
+            <div>
+                <label class="txt" for="username-login">Username</label>
+                <input id="username-login" class="inp" type="text" placeholder="Username">
+            </div>
+            <div>
+                <label class="txt" for="password-login">Password</label>
+                <input id="password-login" class="inp" type="password" placeholder="Password" onclick="this.select()" onfocus="this.select()">
+            </div>
+            <div style="text-align: right; padding-right: 23px; cursor: pointer;" onclick="showSignUp()">
+                <h3>Sign Up</h3>
+            </div>
+            <div id="footer-login">
+                <input type="submit" id="button-login" value="Login">
+            </div>
+        </form>
+    </div>
+    <div id="signup">
+        <div id="header-signup">
+            <h2>Sign Up</h2>
+        </div>
+        <form action="/" id="main-signup" onsubmit="return signup();">
+            <div>
+                <label class="txt" for="username-signup">Username</label>
+                <input id="username-signup" class="inp" type="text" placeholder="Username">
+            </div>
+            <div>
+                <label class="txt" for="email-signup">Email</label>
+                <input id="email-signup" class="inp" type="text" placeholder="Email">    
+            </div>
+            <div>
+                <label class="txt" for="password-signup">Password</label>
+                <input id="password-signup" class="inp" type="password" placeholder="Password" onclick="this.select()" onfocus="this.select()" onchange="this.select()">
+            </div>
+            <div>
+                <label class="txt" for="confirm-signup">Password</label>
+                <input id="confirm-signup" class="inp" type="password" placeholder="Confirm Password" onclick="this.select()" onfocus="this.select()">
+            </div>
+            <div style="text-align: right; padding-right: 23px; cursor: pointer;" onclick="showLogin()">
+                <h3>Login</h3>
+            </div>
+            <div id="footer-signup">
+                <input type="submit" id="button-signup" value="Sign Up">
+            </div>
+        </form>
     </div>
 </body>
 </html>
