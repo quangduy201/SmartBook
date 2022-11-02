@@ -80,17 +80,41 @@ h2 {
     padding-left: 10px;
     border-bottom: 1px solid rgb(79, 77, 77);
 }
-#topmenu ul.sub-topmenu li:last-child a {
+/* #topmenu ul.sub-topmenu li:last-child a {
     border-bottom: none;
-}
+} */
 /* Menu cấp 2 */
 #topmenu ul.sub-topmenu ul.sub-topmenu {
-    top: 69px;
     left: 299px;
     text-align: left;
     list-style: none;   
     background-color: rgb(39, 110, 160);
     width: 300px;
+}
+#topmenu ul.sub-topmenu ul#sub-topmenubook1,
+#topmenu ul.sub-topmenu ul#sub-topmenudevice1
+{
+    top: -1px;
+}
+#topmenu ul.sub-topmenu ul#sub-topmenubook2,
+#topmenu ul.sub-topmenu ul#sub-topmenudevice2
+{
+    top: 69px;
+}
+#topmenu ul.sub-topmenu ul#sub-topmenubook4 {
+    top: 209px;
+}
+#topmenu ul.sub-topmenu ul#sub-topmenubook5 {
+    top: 279px;
+}
+#topmenu ul.sub-topmenu ul#sub-topmenubook6 {
+    top: 349px;
+}
+#topmenu ul.sub-topmenu ul#sub-topmenubook7 {
+    top: 419px;
+}
+#topmenu ul.sub-topmenu ul#sub-topmenudevice3 {
+    top: 139px;
 }
 #search {
     height: 35px;
@@ -123,8 +147,9 @@ h2 {
     text-align: right;
 }
 #user i {
+    padding-top: 5px;
     cursor: pointer;
-    font-size: 25px;
+    font-size: 20px;
     color: white;
 }
 #user i:hover {
@@ -361,7 +386,7 @@ h2 {
         text-align: center;
     }
 }
-@media only screen and (max-width: 926px) {
+@media only screen and (max-width: 1046px) {
     #header {
         flex-direction: column;
         height: auto;
@@ -371,9 +396,6 @@ h2 {
     }
     #topmenu {
         width: 100%;
-    }
-    #username {
-        display: none;
     }
     #user {
         padding: 0;

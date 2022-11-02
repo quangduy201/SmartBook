@@ -29,7 +29,8 @@
     background-color: rgb(39, 110, 160);
     height: 40px;
     line-height: 40px;
-    color:white
+    color:white;
+    border-bottom: black solid;
 }
 
 #main-login,
@@ -60,13 +61,20 @@
     height: 40px;
     margin-bottom: 10px;
 }
-
-h3 {
+#main-login i{
+    cursor: pointer;
+    position: absolute;
+    top: 167px;
+    right: 35px;
+}
+#main-login h3,
+#main-signup h3 {
+    font-size: 80%;
     color: black;
 }
-
-h3:hover {
-    color: white;
+#main-login h3:hover,
+#main-signup h3:hover {
+    color: rgb(126, 126, 126);
 }
 
 #footer-login,
