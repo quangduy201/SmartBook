@@ -36,9 +36,9 @@ h2 {
     max-height: 100%;
 }
 #topmenu {
+    font-size: larger;
     font-weight: bold;
     width: 50%;
-    /* float: left; */
     list-style: none;
     display: flex;
 }
@@ -68,7 +68,7 @@ h2 {
     list-style: none;
     position: absolute;
     top: 75px;
-    background-color: rgb(39, 110, 160);
+    background-color: rgba(39, 110, 160, 0.886);
     width: 300px;
     display: none; /* Ẩn các menu con khi không được di chuột đến */
 }
@@ -79,15 +79,12 @@ h2 {
     padding-left: 10px;
     border-bottom: 1px solid rgb(79, 77, 77);
 }
-/* #topmenu ul.sub-topmenu li:last-child a {
-    border-bottom: none;
-} */
 /* Menu cấp 2 */
 #topmenu ul.sub-topmenu ul.sub-topmenu {
     left: 298.5px;
     text-align: left;
     list-style: none;   
-    background-color: rgb(39, 110, 160);
+    background-color: rgba(39, 110, 160, 0.886);
     width: 300px;
 }
 #topmenu ul.sub-topmenu ul#sub-topmenubook1,
@@ -284,54 +281,64 @@ h2 {
 }
 /*PAGENATION*/
 .content-paging{
-    width: 20%;
+    justify-content: space-between;
     margin: auto;
     margin-bottom: 40px;
+    padding-bottom: 5px;
 }
 .page{
-    display: flex;
+    display: inline-flex;
     list-style: none;
-    width: 100%;
     height: 40px;
 }
 .button-prev-next-active{
-    width: 26%;
-    height: 40px;
-    line-height: 45px;
-    color: rgba(0, 0, 0, 0.557);
+    color: rgb(39, 110, 160);
 }
 .button-prev-next-active i{
     font-size: 20px;
+    cursor: pointer;
+    height: 40px;
+    line-height: 42px;
 }
 .button-prev-next{
-    width: 26%;
-    height: 40px;
-    line-height: 45px;
+    color: white;
 }
 .button-prev-next i{
     font-size: 20px;
-    cursor: pointer;
+    height: 40px;
+    line-height: 42px;
 }
 .number-page{
-    background-color: rgba(255, 255, 255, 0.451);
+    justify-content: space-between;
     width: 100%;
-    display: flex;
+    display: inline-flex;
     border-radius: 5px;
 }
 .number-page li{
-    border-radius: 5px;
+    margin-left: 3px;
+    margin-right: 3px;
+    background-color: white;;
+    width: 40px;
+    border-radius: 25px;
     height: 40px;
     line-height: 40px;
-    width: 33%;
     font-size: 16px;
 }
-.number-page .active{
-    background-color:rgba(0, 0, 0, 0.557) ;
+.number-page :first-child {
+    margin-left: 6px;
+}
+.number-page :last-child{
+    margin-right: 6px;
+}
+.number-page #active{
+    background-color:rgb(39, 110, 160);;
+    color: white;
 }
 .number-page li:hover{
     cursor: pointer;
     background-color: rgba(0, 0, 0, 0.296);
 }
+/*FOOTER*/
 #footer {
     position: relative;
     display: flex;

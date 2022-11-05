@@ -42,3 +42,96 @@ function backFromLogin() {
     document.getElementById("login").style.display = "none";
     document.getElementById("signup").style.display = "none";
 }
+const products=[
+    {id:1, name:"Chết vì chứng khoán",cat:"Sách Kinh Tế",price:"200.000"+" VND",quatity:"35",image:"assets/images/product/product-tst.jpg"},
+    {id:2, name:"Chết vì chứng khoán",cat:"Sách Kinh Tế",price:"200.000"+" VND",quatity:"35",image:"assets/images/product/product-tst.jpg"},
+    {id:3, name:"Chết vì chứng khoán",cat:"Sách Kinh Tế",price:"200.000"+" VND",quatity:"35",image:"assets/images/product/product-tst.jpg"},
+    {id:4, name:"Chết vì chứng khoán",cat:"Sách Kinh Tế",price:"200.000"+" VND",quatity:"35",image:"assets/images/product/product-tst.jpg"},
+    {id:5, name:"Chết vì chứng khoán",cat:"Sách Kinh Tế",price:"200.000"+" VND",quatity:"35",image:"assets/images/product/product-tst.jpg"},
+    {id:6, name:"Chết vì chứng khoán",cat:"Sách Kinh Tế",price:"200.000"+" VND",quatity:"35",image:"assets/images/product/product-tst.jpg"},
+    {id:7, name:"Chết vì chứng khoán",cat:"Sách Kinh Tế",price:"200.000"+" VND",quatity:"35",image:"assets/images/product/product-tst.jpg"},
+    {id:8, name:"Chết vì chứng khoán",cat:"Sách Kinh Tế",price:"200.000"+" VND",quatity:"35",image:"assets/images/product/product-tst.jpg"},
+    {id:9, name:"Tôi thấy hoa vàng trên cỏ xanh",cat:"Truyện dài",price:"200.000"+" VND",quatity:"35",image:"assets/images/product/product-2.jpg"},
+    {id:10, name:"Tôi thấy hoa vàng trên cỏ xanh",cat:"Truyện dài",price:"200.000"+" VND",quatity:"35",image:"assets/images/product/product-2.jpg"},
+    {id:11, name:"Tôi thấy hoa vàng trên cỏ xanh",cat:"Truyện dài",price:"200.000"+" VND",quatity:"35",image:"assets/images/product/product-2.jpg"},
+    {id:12, name:"Tôi thấy hoa vàng trên cỏ xanh",cat:"Truyện dài",price:"200.000"+" VND",quatity:"35",image:"assets/images/product/product-2.jpg"},
+    {id:13, name:"Tôi thấy hoa vàng trên cỏ xanh",cat:"Truyện dài",price:"200.000"+" VND",quatity:"35",image:"assets/images/product/product-2.jpg"},
+    {id:14, name:"Tôi thấy hoa vàng trên cỏ xanh",cat:"Truyện dài",price:"200.000"+" VND",quatity:"35",image:"assets/images/product/product-2.jpg"},
+    {id:15, name:"Tôi thấy hoa vàng trên cỏ xanh",cat:"Truyện dài",price:"200.000"+" VND",quatity:"35",image:"assets/images/product/product-2.jpg"},
+    {id:16, name:"Tôi thấy hoa vàng trên cỏ xanh",cat:"Truyện dài",price:"200.000"+" VND",quatity:"35",image:"assets/images/product/product-2.jpg"},
+    {id:17, name:"Tôi thấy hoa vàng trên cỏ xanh",cat:"Truyện dài",price:"200.000"+" VND",quatity:"35",image:"assets/images/product/product-2.jpg"}
+
+];
+localStorage.setItem('product', JSON.stringify(products));
+let currenPage=1;
+let perPage=8;
+let start=0;
+let end=perPage;
+const totalpage=Math.ceil(products.length/perPage) ;
+function getCurrenPage(currenPage){
+    start=(currenPage-1)*perPage;
+    end=currenPage*perPage;
+    if(end>products.length){
+        end=products.length;
+    }
+}
+function renderProduct(){
+    var products = JSON.parse(localStorage.getItem('product'));
+    var html='';
+    for(var i=start;i<end;i++){
+        html+='<li>';
+        html+='<div class="product-item">';
+        html+='<div class="product-top">';
+        html+='<a class="product-thumb">';
+        html+='<img src="'+products[i].image+'" alt="">';
+        html+='</a>';
+        html+='<a class="buynow">Mua Ngay</a>';
+        html+='</div>';
+        html+='<div class="product-info">';
+        html+='<a class="product-cat">'+products[i].cat+'</a>';
+        html+='<a class="product-name">'+products[i].name+'</a>';
+        html+='<div class="product-price">'+products[i].price+'</div>'
+        html+='</div>';
+        html+='</div>';
+        html+='</li>'
+    }
+    document.getElementById("products").innerHTML=html;
+    renderListPage();
+    changePage()
+}
+
+function changePage(){
+    const listPage=document.querySelectorAll(".number-page li");
+    console.log(listPage);
+    for(var i=0;i<listPage.length;i++){
+        listPage[i].addEventListener('click',()=>{
+            var value=i+1;
+            console.log(value);
+            currenPage=value;
+        })
+    }
+}
+function renderListPage(currenPage){
+    var html='';
+    html+='<li id="active"><b>'+1+'</b></li>';
+    for(var i=2;i<=totalpage;i++){
+        html+='<li><b>'+i+'</b></li>';
+    }
+    document.getElementById("number-page").innerHTML=html;
+}
+function buttonnext(){
+    currenPage++;
+    if(currenPage>totalpage){
+        currenPage=totalpage;
+    }
+    getCurrenPage(currenPage);
+    renderProduct();
+}
+function buttonprev(){
+    currenPage--;
+    if(currenPage<1){
+        currenPage=1;
+    }
+    getCurrenPage(currenPage);
+    renderProduct();
+}

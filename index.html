@@ -15,11 +15,12 @@
 
 <body>
     <script>
-        var currenPage=0;
+        
         window.onload = function() {
             createAdmin();
             initBanner();
             runBanner();
+            renderProduct();
         }
     </script>
     <div>
@@ -180,9 +181,9 @@
                             <div class="product-price">200.000 ₫</div>
                         </div>
                     </div>
-                </li> -->
+                </li> 
 
-                <!-- <li>
+                 <li>
                     <div class="product-item">
                         <div class="product-top">
                             <a href="" class="product-thumb">
@@ -303,13 +304,13 @@
             </ul>
             <div class="content-paging">
                 <ul class="page">
-                    <li class="button-prev-next"><i class="fas fa-chevron-circle-left" onclick="buttonprev(currenPage--)"></i></li>
-                    <div class="number-page" id="numeber-page">
-                        <li class="active">1</li>
-                        <li>2</li>
-                        <li>3</li>
+                    <li class="button-prev-next"><i class="fas fa-chevron-circle-left" onclick="buttonprev()"></i></li>
+                    <div class="number-page" id="number-page">
+                        <!-- <li id="active"><b>1</b></li>
+                        <li><b>2</b></li>
+                        <li><b>3</b></li> -->
                     </div>
-                    <li class="button-prev-next"><i class="fas fa-chevron-circle-right" onclick="buttonnext(currenPage++)"></i></li>
+                    <li class="button-prev-next-active"><i class="fas fa-chevron-circle-right" onclick="buttonnext()"></i></li>
                 </ul>
             </div>
         </div>
