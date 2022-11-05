@@ -1,31 +1,36 @@
-var index = 0;
+var next = 1;
 var clicked = false;
 var imageArray = [];
 function initBanner() {
     for (var i = 1; i <= 5; i++) {
         imageArray.push("url(assets/images/banner/banner" + i + ".jpg)");
     }
+    document.getElementById("banner").style.backgroundImage = imageArray[0];
+    setTimeout(runBanner, 3000);
 }
 function runBanner() {
+    var image = document.getElementById("banner").style.backgroundImage.match(/(\d+)/);
+    var index = image[0] - 1 + next;
     if (index >= imageArray.length)
         index = 0;
-    if (index < 0)
+    else if (index < 0)
         index = imageArray.length - 1;
     document.getElementById("banner").style.backgroundImage = imageArray[index];
-    if (clicked == false) {
-        setTimeout(runBanner, 1500);
-        index++;
+    if (!clicked) {
+        setTimeout(runBanner, 3000);
+    } else {
+        clicked = false;
+        next = 1;
     }
-    clicked = false;
 }
 function prevBanner() {
-    index -= 2;
     clicked = true;
+    next = -1;
     runBanner();
 }
 function nextBanner() {
-    index++;
     clicked = true;
+    next = 1;
     runBanner();
 }
 function showLogin() {
