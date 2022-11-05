@@ -9,8 +9,8 @@ function initBanner() {
     setTimeout(runBanner, 3000);
 }
 function runBanner() {
-    var image = document.getElementById("banner").style.backgroundImage.match(/(\d+)/);
-    var index = image[0] - 1 + next;
+    var image = document.getElementById("banner").style.backgroundImage.match(/(\d+)/); // get the number of the current banner from the url
+    var index = image[0] - 1 + next; // find the index of the next banner or previous banner
     if (index >= imageArray.length)
         index = 0;
     else if (index < 0)
