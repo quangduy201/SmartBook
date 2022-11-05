@@ -447,6 +447,7 @@ h2 {
         width: 100%;
     }
     #user {
+        width: auto;
         padding: 0;
         right: 10px;
         top: 5px;

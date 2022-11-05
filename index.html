@@ -15,6 +15,7 @@
 
 <body>
     <script>
+        var currenPage=0;
         window.onload = function() {
             createAdmin();
             initBanner();
@@ -163,8 +164,25 @@
         <div id="content">
             <div class="headline"><h3>Sản phẩm bán chạy</h3></div>
 
-            <ul class="products">
-                <li>
+            <ul class="products" id="products">
+                <!-- <li>
+                    <div class="product-item">
+                        <div class="product-top">
+                            <a href="" class="product-thumb">
+                                <img src="assets/images/product/product-tst.jpg" alt="">
+                            </a>
+                            <a href="" class="buynow">Mua Ngay</a>
+                        </div>
+
+                        <div class="product-info">
+                            <a href="" class="product-cat">Sách Kinh Tế</a>
+                            <a href="" class="product-name">Chết vì chứng khoán</a>
+                            <div class="product-price">200.000 ₫</div>
+                        </div>
+                    </div>
+                </li> -->
+
+                <!-- <li>
                     <div class="product-item">
                         <div class="product-top">
                             <a href="" class="product-thumb">
@@ -281,34 +299,17 @@
                             <div class="product-price">200.000 ₫</div>
                         </div>
                     </div>
-                </li>
-
-                <li>
-                    <div class="product-item">
-                        <div class="product-top">
-                            <a href="" class="product-thumb">
-                                <img src="assets/images/product/product-tst.jpg" alt="">
-                            </a>
-                            <a href="" class="buynow">Mua Ngay</a>
-                        </div>
-
-                        <div class="product-info">
-                            <a href="" class="product-cat">Sách Kinh Tế</a>
-                            <a href="" class="product-name">Chết vì chứng khoán</a>
-                            <div class="product-price">200.000 ₫</div>
-                        </div>
-                    </div>
-                </li>
+                </li> -->
             </ul>
             <div class="content-paging">
                 <ul class="page">
-                    <li class="button-prev-next-active"><i class="fas fa-chevron-circle-left"></i></li>
+                    <li class="button-prev-next"><i class="fas fa-chevron-circle-left" onclick="buttonprev(currenPage--)"></i></li>
                     <div class="number-page" id="numeber-page">
                         <li class="active">1</li>
                         <li>2</li>
                         <li>3</li>
                     </div>
-                    <li class="button-prev-next"><i class="fas fa-chevron-circle-right"></i></li>
+                    <li class="button-prev-next"><i class="fas fa-chevron-circle-right" onclick="buttonnext(currenPage++)"></i></li>
                 </ul>
             </div>
         </div>
