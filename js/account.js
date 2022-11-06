@@ -2,6 +2,7 @@ function createAdmin() {
     var userArray = [];
     if (localStorage.getItem('user') == null) {
         var user = {
+            name: "Admin",
             username: "admin",
             email:    "smartbookStore@gmail.com",
             password: "admin",
@@ -12,9 +13,10 @@ function createAdmin() {
         localStorage.setItem('user', JSON.stringify(userArray));
     }
 }
-function createNewUser(username, email, password) {
+function createNewUser(name,username, email, password) {
     var userArray = JSON.parse(localStorage.getItem('user'));
     var user = {
+        name: name.value,
         username: username.value,
         email:    email.value,
         password: password.value,
@@ -42,11 +44,15 @@ function checkSignUp() {
     return true;
 }
 function signup() {
+    var name = document.getElementById('name-signup');
     var username = document.getElementById('username-signup');
     var email = document.getElementById('email-signup');
     var password = document.getElementById('password-signup');
     var confirm = document.getElementById('confirm-signup');
-    if (username.value == "") {
+    if (name.value == "") {
+        alert("Please enter your name.");
+        name.focus();
+    } else if (username.value == "") {
         alert("Please enter your username.");
         username.focus();
         return false;
@@ -69,7 +75,7 @@ function signup() {
     } else if (!checkSignUp()) {
         return false;
     }
-    createNewUser(username, email, password);
+    createNewUser(name,username, email, password);
     alert("Sign up successfully.");
     return true;
 }

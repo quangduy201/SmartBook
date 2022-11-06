@@ -416,7 +416,67 @@ h2 {
 #backtotop a:hover {
     color:rgb(239, 175, 66) ;
 }
-
+/* detail product*/
+#wrapper{
+    display: none;
+    background-color: white;
+    width: 50%;
+    position: relative;
+    position: fixed;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+}
+#close{
+    position: absolute;
+    top:3px;
+    right: 6px;
+}
+#close i{
+    cursor: pointer;
+    font-size: 30px;
+}
+#detail img{
+    padding-top: 20px;
+    width: 60%;
+    float: left;
+    padding-bottom: 20px;
+}
+#detail-pro{  
+    margin-top: 10%;
+    margin-bottom: 50px;
+    width: 40%;
+    float: right;
+}
+#detail h2{
+    color: black;
+}
+#detail-pro ul{
+    list-style: none;
+}
+#detail-pro li{
+    padding-top: 30px;
+}
+#detail-pro li input{
+    text-align: center;
+    width: 25px;
+}
+#detail #addtocart div {
+    font-weight: 500;
+    cursor: pointer;
+    height: 50px;
+    line-height: 50px;
+    margin-top: 20px;
+    padding-top: 0px;
+    background-color: burlywood;
+    width: 50%;
+    margin: auto;
+    text-align: center;
+}
+#detail #addtocart div:hover {
+    box-shadow: 0 10px 30px;
+    background-color: rgb(214, 172, 118);
+}
 /*  */
 @media only screen and (max-width: 1456px) {
     #aboutus {

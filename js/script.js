@@ -41,6 +41,7 @@ function backFromLogin() {
     document.getElementById("container").style.display = "none";
     document.getElementById("login").style.display = "none";
     document.getElementById("signup").style.display = "none";
+    document.getElementById("wrapper").style.display="none";
 }
 const products=[
     {id:1, name:"Chết vì chứng khoán",cat:"Sách Kinh Tế",price:"200.000"+" VND",quatity:"35",image:"assets/images/product/product-tst.jpg"},
@@ -75,12 +76,31 @@ function getCurrenPage(currenPage){
         end=products.length;
     }
 }
+function changebutton(){
+    if(currenPage<totalpage || currenPage>1){
+        document.getElementById("btnext").className="button-prev-next-active";
+        document.getElementById("btprev").className="button-prev-next-active";
+    }
+    if(currenPage==1){
+        document.getElementById("btprev").className="button-prev-next";
+    }
+    if(currenPage==totalpage){
+        document.getElementById("btnext").className="button-prev-next";
+    }
+    const listPage=document.querySelectorAll(".number-page li");
+    listPage[currenPage-1].id="active";
+    for(let j=0;j<listPage.length;j++){
+        if(j!=(currenPage-1)){
+            listPage[j].id=null;
+        }
+    }
+}
 function renderProduct(){
     var products = JSON.parse(localStorage.getItem('product'));
     var html='';
     for(var i=start;i<end;i++){
         html+='<li>';
-        html+='<div class="product-item">';
+        html+='<div class="product-item" onclick="showdetail()">';
         html+='<div class="product-top">';
         html+='<a class="product-thumb">';
         html+='<img src="'+products[i].image+'" alt="">';
@@ -96,22 +116,23 @@ function renderProduct(){
         html+='</li>'
     }
     document.getElementById("products").innerHTML=html;
-    renderListPage();
-    changePage()
 }
 
 function changePage(){
     const listPage=document.querySelectorAll(".number-page li");
     console.log(listPage);
-    for(var i=0;i<listPage.length;i++){
+    for(let i=0;i<listPage.length;i++){
         listPage[i].addEventListener('click',()=>{
             var value=i+1;
             console.log(value);
             currenPage=value;
+            changebutton();
+            getCurrenPage(currenPage);
+            renderProduct();
         })
     }
 }
-function renderListPage(currenPage){
+function renderListPage(){
     var html='';
     html+='<li id="active"><b>'+1+'</b></li>';
     for(var i=2;i<=totalpage;i++){
@@ -119,11 +140,18 @@ function renderListPage(currenPage){
     }
     document.getElementById("number-page").innerHTML=html;
 }
+function paging(){
+    renderProduct();
+    renderListPage();
+    changePage();
+}
 function buttonnext(){
     currenPage++;
     if(currenPage>totalpage){
         currenPage=totalpage;
     }
+    
+    changebutton();
     getCurrenPage(currenPage);
     renderProduct();
 }
@@ -132,6 +160,33 @@ function buttonprev(){
     if(currenPage<1){
         currenPage=1;
     }
+    changebutton();
     getCurrenPage(currenPage);
     renderProduct();
+}
+function closediv(){
+    document.getElementById("container").style.display="none";
+    document.getElementById("wrapper").style.display="none";
+}
+function sub(){
+    var a=document.getElementById('quatity').value;
+    if(a>1){
+        a--;
+        document.getElementById('quatity').value=a;
+    }
+}
+function add(){
+    var a=document.getElementById('quatity').value;
+    a++;
+    document.getElementById('quatity').value=a;
+}
+function check(){
+    var a=document.getElementById('quatity').value;
+    if(a<1){
+        document.getElementById('quatity').value=1;
+    }
+}
+function showdetail(){
+    document.getElementById("wrapper").style.display="block";
+    document.getElementById("container").style.display="block";
 }

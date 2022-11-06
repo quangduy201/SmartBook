@@ -15,12 +15,12 @@
 
 <body>
     <script>
-        
         window.onload = function() {
             createAdmin();
             initBanner();
             runBanner();
-            renderProduct();
+            // renderProduct();
+            paging();
         }
     </script>
     <div>
@@ -145,8 +145,7 @@
 
             <div id="user">
                 <p id="username">
-                    Nguyễn Văn A
-
+                    
                 </p>&nbsp;
                 <i class="fas fa-solid fa-cart-shopping" title="Giỏ hàng"></i>&nbsp;
                 <i class="fas fa-solid fa-bell" title="Thông báo"></i>&nbsp;
@@ -304,13 +303,13 @@
             </ul>
             <div class="content-paging">
                 <ul class="page">
-                    <li class="button-prev-next"><i class="fas fa-chevron-circle-left" onclick="buttonprev()"></i></li>
+                    <li id="btprev" class="button-prev-next"><i class="fas fa-chevron-circle-left" onclick="buttonprev()"></i></li>
                     <div class="number-page" id="number-page">
                         <!-- <li id="active"><b>1</b></li>
                         <li><b>2</b></li>
                         <li><b>3</b></li> -->
                     </div>
-                    <li class="button-prev-next-active"><i class="fas fa-chevron-circle-right" onclick="buttonnext()"></i></li>
+                    <li id="btnext" class="button-prev-next-active"><i class="fas fa-chevron-circle-right" onclick="buttonnext()"></i></li>
                 </ul>
             </div>
         </div>
@@ -380,11 +379,16 @@
             </div>
         </form>
     </div>
+
     <div id="signup">
         <div id="header-signup">
             <h2>Sign Up</h2>
         </div>
         <form action="/" id="main-signup" onsubmit="return signup();">
+            <div>
+                <label class="txt" for="fullname-signup">Name</label>
+                <input id="name-signup" class="inp" type="text" placeholder="Name">
+            </div>
             <div>
                 <label class="txt" for="username-signup">Username</label>
                 <input id="username-signup" class="inp" type="text" placeholder="Username">
@@ -408,6 +412,37 @@
                 <input type="submit" id="button-signup" value="Sign Up">
             </div>
         </form>
+    </div>
+    
+    <div id="wrapper">
+        <div id="close">
+            <i class="fa-solid fa-xmark" onclick="closediv()"></i>
+        </div>
+        <div id="detail">
+            <img src="/assets/images/product/product-2.jpg" alt="">
+            <div id="detail-pro">
+                <ul>
+                    <li><h2>Toi thay hoa vang tren co xanh</h2></li>
+                    <hr>
+                    <li><h3>Thể loại:</h3></li>
+                    <hr>
+                    <li><h3>Giá:</h3></li>
+                    <hr>
+                    <li><h3>Trạng thái:</h3></li>
+                    <hr>
+                    <li>
+                        <h3>Số lượng:</h3>
+                        <input style="margin-left: 30px;" type="button" name="" id="sub" value="-" onclick="sub()">
+                        <input type="text" name="" id="quatity" value="1" onchange="check()">
+                        <input type="button" value="+" id="add" onclick="add()">
+                    </li>
+                    <li id="addtocart">
+                        <div>Thêm Vào giỏ hàng</div>
+                    </li>
+                </ul>
+            </div>
+        </div>
+    </div>
     </div>
 </body>
 </html>
