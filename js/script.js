@@ -44,7 +44,7 @@ function backFromLogin() {
     document.getElementById("wrapper").style.display="none";
 }
 const products=[
-    {id:1, name:"Chết vì chứng khoán",cat:"Sách Kinh Tế",price:"200.000"+" VND",quatity:"35",image:"assets/images/product/product-tst.jpg"},
+    {id:1, name:"Chết vì chứng khoán",cat:"Sách Kinh Tế",price:"200.000"+" VND",quatity:"0",image:"assets/images/product/product-tst.jpg"},
     {id:2, name:"Chết vì chứng khoán",cat:"Sách Kinh Tế",price:"200.000"+" VND",quatity:"35",image:"assets/images/product/product-tst.jpg"},
     {id:3, name:"Chết vì chứng khoán",cat:"Sách Kinh Tế",price:"200.000"+" VND",quatity:"35",image:"assets/images/product/product-tst.jpg"},
     {id:4, name:"Chết vì chứng khoán",cat:"Sách Kinh Tế",price:"200.000"+" VND",quatity:"35",image:"assets/images/product/product-tst.jpg"},
@@ -100,7 +100,7 @@ function renderProduct(){
     var html='';
     for(var i=start;i<end;i++){
         html+='<li>';
-        html+='<div class="product-item" onclick="showdetail()">';
+        html+='<div class="product-item">';
         html+='<div class="product-top">';
         html+='<a class="product-thumb">';
         html+='<img src="'+products[i].image+'" alt="">';
@@ -116,6 +116,7 @@ function renderProduct(){
         html+='</li>'
     }
     document.getElementById("products").innerHTML=html;
+    showdetail(currenPage);
 }
 
 function changePage(){
@@ -124,7 +125,6 @@ function changePage(){
     for(let i=0;i<listPage.length;i++){
         listPage[i].addEventListener('click',()=>{
             var value=i+1;
-            console.log(value);
             currenPage=value;
             changebutton();
             getCurrenPage(currenPage);
@@ -144,6 +144,7 @@ function paging(){
     renderProduct();
     renderListPage();
     changePage();
+    
 }
 function buttonnext(){
     currenPage++;
@@ -168,25 +169,88 @@ function closediv(){
     document.getElementById("container").style.display="none";
     document.getElementById("wrapper").style.display="none";
 }
-function sub(){
+function sub(quatity){
     var a=document.getElementById('quatity').value;
-    if(a>1){
+    if(a>=1){
         a--;
+        document.getElementById('add').disabled= false;
+        document.getElementById('sub').disabled= false;
         document.getElementById('quatity').value=a;
+    }else{
+        document.getElementById('quatity').value=0;
+        document.getElementById('add').disabled= false;
+        document.getElementById('sub').disabled= true;
     }
 }
-function add(){
+function add(quatity){
     var a=document.getElementById('quatity').value;
     a++;
-    document.getElementById('quatity').value=a;
-}
-function check(){
-    var a=document.getElementById('quatity').value;
-    if(a<1){
-        document.getElementById('quatity').value=1;
+    if(a>=quatity){
+        document.getElementById('sub').disabled= false;
+        document.getElementById('add').disabled= true;
+        document.getElementById('quatity').value=quatity;
+    }else{
+        document.getElementById('quatity').value=a;
+        document.getElementById('add').disabled= false;
+        document.getElementById('sub').disabled= false;
     }
 }
-function showdetail(){
-    document.getElementById("wrapper").style.display="block";
-    document.getElementById("container").style.display="block";
+function checkQuatity(quatity){
+    var a=document.getElementById('quatity').value;
+    if(a<=0|| isNaN(a)){ // phai nhap so, isNaN la ki tu
+        document.getElementById('quatity').value=0;
+        document.getElementById('sub').disabled= true;
+        document.getElementById('add').disabled= false;
+    }else{
+        if(a>=quatity){
+            document.getElementById('add').disabled= true;
+            document.getElementById('sub').disabled= false;
+            document.getElementById('quatity').value=quatity;
+        }else{
+            document.getElementById('add').disabled= false;
+            document.getElementById('sub').disabled= false;
+        }
+    }
+}
+function showdetail(currenPage){
+    let listproduct=document.querySelectorAll("#products li");
+    console.log(listproduct);
+    for(let i=0;i<listproduct.length;i++){
+        listproduct[i].addEventListener('click',()=>{
+            getCurrenPage(currenPage);
+            var products = JSON.parse(localStorage.getItem('product'));
+            var html='';
+            html+='<img src="'+products[i+start].image+'" alt="">';
+            html+='<div id="detail-pro">';
+            html+='<ul>';
+            html+='<li><h1>'+products[i+start].name+'</h1></li>';
+            html+='<hr>';
+            html+='<li>Thể loại: <h3>'+products[i+start].cat+'</h3></li>';
+            html+='<hr>';
+            html+='<li>Giá: <h3>'+products[i+start].price+'</h3></li>';
+            html+='<hr>';
+            if(products[i+start].quatity>0){
+                html+='<li style="color:blue; font-size:80%"><h4>Còn hàng: '+products[i+start].quatity+' sản phẩm</h4></li>';
+            }else{
+                html+='<li><h4>Hết hàng</h4></li>';
+            }
+            html+='<li>';
+            html+='Số lượng:';
+            html+='<input style="margin-left: 30px;" type="button" name="" id="sub" value="-" onclick="sub('+products[i+start].quatity+')">';
+            html+='<input type="text" name="" id="quatity" value="0" onchange="checkQuatity('+products[i+start].quatity+')">';
+            html+='<input type="button" value="+" id="add" onclick="add('+products[i+start].quatity+')">';
+            html+='</li>';
+            html+='<li id="addtocart">';
+            html+='<div>Thêm Vào giỏ hàng</div>';
+            html+='</li>';
+            html+='</ul>';
+            html+='</div>';
+            document.getElementById("detail").innerHTML=html;
+            document.getElementById("wrapper").style.display="block";
+            document.getElementById("container").style.display="block";
+        })
+    }
+    
+    // document.getElementById("detail-pro").innerHTML=html;
+    
 }
