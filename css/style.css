@@ -429,7 +429,7 @@ h2 {
     color:rgb(239, 175, 66) ;
 }
 
-/* detail product*/
+/* product detail */
 #wrapper {
     display: none;
     background-color: white;
@@ -455,7 +455,7 @@ h2 {
     float: left;
     padding-bottom: 20px;
 }
-#detail-pro{  
+#detail-pro {  
     margin-top: 10%;
     margin-bottom: 50px;
     width: 40%;

@@ -2,9 +2,8 @@ var next = 1;
 var clicked = false;
 var imageArray = [];
 function initBanner() {
-    for (var i = 1; i <= 5; i++) {
+    for (var i = 1; i <= 5; i++)
         imageArray.push("url(assets/images/banner/banner" + i + ".jpg)");
-    }
     document.getElementById("banner").style.backgroundImage = imageArray[0];
     setTimeout(runBanner, 3000);
 }
@@ -49,23 +48,23 @@ function backFromLogin() {
     document.getElementById("wrapper").style.display = "none";
 }
 const products = [
-    {id:1, name:"Chết vì chứng khoán",cat:"Sách Kinh Tế",price:"200.000"+" VND",quantity:"35",image:"assets/images/product/product-tst.jpg"},
-    {id:2, name:"Chết vì chứng khoán",cat:"Sách Kinh Tế",price:"200.000"+" VND",quantity:"35",image:"assets/images/product/product-tst.jpg"},
-    {id:3, name:"Chết vì chứng khoán",cat:"Sách Kinh Tế",price:"200.000"+" VND",quantity:"35",image:"assets/images/product/product-tst.jpg"},
-    {id:4, name:"Chết vì chứng khoán",cat:"Sách Kinh Tế",price:"200.000"+" VND",quantity:"35",image:"assets/images/product/product-tst.jpg"},
-    {id:5, name:"Chết vì chứng khoán",cat:"Sách Kinh Tế",price:"200.000"+" VND",quantity:"35",image:"assets/images/product/product-tst.jpg"},
-    {id:6, name:"Chết vì chứng khoán",cat:"Sách Kinh Tế",price:"200.000"+" VND",quantity:"35",image:"assets/images/product/product-tst.jpg"},
-    {id:7, name:"Chết vì chứng khoán",cat:"Sách Kinh Tế",price:"200.000"+" VND",quantity:"35",image:"assets/images/product/product-tst.jpg"},
-    {id:8, name:"Chết vì chứng khoán",cat:"Sách Kinh Tế",price:"200.000"+" VND",quantity:"35",image:"assets/images/product/product-tst.jpg"},
-    {id:9, name:"Tôi thấy hoa vàng trên cỏ xanh",cat:"Truyện dài",price:"200.000"+" VND",quantity:"35",image:"assets/images/product/product-2.jpg"},
-    {id:10, name:"Tôi thấy hoa vàng trên cỏ xanh",cat:"Truyện dài",price:"200.000"+" VND",quantity:"35",image:"assets/images/product/product-2.jpg"},
-    {id:11, name:"Tôi thấy hoa vàng trên cỏ xanh",cat:"Truyện dài",price:"200.000"+" VND",quantity:"35",image:"assets/images/product/product-2.jpg"},
-    {id:12, name:"Tôi thấy hoa vàng trên cỏ xanh",cat:"Truyện dài",price:"200.000"+" VND",quantity:"35",image:"assets/images/product/product-2.jpg"},
-    {id:13, name:"Tôi thấy hoa vàng trên cỏ xanh",cat:"Truyện dài",price:"200.000"+" VND",quantity:"35",image:"assets/images/product/product-2.jpg"},
-    {id:14, name:"Tôi thấy hoa vàng trên cỏ xanh",cat:"Truyện dài",price:"200.000"+" VND",quantity:"35",image:"assets/images/product/product-2.jpg"},
-    {id:15, name:"Tôi thấy hoa vàng trên cỏ xanh",cat:"Truyện dài",price:"200.000"+" VND",quantity:"35",image:"assets/images/product/product-2.jpg"},
-    {id:16, name:"Tôi thấy hoa vàng trên cỏ xanh",cat:"Truyện dài",price:"200.000"+" VND",quantity:"35",image:"assets/images/product/product-2.jpg"},
-    {id:17, name:"Tôi thấy hoa vàng trên cỏ xanh",cat:"Truyện dài",price:"200.000"+" VND",quantity:"35",image:"assets/images/product/product-2.jpg"}
+    {id:1, name:"Chết vì chứng khoán",cat:"Sách Kinh Tế",price:"200.000"+" VND",quantity:"35",image:"assets/images/product/Sach/KinhTe/ChungKhoan/product-tst.jpg"},
+    {id:2, name:"Chết vì chứng khoán",cat:"Sách Kinh Tế",price:"200.000"+" VND",quantity:"35",image:"assets/images/product/Sach/KinhTe/ChungKhoan/product-tst.jpg"},
+    {id:3, name:"Chết vì chứng khoán",cat:"Sách Kinh Tế",price:"200.000"+" VND",quantity:"35",image:"assets/images/product/Sach/KinhTe/ChungKhoan/product-tst.jpg"},
+    {id:4, name:"Chết vì chứng khoán",cat:"Sách Kinh Tế",price:"200.000"+" VND",quantity:"35",image:"assets/images/product/Sach/KinhTe/ChungKhoan/product-tst.jpg"},
+    {id:5, name:"Chết vì chứng khoán",cat:"Sách Kinh Tế",price:"200.000"+" VND",quantity:"35",image:"assets/images/product/Sach/KinhTe/ChungKhoan/product-tst.jpg"},
+    {id:6, name:"Chết vì chứng khoán",cat:"Sách Kinh Tế",price:"200.000"+" VND",quantity:"35",image:"assets/images/product/Sach/KinhTe/ChungKhoan/product-tst.jpg"},
+    {id:7, name:"Chết vì chứng khoán",cat:"Sách Kinh Tế",price:"200.000"+" VND",quantity:"35",image:"assets/images/product/Sach/KinhTe/ChungKhoan/product-tst.jpg"},
+    {id:8, name:"Chết vì chứng khoán",cat:"Sách Kinh Tế",price:"200.000"+" VND",quantity:"35",image:"assets/images/product/Sach/KinhTe/ChungKhoan/product-tst.jpg"},
+    {id:9, name:"Tôi thấy hoa vàng trên cỏ xanh",cat:"Truyện dài",price:"200.000"+" VND",quantity:"35",image:"assets/images/product/Sach/VanHoc/TruyenDai/product-2.jpg"},
+    {id:10, name:"Tôi thấy hoa vàng trên cỏ xanh",cat:"Truyện dài",price:"200.000"+" VND",quantity:"35",image:"assets/images/product/Sach/VanHoc/TruyenDai/product-2.jpg"},
+    {id:11, name:"Tôi thấy hoa vàng trên cỏ xanh",cat:"Truyện dài",price:"200.000"+" VND",quantity:"35",image:"assets/images/product/Sach/VanHoc/TruyenDai/product-2.jpg"},
+    {id:12, name:"Tôi thấy hoa vàng trên cỏ xanh",cat:"Truyện dài",price:"200.000"+" VND",quantity:"35",image:"assets/images/product/Sach/VanHoc/TruyenDai/product-2.jpg"},
+    {id:13, name:"Tôi thấy hoa vàng trên cỏ xanh",cat:"Truyện dài",price:"200.000"+" VND",quantity:"35",image:"assets/images/product/Sach/VanHoc/TruyenDai/product-2.jpg"},
+    {id:14, name:"Tôi thấy hoa vàng trên cỏ xanh",cat:"Truyện dài",price:"200.000"+" VND",quantity:"35",image:"assets/images/product/Sach/VanHoc/TruyenDai/product-2.jpg"},
+    {id:15, name:"Tôi thấy hoa vàng trên cỏ xanh",cat:"Truyện dài",price:"200.000"+" VND",quantity:"35",image:"assets/images/product/Sach/VanHoc/TruyenDai/product-2.jpg"},
+    {id:16, name:"Tôi thấy hoa vàng trên cỏ xanh",cat:"Truyện dài",price:"200.000"+" VND",quantity:"35",image:"assets/images/product/Sach/VanHoc/TruyenDai/product-2.jpg"},
+    {id:17, name:"Tôi thấy hoa vàng trên cỏ xanh",cat:"Truyện dài",price:"200.000"+" VND",quantity:"35",image:"assets/images/product/Sach/VanHoc/TruyenDai/product-2.jpg"}
 
 ];
 localStorage.setItem('product', JSON.stringify(products));
