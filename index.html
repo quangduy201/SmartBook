@@ -303,13 +303,13 @@
             </ul>
             <div class="content-paging">
                 <ul class="page">
-                    <li id="btprev" class="button-prev-next"><i class="fas fa-chevron-circle-left" onclick="buttonprev()"></i></li>
+                    <li id="btprev" class="button-prev-next"><i class="fas fa-chevron-circle-left" onclick="prevButton()"></i></li>
                     <div class="number-page" id="number-page">
                         <!-- <li id="active"><b>1</b></li>
                         <li><b>2</b></li>
                         <li><b>3</b></li> -->
                     </div>
-                    <li id="btnext" class="button-prev-next-active"><i class="fas fa-chevron-circle-right" onclick="buttonnext()"></i></li>
+                    <li id="btnext" class="button-prev-next-active"><i class="fas fa-chevron-circle-right" onclick="nextPage()"></i></li>
                 </ul>
             </div>
         </div>
@@ -416,7 +416,7 @@
     
     <div id="wrapper">
         <div id="close">
-            <i class="fa-solid fa-xmark" onclick="closediv()"></i>
+            <i class="fa-solid fa-xmark" onclick="backFromDiv()"></i>
         </div>
         <div id="detail">
             <img src="/assets/images/product/product-2.jpg" alt="">
@@ -433,7 +433,7 @@
                     <li>
                         <h3>Số lượng:</h3>
                         <input style="margin-left: 30px;" type="button" name="" id="sub" value="-" onclick="sub()">
-                        <input type="text" name="" id="quatity" value="1" onchange="check()">
+                        <input type="text" name="" id="quantity" value="1" onchange="check()">
                         <input type="button" value="+" id="add" onclick="add()">
                     </li>
                     <li id="addtocart">
@@ -442,7 +442,6 @@
                 </ul>
             </div>
         </div>
-    </div>
     </div>
 </body>
 </html>
