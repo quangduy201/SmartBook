@@ -2,7 +2,7 @@ function createAdmin() {
     var userArray = [];
     if (localStorage.getItem('user') == null) {
         var user = {
-            name: "Admin",
+            name:     "Admin",
             username: "admin",
             email:    "smartbookStore@gmail.com",
             password: "admin",
@@ -16,7 +16,7 @@ function createAdmin() {
 function createNewUser(name,username, email, password) {
     var userArray = JSON.parse(localStorage.getItem('user'));
     var user = {
-        name: name.value,
+        name:     name.value,
         username: username.value,
         email:    email.value,
         password: password.value,
