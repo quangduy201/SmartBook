@@ -98,36 +98,6 @@ function changeButton() {
         }
     }
 }
-function renderProduct(){
-    var products = JSON.parse(localStorage.getItem('product'));
-    var html='';
-    for(var i=start;i<end;i++){
-        html+='<li>';
-        html+='<div class="product-item">';
-        html+='<div class="product-top">';
-        html+='<a class="product-thumb">';
-        html+='<img src="'+products[i].image+'" alt="">';
-        html+='</a>';
-        html+='<a class="buynow">Mua Ngay</a>';
-        html+='</div>';
-        html+='<div class="product-info">';
-        html+='<a class="product-cat">'+products[i].cat+'</a>';
-        html+='<a class="product-name">'+products[i].name+'</a>';
-        html+='<div class="product-price">'+products[i].price+'</div>'
-        html+='</div>';
-        html+='</div>';
-        html+='</li>'
-    }
-    document.getElementById("products").innerHTML=html;
-    showdetail(currenPage);
-}
-
-    const listPage = document.querySelectorAll(".number-page li");
-    listPage[currenPage -1].id = "active";
-    for (let j = 0; j < listPage.length; j++)
-        if (j != (currenPage - 1))
-            listPage[j].id = null;
-}
 function renderProduct() {
     var products = JSON.parse(localStorage.getItem('product'));
     var html = '';
@@ -148,7 +118,8 @@ function renderProduct() {
         html += '</div>';
         html += '</li>'
     }
-    document.getElementById("products").innerHTML = html;
+    document.getElementById("products").innerHTML = html;4
+    showdetail(currenPage);
 }
 function changePage() {
     const listPage = document.querySelectorAll(".number-page li");
@@ -197,43 +168,43 @@ function backFromDiv() {
     document.getElementById("container").style.display = "none";
     document.getElementById("wrapper").style.display = "none";
 }
-function sub(quatity){
-    var a=document.getElementById('quatity').value;
+function sub(quantity){
+    var a=document.getElementById('quantity').value;
     if(a>=1){
         a--;
         document.getElementById('add').disabled= false;
         document.getElementById('sub').disabled= false;
-        document.getElementById('quatity').value=a;
+        document.getElementById('quantity').value=a;
     }else{
-        document.getElementById('quatity').value=0;
+        document.getElementById('quantity').value=0;
         document.getElementById('add').disabled= false;
         document.getElementById('sub').disabled= true;
     }
 }
-function add(quatity){
-    var a=document.getElementById('quatity').value;
+function add(quantity){
+    var a=document.getElementById('quantity').value;
     a++;
-    if(a>=quatity){
+    if(a>=quantity){
         document.getElementById('sub').disabled= false;
         document.getElementById('add').disabled= true;
-        document.getElementById('quatity').value=quatity;
+        document.getElementById('quantity').value=quantity;
     }else{
-        document.getElementById('quatity').value=a;
+        document.getElementById('quantity').value=a;
         document.getElementById('add').disabled= false;
         document.getElementById('sub').disabled= false;
     }
 }
-function checkQuatity(quatity){
-    var a=document.getElementById('quatity').value;
+function checkQuatity(quantity){
+    var a=document.getElementById('quantity').value;
     if(a<=0|| isNaN(a)){ // phai nhap so, isNaN la ki tu
-        document.getElementById('quatity').value=0;
+        document.getElementById('quantity').value=0;
         document.getElementById('sub').disabled= true;
         document.getElementById('add').disabled= false;
     }else{
-        if(a>=quatity){
+        if(a>=quantity){
             document.getElementById('add').disabled= true;
             document.getElementById('sub').disabled= false;
-            document.getElementById('quatity').value=quatity;
+            document.getElementById('quantity').value=quantity;
         }else{
             document.getElementById('add').disabled= false;
             document.getElementById('sub').disabled= false;
@@ -257,16 +228,16 @@ function showdetail(currenPage){
             html+='<hr>';
             html+='<li>Giá: <h3>'+products[i+start].price+'</h3></li>';
             html+='<hr>';
-            if(products[i+start].quatity>0){
-                html+='<li style="color:blue; font-size:80%"><h4>Còn hàng: '+products[i+start].quatity+' sản phẩm</h4></li>';
+            if(products[i+start].quantity>0){
+                html+='<li style="color:blue; font-size:80%"><h4>Còn hàng: '+products[i+start].quantity+' sản phẩm</h4></li>';
             }else{
                 html+='<li><h4>Hết hàng</h4></li>';
             }
             html+='<li>';
             html+='Số lượng:';
-            html+='<input style="margin-left: 30px;" type="button" name="" id="sub" value="-" onclick="sub('+products[i+start].quatity+')">';
-            html+='<input type="text" name="" id="quatity" value="0" onchange="checkQuatity('+products[i+start].quatity+')">';
-            html+='<input type="button" value="+" id="add" onclick="add('+products[i+start].quatity+')">';
+            html+='<input style="margin-left: 30px;" type="button" name="" id="sub" value="-" onclick="sub('+products[i+start].quantity+')">';
+            html+='<input type="text" name="" id="quantity" value="0" onchange="checkQuatity('+products[i+start].quantity+')">';
+            html+='<input type="button" value="+" id="add" onclick="add('+products[i+start].quantity+')">';
             html+='</li>';
             html+='<li id="addtocart">';
             html+='<div>Thêm Vào giỏ hàng</div>';
