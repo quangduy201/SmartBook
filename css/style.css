@@ -455,7 +455,8 @@ h2 {
     float: left;
     padding-bottom: 20px;
 }
-#detail-pro {  
+#detail-pro{  
+    padding-left: 10px;
     margin-top: 10%;
     margin-bottom: 50px;
     width: 40%;
@@ -473,6 +474,9 @@ h2 {
 #detail-pro li input {
     text-align: center;
     width: 25px;
+}
+#detail-pro h3{
+    color: red;
 }
 #detail #addtocart div {
     font-weight: 500;
