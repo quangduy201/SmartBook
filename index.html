@@ -18,7 +18,7 @@
         window.onload = function() {
             createAdmin();
             initBanner();
-            runBanner();
+            // renderProduct();
             paging();
         }
     </script>
@@ -154,50 +154,17 @@
 
         <div id="banner">
             <div id="previous-banner">
-                <i class="fas fa-regular fa-angle-left" title="Ảnh sau" onclick="prevBanner()"></i>
+                <i class="fas fa-regular fa-angle-left" title="Ảnh trước" onclick="prevBanner()"></i>
             </div>
             <div id="next-banner">
-                <i class="fas fa-regular fa-angle-right" title="Ảnh trước" onclick="nextBanner()"></i>
+                <i class="fas fa-regular fa-angle-right" title="Ảnh sau" onclick="nextBanner()"></i>
             </div>
         </div>
         <div id="content">
             <div class="headline"><h3>Sản phẩm bán chạy</h3></div>
 
             <ul class="products" id="products">
-                <!-- <li>
-                    <div class="product-item">
-                        <div class="product-top">
-                            <a href="" class="product-thumb">
-                                <img src="assets/images/product/product-tst.jpg" alt="">
-                            </a>
-                            <a href="" class="buynow">Mua Ngay</a>
-                        </div>
-
-                        <div class="product-info">
-                            <a href="" class="product-cat">Sách Kinh Tế</a>
-                            <a href="" class="product-name">Chết vì chứng khoán</a>
-                            <div class="product-price">200.000 ₫</div>
-                        </div>
-                    </div>
-                </li> 
-
-                 <li>
-                    <div class="product-item">
-                        <div class="product-top">
-                            <a href="" class="product-thumb">
-                                <img src="assets/images/product/product-tst.jpg" alt="">
-                            </a>
-                            <a href="" class="buynow">Mua Ngay</a>
-                        </div>
-
-                        <div class="product-info">
-                            <a href="" class="product-cat">Sách Kinh Tế</a>
-                            <a href="" class="product-name">Chết vì chứng khoán</a>
-                            <div class="product-price">200.000 ₫</div>
-                        </div>
-                    </div>
-                </li>
-
+                <!--    innerHTML here: products * perPage
                 <li>
                     <div class="product-item">
                         <div class="product-top">
@@ -214,101 +181,17 @@
                         </div>
                     </div>
                 </li>
-
-                <li>
-                    <div class="product-item">
-                        <div class="product-top">
-                            <a href="" class="product-thumb">
-                                <img src="assets/images/product/product-tst.jpg" alt="">
-                            </a>
-                            <a href="" class="buynow">Mua Ngay</a>
-                        </div>
-
-                        <div class="product-info">
-                            <a href="" class="product-cat">Sách Kinh Tế</a>
-                            <a href="" class="product-name">Chết vì chứng khoán</a>
-                            <div class="product-price">200.000 ₫</div>
-                        </div>
-                    </div>
-                </li>
-
-                <li>
-                    <div class="product-item">
-                        <div class="product-top">
-                            <a href="" class="product-thumb">
-                                <img src="assets/images/product/product-tst.jpg" alt="">
-                            </a>
-                            <a href="" class="buynow">Mua Ngay</a>
-                        </div>
-
-                        <div class="product-info">
-                            <a href="" class="product-cat">Sách Kinh Tế</a>
-                            <a href="" class="product-name">Chết vì chứng khoán</a>
-                            <div class="product-price">200.000 ₫</div>
-                        </div>
-                    </div>
-                </li>
-
-                <li>
-                    <div class="product-item">
-                        <div class="product-top">
-                            <a href="" class="product-thumb">
-                                <img src="assets/images/product/product-tst.jpg" alt="">
-                            </a>
-                            <a href="" class="buynow">Mua Ngay</a>
-                        </div>
-
-                        <div class="product-info">
-                            <a href="" class="product-cat">Sách Kinh Tế</a>
-                            <a href="" class="product-name">Chết vì chứng khoán</a>
-                            <div class="product-price">200.000 ₫</div>
-                        </div>
-                    </div>
-                </li>
-
-                <li>
-                    <div class="product-item">
-                        <div class="product-top">
-                            <a href="" class="product-thumb">
-                                <img src="assets/images/product/product-tst.jpg" alt="">
-                            </a>
-                            <a href="" class="buynow">Mua Ngay</a>
-                        </div>
-
-                        <div class="product-info">
-                            <a href="" class="product-cat">Sách Kinh Tế</a>
-                            <a href="" class="product-name">Chết vì chứng khoán</a>
-                            <div class="product-price">200.000 ₫</div>
-                        </div>
-                    </div>
-                </li>
-
-                <li>
-                    <div class="product-item">
-                        <div class="product-top">
-                            <a href="" class="product-thumb">
-                                <img src="assets/images/product/product-tst.jpg" alt="">
-                            </a>
-                            <a href="" class="buynow">Mua Ngay</a>
-                        </div>
-
-                        <div class="product-info">
-                            <a href="" class="product-cat">Sách Kinh Tế</a>
-                            <a href="" class="product-name">Chết vì chứng khoán</a>
-                            <div class="product-price">200.000 ₫</div>
-                        </div>
-                    </div>
-                </li> -->
+                        innerHTML here: products * perPage  -->
             </ul>
             <div class="content-paging">
                 <ul class="page">
-                    <li id="btprev" class="button-prev-next"><i class="fas fa-chevron-circle-left" onclick="buttonprev()"></i></li>
+                    <li id="btprev" class="button-prev-next"><i class="fas fa-chevron-circle-left" onclick="prevButton()"></i></li>
                     <div class="number-page" id="number-page">
                         <!-- <li id="active"><b>1</b></li>
                         <li><b>2</b></li>
                         <li><b>3</b></li> -->
                     </div>
-                    <li id="btnext" class="button-prev-next-active"><i class="fas fa-chevron-circle-right" onclick="buttonnext()"></i></li>
+                    <li id="btnext" class="button-prev-next-active"><i class="fas fa-chevron-circle-right" onclick="nextPage()"></i></li>
                 </ul>
             </div>
         </div>
@@ -415,10 +298,10 @@
     
     <div id="wrapper">
         <div id="close">
-            <i class="fa-solid fa-xmark" onclick="closediv()"></i>
+            <i class="fa-solid fa-xmark" onclick="backFromDiv()"></i>
         </div>
         <div id="detail">
-            <!-- <img src="/assets/images/product/product-2.jpg" alt="">
+            <img src="/assets/images/product/Sach/VanHoc/TruyenDai/product-2.jpg" alt="">
             <div id="detail-pro">
                 <ul>
                     <li><h2>Toi thay hoa vang tren co xanh</h2></li>
@@ -432,7 +315,7 @@
                     <li>
                         <h3>Số lượng:</h3>
                         <input style="margin-left: 30px;" type="button" name="" id="sub" value="-" onclick="sub()">
-                        <input type="text" name="" id="quatity" value="1" onchange="check()">
+                        <input type="text" name="" id="quantity" value="1" onchange="check()">
                         <input type="button" value="+" id="add" onclick="add()">
                     </li>
                     <li id="addtocart">
@@ -441,7 +324,6 @@
                 </ul>
             </div> -->
         </div>
-    </div>
     </div>
 </body>
 </html>
