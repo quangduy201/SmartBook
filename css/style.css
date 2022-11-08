@@ -14,6 +14,8 @@ a {
 h2 {
     color: white;
 }
+
+/* HEADER */
 #header {
     display: flex;
     width: 100%;
@@ -23,6 +25,7 @@ h2 {
     top: 0; 
     z-index: 1;
 }
+
 #logo {
     padding: 2px 0px;
     line-height: 75px;
@@ -35,6 +38,7 @@ h2 {
     max-width: 100%;
     max-height: 100%;
 }
+
 #topmenu {
     font-size: larger;
     font-weight: bold;
@@ -43,7 +47,7 @@ h2 {
     display: flex;
 }
 /* Menu cha */
-.parent-menu {
+#topmenu .parent-menu {
     position: relative;
     text-align: center;
     display: inline-table;
@@ -88,13 +92,11 @@ h2 {
     width: 300px;
 }
 #topmenu ul.sub-topmenu ul#sub-topmenubook1,
-#topmenu ul.sub-topmenu ul#sub-topmenudevice1
-{
+#topmenu ul.sub-topmenu ul#sub-topmenudevice1 {
     top: -1px;
 }
 #topmenu ul.sub-topmenu ul#sub-topmenubook2,
-#topmenu ul.sub-topmenu ul#sub-topmenudevice2
-{
+#topmenu ul.sub-topmenu ul#sub-topmenudevice2 {
     top: 69px;
 }
 #topmenu ul.sub-topmenu ul#sub-topmenubook4 {
@@ -112,6 +114,7 @@ h2 {
 #topmenu ul.sub-topmenu ul#sub-topmenudevice3 {
     top: 139px;
 }
+
 #search {
     height: 35px;
     width: 20%;
@@ -134,6 +137,7 @@ h2 {
 #search input:focus {
     outline: none;
 }
+
 #user {
     padding-top: 5px;
     padding-right: 10px;
@@ -156,6 +160,8 @@ h2 {
     font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Oxygen,Ubuntu, Cantarell, "Open Sans", "Helvetica Neue", sans-serif;
     font-size: 12px;
 }
+
+/* BANNER */
 #banner {
     clear: both;
     width: 100%;
@@ -166,7 +172,6 @@ h2 {
     background-size: cover;
     justify-content: center;
 }
-
 #previous-banner,
 #next-banner {
     display: inline;
@@ -184,11 +189,12 @@ h2 {
     padding-right: 20px;
     float: right;
 }
-
 #previous i:hover,
 #next i:hover {
     color: rgb(111, 111, 110);
 }
+
+/* CONTENT */
 #content {
     font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Oxygen,Ubuntu, Cantarell, "Open Sans", "Helvetica Neue", sans-serif;
     font-size: 14px;
@@ -212,6 +218,8 @@ h2 {
     color: #555;
     font-weight: 600;
 }
+
+/* PRODUCTS */
 .products {
     display: flex;
     flex-wrap: wrap;
@@ -260,7 +268,7 @@ h2 {
     position: absolute;
     width: 100%;
     bottom: -36px;  /* Ban đầu sẽ xuất hiện trôi nổi ngoài product-top*/
-    transition: 0.25s ease-in-out; /* Làm chậm quá trình hiện mua ngay */
+    transition: 0.25s ease-in-out;  /* Làm chậm quá trình hiện mua ngay */
     opacity: 0.85;
 }
 .product-top .product-thumb img {
@@ -279,42 +287,43 @@ h2 {
 .products li :hover > .product-thumb img {
     filter: opacity(80%); /* Làm mờ hình khi hover vào li */
 }
-/*PAGENATION*/
-.content-paging{
+
+/* PAGINATION */
+.content-paging {
     justify-content: space-between;
     margin: auto;
     margin-bottom: 40px;
     padding-bottom: 5px;
 }
-.page{
+.page {
     display: inline-flex;
     list-style: none;
     height: 40px;
 }
-.button-prev-next-active{
+.button-prev-next-active {
     color: rgb(39, 110, 160);
 }
-.button-prev-next-active i{
+.button-prev-next-active i {
     font-size: 20px;
     cursor: pointer;
     height: 40px;
     line-height: 42px;
 }
-.button-prev-next{
+.button-prev-next {
     color: white;
 }
-.button-prev-next i{
+.button-prev-next i {
     font-size: 20px;
     height: 40px;
     line-height: 42px;
 }
-.number-page{
+.number-page {
     justify-content: space-between;
     width: 100%;
     display: inline-flex;
     border-radius: 5px;
 }
-.number-page li{
+.number-page li {
     margin-left: 3px;
     margin-right: 3px;
     background-color: white;;
@@ -324,21 +333,22 @@ h2 {
     line-height: 40px;
     font-size: 16px;
 }
-.number-page :first-child {
+.number-page:first-child {
     margin-left: 6px;
 }
-.number-page :last-child{
+.number-page:last-child {
     margin-right: 6px;
 }
-.number-page #active{
-    background-color:rgb(39, 110, 160);;
+.number-page #active {
+    background-color: rgb(39, 110, 160);;
     color: white;
 }
-.number-page li:hover{
+.number-page li:hover {
     cursor: pointer;
     background-color: rgba(0, 0, 0, 0.296);
 }
-/*FOOTER*/
+
+/* FOOTER */
 #footer {
     position: relative;
     display: flex;
@@ -368,6 +378,7 @@ h2 {
     font-size: 20px;
     color: black;
 }
+
 #contact {
     font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Oxygen,Ubuntu, Cantarell, "Open Sans", "Helvetica Neue", sans-serif;    
     font-style: italic;
@@ -395,6 +406,7 @@ h2 {
     bottom: 5px;
     right: 20px;
 }
+
 #backtotop {
     font-size: 30px;
     width: 50px;
@@ -416,8 +428,9 @@ h2 {
 #backtotop a:hover {
     color:rgb(239, 175, 66) ;
 }
-/* detail product*/
-#wrapper{
+
+/* product detail */
+#wrapper {
     display: none;
     background-color: white;
     width: 50%;
@@ -427,16 +440,16 @@ h2 {
     left: 50%;
     transform: translate(-50%, -50%);
 }
-#close{
+#close {
     position: absolute;
     top:3px;
     right: 6px;
 }
-#close i{
+#close i {
     cursor: pointer;
     font-size: 30px;
 }
-#detail img{
+#detail img {
     padding-top: 20px;
     width: 60%;
     float: left;
@@ -449,16 +462,16 @@ h2 {
     width: 40%;
     float: right;
 }
-#detail h2{
+#detail h2 {
     color: black;
 }
-#detail-pro ul{
+#detail-pro ul {
     list-style: none;
 }
-#detail-pro li{
+#detail-pro li {
     padding-top: 30px;
 }
-#detail-pro li input{
+#detail-pro li input {
     text-align: center;
     width: 25px;
 }
@@ -481,7 +494,8 @@ h2 {
     box-shadow: 0 10px 30px;
     background-color: rgb(214, 172, 118);
 }
-/*  */
+
+/* MEDIA */
 @media only screen and (max-width: 1456px) {
     #aboutus {
         padding-left: 10px;
