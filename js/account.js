@@ -85,6 +85,8 @@ function checkLogin() {
     var userArray = JSON.parse(localStorage.getItem('user'));
     for (var i = 0; i < userArray.length; i++) {
         if (username == userArray[i].username && password == userArray[i].password) {
+            var user=userArray[i];
+            localStorage.setItem('userActive', JSON.stringify(user));
             return true;
         }
     }
@@ -119,4 +121,10 @@ function togglePass() {
         x.type = "password";
         y.className = "fas fa-solid fa-eye-slash";
     }
+}
+function logout(){
+    var user = JSON.parse(localStorage.getItem('userActive'));
+    user=null;
+    localStorage.setItem('userActive', JSON.stringify(user));
+    location.reload();
 }

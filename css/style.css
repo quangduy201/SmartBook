@@ -54,6 +54,7 @@ h2 {
     line-height: 69px;
     height: 75px;
     width: 20%;
+    transition: 0.15s;
 }
 #topmenu a {
     display: block;
@@ -62,6 +63,10 @@ h2 {
 #topmenu li:hover > a {
     color:black;
 } 
+
+#topmenu li {
+    transition: 0.15s;
+}
 #topmenu li:hover {
     background-color: rgb(247, 225, 194);
 }
@@ -286,6 +291,7 @@ h2 {
 }
 .products li :hover > .product-thumb img {
     filter: opacity(80%); /* Làm mờ hình khi hover vào li */
+    transform: scale(1.1);
 }
 
 /* PAGINATION */
@@ -425,7 +431,7 @@ h2 {
 #backtotop:hover {
     background-color: white;
 }
-#backtotop a:hover {
+#backtotop :hover {
     color:rgb(239, 175, 66) ;
 }
 
@@ -481,7 +487,6 @@ h2 {
 #detail #addtocart div {
     font-weight: 500;
     cursor: pointer;
-    height: 50px;
     line-height: 50px;
     margin-top: 20px;
     padding-top: 0px;
