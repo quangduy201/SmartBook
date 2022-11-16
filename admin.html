@@ -1,0 +1,108 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Admin</title>
+    <link rel="icon" type="image/x-icon" href="/assets/images/logo.png">
+    <link rel="stylesheet" href="css/admin.css">
+    <link rel="stylesheet" href="assets/icons/all.css">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+    <script src="js/admin.js"></script>
+</head>
+
+<body>
+
+    <div>
+        <div id="leftmenu" class="">
+            <div class="logo"><a href="index.html"><img src="assets/images/logo.png" alt="Since1999"></a></div>
+            
+            <ul class="menu">
+                <li>
+                    <i class="fas fa-solid fa-house" title="Trang chủ"></i>
+                    <a href="/">Trang chủ</a>
+                </li>
+                <li>
+                    <i class="fas fa-solid fa-book-open" title="Sản phẩm"></i>
+                    <a href="/admin.html?sanpham">Sản phẩm</a>
+                </li>
+                <li>
+                    <i class="fas fa-sharp fa-solid fa-file-invoice" title="Hoá đơn"></i>
+                    <a href="/admin.html?hoadon">Hoá đơn</a>
+                </li>
+                <li>
+                    <i class="fas fa-duotone fa-users" title="Khách hàng"></i>
+                    <a href="/admin.html?khachhang">Khách hàng</a>
+                </li>
+                <li>
+                    <i class="fas fa-solid fa-circle-info" title="Quản lí thông tin"></i>
+                    <a href="/admin.html?quanlithongtin">Quản lí thông tin</a>
+                </li>
+                <li>
+                    <i class="fas fa-solid fa-right-from-bracket" title="Đăng xuất"></i>
+                    <a href="/admin.html?dangxuat">Đăng xuất</a>
+                </li>
+            </ul>
+        </div>     
+        <div id="user">
+            <p id="username">
+                <script>
+                    var user = JSON.parse(localStorage.getItem('userActive'));
+                    document.getElementById("username").innerText="Hi, "+user.name;
+                </script>
+            </p>
+        </div>  
+        <div class="content" id="content">
+        </div>
+        <div class="content-paging">
+            <ul class="page" id="page">
+            </ul>
+        </div>
+    </div>
+    <div id="container">
+    </div>
+    <div class="addProduct" id="addPro">
+        <form action="" onsubmit="return addNewProduct();">
+            <div id="close">
+                <i class="fa-solid fa-xmark" onclick="backFromDiv()"></i>
+            </div>
+            <div class="row">
+                <h1>Thêm Sản Phẩm</h1>
+            </div>
+            <div class="input">
+                <h3 class="txt">Mã sản phẩm</h3>
+                <div>
+                    <input class="inp" type="text" id="id-product">
+                </div>
+                <h3 class="txt">Tên sản phẩm</h3>
+                <div>
+                    <input class="inp" type="text" id="name-product"  >
+                </div>
+                <h3 class="txt">Thể loại</h3>
+                <div>
+                    <input class="inp" type="text" id="cat-product">
+                </div>
+                <h3 class="txt">Số lượng</h3>
+                <div>
+                    <input class="inp" type="number" min="1" id="quantity-product">
+                </div>
+                <h3 class="txt">Giá bán (vnd)</h3>
+                <div>
+                    <input class="inp" type="number" min="1" id="price-product">
+                </div>
+            </div>
+            <div class="img">
+                <img id="preview">
+                <input id="file-inp" type="file" accept="image/*" onchange="previewImg()">
+                <label for="file-inp">
+                    <i id="upload" class="fas fa-cloud-upload-alt tm-upload-icon"></i>
+                </label>
+            </div>
+            <div class="btAddPro">
+                <input type="submit" value="Thêm sản phẩm">
+            </div>
+        </form>
+    </div>
+</body>
+</html>
