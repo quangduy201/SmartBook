@@ -360,7 +360,7 @@ let perPage = 8;
 let start;
 let end;
 let totalpage;
-let books;
+let books=[];
 function getCurrentPage(currenPage,products) {
     start = (currenPage - 1) * perPage;
     end = currenPage * perPage;
@@ -389,9 +389,9 @@ function changeButton() {
 function loadPage() {
     var str = window.location.href;
     str = str.split('?');
-    if (str.length > 1) {
-        var url = str[1].split('&');
-        var products = JSON.parse(localStorage.getItem('category'));
+    var url = str[1].split('&');
+    var products = JSON.parse(localStorage.getItem('category'));
+    if (url.length > 1) {
         if (url[0] == "giaoduc" && url[1] == "sachgiaokhoa") {
             document.getElementById("headline").innerHTML = "<h3>Sách giáo khoa</h3>";
             books = products[0].listcategory[0].books;
@@ -602,8 +602,106 @@ function loadPage() {
             renderListPage();
             changePage(books);
         }
+    }else{
+        if (url[0]=="giaoduc"){
+            document.getElementById("headline").innerHTML = "<h3>Sách Giáo dục</h3>";
+            for (var j = 0; j < products[0].listcategory.length; j++) {
+                for (var h = 0; h < products[0].listcategory[j].books.length; h++) {
+                    books.push(products[0].listcategory[j].books[h]);
+                }
+            }
+            currenPage = 1;
+            totalpage = Math.ceil(books.length / perPage)
+            getCurrentPage(currenPage, books);
+            renderProduct(books);
+            renderListPage();
+            changePage(books);
+        }
+        if (url[0]=="vanhoc"){
+            document.getElementById("headline").innerHTML = "<h3>Sách Văn học</h3>";
+            for (var j = 0; j < products[1].listcategory.length; j++) {
+                for (var h = 0; h < products[1].listcategory[j].books.length; h++) {
+                    books.push(products[1].listcategory[j].books[h]);
+                }
+            }
+            currenPage = 1;
+            totalpage = Math.ceil(books.length / perPage)
+            getCurrentPage(currenPage, books);
+            renderProduct(books);
+            renderListPage();
+            changePage(books);
+        }
+        if (url[0]=="tieuthuyet"){
+            document.getElementById("headline").innerHTML = "<h3>Sách Tiểu thuyết</h3>";
+            for (var j = 0; j < products[2].listcategory.length; j++) {
+                for (var h = 0; h < products[2].listcategory[j].books.length; h++) {
+                    books.push(products[2].listcategory[j].books[h]);
+                }
+            }
+            currenPage = 1;
+            totalpage = Math.ceil(books.length / perPage)
+            getCurrentPage(currenPage, books);
+            renderProduct(books);
+            renderListPage();
+            changePage(books);
+        }
+        if (url[0]=="kinhte"){
+            document.getElementById("headline").innerHTML = "<h3>Sách Kinh tế</h3>";
+            for (var j = 0; j < products[3].listcategory.length; j++) {
+                for (var h = 0; h < products[3].listcategory[j].books.length; h++) {
+                    books.push(products[3].listcategory[j].books[h]);
+                }
+            }
+            currenPage = 1;
+            totalpage = Math.ceil(books.length / perPage)
+            getCurrentPage(currenPage, books);
+            renderProduct(books);
+            renderListPage();
+            changePage(books);
+        }
+        if (url[0]=="tamly/kynangsong"){
+            document.getElementById("headline").innerHTML = "<h3>Sách Tâm lý/Kỹ năng sống</h3>";
+            for (var j = 0; j < products[3].listcategory.length; j++) {
+                for (var h = 0; h < products[3].listcategory[j].books.length; h++) {
+                    books.push(products[3].listcategory[j].books[h]);
+                }
+            }
+            currenPage = 1;
+            totalpage = Math.ceil(books.length / perPage)
+            getCurrentPage(currenPage, books);
+            renderProduct(books);
+            renderListPage();
+            changePage(books);
+        }
+        if (url[0]=="lichsu"){
+            document.getElementById("headline").innerHTML = "<h3>Sách Lịch sử</h3>";
+            for (var j = 0; j < products[4].listcategory.length; j++) {
+                for (var h = 0; h < products[4].listcategory[j].books.length; h++) {
+                    books.push(products[4].listcategory[j].books[h]);
+                }
+            }
+            currenPage = 1;
+            totalpage = Math.ceil(books.length / perPage)
+            getCurrentPage(currenPage, books);
+            renderProduct(books);
+            renderListPage();
+            changePage(books);
+        }
+        if (url[0]=="thieunhi"){
+            document.getElementById("headline").innerHTML = "<h3>Sách Thiếu nhi</h3>";
+            for (var j = 0; j < products[5].listcategory.length; j++) {
+                for (var h = 0; h < products[5].listcategory[j].books.length; h++) {
+                    books.push(products[5].listcategory[j].books[h]);
+                }
+            }
+            currenPage = 1;
+            totalpage = Math.ceil(books.length / perPage)
+            getCurrentPage(currenPage, books);
+            renderProduct(books);
+            renderListPage();
+            changePage(books);
+        }
     }
-
 }
 function renderProduct(products) {
     var html = '';
