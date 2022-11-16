@@ -209,7 +209,7 @@ function createBestSeller() {
     localStorage.setItem('bestseller', JSON.stringify(bestseller));
 }
 function addBill() {
-    // cái này từ từ e tìm hiểu 
+    // cái này từ từ e tìm hiểu :))
 }
 function updateQuantity(category) {
     var category = JSON.parse(localStorage.getItem('category'));
