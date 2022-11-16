@@ -179,15 +179,17 @@ function previewImg() {
         };
         fileReader.readAsDataURL(img[0]);
     }
-    document.getElementById("upload").style.display = "none";
-
+    document.getElementById("upload").style.display = "none"
 }
+// tìm kí tự khoảng trắng
 function hasWhiteSpace(s) {
     return s.indexOf(' ') >= 0;
 }
+// so sánh chuỗi: a = A, á = a.
 function equalsIgnoreCaseAndBase(text1, text2) {
     return text1.localeCompare(text2, undefined, { sensitivity: 'base' }) === 0;
 }
+// chuyển từ hình ảnh sang URL
 function imageToDataURL() {
     var srcImage = document.getElementById("preview");
     var canvas = document.createElement("canvas");
@@ -198,13 +200,14 @@ function imageToDataURL() {
     var dataURL = canvas.toDataURL("image/*");
     return dataURL;
 }
+// chuyển từ chuỗi sang giá tiền: xxx.xxx VND
 function stringToPrice(s) {
     var price = "";
     var count = 0;
     while (s.length > 0) {
         price = s[s.length - 1] + price;
         s = s.substring(0, s.length - 1);
-        if (++count == 3) {
+        if (++count == 3 && s.length > 0) {
             count = 0;
             price = "." + price;
         }
@@ -213,9 +216,9 @@ function stringToPrice(s) {
     return price;
 }
 function addNewProduct() {
-    var id = document.getElementById("id-product").value;
-    var name = document.getElementById("name-product").value;
-    var cat = document.getElementById("cat-product").value;
+    var id = document.getElementById("id-product").value.trim();
+    var name = document.getElementById("name-product").value.trim();
+    var cat = document.getElementById("cat-product").value.trim();
     var quantity = document.getElementById("quantity-product").value;
     var price = document.getElementById("price-product").value;
     var image = imageToDataURL();
@@ -260,7 +263,7 @@ function addNewProduct() {
                 console.log(category);
                 localStorage.setItem('category', JSON.stringify(category));
                 alert("Sản phẩm mới đã được thêm vào!");
-                return false;
+                return true;
             }
         }
     }
