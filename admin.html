@@ -21,7 +21,7 @@
             <ul class="menu">
                 <li>
                     <i class="fas fa-solid fa-house" title="Trang chủ"></i>
-                    <a href="index.html">Trang chủ</a>
+                    <a href="/">Trang chủ</a>
                 </li>
                 <li>
                     <i class="fas fa-solid fa-book-open" title="Sản phẩm"></i>
@@ -62,8 +62,8 @@
     </div>
     <div id="container">
     </div>
-    <div class="addproduct" id="addpro">
-        <form action="">
+    <div class="addProduct" id="addPro">
+        <form action="" onsubmit="return addNewProduct();">
             <div id="close">
                 <i class="fa-solid fa-xmark" onclick="backFromDiv()"></i>
             </div>
@@ -73,33 +73,33 @@
             <div class="input">
                 <h3 class="txt">Mã sản phẩm</h3>
                 <div>
-                    <input class="inp" type="text">
+                    <input class="inp" type="text" id="id-product">
                 </div>
                 <h3 class="txt">Tên sản phẩm</h3>
                 <div>
-                    <input class="inp" type="text">
+                    <input class="inp" type="text" id="name-product"  >
                 </div>
                 <h3 class="txt">Thể loại</h3>
                 <div>
-                    <input class="inp" type="text">
+                    <input class="inp" type="text" id="cat-product">
                 </div>
                 <h3 class="txt">Số lượng</h3>
                 <div>
-                    <input class="inp" type="number" min="1">
+                    <input class="inp" type="number" min="1" id="quantity-product">
                 </div>
                 <h3 class="txt">Giá bán (vnd)</h3>
                 <div>
-                    <input class="inp" type="number" min="1">
+                    <input class="inp" type="number" min="1" id="price-product">
                 </div>
             </div>
             <div class="img">
                 <img id="preview">
                 <input id="file-inp" type="file" accept="image/*" onchange="previewImg()">
                 <label for="file-inp">
-                    <i id="file" class="fas fa-cloud-upload-alt tm-upload-icon"></i>
+                    <i id="upload" class="fas fa-cloud-upload-alt tm-upload-icon"></i>
                 </label>
             </div>
-            <div class="btaddPro">
+            <div class="btAddPro">
                 <input type="submit" value="Thêm sản phẩm">
             </div>
         </form>

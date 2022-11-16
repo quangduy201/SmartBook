@@ -19,8 +19,9 @@
         window.onload = function() {
             createAdmin();
             initBanner();
-            renderBestseller();
             createBook();
+            createBestSeller();
+            renderBestseller();
             loadPage();
         }
     </script>
@@ -151,7 +152,7 @@
                         document.getElementById("username").innerText=user.name;
                     </script>
                 </p>&nbsp;
-                <a href="admin.html"><i class="fas fa-duotone fa-gear" id="admin" title="Quản lý"></i>&nbsp;</a>
+                <a href="admin.html" id="admin"><i class="fas fa-duotone fa-gear" title="Quản lý"></i>&nbsp;</a>
                 <i class="fas fa-solid fa-cart-shopping" title="Giỏ hàng"></i>&nbsp;
                 <i class="fas fa-solid fa-bell" title="Thông báo"></i>&nbsp;
                 <i class="fas fa-solid fa-user" id="icon-login" title="Đăng nhập" onclick="showLogin()"></i>

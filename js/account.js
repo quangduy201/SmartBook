@@ -26,6 +26,9 @@ function createNewUser(name,username, email, password) {
     userArray.push(user);
     localStorage.setItem('user', JSON.stringify(userArray));
 }
+function hasWhiteSpace(s) {
+    return s.indexOf(' ') >= 0;
+}
 function checkSignUp() {
     var username = document.getElementById('username-signup').value;
     var email = document.getElementById('email-signup').value;
@@ -56,9 +59,17 @@ function signup() {
         alert("Please enter your username.");
         username.focus();
         return false;
+    } else if (hasWhiteSpace(username.value)) {
+        alert("username can not have white space.");
+        username.focus();
+        return false;
     } else if (email.value == "") {
         alert("Please enter your email.");
         email.focus();
+        return false;
+    } else if (hasWhiteSpace(email.value)) {
+        alert("username can not have white space.");
+        username.focus();
         return false;
     } else if (password.value == "") {
         alert("Please enter your password.");
@@ -75,7 +86,7 @@ function signup() {
     } else if (!checkSignUp()) {
         return false;
     }
-    createNewUser(name,username, email, password);
+    createNewUser(name, username, email, password);
     alert("Sign up successfully.");
     return true;
 }
@@ -97,6 +108,10 @@ function login() {
     var password = document.getElementById('password-login');
     if (username.value == "") {
         alert("Please enter your username.");
+        username.focus();
+        return false;
+    } else if (hasWhiteSpace(username.value)) {
+        alert("username can not have white space.");
         username.focus();
         return false;
     } else if (password.value == "") {
@@ -122,9 +137,9 @@ function togglePass() {
         y.className = "fas fa-solid fa-eye-slash";
     }
 }
-function logout(){
+function logout() {
     var user = JSON.parse(localStorage.getItem('userActive'));
-    user=null;
+    user = null;
     localStorage.setItem('userActive', JSON.stringify(user));
     location.reload();
 }
