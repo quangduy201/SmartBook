@@ -176,10 +176,11 @@ function previewImg() {
         var fileReader = new FileReader();
         fileReader.onload = function(event) {
             document.getElementById("preview").setAttribute("src", event.target.result);
+            document.getElementById("imgproduct").setAttribute("src", event.target.result);
         };
         fileReader.readAsDataURL(img[0]);
     }
-    document.getElementById("upload").style.display = "none"
+    document.getElementById("upload").style.display = "none";
 }
 // tìm kí tự khoảng trắng
 function hasWhiteSpace(s) {
@@ -191,7 +192,7 @@ function equalsIgnoreCaseAndBase(text1, text2) {
 }
 // chuyển từ hình ảnh sang URL
 function imageToDataURL() {
-    var srcImage = document.getElementById("preview");
+    var srcImage = document.getElementById("imgproduct");
     var canvas = document.createElement("canvas");
     var context = canvas.getContext("2d");
     canvas.width = srcImage.width;

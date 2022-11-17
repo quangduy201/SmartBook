@@ -21,14 +21,14 @@
             initBanner();
             createBook();
             createBestSeller();
-            renderBestseller();
+            // renderBestseller();
             loadPage();
         }
     </script>
     <div>
         <div id="header">
             <div id="logo">
-               <a href="index.html"><img src="assets/images/logo.png" alt="Smart Book Logo"></a> 
+               <a href="index.html"><img src="/assets/images/logo.png" alt="Smart Book Logo"></a> 
             </div>
 
             <ul id="topmenu">
@@ -56,13 +56,20 @@
                                 <li><a href="/index.html?vanhoc&khac">Khác</a></li>
                             </ul>
                         </li>
-                        <li><a href="/index.html?tieuthuyet">Tiểu thuyết</a></li>
+                        <li>
+                            <a href="/index.html?tieuthuyet">Tiểu thuyết <i class="fas fa-solid fa-caret-down"></i></a>
+                            <ul class="sub-topmenu" id="sub-topmenubook3">
+                                <li><a href="/index.html?tieuthuyet&ngontinh">Ngôn tình</a></li>
+                                <li><a href="/index.html?tieuthuyet&giatuong">Giả tưởng</a></li>
+                                <li><a href="/index.html?tieuthuyet&lichsu">Lịch sử</a></li>
+                            </ul>
+                        </li>
                         <li>
                             <a href="/index.html?kinhte">Kinh tế <i class="fas fa-solid fa-caret-down"></i></a>
                             <ul class="sub-topmenu" id="sub-topmenubook4">
                                 <li><a href="/index.html?kinhte&quantri">Quản trị</a></li>
                                 <li><a href="/index.html?kinhte&marketing">Marketing</a></li>
-                                <li><a href="/index.html?kinhte&nhanvat">Nhân Vật</a></li>
+                                <li><a href="/index.html?kinhte&nhanvat">Nhân vật</a></li>
                                 <li><a href="/index.html?kinhte&khoinghiep">Khởi nghiệp</a></li>
                                 <li><a href="/index.html?kinhte&chungkhoan">Chứng khoán</a></li>
                             </ul>
