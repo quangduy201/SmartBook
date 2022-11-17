@@ -142,12 +142,12 @@ input::-webkit-inner-spin-button {
 .image img {
 	width: 30%;
 }
-.delete {
+.button {
 	width: 50px;
 	background-color: rgb(242, 120, 38);
 	border-radius: 10px;
 }
-.delete:hover {
+.button:hover {
 	background-color: rgba(242, 120, 38, 0.471);
 	padding-bottom: 5px;
 	padding-top: 5px;
@@ -162,7 +162,8 @@ input::-webkit-inner-spin-button {
     display: none;
     background-color: rgba(0, 0, 0, 0.7);
 }
-.addProduct {
+/**/
+.addProduct, .editProduct {
 	color: #fff;
 	font-family: 'Open Sans', sans-serif;
     position: fixed;
@@ -226,10 +227,12 @@ input::-webkit-inner-spin-button {
 	float: right;
 	padding-right: 10px;
 }
-.img #file-inp {
+.img #Editfile-inp {
 	display: none;
 }
-.img label i {
+.img label #upload, 
+.img label #Editupload
+{
 	margin-bottom: 20%;
 	margin-top: 20%;
 	display: block;
@@ -242,12 +245,20 @@ input::-webkit-inner-spin-button {
 .img img {
 	width: 80%;
 }
-.btAddPro {
+.img #deteleImage{
+	text-align: center;
+	display: block;
+	font-size: 30px;
+	margin-top: 20px;
+	margin-bottom: 20px;
+	cursor: pointer;
+}
+.btAddPro, .btEditPro {
 	height: 40px;
 	width: 100%;
 	clear: both;
 }
-.btAddPro input {
+.btAddPro, .btEditPro input {
 	border: 0px;
 	color: #fff;
 	text-transform: uppercase;
@@ -258,7 +269,7 @@ input::-webkit-inner-spin-button {
 	cursor: pointer;
 	background-color: #f5a623;
 }
-.btAddPro input:hover {
+.btAddPro, .btEditPro input:hover {
 	border: solid 3px #f5a623;
 	background-color: #4e657a;
 	color: #f5a623;

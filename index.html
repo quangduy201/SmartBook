@@ -21,7 +21,7 @@
             initBanner();
             createBook();
             createBestSeller();
-            // renderBestseller();
+            renderBestseller();
             loadPage();
         }
     </script>
@@ -86,7 +86,7 @@
                             <a href="/index.html?lichsu">Lịch sử <i class="fas fa-solid fa-caret-down"></i></a>
                             <ul class="sub-topmenu" id="sub-topmenubook6">
                                 <li><a href="/index.html?lichsu&vietnam">Việt Nam</a></li>
-                                <li><a href="/index.html?lichsu&nuocngoai">Nước ngoài</a></li>
+                                <li><a href="/index.html?lichsu&thegioi">Thế Giới</a></li>
                             </ul>
                         </li>
                         <li>
@@ -156,7 +156,9 @@
                 <p id="username">
                     <script>
                         var user = JSON.parse(localStorage.getItem('userActive'));
-                        document.getElementById("username").innerText=user.name;
+                        if(user){
+                            document.getElementById("username").innerText="Hi, "+user.name;
+                        }
                     </script>
                 </p>&nbsp;
                 <a href="admin.html" id="admin"><i class="fas fa-duotone fa-gear" title="Quản lý"></i>&nbsp;</a>

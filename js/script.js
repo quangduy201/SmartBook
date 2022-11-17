@@ -332,58 +332,214 @@ function createBook() {
                 {id:"QT20", name:"Những Ảo Tưởng Quản Trị địa Praha",cat:null,price:"136.000"+" VND",quantity:10,image:"assets/images/product/Sach/KinhTe/QuanTri/QT20.png"},
     
             ]},
-            {id:2, name:"Marketing", quantity:0, books:[
-                {id:33, name:"Chết vì chứng khoán",cat:null,price:"200.000"+" VND",quantity:10,image:"assets/images/product/Sach/KinhTe/ChungKhoan/product-tst.jpg"},
+            {id:"M", name:"Marketing", quantity:0, books:[
+                {id:"M1", name:"Marketing Căn Bản - Marketing 101",cat:null,price:"229.000"+" VND",quantity:10,image:"assets/images/product/Sach/KinhTe/Marketing/M1.jpeg"},
+                {id:"M2", name:"Marketing B2B Sáng Tạo",cat:null,price:"165.000"+" VND",quantity:10,image:"assets/images/product/Sach/KinhTe/Marketing/M2.jpeg"},
+                {id:"M3", name:"Marketing - Đột Phá Trước Khi Bị Đá",cat:null,price:"120.000"+" VND",quantity:10,image:"assets/images/product/Sach/KinhTe/Marketing/M3.jpeg"},
+                {id:"M4", name:"Marketing Thực Chiến - Từ Chiến Lược Đến Thực Thi",cat:null,price:"129.000"+" VND",quantity:10,image:"assets/images/product/Sach/KinhTe/Marketing/M4.jpeg"},
+                {id:"M5", name:"Marketing Du Kích Trong 30 Ngày",cat:null,price:"169.000"+" VND",quantity:10,image:"assets/images/product/Sach/KinhTe/Marketing/M5.jpeg"},
+                {id:"M6", name:"Marketing Đột Phá",cat:null,price:"118.000"+" VND",quantity:10,image:"assets/images/product/Sach/KinhTe/Marketing/M6.png"},
+                {id:"M7", name:"Marketing Cho Start Up",cat:null,price:"149.000"+" VND",quantity:10,image:"assets/images/product/Sach/KinhTe/Marketing/M7.jpeg"},
+                {id:"M8", name:"Marketing Đáng Kinh Ngạc",cat:null,price:"143.000"+" VND",quantity:10,image:"assets/images/product/Sach/KinhTe/Marketing/M8.png"},
+                {id:"M9", name:"Marketing Truyền Miệng",cat:null,price:"109.000"+" VND",quantity:10,image:"assets/images/product/Sach/KinhTe/Marketing/M9.jpeg"},
+                {id:"M10", name:"Marketing Trong Cuộc Cách Mạng Công Nghệ 4.0",cat:null,price:"110.000"+" VND",quantity:10,image:"assets/images/product/Sach/KinhTe/Marketing/M10.png"},
+                {id:"M11", name:"Marketing Hệ Não Đồ",cat:null,price:"160.000"+" VND",quantity:10,image:"assets/images/product/Sach/KinhTe/Marketing/M11.jpeg"},
+                {id:"M12", name:"Marketing Phải Bán Được Hàng",cat:null,price:"159.000"+" VND",quantity:10,image:"assets/images/product/Sach/KinhTe/Marketing/M12.jpeg"},
+                {id:"M13", name:"Marketing Trên Một Trang Giấy",cat:null,price:"129.000"+" VND",quantity:10,image:"assets/images/product/Sach/KinhTe/Marketing/M13.jpeg"},
+                {id:"M14", name:"Marketing Kiểu Xiaomi",cat:null,price:"149.000"+" VND",quantity:10,image:"assets/images/product/Sach/KinhTe/Marketing/M14.jpeg"},
+                {id:"M15", name:"Tiktok Marketing",cat:null,price:"139.000"+" VND",quantity:10,image:"assets/images/product/Sach/KinhTe/Marketing/M15.jpeg"},
+                {id:"M16", name:"Digital Marketing - Chiến Lược Là Lược Đi Để Chiến",cat:null,price:"139.000"+" VND",quantity:10,image:"assets/images/product/Sach/KinhTe/Marketing/M16.png"},
     
             ]},
-            {id:3, name:"Nhân Vật", quantity:0, books:[
-                {id:34, name:"Chết vì chứng khoán",cat:null,price:"200.000"+" VND",quantity:10,image:"assets/images/product/Sach/KinhTe/ChungKhoan/product-tst.jpg"},
+            {id:"NV", name:"Nhân Vật", quantity:0, books:[
     
             ]},
-            {id:4, name:"Khởi nghiệp", quantity:0, books:[
-                {id:35, name:"Chết vì chứng khoán",cat:null,price:"200.000"+" VND",quantity:10,image:"assets/images/product/Sach/KinhTe/ChungKhoan/product-tst.jpg"},
-    
+            {id:"KN", name:"Khởi nghiệp", quantity:0, books:[
+                {id:"KN1", name:"Khởi Nghiệp Đổi Mới Sáng Tạo - Tư Duy & Công Cụ",cat:null,price:"169.000"+" VND",quantity:10,image:"assets/images/product/Sach/KinhTe/KhoiNghiep/KN1.jpeg"},
+                {id:"KN2", name:"Khởi Nghiệp Không Phải Là Ước Mơ Xa Vời",cat:null,price:"75.000"+" VND",quantity:10,image:"assets/images/product/Sach/KinhTe/KhoiNghiep/KN2.jpeg"},
+                {id:"KN3", name:"Khởi Nghiệp Ngay!",cat:null,price:"65.000"+" VND",quantity:10,image:"assets/images/product/Sach/KinhTe/KhoiNghiep/KN3.jpeg"},
+                {id:"KN4", name:"Khởi Nghiệp Táo Bạo",cat:null,price:"159.000"+" VND",quantity:10,image:"assets/images/product/Sach/KinhTe/KhoiNghiep/KN4.jpeg"},
+                {id:"KN5", name:"Khởi Nghiệp - Lựa Chọn Hay Bản Năng",cat:null,price:"170.000"+" VND",quantity:10,image:"assets/images/product/Sach/KinhTe/KhoiNghiep/KN5.jpeg"},
+                {id:"KN6", name:"Khởi Nghiệp Tinh Gọn - The Lean Startup",cat:null,price:"165.000"+" VND",quantity:10,image:"assets/images/product/Sach/KinhTe/KhoiNghiep/KN6.jpeg"},
+                {id:"KN7", name:"Khởi Nghiệp Phiêu Lưu Ký",cat:null,price:"175.000"+" VND",quantity:10,image:"assets/images/product/Sach/KinhTe/KhoiNghiep/KN7.png"},
+                {id:"KN8", name:"Khởi Nghiệp Kinh Doanh - Lý Thuyết, Quá Trình, Thực Tiễn",cat:null,price:"380.000"+" VND",quantity:10,image:"assets/images/product/Sach/KinhTe/KhoiNghiep/KN8.png"},
+                {id:"KN9", name:"Khởi Nghiệp Cuối Tuần",cat:null,price:"99.000"+" VND",quantity:10,image:"assets/images/product/Sach/KinhTe/KhoiNghiep/KN9.jpeg"},
+                {id:"KN10", name:"Khởi Nghiệp - Con Đường Duy Nhất Giúp Bạn Giàu Có",cat:null,price:"35.000"+" VND",quantity:10,image:"assets/images/product/Sach/KinhTe/KhoiNghiep/KN10.jpeg"},
+                {id:"KN11", name:"Khởi Nghiệp - Thích Nghi & Sống Sót",cat:null,price:"75.000"+" VND",quantity:10,image:"assets/images/product/Sach/KinhTe/KhoiNghiep/KN11.jpeg"},
+                {id:"KN12", name:"Khởi Nghiệp Từ A Đến Z",cat:null,price:"59.000"+" VND",quantity:10,image:"assets/images/product/Sach/KinhTe/KhoiNghiep/KN12.jpeg"},
+                {id:"KN13", name:"Khởi Nghiệp Từ Tiệm Nhỏ",cat:null,price:"85.000"+" VND",quantity:10,image:"assets/images/product/Sach/KinhTe/KhoiNghiep/KN13.jpeg"},
+                {id:"KN14", name:"36 Lời Khuyên Dành Cho Người Khởi Nghiệp",cat:null,price:"159.000"+" VND",quantity:10,image:"assets/images/product/Sach/KinhTe/KhoiNghiep/KN14.jpeg"},
+                {id:"KN15", name:"Câu Chuyện Khởi Nghiệp Từ Những Gã Khổng Lồ Công Nghệ",cat:null,price:"139.000"+" VND",quantity:10,image:"assets/images/product/Sach/KinhTe/KhoiNghiep/KN15.jpeg"},
+                {id:"KN16", name:"Tự Tin Khởi Nghiệp",cat:null,price:"60.000"+" VND",quantity:10,image:"assets/images/product/Sach/KinhTe/KhoiNghiep/KN16.jpeg"},
+
             ]},
-            {id:5, name:"Chứng khoán", quantity:0, books:[
-                {id:36, name:"Chết vì chứng khoán",cat:null,price:"200.000"+" VND",quantity:10,image:"assets/images/product/Sach/KinhTe/ChungKhoan/product-tst.jpg"},
-    
+            {id:"CK", name:"Chứng khoán", quantity:0, books:[
+                {id:"CK1", name:"Chứng Khoán - Hãy Đầu Tư Như Một Nhà Nông",cat:null,price:"239.000"+" VND",quantity:10,image:"assets/images/product/Sach/KinhTe/ChungKhoan/CK1.jpeg"},
+                {id:"CK2", name:"The Little Book - Chiến Lược Lãi Kép Trong Đầu Tư Chứng Khoán",cat:null,price:"149.000"+" VND",quantity:10,image:"assets/images/product/Sach/KinhTe/ChungKhoan/CK2.png"},
+                {id:"CK3", name:"Phù Thủy Sàn Chứng Khoán",cat:null,price:"199.000"+" VND",quantity:10,image:"assets/images/product/Sach/KinhTe/ChungKhoan/CK3.jpeg"},
+                {id:"CK4", name:"Làm Chủ Thị Trường Chứng Khoán",cat:null,price:"149.000"+" VND",quantity:10,image:"assets/images/product/Sach/KinhTe/ChungKhoan/CK4.jpeg"},
+                {id:"CK5", name:"Chỉ Nam Đầu Tư Cổ Phiếu Và Chứng Khoán",cat:null,price:"98.000"+" VND",quantity:10,image:"assets/images/product/Sach/KinhTe/ChungKhoan/CK5.jpeg"},
+                {id:"CK6", name:"Đầu Tư Chứng Khoán Theo Chỉ Số",cat:null,price:"110.000"+" VND",quantity:10,image:"assets/images/product/Sach/KinhTe/ChungKhoan/CK6.jpeg"},
+                {id:"CK7", name:"Cẩm Nang Chứng Khoán Phái Sinh",cat:null,price:"269.000"+" VND",quantity:10,image:"assets/images/product/Sach/KinhTe/ChungKhoan/CK7.jpeg"},
+                {id:"CK8", name:"The Little Book - Quản Trị Rủi Ro Trong Đầu Tư Chứng Khoán",cat:null,price:"189.000"+" VND",quantity:10,image:"assets/images/product/Sach/KinhTe/ChungKhoan/CK8.jpeg"},
+                {id:"CK9", name:"20 Năm Lịch Sử Thị Trường Chứng Khoán Việt Nam - Bìa Cứng",cat:null,price:"269.000"+" VND",quantity:10,image:"assets/images/product/Sach/KinhTe/ChungKhoan/CK9.jpeg"},
+                {id:"CK10", name:"Đầu Tư Chứng Khoán Khôn Ngoan Khi Bạn Không Phải “Cá Mập”",cat:null,price:"158.000"+" VND",quantity:10,image:"assets/images/product/Sach/KinhTe/ChungKhoan/CK10.jpeg"},
+                {id:"CK11", name:"Hộp Sách (Gồm 3 Cuốn) Chinh Phục Chứng Khoán",cat:null,price:"499.000"+" VND",quantity:10,image:"assets/images/product/Sach/KinhTe/ChungKhoan/CK11.jpeg"},
+                {id:"CK12", name:"Chết Vì Chứng Khoán",cat:null,price:"125.000"+" VND",quantity:10,image:"assets/images/product/Sach/KinhTe/ChungKhoan/CK12.jpg"},
+
             ]},
         ]},
         {id:5, name:"Tâm lý/Kỹ năng sống", quantity:0, listcategory: [
-            {id:1, name:"Tâm lý", quantity:0, books:[
-                {id:37, name:"Chết vì chứng khoán",cat:null,price:"200.000"+" VND",quantity:10,image:"assets/images/product/Sach/KinhTe/ChungKhoan/product-tst.jpg"},
+            {id:"TL", name:"Tâm lý", quantity:0, books:[
+                {id:"TL1", name:"Tâm Lý Học Xoa Dịu Những Tổn Thương Vì Chia Ly",cat:null,price:"119.000"+" VND",quantity:10,image:"assets/images/product/Sach/TamLy_KyNangSong/TamLy/TL1.jpeg"},
+                {id:"TL2", name:"Tâm Lý Học Về Sự Lo Âu",cat:null,price:"129.000"+" VND",quantity:10,image:"assets/images/product/Sach/TamLy_KyNangSong/TamLy/TL2.jpeg"},
+                {id:"TL3", name:"Tâm Lý Học Hiện Đại - Nhìn Thấu Tâm Can, Thay Đổi Tâm Trí",cat:null,price:"150.000"+" VND",quantity:10,image:"assets/images/product/Sach/TamLy_KyNangSong/TamLy/TL3.jpeg"},
+                {id:"TL4", name:"Tâm Lý Học - Giải Mã Qua Góc Nhìn Điện Ảnh",cat:null,price:"145.000"+" VND",quantity:10,image:"assets/images/product/Sach/TamLy_KyNangSong/TamLy/TL4.jpeg"},
+                {id:"TL5", name:"Tâm Lý Học Tích Cực",cat:null,price:"129.000"+" VND",quantity:10,image:"assets/images/product/Sach/TamLy_KyNangSong/TamLy/TL5.jpeg"},
+                {id:"TL6", name:"Tâm Lý Học Hành Vi",cat:null,price:"98.000"+" VND",quantity:10,image:"assets/images/product/Sach/TamLy_KyNangSong/TamLy/TL6.png"},
+                {id:"TL7", name:"Tâm Lý Học Trong Nháy Mắt - Tâm Lý Học Tổ Chức - Công Nghiệp (Tập 6)",cat:null,price:"198.000"+" VND",quantity:10,image:"assets/images/product/Sach/TamLy_KyNangSong/TamLy/TL7.jpeg"},
+                {id:"TL8", name:"Tâm Lý Học Tội Phạm - Phác Họa Chân Dung Kẻ Phạm Tội",cat:null,price:"145.000"+" VND",quantity:10,image:"assets/images/product/Sach/TamLy_KyNangSong/TamLy/TL8.jpeg"},
+                {id:"TL9", name:"Tâm Lý Học Thấu Hiểu Bản Thân",cat:null,price:"119.000"+" VND",quantity:10,image:"assets/images/product/Sach/TamLy_KyNangSong/TamLy/TL9.jpeg"},
+                {id:"TL10", name:"Tâm Lý Học Về Sự Tự Tôn",cat:null,price:"129.000"+" VND",quantity:10,image:"assets/images/product/Sach/TamLy_KyNangSong/TamLy/TL10.jpeg"},
+                {id:"TL11", name:"Tâm Lý Học Thuyết Phục",cat:null,price:"169.000"+" VND",quantity:10,image:"assets/images/product/Sach/TamLy_KyNangSong/TamLy/TL11.jpeg"},
+                {id:"TL12", name:"Tâm Lý Học Về Rối Loạn Nhân Cách Tránh Né",cat:null,price:"129.000"+" VND",quantity:10,image:"assets/images/product/Sach/TamLy_KyNangSong/TamLy/TL12.jpeg"},
+                {id:"TL13", name:"Tâm Lý Học Xã Hội - Đi Tìm Chất Gây Nghiện Trong Mỗi Con Người",cat:null,price:"139.000"+" VND",quantity:10,image:"assets/images/product/Sach/TamLy_KyNangSong/TamLy/TL13.jpeg"},
+                {id:"TL14", name:"Tâm Lý Học Thói Quen - Quan Sát Có Chủ Đích",cat:null,price:"99.000"+" VND",quantity:10,image:"assets/images/product/Sach/TamLy_KyNangSong/TamLy/TL14.jpeg"},
+                {id:"TL15", name:"Tâm Lý Học Nhận Thức",cat:null,price:"96.000"+" VND",quantity:10,image:"assets/images/product/Sach/TamLy_KyNangSong/TamLy/TL15.jpeg"},
+                {id:"TL16", name:"Tâm Lý Học Tình Yêu - Tình Yêu Của Bạn Giống Như Bạn",cat:null,price:"129.000"+" VND",quantity:10,image:"assets/images/product/Sach/TamLy_KyNangSong/TamLy/TL16.jpeg"},
+                {id:"TL17", name:"Tâm Lý Học Giải Mã Tình Yêu",cat:null,price:"119.000"+" VND",quantity:10,image:"assets/images/product/Sach/TamLy_KyNangSong/TamLy/TL17.jpeg"},
+                {id:"TL18", name:"Tâm Lý Học Nhân Cách",cat:null,price:"189.000"+" VND",quantity:10,image:"assets/images/product/Sach/TamLy_KyNangSong/TamLy/TL18.png"},
+                {id:"TL19", name:"Tâm Lý Học - Mở Khóa Não Bộ Bạn Trẻ",cat:null,price:"94.000"+" VND",quantity:10,image:"assets/images/product/Sach/TamLy_KyNangSong/TamLy/TL19.jpeg"},
+                {id:"TL20", name:"Tâm Lý Học Trong Đời Sống",cat:null,price:"149.000"+" VND",quantity:10,image:"assets/images/product/Sach/TamLy_KyNangSong/TamLy/TL20.png"},
+
+            ]},
+            {id:"K", name:"Kỹ năng sống", quantity:0, books:[
+                {id:"K1", name:"Kỹ Năng Sống - Cách Để Trở Thành Người Bạn Tốt",cat:null,price:"50.000"+" VND",quantity:10,image:"assets/images/product/Sach/TamLy_KyNangSong/KyNangSong/K1.jpeg"},
+                {id:"K2", name:"Kỹ Năng Sống - Cách Để Trở Thành Con Ngoan",cat:null,price:"52.000"+" VND",quantity:10,image:"assets/images/product/Sach/TamLy_KyNangSong/KyNangSong/K2.jpeg"},
+                {id:"K3", name:"Kỹ Năng Sống - Em Học Cách Bảo Vệ Môi Trường",cat:null,price:"59.000"+" VND",quantity:10,image:"assets/images/product/Sach/TamLy_KyNangSong/KyNangSong/K3.jpeg"},
+                {id:"K4", name:"Kỹ Năng Sống - Em Học Cách Tự Lập",cat:null,price:"59.000"+" VND",quantity:10,image:"assets/images/product/Sach/TamLy_KyNangSong/KyNangSong/K4.jpeg"},
+                {id:"K5", name:"Kỹ Năng Sống - 101 Câu Chuyện Học Sinh Cần Đọc Giúp Các Em Tự Tin Và Lạc Quan Trong Cuộc Sống",cat:null,price:"48.000"+" VND",quantity:10,image:"assets/images/product/Sach/TamLy_KyNangSong/KyNangSong/K5.jpeg"},
+                {id:"K6", name:"Kỹ Năng Sống - 101 Câu Chuyện Học Sinh Cần Đọc Giúp Các Em Biết Mơ Ước Và Dám Thực Hiện",cat:null,price:"48.000"+" VND",quantity:10,image:"assets/images/product/Sach/TamLy_KyNangSong/KyNangSong/K6.jpeg"},
+                {id:"K7", name:"Kỹ Năng Sống Dành Cho Học Sinh - Biết Lựa Chọn",cat:null,price:"55.000"+" VND",quantity:10,image:"assets/images/product/Sach/TamLy_KyNangSong/KyNangSong/K7.jpeg"},
+                {id:"K8", name:"Sách Montessori - Rèn Kỹ Năng Sống Và Kỹ Năng Phối Hợp",cat:null,price:"140.000"+" VND",quantity:10,image:"assets/images/product/Sach/TamLy_KyNangSong/KyNangSong/K8.jpeg"},
+                {id:"K9", name:"Những Kỹ Năng Sống Dành Cho Tuổi Teen",cat:null,price:"76.000"+" VND",quantity:10,image:"assets/images/product/Sach/TamLy_KyNangSong/KyNangSong/K9.jpeg"},
+                {id:"K10", name:"100 Kỹ Năng Sinh Tồn",cat:null,price:"99.000"+" VND",quantity:10,image:"assets/images/product/Sach/TamLy_KyNangSong/KyNangSong/K10.jpeg"},
+                {id:"K11", name:"Những Kỹ Năng Dành Cho Cuộc Sống",cat:null,price:"78.000"+" VND",quantity:10,image:"assets/images/product/Sach/TamLy_KyNangSong/KyNangSong/K11.jpeg"},
+                {id:"K12", name:"Kỹ Năng Để Cân Bằng Giữa Công Việc Và Cuộc Sống",cat:null,price:"162.000"+" VND",quantity:10,image:"assets/images/product/Sach/TamLy_KyNangSong/KyNangSong/K12.jpeg"},
+                {id:"K13", name:"Đắc Nhân Tâm",cat:null,price:"76.000"+" VND",quantity:10,image:"assets/images/product/Sach/TamLy_KyNangSong/KyNangSong/K13.jpeg"},
+                {id:"K14", name:"Nhà Giả Kiêm",cat:null,price:"59.000"+" VND",quantity:10,image:"assets/images/product/Sach/TamLy_KyNangSong/KyNangSong/K14.jpeg"},
+                {id:"K15", name:"Rich Habits - Thói Quen Thành Công Của Những Triệu Phú Tự Thân",cat:null,price:"158.000"+" VND",quantity:10,image:"assets/images/product/Sach/TamLy_KyNangSong/KyNangSong/K15.jpeg"},
     
             ]},
-            {id:2, name:"Kỹ năng sống", quantity:0, books:[
-                {id:38, name:"Chết vì chứng khoán",cat:null,price:"200.000"+" VND",quantity:10,image:"assets/images/product/Sach/KinhTe/ChungKhoan/product-tst.jpg"},
-    
-            ]},
-            {id:3, name:"Hạt giống tâm hồn", quantity:0, books:[
-                {id:39, name:"Chết vì chứng khoán",cat:null,price:"200.000"+" VND",quantity:10,image:"assets/images/product/Sach/KinhTe/ChungKhoan/product-tst.jpg"},
+            {id:"HG", name:"Hạt giống tâm hồn", quantity:0, books:[
     
             ]},
         ]},
-        {id:6, name:"Lịch sử", quantity:0, listcategory: [
-            {id:1, name:"Lịch sử Việt Nam", quantity:0, books:[
-                {id:40, name:"Chết vì chứng khoán",cat:null,price:"200.000"+" VND",quantity:10,image:"assets/images/product/Sach/KinhTe/ChungKhoan/product-tst.jpg"},
+        {id:"6", name:"Lịch sử", quantity:0, listcategory: [
+            {id:"VN", name:"Lịch sử Việt Nam", quantity:0, books:[
+                {id:"VN1", name:"Lịch Sử Việt Nam Từ Nguồn Gốc Đến Thế Kỷ XIX",cat:null,price:"175.000"+" VND",quantity:10,image:"assets/images/product/Sach/LichSu/VietNam/LSu2.png"},
+                {id:"VN2", name:"Lịch Sử Nhà Tù Côn Đảo 1862 - 1975",cat:null,price:"120.000"+" VND",quantity:10,image:"assets/images/product/Sach/LichSu/VietNam/LSu4.jpeg"},
+                {id:"VN3", name:"Lịch Sử Nước Ta",cat:null,price:"14.000"+" VND",quantity:10,image:"assets/images/product/Sach/LichSu/VietNam/LSu7.jpeg"},
+                {id:"VN4", name:"Lịch Sử Việt Nam Bằng Tranh - Con Rồng Cháu Tiên",cat:null,price:"135.000"+" VND",quantity:10,image:"assets/images/product/Sach/LichSu/VietNam/LSu8.jpeg"},
+                {id:"VN5", name:"Lịch Sử Khai Phá Vùng Đất Nam Bộ",cat:null,price:"90.000"+" VND",quantity:10,image:"assets/images/product/Sach/LichSu/VietNam/LSu10.jpeg"},
+                {id:"VN6", name:"Lịch Sử Hà Nội",cat:null,price:"159.000"+" VND",quantity:10,image:"assets/images/product/Sach/LichSu/VietNam/LSu11.jpeg"},
+                {id:"VN7", name:"Việt Nam Sử Lược",cat:null,price:"131.000"+" VND",quantity:10,image:"assets/images/product/Sach/LichSu/VietNam/LSu13.jpeg"},
+                {id:"VN8", name:"Lịch Sử Việt Nam Từ Nguồn Gốc Đến Giữa Thế Kỉ XX",cat:null,price:"200.000"+" VND",quantity:10,image:"assets/images/product/Sach/LichSu/VietNam/LSu14.jpeg"},
+                {id:"VN9", name:"Đại Việt Sử Ký Toàn Thư Trọn Bộ",cat:null,price:"245.000"+" VND",quantity:10,image:"assets/images/product/Sach/LichSu/VietNam/LSu17.jpeg"},
+                {id:"VN10", name:"Thượng Kinh Ký Sự",cat:null,price:"69.000"+" VND",quantity:10,image:"assets/images/product/Sach/LichSu/VietNam/LSu19.jpeg"},
+                {id:"VN11", name:"Tỉnh Bến Tre Trong Lịch Sử Việt Nam - Từ Năm 1757 Đến 1945",cat:null,price:"120.000"+" VND",quantity:10,image:"assets/images/product/Sach/LichSu/VietNam/LSu21.jpg"},
+                {id:"VN12", name:"Kể Chuyện Lịch Sử Việt Nam - Tập 1",cat:null,price:"70.000"+" VND",quantity:10,image:"assets/images/product/Sach/LichSu/VietNam/LSu22.jpg"},
+                {id:"VN13", name:"Kể Chuyện Lịch Sử Việt Nam - Tập 2",cat:null,price:"70.000"+" VND",quantity:10,image:"assets/images/product/Sach/LichSu/VietNam/LSu23.jpg"},
+                {id:"VN14", name:"Quan Hệ Bang Giao Và Những Sứ Thần Tiêu Biểu Trong Lịch Sử Việt Nam",cat:null,price:"52.000"+" VND",quantity:10,image:"assets/images/product/Sach/LichSu/VietNam/LSu24.jpg"},
+                {id:"VN15", name:"Việt Nam Thế Kỷ XVII",cat:null,price:"269.000"+" VND",quantity:10,image:"assets/images/product/Sach/LichSu/VietNam/LSu25.jpg"},
+                {id:"VN16", name:"Tìm Hiểu Xã Hội Việt Nam Thời Lý - Trần",cat:null,price:"279.000"+" VND",quantity:10,image:"assets/images/product/Sach/LichSu/VietNam/LSu26.jpg"},
+                {id:"VN17", name:"Quan và Lại ở miền Bắc Việt Nam - một bộ máy hành chính nhiều thử thách (1820-1918)",cat:null,price:"122.000"+" VND",quantity:10,image:"assets/images/product/Sach/LichSu/VietNam/LSu27.jpg"},
     
             ]},
-            {id:2, name:"Lịch sử Nước ngoài", quantity:0, books:[
-                {id:41, name:"Chết vì chứng khoán",cat:null,price:"200.000"+" VND",quantity:10,image:"assets/images/product/Sach/KinhTe/ChungKhoan/product-tst.jpg"},
+            {id:"TG", name:"Lịch sử Thế giới", quantity:0, books:[
+                {id:"TG1", name:"Lịch Sử Thế Giới Qua Truyện Tranh",cat:null,price:"350.000"+" VND",quantity:10,image:"assets/images/product/Sach/LichSu/TheGioi/LSu1.jpeg"},
+                {id:"TG2", name:"Lịch Sử Vương Quốc Đàng Ngoài",cat:null,price:"169.000"+" VND",quantity:10,image:"assets/images/product/Sach/LichSu/TheGioi/LSu3.jpeg"},
+                {id:"TG3", name:"Lịch Sử Tư Tưởng Trung Quốc",cat:null,price:"399.000"+" VND",quantity:10,image:"assets/images/product/Sach/LichSu/TheGioi/LSu5.jpeg"},
+                {id:"TG4", name:"Lịch Sử Văn Minh Ấn Độ",cat:null,price:"177.000"+" VND",quantity:10,image:"assets/images/product/Sach/LichSu/TheGioi/LSu6.jpeg"},
+                {id:"TG5", name:"Lịch Sử Chiến Tranh",cat:null,price:"209.000"+" VND",quantity:10,image:"assets/images/product/Sach/LichSu/TheGioi/LSu9.jpeg"},
+                {id:"TG6", name:"Lược Sử Thế Giới",cat:null,price:"320.000"+" VND",quantity:10,image:"assets/images/product/Sach/LichSu/TheGioi/LSu12.jpeg"},
+                {id:"TG7", name:"Lịch Sử Thế Giới: Chân Dung Nhân Loại Theo Dòng Sự Kiện",cat:null,price:"590.000"+" VND",quantity:10,image:"assets/images/product/Sach/LichSu/TheGioi/LSu15.jpeg"},
+                {id:"TG8", name:"Lịch Sử Đô Thị Hiện Đại",cat:null,price:"169.000"+" VND",quantity:10,image:"assets/images/product/Sach/LichSu/TheGioi/LSu16.jpeg"},
+                {id:"TG9", name:"Lịch Sử Trung Đông 2.000 Năm Trở Lại Đây",cat:null,price:"210.000"+" VND",quantity:10,image:"assets/images/product/Sach/LichSu/TheGioi/LSu18.jpeg"},
+                {id:"TG10", name:"Lịch Sử Thế Giới Hiện Đại",cat:null,price:"119.000"+" VND",quantity:10,image:"assets/images/product/Sach/LichSu/TheGioi/LSu20.jpeg"},
+                {id:"TG11", name:"Đời Muối: Lịch Sử Thế Giới",cat:null,price:"235.000"+" VND",quantity:10,image:"assets/images/product/Sach/LichSu/TheGioi/LSu28.jpg"},
+                {id:"TG12", name:"Lịch Sử Do Thái",cat:null,price:"439.000"+" VND",quantity:10,image:"assets/images/product/Sach/LichSu/TheGioi/LSu29.jpg"},
+                {id:"TG13", name:"Lịch Sử Tư Tưởng Nhật Bản",cat:null,price:"169.000"+" VND",quantity:10,image:"assets/images/product/Sach/LichSu/TheGioi/LSu30.jpg"},
+                {id:"TG14", name:"Những Sự Kiện Lớn Trong Lịch Sử Hoa Kỳ",cat:null,price:"120.000"+" VND",quantity:10,image:"assets/images/product/Sach/LichSu/TheGioi/LSu31.jpg"},
+                {id:"TG15", name:"Phi Châu Thịnh Vượng - Lịch Sử 5.000 Năm Của Sự Giàu Có, Tham Vọng Và Nỗ Lực",cat:null,price:"489.000"+" VND",quantity:10,image:"assets/images/product/Sach/LichSu/TheGioi/LSu32.jpg"},
     
             ]},
         ]},
         {id:7, name:"Thiếu nhi", quantity:0, listcategory: [
-            {id:1, name:"Truyện thiếu nhi", quantity:0, books:[
-                {id:42, name:"Chết vì chứng khoán",cat:null,price:"200.000"+" VND",quantity:10,image:"assets/images/product/Sach/KinhTe/ChungKhoan/product-tst.jpg"},
-    
+            {id:"TTN", name:"Truyện thiếu nhi", quantity:0, books:[
+                {id:"TN1", name:"Những Truyện Hay Viết Cho Thiếu Nhi - Thy Ngọc",cat:null,price:"50.000"+" VND",quantity:10,image:"assets/images/product/Sach/ThieuNhi/TruyenThieuNhi/TN1.jpeg"},
+                {id:"TN2", name:"Thơ Hay Viết Cho Thiếu Nhi - Ai Dậy Sớm",cat:null,price:"75.000"+" VND",quantity:10,image:"assets/images/product/Sach/ThieuNhi/TruyenThieuNhi/TN2.jpeg"},
+                {id:"TN3", name:"Tuyển Tập Văn Học Viết Cho Thiếu Nhi - Tô Hoài - 1: Truyện Đồng Thoại - Kịch",cat:null,price:"200.000"+" VND",quantity:10,image:"assets/images/product/Sach/ThieuNhi/TruyenThieuNhi/TN3.jpeg"},
+                {id:"TN4", name:"Văn Học Thiếu Nhi - Dấu Ấn Thế Hệ Mới: Đừng Giẫm Lên Cỏ",cat:null,price:"50.000"+" VND",quantity:10,image:"assets/images/product/Sach/ThieuNhi/TruyenThieuNhi/TN4.jpeg"},
+                {id:"TN5", name:"Tủ Sách Vàng - Tác Phẩm Chọn Lọc Dành Cho Thiếu Nhi: Nơi Xa",cat:null,price:"75.000"+" VND",quantity:10,image:"assets/images/product/Sach/ThieuNhi/TruyenThieuNhi/TN5.jpeg"},
+                {id:"TN6", name:"Truyện Cổ Tích Việt Nam Dành Cho Thiếu Nhi - Sự Tích Trầu Cau",cat:null,price:"15.000"+" VND",quantity:10,image:"assets/images/product/Sach/ThieuNhi/TruyenThieuNhi/TN6.jpeg"},
+                {id:"TN7", name:"Truyện Hay Thế Giới Cho Thiếu Nhi - Chim Lửa",cat:null,price:"45.000"+" VND",quantity:10,image:"assets/images/product/Sach/ThieuNhi/TruyenThieuNhi/TN7.jpeg"},
+                {id:"TN8", name:"Tuyển Tập Truyện Hay Dành Cho Thiếu Nhi 1",cat:null,price:"48.000"+" VND",quantity:10,image:"assets/images/product/Sach/ThieuNhi/TruyenThieuNhi/TN8.png"},
+                {id:"TN9", name:"Truyện Cổ Tích Việt Nam Dành Cho Thiếu Nhi - Bánh Chưng Bánh Giầy",cat:null,price:"10.000"+" VND",quantity:10,image:"assets/images/product/Sach/ThieuNhi/TruyenThieuNhi/TN9.jpeg"},
+                {id:"TN10", name:"Tủ Sách Vàng - Tác Phẩm Chọn Lọc Dành Cho Thiếu Nhi: Miền Quê Thơ Ấu",cat:null,price:"35.000"+" VND",quantity:10,image:"assets/images/product/Sach/ThieuNhi/TruyenThieuNhi/TN10.jpeg"},
+                {id:"TN11", name:"Tuyển Tập Văn Học Viết Cho Thiếu Nhi - Tô Hoài - 3 - Truyện Các Gương Anh Hùng Cách Mạng",cat:null,price:"200.000"+" VND",quantity:10,image:"assets/images/product/Sach/ThieuNhi/TruyenThieuNhi/TN11.jpeg"},
+                {id:"TN12", name:"Tuyển Tập Truyện Hay Dành Cho Thiếu Nhi 2",cat:null,price:"48.000"+" VND",quantity:10,image:"assets/images/product/Sach/ThieuNhi/TruyenThieuNhi/TN12.jpeg"},
+                {id:"TN13", name:"Truyện Cổ Tích Việt Nam Dành Cho Thiếu Nhi - Thánh Gióng",cat:null,price:"10.000"+" VND",quantity:10,image:"assets/images/product/Sach/ThieuNhi/TruyenThieuNhi/TN13.jpeg"},
+                {id:"TN14", name:"Tủ Sách Vàng - Tác Phẩm Chọn Lọc Dành Cho Thiếu Nhi: Đảo Đá Kì Lạ",cat:null,price:"50.000"+" VND",quantity:10,image:"assets/images/product/Sach/ThieuNhi/TruyenThieuNhi/TN14.jpeg"},
+                {id:"TN15", name:"Truyện Cổ Tích Việt Nam Dành Cho Thiếu Nhi - Cây Tre Trăm Đốt",cat:null,price:"10.000"+" VND",quantity:10,image:"assets/images/product/Sach/ThieuNhi/TruyenThieuNhi/TN15.jpeg"},
+                {id:"TN16", name:"Những Tuyệt Phẩm Dành Cho Thiếu Nhi",cat:null,price:"200.000"+" VND",quantity:10,image:"assets/images/product/Sach/ThieuNhi/TruyenThieuNhi/TN16.jpeg"},
+                {id:"TN17", name:"Rơm Rạ Lấm Lem - Truyện Dài Thiếu Nhi Độ Tuổi 6 Đến 15",cat:null,price:"75.000"+" VND",quantity:10,image:"assets/images/product/Sach/ThieuNhi/TruyenThieuNhi/TN17.jpeg"},
+                {id:"TN18", name:"Truyện Tranh Ngụ Ngôn Dành Cho Thiếu Nhi - Chuột Nhà Và Chuột Đồng",cat:null,price:"29.000"+" VND",quantity:10,image:"assets/images/product/Sach/ThieuNhi/TruyenThieuNhi/TN18.jpeg"},
+                {id:"TN19", name:"Văn Học Thiếu Nhi - Dấu Ấn Thế Hệ Mới: Trời Xanh Ngập Nắng",cat:null,price:"80.000"+" VND",quantity:10,image:"assets/images/product/Sach/ThieuNhi/TruyenThieuNhi/TN19.jpeg"},
+                {id:"TN20", name:"Văn Học Thiếu Nhi - Những Truyện Kỳ Thú Về Cọp Chưa Ai Kể",cat:null,price:"70.000"+" VND",quantity:10,image:"assets/images/product/Sach/ThieuNhi/TruyenThieuNhi/TN20.jpeg"},
+                {id:"TN21", name:"Phù Thủy Áo Vàng, Con Mèo Lười Và Thằng Bí Đỏ",cat:null,price:"60.000"+" VND",quantity:10,image:"assets/images/product/Sach/ThieuNhi/TruyenThieuNhi/TN21.jpeg"},
+                {id:"TN22", name:"Nhấn Pê Đan Và… Tiến - Giải Thưởng Văn Học Thiếu Nhi Mĩ",cat:null,price:"90.000"+" VND",quantity:10,image:"assets/images/product/Sach/ThieuNhi/TruyenThieuNhi/TN22.jpeg"},
+                {id:"TN23", name:"Combo 4 Cuốn: Bộ Tuyển Tập Truyện Hay Dành Cho Thiếu Nhi",cat:null,price:"192.000"+" VND",quantity:10,image:"assets/images/product/Sach/ThieuNhi/TruyenThieuNhi/TN23.jpeg"},
+                {id:"TN24", name:"Truyện Kinh Thánh Dành Cho Thiếu Nhi",cat:null,price:"162.000"+" VND",quantity:10,image:"assets/images/product/Sach/ThieuNhi/TruyenThieuNhi/TN24.jpeg"},
+                
             ]},
-            {id:2, name:"Tô màu", quantity:0, books:[
-                {id:43, name:"Chết vì chứng khoán",cat:null,price:"200.000"+" VND",quantity:10,image:"assets/images/product/Sach/KinhTe/ChungKhoan/product-tst.jpg"},
-    
+            {id:"TM", name:"Tô màu", quantity:0, books:[
+                {id:"TM1", name:"Tô Màu - Khám Phá Phong Cảnh Việt Nam",cat:null,price:"65.000"+" VND",quantity:10,image:"assets/images/product/Sach/ThieuNhi/ToMau/TM1.jpeg"},
+                {id:"TM2", name:"Tô Màu Hoàng Tử: Hoàng Tử Chăn Lợn",cat:null,price:"15.000"+" VND",quantity:10,image:"assets/images/product/Sach/ThieuNhi/ToMau/TM2.jpeg"},
+                {id:"TM3", name:"Tô Màu Superman (Tập 4)",cat:null,price:"12.000"+" VND",quantity:10,image:"assets/images/product/Sach/ThieuNhi/ToMau/TM3.jpeg"},
+                {id:"TM4", name:"Tô Màu Công Chúa Xinh Đẹp - Tập 8",cat:null,price:"12.000"+" VND",quantity:10,image:"assets/images/product/Sach/ThieuNhi/ToMau/TM4.jpeg"},
+                {id:"TM5", name:"Tô Màu Chúng Mình Tập Làm Họa Sĩ - 3-6 Tuổi - Các Loài Hoa",cat:null,price:"30.000"+" VND",quantity:10,image:"assets/images/product/Sach/ThieuNhi/ToMau/TM5.jpeg"},
+                {id:"TM6", name:"Tô Màu Chúng Mình Tập Làm Họa Sĩ - 3-6 Tuổi - Động Vật",cat:null,price:"30.000"+" VND",quantity:10,image:"assets/images/product/Sach/ThieuNhi/ToMau/TM6.jpeg"},
+                {id:"TM7", name:"Tô Màu Trang Phục Công Chúa (Tập 1)",cat:null,price:"12.000"+" VND",quantity:10,image:"assets/images/product/Sach/ThieuNhi/ToMau/TM7.jpeg"},
+                {id:"TM8", name:"Bé Tập Tô Màu - Người Lính Cứu Hỏa Quyển",cat:null,price:"25.000"+" VND",quantity:10,image:"assets/images/product/Sach/ThieuNhi/ToMau/TM8.jpeg"},
+                {id:"TM9", name:"Túi Tô Màu Công Chúa (Trọn Bộ 5 Cuốn)",cat:null,price:"70.000"+" VND",quantity:10,image:"assets/images/product/Sach/ThieuNhi/ToMau/TM9.jpeg"},
+                {id:"TM10", name:"Sách tập tô 5000 hình",cat:null,price:"90.000"+" VND",quantity:10,image:"assets/images/product/Sach/ThieuNhi/ToMau/TM10.jpeg"},
+                {id:"TM11", name:"Cổ Tích Tô Màu Công Chúa - Nàng Tiên Cá",cat:null,price:"16.000"+" VND",quantity:10,image:"assets/images/product/Sach/ThieuNhi/ToMau/TM11.jpeg"},
+                {id:"TM12", name:"Cổ Tích Tô Màu Công Chúa - Cô Bé Bán Diêm",cat:null,price:"16.000"+" VND",quantity:10,image:"assets/images/product/Sach/ThieuNhi/ToMau/TM12.jpeg"},
+                {id:"TM13", name:"Tô Màu Phương Tiện Giao Thông - Xe Thể Thao Siêu Tốc Độ - Speedy Sport Cars",cat:null,price:"20.000"+" VND",quantity:10,image:"assets/images/product/Sach/ThieuNhi/ToMau/TM13.jpeg"},
+
             ]},
-            {id:3, name:"Luyện chữ", quantity:0, books:[
-                {id:44, name:"Chết vì chứng khoán",cat:null,price:"200.000"+" VND",quantity:10,image:"assets/images/product/Sach/KinhTe/ChungKhoan/product-tst.jpg"},
+            {id:"LC", name:"Luyện chữ", quantity:0, books:[
+                {id:"LC1", name:"Luyện Chữ Đẹp - Chữ Đứng Nét Thanh, Đậm",cat:null,price:"12.000"+" VND",quantity:10,image:"assets/images/product/Sach/ThieuNhi/LuyenChu/LC1.jpeg"},
+                {id:"LC2", name:"Luyện Chữ Đẹp - Chữ Nghiêng Nét Thanh, Đậm",cat:null,price:"10.000"+" VND",quantity:10,image:"assets/images/product/Sach/ThieuNhi/LuyenChu/LC2.jpeg"},
+                {id:"LC3", name:"Luyện Viết Tiếng Anh Trình Bày Trên Giấy Ô Li Dành Cho Học Sinh 4 - Tập 1",cat:null,price:"28.000"+" VND",quantity:10,image:"assets/images/product/Sach/ThieuNhi/LuyenChu/LC3.jpeg"},
+                {id:"LC4", name:"Luyện Viết Tiếng Anh Trình Bày Trên Giấy Ô Li Dành Cho Học Sinh 5 - Tập 2",cat:null,price:"28.000"+" VND",quantity:10,image:"assets/images/product/Sach/ThieuNhi/LuyenChu/LC4.jpeg"},
+                {id:"LC5", name:"Luyện Viết Chữ Đẹp Tiếng Anh - My Phonics Grade 2",cat:null,price:"32.000"+" VND",quantity:10,image:"assets/images/product/Sach/ThieuNhi/LuyenChu/LC5.jpeg"},
+                {id:"LC6", name:"Luyện Viết Chữ Đẹp Tiếng Anh - My Phonics Grade 1",cat:null,price:"32.000"+" VND",quantity:10,image:"assets/images/product/Sach/ThieuNhi/LuyenChu/LC6.jpeg"},
+                {id:"LC7", name:"Luyện Viết Chữ Đẹp Dùng Cho Học Sinh Tiểu Học Quyển 3 Tập 2",cat:null,price:"9.000"+" VND",quantity:10,image:"assets/images/product/Sach/ThieuNhi/LuyenChu/LC7.jpeg"},
+                {id:"LC8", name:"Luyện Viết Chữ Đẹp Dùng Cho Học Sinh Tiểu Học Quyển 4 Tập 1",cat:null,price:"9.000"+" VND",quantity:10,image:"assets/images/product/Sach/ThieuNhi/LuyenChu/LC8.jpeg"},
+                {id:"LC9", name:"Luyện Viết Tiếng Việt Cho Học Sinh Tiểu Học - Vui Cùng Chữ Viết Lớp 3 - Tập 1",cat:null,price:"16.000"+" VND",quantity:10,image:"assets/images/product/Sach/ThieuNhi/LuyenChu/LC9.jpeg"},
+                {id:"LC10", name:"Luyện Viết Tiếng Việt Cho Học Sinh Tiểu Học - Học Viết Điều Hay Lớp 5 - Tập 1",cat:null,price:"16.000"+" VND",quantity:10,image:"assets/images/product/Sach/ThieuNhi/LuyenChu/LC10.jpeg"},
+                {id:"LC11", name:"Luyện Viết Tiếng Việt Cho Học Sinh Tiểu Học - Học Viết Điều Hay Lớp 5 - Tập 2",cat:null,price:"16.000"+" VND",quantity:10,image:"assets/images/product/Sach/ThieuNhi/LuyenChu/LC11.jpeg"},
+                {id:"LC12", name:"Luyện Viết Tiếng Việt Cho Học Sinh Tiểu Học - Học Viết Điều Hay Lớp 4 - Tập 2",cat:null,price:"16.000"+" VND",quantity:10,image:"assets/images/product/Sach/ThieuNhi/LuyenChu/LC12.jpeg"},
+                {id:"LC13", name:"Luyện Viết Chữ Đẹp Lớp 1 - Tập 2",cat:null,price:"15.000"+" VND",quantity:10,image:"assets/images/product/Sach/ThieuNhi/LuyenChu/LC13.jpeg"},
+                {id:"LC14", name:"Luyện Viết Theo Mẫu Chữ Nhỏ - Chữ Thường, Chữ Hoa (Dành Cho Học Sinh Tiểu Học)",cat:null,price:"36.000"+" VND",quantity:10,image:"assets/images/product/Sach/ThieuNhi/LuyenChu/LC14.jpeg"},
+                {id:"LC15", name:"Luyện Nét Chữ Rèn Nết Người - Vở Ô Li Có Mẫu Chữ - Lớp 1 - Quyển 1",cat:null,price:"20.000"+" VND",quantity:10,image:"assets/images/product/Sach/ThieuNhi/LuyenChu/LC15.jpeg"},
+                {id:"LC16", name:"Luyện Nét Chữ Rèn Nết Người - Vở Ô Li Có Mẫu Chữ - Lớp 2 - Quyển 2",cat:null,price:"20.000"+" VND",quantity:10,image:"assets/images/product/Sach/ThieuNhi/LuyenChu/LC16.png"},
+                {id:"LC17", name:"Luyện Nét Chữ Rèn Nết Người - Vở Ô Li Có Mẫu Chữ - Lớp 2 - Quyển 1",cat:null,price:"20.000"+" VND",quantity:10,image:"assets/images/product/Sach/ThieuNhi/LuyenChu/LC17.jpeg"},
+                {id:"LC18", name:"Luyện Viết Chữ Đẹp Lớp 3 - Tập 2",cat:null,price:"14.000"+" VND",quantity:10,image:"assets/images/product/Sach/ThieuNhi/LuyenChu/LC18.jpeg"},
+                {id:"LC19", name:"Luyện Viết Chữ Đẹp Lớp 3 - Tập 1",cat:null,price:"14.000"+" VND",quantity:10,image:"assets/images/product/Sach/ThieuNhi/LuyenChu/LC19.jpeg"},
+                {id:"LC20", name:"Luyện Viết Nét Cơ Bản Và Chữ Số - Vở Ô Li Có Chữ Mẫu - Bé Chuẩn Bị Vào Lớp 1",cat:null,price:"37.000"+" VND",quantity:10,image:"assets/images/product/Sach/ThieuNhi/LuyenChu/LC20.jpeg"},
     
             ]},
         ]}
@@ -394,21 +550,21 @@ function createBook() {
 function createBestSeller() {
     var bestseller = [];
     var category = JSON.parse(localStorage.getItem('category'));
-    bestseller.push(category[0].listcategory[0].books[5]); // Giáo dục.Sách giáo khoa.Sách 6
+    bestseller.push(category[1].listcategory[1].books[6]); // Giáo dục.Sách giáo khoa.Sách 6
     bestseller.push(category[0].listcategory[1].books[0]); // Giáo dục.Sách tham khảo.Sách 1
     bestseller.push(category[0].listcategory[2].books[0]); // Giáo dục.Từ điển.Sách 1
     bestseller.push(category[1].listcategory[0].books[0]); // Văn học.Truyện ngắn.Sách 1
     bestseller.push(category[1].listcategory[1].books[0]); // Văn học.Truyện dài.Sách 1
     bestseller.push(category[1].listcategory[2].books[0]); // Văn học.Thơ.Sách 1
-    bestseller.push(category[1].listcategory[3].books[0]); // Văn học.Khác.Sách 1
+    bestseller.push(category[1].listcategory[2].books[2]); // Văn học.Thơ.Sách 3
     bestseller.push(category[3].listcategory[0].books[0]); // Kinh tế.Quản trị.Sách 1
     bestseller.push(category[3].listcategory[1].books[0]); // Kinh tế.Marketing.Sách 1
-    bestseller.push(category[3].listcategory[2].books[0]); // Kinh tế.Nhân vật.Sách 1
     bestseller.push(category[3].listcategory[3].books[0]); // Kinh tế.Khởi nghiệp.Sách 1
+    bestseller.push(category[3].listcategory[3].books[5]); // Kinh tế.Khởi nghiệp.Sách 6
     bestseller.push(category[3].listcategory[4].books[0]); // Kinh tế.Chứng khoán.Sách 1
     bestseller.push(category[4].listcategory[0].books[0]); // Tâm lý.Tâm lý.Sách 1
     bestseller.push(category[4].listcategory[1].books[0]); // Tâm lý.Kỹ năng sống.Sách 1
-    bestseller.push(category[4].listcategory[2].books[0]); // Tâm lý.Hạt giống tâm hồn.Sách 1
+    bestseller.push(category[4].listcategory[1].books[1]); // Tâm lý.Kỹ năng sống.Sách 2
     bestseller.push(category[5].listcategory[0].books[0]); // Lịch sử.Lịch sử Việt Nam.Sách 1
     localStorage.setItem('bestseller', JSON.stringify(bestseller));
 }
@@ -592,350 +748,354 @@ function changeButton() {
 }
 function loadPage() {
     var str = window.location.href;
-    str = str.split('?');
-    var url = str[1].split('&');
-    var products = JSON.parse(localStorage.getItem('category'));
-    if (url.length > 1) {
-        if (url[0] == "giaoduc" && url[1] == "sachgiaokhoa") {
-            document.getElementById("headline").innerHTML = "<h3>Sách giáo khoa</h3>";
-            books = products[0].listcategory[0].books;
-            currenPage = 1;
-            totalpage = Math.ceil(books.length / perPage)
-            getCurrentPage(currenPage, books);
-            renderProduct(books);
-            renderListPage();
-            changePage(books);
-        }
-        if (url[0] == "giaoduc" && url[1] == "sachthamkhao") {
-            document.getElementById("headline").innerHTML = "<h3>Sách tham khảo</h3>";
-            books = products[0].listcategory[1].books;
-            currenPage = 1;
-            totalpage = Math.ceil(books.length / perPage)
-            getCurrentPage(currenPage, books);
-            renderProduct(books);
-            renderListPage();
-            changePage(books);
-        }
-        if (url[0] == "giaoduc" && url[1] == "tudien") {
-            document.getElementById("headline").innerHTML = "<h3>Từ điển</h3>";
-            books = products[0].listcategory[2].books;
-            currenPage = 1;
-            totalpage = Math.ceil(books.length / perPage)
-            getCurrentPage(currenPage, books);
-            renderProduct(books);
-            renderListPage();
-            changePage(books);
-        }
-        if (url[0] == "vanhoc" && url[1] == "truyenngan") {
-            document.getElementById("headline").innerHTML = "<h3>Truyện ngắn</h3>";
-            books = products[1].listcategory[0].books;
-            currenPage = 1;
-            totalpage = Math.ceil(books.length / perPage)
-            getCurrentPage(currenPage, books);
-            renderProduct(books);
-            renderListPage();
-            changePage(books);
-        }
-        if (url[0] == "vanhoc" && url[1] == "truyendai") {
-            document.getElementById("headline").innerHTML = "<h3>Truyện dài</h3>";
-            books = products[1].listcategory[1].books;
-            currenPage = 1;
-            totalpage = Math.ceil(books.length / perPage)
-            getCurrentPage(currenPage, books);
-            renderProduct(books);
-            renderListPage();
-            changePage(books);
-        }
-        if (url[0] == "vanhoc" && url[1] == "tho") {
-            document.getElementById("headline").innerHTML = "<h3>Thơ</h3>";
-            books = products[1].listcategory[2].books;
-            currenPage = 1;
-            totalpage = Math.ceil(books.length / perPage)
-            getCurrentPage(currenPage, books);
-            renderProduct(books);
-            renderListPage();
-            changePage(books);
-        }
-        if (url[0] == "vanhoc" && url[1] == "khac") {
-            document.getElementById("headline").innerHTML = "<h3>Văn học Khác</h3>";
-            books = products[1].listcategory[3].books;
-            currenPage = 1;
-            totalpage = Math.ceil(books.length / perPage)
-            getCurrentPage(currenPage, books);
-            renderProduct(books);
-            renderListPage();
-            changePage(books);
-        }
-        if (url[0] == "tieuthuyet" && url[1] == "ngontinh") {
-            document.getElementById("headline").innerHTML = "<h3>Tiểu thuyết Ngôn tình</h3>";
-            books = products[2].listcategory[0].books;
-            currenPage = 1;
-            totalpage = Math.ceil(books.length / perPage)
-            getCurrentPage(currenPage, books);
-            renderProduct(books);
-            renderListPage();
-            changePage(books);
-        }
-        if (url[0] == "tieuthuyet" && url[1] == "giatuong") {
-            document.getElementById("headline").innerHTML = "<h3>Tiểu Thuyết Giả tưởng</h3>";
-            books = products[2].listcategory[1].books;
-            currenPage = 1;
-            totalpage = Math.ceil(books.length / perPage)
-            getCurrentPage(currenPage, books);
-            renderProduct(books);
-            renderListPage();
-            changePage(books);
-        }
-        if (url[0] == "tieuthuyet" && url[1] == "lichsu") {
-            document.getElementById("headline").innerHTML = "<h3>Tiểu thuyết lịch sử</h3>";
-            books = products[2].listcategory[2].books;
-            currenPage = 1;
-            totalpage = Math.ceil(books.length / perPage)
-            getCurrentPage(currenPage, books);
-            renderProduct(books);
-            renderListPage();
-            changePage(books);
-        }
-        if (url[0] == "kinhte" && url[1] == "quantri") {
-            document.getElementById("headline").innerHTML = "<h3>Sách Quản trị</h3>";
-            books = products[3].listcategory[0].books;
-            currenPage = 1;
-            totalpage = Math.ceil(books.length / perPage)
-            getCurrentPage(currenPage, books);
-            renderProduct(books);
-            renderListPage();
-            changePage(books);
-        }
-        if (url[0] == "kinhte" && url[1] == "marketing") {
-            document.getElementById("headline").innerHTML = "<h3>Sách Marketing</h3>";
-            books = products[3].listcategory[1].books;
-            currenPage = 1;
-            totalpage = Math.ceil(books.length / perPage)
-            getCurrentPage(currenPage, books);
-            renderProduct(books);
-            renderListPage();
-            changePage(books);
-        }
-        if (url[0] == "kinhte" && url[1] == "nhanvat") {
-            document.getElementById("headline").innerHTML = "<h3>Sách Nhân Vật</h3>";
-            books = products[3].listcategory[2].books;
-            currenPage = 1;
-            totalpage = Math.ceil(books.length / perPage)
-            getCurrentPage(currenPage, books);
-            renderProduct(books);
-            renderListPage();
-            changePage(books);
-        }
-        if (url[0] == "kinhte" && url[1] == "khoinghiep") {
-            document.getElementById("headline").innerHTML = "<h3>Sách Khởi nghiệp</h3>";
-            books = products[3].listcategory[3].books;
-            currenPage = 1;
-            totalpage = Math.ceil(books.length / perPage)
-            getCurrentPage(currenPage, books);
-            renderProduct(books);
-            renderListPage();
-            changePage(books);
-        }
-        if (url[0] == "kinhte" && url[1] == "chungkhoan") {
-            document.getElementById("headline").innerHTML = "<h3>Sách Chứng khoán</h3>";
-            books = products[3].listcategory[4].books;
-            currenPage = 1;
-            totalpage = Math.ceil(books.length / perPage)
-            getCurrentPage(currenPage, books);
-            renderProduct(books);
-            renderListPage();
-            changePage(books);
-        }
-        if (url[0] == "tamly/kynangsong" && url[1] == "tamly") {
-            document.getElementById("headline").innerHTML = "<h3>Sách Tâm lý</h3>";
-            books = products[4].listcategory[0].books;
-            currenPage = 1;
-            totalpage = Math.ceil(books.length / perPage)
-            getCurrentPage(currenPage, books);
-            renderProduct(books);
-            renderListPage();
-            changePage(books);
-        }
-        if (url[0] == "tamly/kynangsong" && url[1] == "kynangsong") {
-            document.getElementById("headline").innerHTML = "<h3>Sách Kỹ năng sống</h3>";
-            books = products[4].listcategory[1].books;
-            currenPage = 1;
-            totalpage = Math.ceil(books.length / perPage)
-            getCurrentPage(currenPage, books);
-            renderProduct(books);
-            renderListPage();
-            changePage(books);
-        }
-        if (url[0] == "tamly/kynangsong" && url[1] == "hatgiongtamhon") {
-            document.getElementById("headline").innerHTML = "<h3>Sách Hạt giống tâm hồn</h3>";
-            books = products[4].listcategory[2].books;
-            currenPage = 1;
-            totalpage = Math.ceil(books.length / perPage)
-            getCurrentPage(currenPage, books);
-            renderProduct(books);
-            renderListPage();
-            changePage(books);
-        }
-        if (url[0] == "lichsu" && url[1] == "vietnam") {
-            document.getElementById("headline").innerHTML = "<h3>Lịch sử Việt Nam</h3>";
-            books = products[5].listcategory[0].books;
-            currenPage = 1;
-            totalpage = Math.ceil(books.length / perPage)
-            getCurrentPage(currenPage, books);
-            renderProduct(books);
-            renderListPage();
-            changePage(books);
-        }
-        if (url[0] == "lichsu" && url[1] == "nuocngoai") {
-            document.getElementById("headline").innerHTML = "<h3>Lịch sử Nước ngoài</h3>";
-            books = products[5].listcategory[1].books;
-            currenPage = 1;
-            totalpage = Math.ceil(books.length / perPage)
-            getCurrentPage(currenPage, books);
-            renderProduct(books);
-            renderListPage();
-            changePage(books);
-        }
-        if (url[0] == "thieunhi" && url[1] == "truyenthieunhi") {
-            document.getElementById("headline").innerHTML = "<h3>Truyện thiếu nhi</h3>";
-            books = products[6].listcategory[0].books;
-            currenPage = 1;
-            totalpage = Math.ceil(books.length / perPage)
-            getCurrentPage(currenPage, books);
-            renderProduct(books);
-            renderListPage();
-            changePage(books);
-        }
-        if (url[0] == "thieunhi" && url[1] == "tomau") {
-            document.getElementById("headline").innerHTML = "<h3>Sách Tô màu</h3>";
-            books = products[6].listcategory[1].books;
-            currenPage = 1;
-            totalpage = Math.ceil(books.length / perPage)
-            getCurrentPage(currenPage, books);
-            renderProduct(books);
-            renderListPage();
-            changePage(books);
-        }
-        if (url[0] == "thieunhi" && url[1] == "luyenchu") {
-            document.getElementById("headline").innerHTML = "<h3>Sách Luyện chữ</h3>";
-            books = products[6].listcategory[2].books;
-            currenPage = 1;
-            totalpage = Math.ceil(books.length / perPage)
-            getCurrentPage(currenPage, books);
-            renderProduct(books);
-            renderListPage();
-            changePage(books);
-        }
-        if (url[0] == "thieunhi" && url[1] == "luyenchu") {
-            document.getElementById("headline").innerHTML = "<h3>Sách Luyện chữ</h3>";
-            books = products[6].listcategory[2].books;
-            currenPage = 1;
-            totalpage = Math.ceil(books.length / perPage)
-            getCurrentPage(currenPage, books);
-            renderProduct(books);
-            renderListPage();
-            changePage(books);
-        }
-    }else{
-        if (url[0]=="giaoduc"){
-            document.getElementById("headline").innerHTML = "<h3>Sách Giáo dục</h3>";
-            for (var j = 0; j < products[0].listcategory.length; j++) {
-                for (var h = 0; h < products[0].listcategory[j].books.length; h++) {
-                    books.push(products[0].listcategory[j].books[h]);
-                }
+    if (str.includes("&") || str.includes("?")){
+        str = str.split('?');
+        var url = str[1].split('&');
+        var products = JSON.parse(localStorage.getItem('category'));
+        if (url.length > 1) {
+            if (url[0] == "giaoduc" && url[1] == "sachgiaokhoa") {
+                document.getElementById("headline").innerHTML = "<h3>Sách giáo khoa</h3>";
+                books = products[0].listcategory[0].books;
+                currenPage = 1;
+                totalpage = Math.ceil(books.length / perPage)
+                getCurrentPage(currenPage, books);
+                renderProduct(books);
+                renderListPage();
+                changePage(books);
             }
-            currenPage = 1;
-            totalpage = Math.ceil(books.length / perPage)
-            getCurrentPage(currenPage, books);
-            renderProduct(books);
-            renderListPage();
-            changePage(books);
-        }
-        if (url[0]=="vanhoc"){
-            document.getElementById("headline").innerHTML = "<h3>Sách Văn học</h3>";
-            for (var j = 0; j < products[1].listcategory.length; j++) {
-                for (var h = 0; h < products[1].listcategory[j].books.length; h++) {
-                    books.push(products[1].listcategory[j].books[h]);
-                }
+            if (url[0] == "giaoduc" && url[1] == "sachthamkhao") {
+                document.getElementById("headline").innerHTML = "<h3>Sách tham khảo</h3>";
+                books = products[0].listcategory[1].books;
+                currenPage = 1;
+                totalpage = Math.ceil(books.length / perPage)
+                getCurrentPage(currenPage, books);
+                renderProduct(books);
+                renderListPage();
+                changePage(books);
             }
-            currenPage = 1;
-            totalpage = Math.ceil(books.length / perPage)
-            getCurrentPage(currenPage, books);
-            renderProduct(books);
-            renderListPage();
-            changePage(books);
-        }
-        if (url[0]=="tieuthuyet"){
-            document.getElementById("headline").innerHTML = "<h3>Sách Tiểu thuyết</h3>";
-            for (var j = 0; j < products[2].listcategory.length; j++) {
-                for (var h = 0; h < products[2].listcategory[j].books.length; h++) {
-                    books.push(products[2].listcategory[j].books[h]);
-                }
+            if (url[0] == "giaoduc" && url[1] == "tudien") {
+                document.getElementById("headline").innerHTML = "<h3>Từ điển</h3>";
+                books = products[0].listcategory[2].books;
+                currenPage = 1;
+                totalpage = Math.ceil(books.length / perPage)
+                getCurrentPage(currenPage, books);
+                renderProduct(books);
+                renderListPage();
+                changePage(books);
             }
-            currenPage = 1;
-            totalpage = Math.ceil(books.length / perPage)
-            getCurrentPage(currenPage, books);
-            renderProduct(books);
-            renderListPage();
-            changePage(books);
-        }
-        if (url[0]=="kinhte"){
-            document.getElementById("headline").innerHTML = "<h3>Sách Kinh tế</h3>";
-            for (var j = 0; j < products[3].listcategory.length; j++) {
-                for (var h = 0; h < products[3].listcategory[j].books.length; h++) {
-                    books.push(products[3].listcategory[j].books[h]);
-                }
+            if (url[0] == "vanhoc" && url[1] == "truyenngan") {
+                document.getElementById("headline").innerHTML = "<h3>Truyện ngắn</h3>";
+                books = products[1].listcategory[0].books;
+                currenPage = 1;
+                totalpage = Math.ceil(books.length / perPage)
+                getCurrentPage(currenPage, books);
+                renderProduct(books);
+                renderListPage();
+                changePage(books);
             }
-            currenPage = 1;
-            totalpage = Math.ceil(books.length / perPage)
-            getCurrentPage(currenPage, books);
-            renderProduct(books);
-            renderListPage();
-            changePage(books);
-        }
-        if (url[0]=="tamly/kynangsong"){
-            document.getElementById("headline").innerHTML = "<h3>Sách Tâm lý/Kỹ năng sống</h3>";
-            for (var j = 0; j < products[3].listcategory.length; j++) {
-                for (var h = 0; h < products[3].listcategory[j].books.length; h++) {
-                    books.push(products[3].listcategory[j].books[h]);
-                }
+            if (url[0] == "vanhoc" && url[1] == "truyendai") {
+                document.getElementById("headline").innerHTML = "<h3>Truyện dài</h3>";
+                books = products[1].listcategory[1].books;
+                currenPage = 1;
+                totalpage = Math.ceil(books.length / perPage)
+                getCurrentPage(currenPage, books);
+                renderProduct(books);
+                renderListPage();
+                changePage(books);
             }
-            currenPage = 1;
-            totalpage = Math.ceil(books.length / perPage)
-            getCurrentPage(currenPage, books);
-            renderProduct(books);
-            renderListPage();
-            changePage(books);
-        }
-        if (url[0]=="lichsu"){
-            document.getElementById("headline").innerHTML = "<h3>Sách Lịch sử</h3>";
-            for (var j = 0; j < products[4].listcategory.length; j++) {
-                for (var h = 0; h < products[4].listcategory[j].books.length; h++) {
-                    books.push(products[4].listcategory[j].books[h]);
-                }
+            if (url[0] == "vanhoc" && url[1] == "tho") {
+                document.getElementById("headline").innerHTML = "<h3>Thơ</h3>";
+                books = products[1].listcategory[2].books;
+                currenPage = 1;
+                totalpage = Math.ceil(books.length / perPage)
+                getCurrentPage(currenPage, books);
+                renderProduct(books);
+                renderListPage();
+                changePage(books);
             }
-            currenPage = 1;
-            totalpage = Math.ceil(books.length / perPage)
-            getCurrentPage(currenPage, books);
-            renderProduct(books);
-            renderListPage();
-            changePage(books);
-        }
-        if (url[0]=="thieunhi"){
-            document.getElementById("headline").innerHTML = "<h3>Sách Thiếu nhi</h3>";
-            for (var j = 0; j < products[5].listcategory.length; j++) {
-                for (var h = 0; h < products[5].listcategory[j].books.length; h++) {
-                    books.push(products[5].listcategory[j].books[h]);
-                }
+            if (url[0] == "vanhoc" && url[1] == "khac") {
+                document.getElementById("headline").innerHTML = "<h3>Văn học Khác</h3>";
+                books = products[1].listcategory[3].books;
+                currenPage = 1;
+                totalpage = Math.ceil(books.length / perPage)
+                getCurrentPage(currenPage, books);
+                renderProduct(books);
+                renderListPage();
+                changePage(books);
             }
-            currenPage = 1;
-            totalpage = Math.ceil(books.length / perPage)
-            getCurrentPage(currenPage, books);
-            renderProduct(books);
-            renderListPage();
-            changePage(books);
+            if (url[0] == "tieuthuyet" && url[1] == "ngontinh") {
+                document.getElementById("headline").innerHTML = "<h3>Tiểu thuyết Ngôn tình</h3>";
+                books = products[2].listcategory[0].books;
+                currenPage = 1;
+                totalpage = Math.ceil(books.length / perPage)
+                getCurrentPage(currenPage, books);
+                renderProduct(books);
+                renderListPage();
+                changePage(books);
+            }
+            if (url[0] == "tieuthuyet" && url[1] == "giatuong") {
+                document.getElementById("headline").innerHTML = "<h3>Tiểu Thuyết Giả tưởng</h3>";
+                books = products[2].listcategory[1].books;
+                currenPage = 1;
+                totalpage = Math.ceil(books.length / perPage)
+                getCurrentPage(currenPage, books);
+                renderProduct(books);
+                renderListPage();
+                changePage(books);
+            }
+            if (url[0] == "tieuthuyet" && url[1] == "lichsu") {
+                document.getElementById("headline").innerHTML = "<h3>Tiểu thuyết lịch sử</h3>";
+                books = products[2].listcategory[2].books;
+                currenPage = 1;
+                totalpage = Math.ceil(books.length / perPage)
+                getCurrentPage(currenPage, books);
+                renderProduct(books);
+                renderListPage();
+                changePage(books);
+            }
+            if (url[0] == "kinhte" && url[1] == "quantri") {
+                document.getElementById("headline").innerHTML = "<h3>Sách Quản trị</h3>";
+                books = products[3].listcategory[0].books;
+                currenPage = 1;
+                totalpage = Math.ceil(books.length / perPage)
+                getCurrentPage(currenPage, books);
+                renderProduct(books);
+                renderListPage();
+                changePage(books);
+            }
+            if (url[0] == "kinhte" && url[1] == "marketing") {
+                document.getElementById("headline").innerHTML = "<h3>Sách Marketing</h3>";
+                books = products[3].listcategory[1].books;
+                currenPage = 1;
+                totalpage = Math.ceil(books.length / perPage)
+                getCurrentPage(currenPage, books);
+                renderProduct(books);
+                renderListPage();
+                changePage(books);
+            }
+            if (url[0] == "kinhte" && url[1] == "nhanvat") {
+                document.getElementById("headline").innerHTML = "<h3>Sách Nhân Vật</h3>";
+                books = products[3].listcategory[2].books;
+                currenPage = 1;
+                totalpage = Math.ceil(books.length / perPage)
+                getCurrentPage(currenPage, books);
+                renderProduct(books);
+                renderListPage();
+                changePage(books);
+            }
+            if (url[0] == "kinhte" && url[1] == "khoinghiep") {
+                document.getElementById("headline").innerHTML = "<h3>Sách Khởi nghiệp</h3>";
+                books = products[3].listcategory[3].books;
+                currenPage = 1;
+                totalpage = Math.ceil(books.length / perPage)
+                getCurrentPage(currenPage, books);
+                renderProduct(books);
+                renderListPage();
+                changePage(books);
+            }
+            if (url[0] == "kinhte" && url[1] == "chungkhoan") {
+                document.getElementById("headline").innerHTML = "<h3>Sách Chứng khoán</h3>";
+                books = products[3].listcategory[4].books;
+                currenPage = 1;
+                totalpage = Math.ceil(books.length / perPage)
+                getCurrentPage(currenPage, books);
+                renderProduct(books);
+                renderListPage();
+                changePage(books);
+            }
+            if (url[0] == "tamly/kynangsong" && url[1] == "tamly") {
+                document.getElementById("headline").innerHTML = "<h3>Sách Tâm lý</h3>";
+                books = products[4].listcategory[0].books;
+                currenPage = 1;
+                totalpage = Math.ceil(books.length / perPage)
+                getCurrentPage(currenPage, books);
+                renderProduct(books);
+                renderListPage();
+                changePage(books);
+            }
+            if (url[0] == "tamly/kynangsong" && url[1] == "kynangsong") {
+                document.getElementById("headline").innerHTML = "<h3>Sách Kỹ năng sống</h3>";
+                books = products[4].listcategory[1].books;
+                currenPage = 1;
+                totalpage = Math.ceil(books.length / perPage)
+                getCurrentPage(currenPage, books);
+                renderProduct(books);
+                renderListPage();
+                changePage(books);
+            }
+            if (url[0] == "tamly/kynangsong" && url[1] == "hatgiongtamhon") {
+                document.getElementById("headline").innerHTML = "<h3>Sách Hạt giống tâm hồn</h3>";
+                books = products[4].listcategory[2].books;
+                currenPage = 1;
+                totalpage = Math.ceil(books.length / perPage)
+                getCurrentPage(currenPage, books);
+                renderProduct(books);
+                renderListPage();
+                changePage(books);
+            }
+            if (url[0] == "lichsu" && url[1] == "vietnam") {
+                document.getElementById("headline").innerHTML = "<h3>Lịch sử Việt Nam</h3>";
+                books = products[5].listcategory[0].books;
+                currenPage = 1;
+                totalpage = Math.ceil(books.length / perPage)
+                getCurrentPage(currenPage, books);
+                renderProduct(books);
+                renderListPage();
+                changePage(books);
+            }
+            if (url[0] == "lichsu" && url[1] == "thegioi") {
+                document.getElementById("headline").innerHTML = "<h3>Lịch sử Thế giới</h3>";
+                books = products[5].listcategory[1].books;
+                currenPage = 1;
+                totalpage = Math.ceil(books.length / perPage)
+                getCurrentPage(currenPage, books);
+                renderProduct(books);
+                renderListPage();
+                changePage(books);
+            }
+            if (url[0] == "thieunhi" && url[1] == "truyenthieunhi") {
+                document.getElementById("headline").innerHTML = "<h3>Truyện thiếu nhi</h3>";
+                books = products[6].listcategory[0].books;
+                currenPage = 1;
+                totalpage = Math.ceil(books.length / perPage)
+                getCurrentPage(currenPage, books);
+                renderProduct(books);
+                renderListPage();
+                changePage(books);
+            }
+            if (url[0] == "thieunhi" && url[1] == "tomau") {
+                document.getElementById("headline").innerHTML = "<h3>Sách Tô màu</h3>";
+                books = products[6].listcategory[1].books;
+                currenPage = 1;
+                totalpage = Math.ceil(books.length / perPage)
+                getCurrentPage(currenPage, books);
+                renderProduct(books);
+                renderListPage();
+                changePage(books);
+            }
+            if (url[0] == "thieunhi" && url[1] == "luyenchu") {
+                document.getElementById("headline").innerHTML = "<h3>Sách Luyện chữ</h3>";
+                books = products[6].listcategory[2].books;
+                currenPage = 1;
+                totalpage = Math.ceil(books.length / perPage)
+                getCurrentPage(currenPage, books);
+                renderProduct(books);
+                renderListPage();
+                changePage(books);
+            }
+            if (url[0] == "thieunhi" && url[1] == "luyenchu") {
+                document.getElementById("headline").innerHTML = "<h3>Sách Luyện chữ</h3>";
+                books = products[6].listcategory[2].books;
+                currenPage = 1;
+                totalpage = Math.ceil(books.length / perPage)
+                getCurrentPage(currenPage, books);
+                renderProduct(books);
+                renderListPage();
+                changePage(books);
+            }
+        }else{
+            if (url[0]=="giaoduc"){
+                document.getElementById("headline").innerHTML = "<h3>Sách Giáo dục</h3>";
+                for (var j = 0; j < products[0].listcategory.length; j++) {
+                    for (var h = 0; h < products[0].listcategory[j].books.length; h++) {
+                        books.push(products[0].listcategory[j].books[h]);
+                    }
+                }
+                currenPage = 1;
+                totalpage = Math.ceil(books.length / perPage)
+                getCurrentPage(currenPage, books);
+                renderProduct(books);
+                renderListPage();
+                changePage(books);
+            }
+            if (url[0]=="vanhoc"){
+                document.getElementById("headline").innerHTML = "<h3>Sách Văn học</h3>";
+                for (var j = 0; j < products[1].listcategory.length; j++) {
+                    for (var h = 0; h < products[1].listcategory[j].books.length; h++) {
+                        books.push(products[1].listcategory[j].books[h]);
+                    }
+                }
+                currenPage = 1;
+                totalpage = Math.ceil(books.length / perPage)
+                getCurrentPage(currenPage, books);
+                renderProduct(books);
+                renderListPage();
+                changePage(books);
+            }
+            if (url[0]=="tieuthuyet"){
+                document.getElementById("headline").innerHTML = "<h3>Sách Tiểu thuyết</h3>";
+                for (var j = 0; j < products[2].listcategory.length; j++) {
+                    for (var h = 0; h < products[2].listcategory[j].books.length; h++) {
+                        books.push(products[2].listcategory[j].books[h]);
+                    }
+                }
+                currenPage = 1;
+                totalpage = Math.ceil(books.length / perPage)
+                getCurrentPage(currenPage, books);
+                renderProduct(books);
+                renderListPage();
+                changePage(books);
+            }
+            if (url[0]=="kinhte"){
+                document.getElementById("headline").innerHTML = "<h3>Sách Kinh tế</h3>";
+                for (var j = 0; j < products[3].listcategory.length; j++) {
+                    for (var h = 0; h < products[3].listcategory[j].books.length; h++) {
+                        books.push(products[3].listcategory[j].books[h]);
+                    }
+                }
+                currenPage = 1;
+                totalpage = Math.ceil(books.length / perPage)
+                getCurrentPage(currenPage, books);
+                renderProduct(books);
+                renderListPage();
+                changePage(books);
+            }
+            if (url[0]=="tamly/kynangsong"){
+                document.getElementById("headline").innerHTML = "<h3>Sách Tâm lý/Kỹ năng sống</h3>";
+                for (var j = 0; j < products[4].listcategory.length; j++) {
+                    for (var h = 0; h < products[4].listcategory[j].books.length; h++) {
+                        books.push(products[4].listcategory[j].books[h]);
+                    }
+                }
+                currenPage = 1;
+                totalpage = Math.ceil(books.length / perPage)
+                getCurrentPage(currenPage, books);
+                renderProduct(books);
+                renderListPage();
+                changePage(books);
+            }
+            if (url[0]=="lichsu"){
+                document.getElementById("headline").innerHTML = "<h3>Sách Lịch sử</h3>";
+                for (var j = 0; j < products[5].listcategory.length; j++) {
+                    for (var h = 0; h < products[5].listcategory[j].books.length; h++) {
+                        books.push(products[5].listcategory[j].books[h]);
+                    }
+                }
+                currenPage = 1;
+                totalpage = Math.ceil(books.length / perPage)
+                getCurrentPage(currenPage, books);
+                renderProduct(books);
+                renderListPage();
+                changePage(books);
+            }
+            if (url[0]=="thieunhi"){
+                document.getElementById("headline").innerHTML = "<h3>Sách Thiếu nhi</h3>";
+                for (var j = 0; j < products[6].listcategory.length; j++) {
+                    for (var h = 0; h < products[6].listcategory[j].books.length; h++) {
+                        books.push(products[6].listcategory[j].books[h]);
+                    }
+                }
+                currenPage = 1;
+                totalpage = Math.ceil(books.length / perPage)
+                getCurrentPage(currenPage, books);
+                renderProduct(books);
+                renderListPage();
+                changePage(books);
+            }
         }
+
     }
+    
 }
 function renderProduct(products) {
     var html = '';

@@ -105,5 +105,50 @@
             </div>
         </form>
     </div>
+    <div class="editProduct" id="editPro">
+        <form action="" onsubmit="return editProducts();">
+            <div id="close">
+                <i class="fa-solid fa-xmark" onclick="backFromDiv()"></i>
+            </div>
+            <div class="row">
+                <h1>Sửa Sản Phẩm</h1>
+            </div>
+            <div class="input">
+                <h3 class="txt">Mã sản phẩm</h3>
+                <div>
+                    <!-- khong duoc sua ma sp -->
+                    <input class="inp" type="text" id="id-Editproduct" disabled>
+                </div>
+                <h3 class="txt">Tên sản phẩm</h3>
+                <div>
+                    <input class="inp" type="text" id="name-Editproduct"  >
+                </div>
+                <h3 class="txt">Thể loại</h3>
+                <div>
+                    <input class="inp" type="text" id="cat-Editproduct">
+                </div>
+                <h3 class="txt">Số lượng</h3>
+                <div>
+                    <input class="inp" type="number" min="1" id="quantity-Editproduct">
+                </div>
+                <h3 class="txt">Giá bán (vnd)</h3>
+                <div>
+                    <input class="inp" type="number" min="1" id="price-Editproduct">
+                </div>
+            </div>
+            <div class="img">
+                <img id="Editpreview">
+                <!-- tao 1 img de lay data url luu vao localStorage -->
+                <img id="Editimgproduct" style="display: none;">
+                <input id="Editfile-inp" type="file" accept="image/*" onchange="EditpreviewImg()">
+                <label for="Editfile-inp" >
+                    <i id="deteleImage" class="fas fa-regular fa-trash" title="Xoá hình ảnh" onclick="deleteImgItem()"></i>
+                </label>
+            </div>
+            <div class="btEditPro">
+                <input type="submit" value="Lưu sản phẩm">
+            </div>
+        </form>
+    </div>
 </body>
 </html>
