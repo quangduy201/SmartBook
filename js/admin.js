@@ -89,7 +89,7 @@ function getCurrentPage(currentPage, products) {
 function showItemsList(products) {
     var tr = '<tr class="titleList"><th class="id">ID</th><th class="image">Ảnh</th><th class="name">TÊN SẢN PHẨM</th><th class="type">THỂ LOẠI</th><th class="cost">GIÁ</th><th class="edit"><i class="fa-solid fa-folder-plus" title="Thêm sản phẩm" onclick="showAddProducts()"></i></th></tr>';
     for (var i = start; i < end; i++) {
-        tr += '<tr class="detailList"><td class="id">' + products[i].id + '</td><td class="image"><img src="' + products[i].image + '" alt=""></th><td class="name">' + products[i].name + '</td><td class="type">' + products[i].cat + '</td><td class="cost">' + products[i].price + '</td><td class="edit"><button class="button" onclick="deleteItem">Xoá</button><br><button class="button" id="editButton" onclick="showEditProducts()">Sửa</button></td></tr>'
+        tr += '<tr class="detailList"><td class="id">' + products[i].id + '</td><td class="image"><img src="' + products[i].image + '" alt=""></th><td class="name">' + products[i].name + '</td><td class="type">' + products[i].cat + '</td><td class="cost">' + products[i].price + '</td><td class="edit"><button class="button" onclick="deleteProduct(this)">Xoá</button><br><button class="button" id="editButton" onclick="showEditProduct()">Sửa</button></td></tr>'
 
     }
     document.getElementById("productsList").innerHTML = tr;
@@ -98,7 +98,7 @@ function showItemsList(products) {
 function showUsers(users) {
     var tr = '<tr class="titleList"><th class="id">ID</th><th class="name">TÊN KHÁCH HÀNG</th><th class="email">EMAIL</th><th class="status">TRẠNG THÁI</th><th class="edit"></th></tr>';
     for (var i = start; i < end; i++) {
-        tr += '<tr class="detailList"><td class="id">' + users[i].id + '</td><td class="name">' + users[i].name + '</td><td class="email">' + users[i].email + '</td><td class="status">' + users[i].status + '</td><td class="edit"><button class="button" onclick="deleteItem">Xoá</button><br><button class="button" onclick="editItem">Sửa</button></td></tr>'
+        tr += '<tr class="detailList"><td class="id">' + users[i].id + '</td><td class="name">' + users[i].name + '</td><td class="email">' + users[i].email + '</td><td class="status">' + users[i].status + '</td><td class="edit"><button class="button" onclick="deleteProduct(this)">Xoá</button><br><button class="button" onclick="showEditUser()">Sửa</button></td></tr>'
 
     }
     document.getElementById("usersList").innerHTML = tr;
@@ -106,38 +106,38 @@ function showUsers(users) {
 function showAddProducts() {
     document.getElementById("container").style.display = "block";
     document.getElementById("addPro").style.display = "block";
+    document.getElementById("upload").style.display = "block";
 }
-function showEditProducts() {
+function showEditProduct() {
     document.getElementById("container").style.display = "block";
     document.getElementById("editPro").style.display = "block";
 }
-function showDetailProducts(){
+function showDetailProducts() {
     let listEditBt = document.querySelectorAll("#editButton ");
     for (let i = 0; i < listEditBt.length; i++) {
-        getCurrentPage(currentPage,products)
-        listEditBt[i].addEventListener('click',()=>{
-            /*Lay thu tu nut xoa + start de lay duoc vi tri item trong mang products[] */
+        getCurrentPage(currentPage, products);
+        listEditBt[i].addEventListener('click', () => {
+            /* Lay thu tu nut xoa + start de lay duoc vi tri item trong mang products[] */
             var item = products[i+start];
-            /*Lay hinh vao preview*/
+            /* Lay hinh vao preview*/
             document.getElementById("Editpreview").setAttribute("src", item.image);
             document.getElementById("Editimgproduct").setAttribute("src", item.image);
             document.getElementById("upload").style.display = "none";
-            document.getElementById("id-Editproduct").value=item.id;
-            document.getElementById("name-Editproduct").value=item.name;
-            document.getElementById("cat-Editproduct").value=item.cat;
-            document.getElementById("quantity-Editproduct").value=item.quantity;
-            var cost=item.price;
-            cost=cost.split('VND');
-            cost=cost[0].replace(".","");
-            document.getElementById("price-Editproduct").value=parseInt(cost);
+            document.getElementById("id-Editproduct").value = item.id;
+            document.getElementById("name-Editproduct").value = item.name;
+            document.getElementById("cat-Editproduct").value = item.cat;
+            document.getElementById("quantity-Editproduct").value = item.quantity;
+            var price = item.price;
+            price = price.replaceAll(".", "");
+            document.getElementById("price-Editproduct").value = parseInt(price);
 
         })
     }
 }
-function deleteImgItem(){
+function deleteImgItem() {
     document.getElementById("Editpreview").setAttribute("src", null);
-    document.getElementById("Editpreview").style.display="none";
-    document.getElementById("deteleImage").style.display="none";
+    document.getElementById("Editpreview").style.display = "none";
+    document.getElementById("deteleImage").style.display = "none";
     
 }
 function renderListPage() {
@@ -157,7 +157,7 @@ function nextButton() {
     if (currentPage > totalpage)
         currentPage = totalpage
     changeButton();
-    getCurrentPage(currentPage,products);
+    getCurrentPage(currentPage, products);
     showItemsList(products);
 }
 function prevButton() {
@@ -165,7 +165,7 @@ function prevButton() {
     if (currentPage < 1)
         currentPage = 1
     changeButton();
-    getCurrentPage(currentPage,products);
+    getCurrentPage(currentPage, products);
     showItemsList(products);
 }
 function changeButton() {
@@ -191,7 +191,7 @@ function changePage(products) {
     const listPage = document.querySelectorAll(".number-page li");
     console.log(listPage);
     for (let i = 0; i < listPage.length; i++) {
-        listPage[i].addEventListener('click',() => {
+        listPage[i].addEventListener('click', () => {
             var value = i + 1;
             console.log(value);
             currentPage = value;
@@ -228,8 +228,8 @@ function EditpreviewImg() {
         };
         fileReader.readAsDataURL(img[0]);
     }
-    document.getElementById("Editpreview").style.display="block";
-    document.getElementById("deteleImage").style.display="block";
+    document.getElementById("Editpreview").style.display = "block";
+    document.getElementById("deteleImage").style.display = "block";
 }
 
 // tìm kí tự khoảng trắng
@@ -241,18 +241,8 @@ function equalsIgnoreCaseAndBase(text1, text2) {
     return text1.localeCompare(text2, undefined, { sensitivity: 'base' }) === 0;
 }
 // chuyển từ hình ảnh sang URL
-function imageToDataURL() {
-    var srcImage = document.getElementById("imgproduct");
-    var canvas = document.createElement("canvas");
-    var context = canvas.getContext("2d");
-    canvas.width = srcImage.width;
-    canvas.height = srcImage.height;
-    context.drawImage(srcImage, 0, 0, srcImage.width, srcImage.height);
-    var dataURL = canvas.toDataURL("image/*");
-    return dataURL;
-}
-function EditimageToDataURL() {
-    var srcImage = document.getElementById("Editimgproduct");
+function imageToDataURL(imgProduct) {
+    var srcImage = document.getElementById(imgProduct);
     var canvas = document.createElement("canvas");
     var context = canvas.getContext("2d");
     canvas.width = srcImage.width;
@@ -282,7 +272,7 @@ function addNewProduct() {
     var cat = document.getElementById("cat-product").value.trim();
     var quantity = document.getElementById("quantity-product").value;
     var price = document.getElementById("price-product").value;
-    var image = imageToDataURL();
+    var image = imageToDataURL("imgproduct");
     var category = JSON.parse(localStorage.getItem('category'));
     if (hasWhiteSpace(id)) {
         alert("Mã sản phẩm không được chứa khoảng trắng!");
@@ -317,6 +307,7 @@ function addNewProduct() {
         for (var j = 0; j < category[i].listcategory.length; j++) {
             if (equalsIgnoreCaseAndBase(cat, category[i].listcategory[j].name)) {
                 id = parseInt(id);
+                cat = category[i].listcategory[j].name;
                 quantity = parseInt(quantity);
                 price = stringToPrice(price);
                 category[i].listcategory[j].books.push({ id, name, cat, price, quantity, image });
@@ -329,18 +320,15 @@ function addNewProduct() {
     alert("Không tìm thấy thể loại sản phẩm!");
     return false;
 }
-function editProducts(){
+function editProduct() {
     var id = document.getElementById("id-Editproduct").value.trim();
     var name = document.getElementById("name-Editproduct").value.trim();
     var cat = document.getElementById("cat-Editproduct").value.trim();
     var quantity = document.getElementById("quantity-Editproduct").value;
     var price = document.getElementById("price-Editproduct").value;
-    var image = EditimageToDataURL();
+    var image = imageToDataURL("Editimgproduct");
     var category = JSON.parse(localStorage.getItem('category'));
-    if (hasWhiteSpace(id)) {
-        alert("Mã sản phẩm không được chứa khoảng trắng!");
-        return false;
-    } else if (name == "") {
+    if (name == "") {
         alert("Vui lòng nhập tên sản phẩm");
         return false;
     } else if (cat == "") {
@@ -353,23 +341,24 @@ function editProducts(){
         alert("Vui lòng nhập giá sản phẩm");
         return false;
     }
-    var checkCatogory=false;
+    var checkCatogory = false;
     for (var i = 0; i < category.length; i++) {
         for (var j = 0; j < category[i].listcategory.length; j++) {
             if (equalsIgnoreCaseAndBase(cat, category[i].listcategory[j].name)) {
-                checkCatogory=true;
+                cat = category[i].listcategory[j].name;
+                checkCatogory = true;
             }
         }
     }
-    if (checkCatogory){
+    if (checkCatogory) {
         for (var i = 0; i < category.length; i++) {
             for (var j = 0; j < category[i].listcategory.length; j++) {
                 for (var k = 0; k < category[i].listcategory[j].books.length; k++) {
                     if (id == category[i].listcategory[j].books[k].id) {
                         category[i].listcategory[j].books[k].name = name;
                         category[i].listcategory[j].books[k].cat = cat;
-                        category[i].listcategory[j].books[k].price = price;
-                        category[i].listcategory[j].books[k].quantity = quantity;
+                        category[i].listcategory[j].books[k].price = stringToPrice(price);
+                        category[i].listcategory[j].books[k].quantity = parseInt(quantity);
                         category[i].listcategory[j].books[k].image = image;
                         localStorage.setItem('category', JSON.stringify(category));
                         alert("Sản phẩm đã được sửa!");
@@ -381,4 +370,25 @@ function editProducts(){
     }
     alert("Không tìm thấy thể loại sản phẩm!");
     return false;
+}
+function deleteProduct(obj) {
+    var ok = confirm("Chắc chắn muốn xóa sản phẩm?");
+    if (!ok)
+        return;
+    var temp = obj.parentElement.parentElement;
+    var id = temp.firstChild.innerHTML;
+    var category = JSON.parse(localStorage.getItem('category'));
+    for (var i = 0; i < category.length; i++) {
+        for (var j = 0; j < category[i].listcategory.length; j++) {
+            for (var k = 0; k < category[i].listcategory[j].books.length; k++) {
+                if (id == category[i].listcategory[j].books[k].id) {
+                    category[i].listcategory[j].books.splice(k, 1);
+                    localStorage.setItem('category', JSON.stringify(category));
+                    alert("Sản phẩm đã được xóa!");
+                    window.location.reload();
+                    return;
+                }
+            }
+        }
+    }
 }

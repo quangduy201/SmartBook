@@ -4,7 +4,7 @@
     <meta charset="utf-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1">
-    <title>Admin</title>
+    <title>Smart book - Admin</title>
     <link rel="icon" type="image/x-icon" href="/assets/images/logo.png">
     <link rel="stylesheet" href="css/admin.css">
     <link rel="stylesheet" href="assets/icons/all.css">
@@ -49,7 +49,7 @@
             <p id="username">
                 <script>
                     var user = JSON.parse(localStorage.getItem('userActive'));
-                    document.getElementById("username").innerText="Hi, "+user.name;
+                    document.getElementById("username").innerText = "Hi, "+user.name;
                 </script>
             </p>
         </div>  
@@ -77,7 +77,7 @@
                 </div>
                 <h3 class="txt">Tên sản phẩm</h3>
                 <div>
-                    <input class="inp" type="text" id="name-product"  >
+                    <input class="inp" type="text" id="name-product">
                 </div>
                 <h3 class="txt">Thể loại</h3>
                 <div>
@@ -94,7 +94,8 @@
             </div>
             <div class="img">
                 <img id="preview">
-                <img id="imgproduct" style="display: none;">//tao 1 img de lay data url luu vao localStorage
+                <!-- tao 1 img de lay data url luu vao localStorage -->
+                <img id="imgproduct" style="display: none;">
                 <input id="file-inp" type="file" accept="image/*" onchange="previewImg()">
                 <label for="file-inp">
                     <i id="upload" class="fas fa-cloud-upload-alt tm-upload-icon"></i>
@@ -106,7 +107,7 @@
         </form>
     </div>
     <div class="editProduct" id="editPro">
-        <form action="" onsubmit="return editProducts();">
+        <form action="" onsubmit="return editProduct();">
             <div id="close">
                 <i class="fa-solid fa-xmark" onclick="backFromDiv()"></i>
             </div>
@@ -121,7 +122,7 @@
                 </div>
                 <h3 class="txt">Tên sản phẩm</h3>
                 <div>
-                    <input class="inp" type="text" id="name-Editproduct"  >
+                    <input class="inp" type="text" id="name-Editproduct">
                 </div>
                 <h3 class="txt">Thể loại</h3>
                 <div>

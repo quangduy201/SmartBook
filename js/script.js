@@ -550,22 +550,22 @@ function createBook() {
 function createBestSeller() {
     var bestseller = [];
     var category = JSON.parse(localStorage.getItem('category'));
-    bestseller.push(category[1].listcategory[1].books[6]); // Giáo dục.Sách giáo khoa.Sách 6
-    bestseller.push(category[0].listcategory[1].books[0]); // Giáo dục.Sách tham khảo.Sách 1
-    bestseller.push(category[0].listcategory[2].books[0]); // Giáo dục.Từ điển.Sách 1
-    bestseller.push(category[1].listcategory[0].books[0]); // Văn học.Truyện ngắn.Sách 1
-    bestseller.push(category[1].listcategory[1].books[0]); // Văn học.Truyện dài.Sách 1
-    bestseller.push(category[1].listcategory[2].books[0]); // Văn học.Thơ.Sách 1
-    bestseller.push(category[1].listcategory[2].books[2]); // Văn học.Thơ.Sách 3
-    bestseller.push(category[3].listcategory[0].books[0]); // Kinh tế.Quản trị.Sách 1
-    bestseller.push(category[3].listcategory[1].books[0]); // Kinh tế.Marketing.Sách 1
-    bestseller.push(category[3].listcategory[3].books[0]); // Kinh tế.Khởi nghiệp.Sách 1
-    bestseller.push(category[3].listcategory[3].books[5]); // Kinh tế.Khởi nghiệp.Sách 6
-    bestseller.push(category[3].listcategory[4].books[0]); // Kinh tế.Chứng khoán.Sách 1
-    bestseller.push(category[4].listcategory[0].books[0]); // Tâm lý.Tâm lý.Sách 1
-    bestseller.push(category[4].listcategory[1].books[0]); // Tâm lý.Kỹ năng sống.Sách 1
-    bestseller.push(category[4].listcategory[1].books[1]); // Tâm lý.Kỹ năng sống.Sách 2
-    bestseller.push(category[5].listcategory[0].books[0]); // Lịch sử.Lịch sử Việt Nam.Sách 1
+    bestseller.push(category[1].listcategory[1].books[6]); // Văn học.Truyện dài.Sách 6
+    bestseller.push(category[0].listcategory[1].books[0]);
+    bestseller.push(category[0].listcategory[2].books[0]);
+    bestseller.push(category[1].listcategory[0].books[0]);
+    bestseller.push(category[1].listcategory[1].books[0]);
+    bestseller.push(category[1].listcategory[2].books[0]);
+    bestseller.push(category[1].listcategory[2].books[2]);
+    bestseller.push(category[3].listcategory[0].books[0]);
+    bestseller.push(category[3].listcategory[1].books[0]);
+    bestseller.push(category[3].listcategory[3].books[0]);
+    bestseller.push(category[3].listcategory[3].books[5]);
+    bestseller.push(category[3].listcategory[4].books[0]);
+    bestseller.push(category[4].listcategory[0].books[0]);
+    bestseller.push(category[4].listcategory[1].books[0]);
+    bestseller.push(category[4].listcategory[1].books[1]);
+    bestseller.push(category[5].listcategory[0].books[0]);
     localStorage.setItem('bestseller', JSON.stringify(bestseller));
 }
 function addBill() {
@@ -748,7 +748,7 @@ function changeButton() {
 }
 function loadPage() {
     var str = window.location.href;
-    if (str.includes("&") || str.includes("?")){
+    if (str.includes("&") || str.includes("?")) {
         str = str.split('?');
         var url = str[1].split('&');
         var products = JSON.parse(localStorage.getItem('category'));
@@ -993,8 +993,8 @@ function loadPage() {
                 renderListPage();
                 changePage(books);
             }
-        }else{
-            if (url[0]=="giaoduc"){
+        } else {
+            if (url[0] == "giaoduc") {
                 document.getElementById("headline").innerHTML = "<h3>Sách Giáo dục</h3>";
                 for (var j = 0; j < products[0].listcategory.length; j++) {
                     for (var h = 0; h < products[0].listcategory[j].books.length; h++) {
@@ -1008,7 +1008,7 @@ function loadPage() {
                 renderListPage();
                 changePage(books);
             }
-            if (url[0]=="vanhoc"){
+            if (url[0] == "vanhoc") {
                 document.getElementById("headline").innerHTML = "<h3>Sách Văn học</h3>";
                 for (var j = 0; j < products[1].listcategory.length; j++) {
                     for (var h = 0; h < products[1].listcategory[j].books.length; h++) {
@@ -1022,7 +1022,7 @@ function loadPage() {
                 renderListPage();
                 changePage(books);
             }
-            if (url[0]=="tieuthuyet"){
+            if (url[0] == "tieuthuyet") {
                 document.getElementById("headline").innerHTML = "<h3>Sách Tiểu thuyết</h3>";
                 for (var j = 0; j < products[2].listcategory.length; j++) {
                     for (var h = 0; h < products[2].listcategory[j].books.length; h++) {
@@ -1036,7 +1036,7 @@ function loadPage() {
                 renderListPage();
                 changePage(books);
             }
-            if (url[0]=="kinhte"){
+            if (url[0] == "kinhte") {
                 document.getElementById("headline").innerHTML = "<h3>Sách Kinh tế</h3>";
                 for (var j = 0; j < products[3].listcategory.length; j++) {
                     for (var h = 0; h < products[3].listcategory[j].books.length; h++) {
@@ -1050,7 +1050,7 @@ function loadPage() {
                 renderListPage();
                 changePage(books);
             }
-            if (url[0]=="tamly/kynangsong"){
+            if (url[0] == "tamly/kynangsong") {
                 document.getElementById("headline").innerHTML = "<h3>Sách Tâm lý/Kỹ năng sống</h3>";
                 for (var j = 0; j < products[4].listcategory.length; j++) {
                     for (var h = 0; h < products[4].listcategory[j].books.length; h++) {
@@ -1064,7 +1064,7 @@ function loadPage() {
                 renderListPage();
                 changePage(books);
             }
-            if (url[0]=="lichsu"){
+            if (url[0] == "lichsu") {
                 document.getElementById("headline").innerHTML = "<h3>Sách Lịch sử</h3>";
                 for (var j = 0; j < products[5].listcategory.length; j++) {
                     for (var h = 0; h < products[5].listcategory[j].books.length; h++) {
@@ -1078,7 +1078,7 @@ function loadPage() {
                 renderListPage();
                 changePage(books);
             }
-            if (url[0]=="thieunhi"){
+            if (url[0] == "thieunhi") {
                 document.getElementById("headline").innerHTML = "<h3>Sách Thiếu nhi</h3>";
                 for (var j = 0; j < products[6].listcategory.length; j++) {
                     for (var h = 0; h < products[6].listcategory[j].books.length; h++) {
@@ -1128,7 +1128,7 @@ function changePage(books) {
             console.log(value);
             currenPage = value;
             changeButton();
-            getCurrentPage(currenPage,books);
+            getCurrentPage(currenPage, books);
             renderProduct(books);
         });
     }
@@ -1150,7 +1150,7 @@ function nextButton() {
     if (currenPage > totalpage)
         currenPage = totalpage
     changeButton();
-    getCurrentPage(currenPage,books);
+    getCurrentPage(currenPage, books);
     renderProduct(books);
 }
 function prevButton() {
@@ -1158,7 +1158,7 @@ function prevButton() {
     if (currenPage < 1)
         currenPage = 1
     changeButton();
-    getCurrentPage(currenPage,books);
+    getCurrentPage(currenPage, books);
     renderProduct(books);
 }
 function showDetail(products) {

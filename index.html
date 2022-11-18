@@ -156,8 +156,8 @@
                 <p id="username">
                     <script>
                         var user = JSON.parse(localStorage.getItem('userActive'));
-                        if(user){
-                            document.getElementById("username").innerText="Hi, "+user.name;
+                        if (user) {
+                            document.getElementById("username").innerText = "Hi, " + user.name;
                         }
                     </script>
                 </p>&nbsp;
@@ -170,18 +170,18 @@
         </div>
         <script>
             var user = JSON.parse(localStorage.getItem('userActive'));
-            if(user==null){
-                document.getElementById("icon-login").style.display="inline";
-                document.getElementById("icon-logout").style.display="none";
-                document.getElementById("admin").style.display="none";
-            }else{
-                if(user.type=="Admin"){
-                    document.getElementById("admin").style.display="inline";
-                }else{
-                    document.getElementById("admin").style.display="none";
+            if (user == null) {
+                document.getElementById("icon-login").style.display = "inline";
+                document.getElementById("icon-logout").style.display = "none";
+                document.getElementById("admin").style.display = "none";
+            } else {
+                if (user.type == "Admin") {
+                    document.getElementById("admin").style.display = "inline";
+                } else {
+                    document.getElementById("admin").style.display = "none";
                 }
-                document.getElementById("icon-login").style.display="none";
-                document.getElementById("icon-logout").style.display="inline";
+                document.getElementById("icon-login").style.display = "none";
+                document.getElementById("icon-logout").style.display = "inline";
                 
             }
         </script>

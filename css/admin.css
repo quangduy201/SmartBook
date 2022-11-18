@@ -93,16 +93,15 @@ input::-webkit-inner-spin-button {
 	background-color: #3c434965;
 }
 .content {
-
 	padding-top: 50px;
 	text-align: center;
 	margin-left: 85px;
 }
-.tital {
+.title {
 	background-color: rgb(218, 216, 216);
 	margin-bottom: 20px;
 }
-#productsList,#usersList {
+#productsList, #usersList {
 	margin: auto;
 	border-spacing: 0px;
 	border: black solid 0.5px;
@@ -227,12 +226,10 @@ input::-webkit-inner-spin-button {
 	float: right;
 	padding-right: 10px;
 }
-.img #Editfile-inp {
+.img input {
 	display: none;
 }
-.img label #upload, 
-.img label #Editupload
-{
+.img label i {
 	margin-bottom: 20%;
 	margin-top: 20%;
 	display: block;
@@ -245,7 +242,7 @@ input::-webkit-inner-spin-button {
 .img img {
 	width: 80%;
 }
-.img #deteleImage{
+.img #deteleImage {
 	text-align: center;
 	display: block;
 	font-size: 30px;
@@ -258,7 +255,8 @@ input::-webkit-inner-spin-button {
 	width: 100%;
 	clear: both;
 }
-.btAddPro, .btEditPro input {
+.btAddPro input,
+.btEditPro input {
 	border: 0px;
 	color: #fff;
 	text-transform: uppercase;
@@ -269,7 +267,7 @@ input::-webkit-inner-spin-button {
 	cursor: pointer;
 	background-color: #f5a623;
 }
-.btAddPro, .btEditPro input:hover {
+.btAddPro input:hover {
 	border: solid 3px #f5a623;
 	background-color: #4e657a;
 	color: #f5a623;
