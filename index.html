@@ -28,7 +28,7 @@
     <div>
         <div id="header">
             <div id="logo">
-               <a href="index.html"><img src="assets/images/logo.png" alt="Smart Book Logo"></a> 
+               <a href="index.html"><img src="/assets/images/logo.png" alt="Smart Book Logo"></a> 
             </div>
 
             <ul id="topmenu">
@@ -40,7 +40,7 @@
                     <a href="index.html" title="Sách"><div>Sách <i class="fas fa-solid fa-caret-down"></i></div></a>
                     <ul class="sub-topmenu">
                         <li>
-                            <a href="/index.html">Giáo dục <i class="fas fa-solid fa-caret-down"></i></a>
+                            <a href="/index.html?giaoduc">Giáo dục <i class="fas fa-solid fa-caret-down"></i></a>
                             <ul class="sub-topmenu" id="sub-topmenubook1">
                                 <li><a href="/index.html?giaoduc&sachgiaokhoa">Sách giáo khoa</a></li>
                                 <li><a href="/index.html?giaoduc&sachthamkhao">Sách tham khảo</a></li>
@@ -48,7 +48,7 @@
                             </ul>
                         </li>
                         <li>
-                            <a href="/index.html">Văn học <i class="fas fa-solid fa-caret-down"></i></a>
+                            <a href="/index.html?vanhoc">Văn học <i class="fas fa-solid fa-caret-down"></i></a>
                             <ul class="sub-topmenu" id="sub-topmenubook2">
                                 <li><a href="/index.html?vanhoc&truyenngan">Truyện ngắn</a></li>
                                 <li><a href="/index.html?vanhoc&truyendai">Truyện dài</a></li>
@@ -56,19 +56,26 @@
                                 <li><a href="/index.html?vanhoc&khac">Khác</a></li>
                             </ul>
                         </li>
-                        <li><a href="">Tiểu thuyết</a></li>
                         <li>
-                            <a href="/index.html">Kinh tế <i class="fas fa-solid fa-caret-down"></i></a>
+                            <a href="/index.html?tieuthuyet">Tiểu thuyết <i class="fas fa-solid fa-caret-down"></i></a>
+                            <ul class="sub-topmenu" id="sub-topmenubook3">
+                                <li><a href="/index.html?tieuthuyet&ngontinh">Ngôn tình</a></li>
+                                <li><a href="/index.html?tieuthuyet&giatuong">Giả tưởng</a></li>
+                                <li><a href="/index.html?tieuthuyet&lichsu">Lịch sử</a></li>
+                            </ul>
+                        </li>
+                        <li>
+                            <a href="/index.html?kinhte">Kinh tế <i class="fas fa-solid fa-caret-down"></i></a>
                             <ul class="sub-topmenu" id="sub-topmenubook4">
                                 <li><a href="/index.html?kinhte&quantri">Quản trị</a></li>
                                 <li><a href="/index.html?kinhte&marketing">Marketing</a></li>
-                                <li><a href="/index.html?kinhte&nhanvat">Nhân Vật</a></li>
+                                <li><a href="/index.html?kinhte&nhanvat">Nhân vật</a></li>
                                 <li><a href="/index.html?kinhte&khoinghiep">Khởi nghiệp</a></li>
                                 <li><a href="/index.html?kinhte&chungkhoan">Chứng khoán</a></li>
                             </ul>
                         </li>
                         <li>
-                            <a href="/index.html">Tâm lý/Kỹ năng sống <i class="fas fa-solid fa-caret-down"></i></a>
+                            <a href="/index.html?tamly/kynangsong">Tâm lý/Kỹ năng sống <i class="fas fa-solid fa-caret-down"></i></a>
                             <ul class="sub-topmenu" id="sub-topmenubook5">
                                 <li><a href="/index.html?tamly/kynangsong&tamly">Tâm lý</a></li>
                                 <li><a href="/index.html?tamly/kynangsong&kynangsong">Kỹ năng sống</a></li>
@@ -76,14 +83,14 @@
                             </ul>
                         </li>
                         <li>
-                            <a href="/index.html">Lịch sử <i class="fas fa-solid fa-caret-down"></i></a>
+                            <a href="/index.html?lichsu">Lịch sử <i class="fas fa-solid fa-caret-down"></i></a>
                             <ul class="sub-topmenu" id="sub-topmenubook6">
                                 <li><a href="/index.html?lichsu&vietnam">Việt Nam</a></li>
-                                <li><a href="/index.html?lichsu&nuocngoai">Nước ngoài</a></li>
+                                <li><a href="/index.html?lichsu&thegioi">Thế Giới</a></li>
                             </ul>
                         </li>
                         <li>
-                            <a href="/index.html">Thiếu nhi <i class="fas fa-solid fa-caret-down"></i></a>
+                            <a href="/index.html?thieunhi">Thiếu nhi <i class="fas fa-solid fa-caret-down"></i></a>
                             <ul class="sub-topmenu" id="sub-topmenubook7">
                                 <li><a href="/index.html?thieunhi&truyenthieunhi">Truyện thiếu nhi</a></li>
                                 <li><a href="/index.html?thieunhi&tomau">Tô màu</a></li>
@@ -149,7 +156,9 @@
                 <p id="username">
                     <script>
                         var user = JSON.parse(localStorage.getItem('userActive'));
-                        document.getElementById("username").innerText=user.name;
+                        if (user) {
+                            document.getElementById("username").innerText = "Hi, " + user.name;
+                        }
                     </script>
                 </p>&nbsp;
                 <a href="admin.html" id="admin"><i class="fas fa-duotone fa-gear" title="Quản lý"></i>&nbsp;</a>
@@ -161,18 +170,18 @@
         </div>
         <script>
             var user = JSON.parse(localStorage.getItem('userActive'));
-            if(user==null){
-                document.getElementById("icon-login").style.display="inline";
-                document.getElementById("icon-logout").style.display="none";
-                document.getElementById("admin").style.display="none";
-            }else{
-                if(user.type=="Admin"){
-                    document.getElementById("admin").style.display="inline";
-                }else{
-                    document.getElementById("admin").style.display="none";
+            if (user == null) {
+                document.getElementById("icon-login").style.display = "inline";
+                document.getElementById("icon-logout").style.display = "none";
+                document.getElementById("admin").style.display = "none";
+            } else {
+                if (user.type == "Admin") {
+                    document.getElementById("admin").style.display = "inline";
+                } else {
+                    document.getElementById("admin").style.display = "none";
                 }
-                document.getElementById("icon-login").style.display="none";
-                document.getElementById("icon-logout").style.display="inline";
+                document.getElementById("icon-login").style.display = "none";
+                document.getElementById("icon-logout").style.display = "inline";
                 
             }
         </script>
