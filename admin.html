@@ -85,16 +85,17 @@
                 </div>
                 <h3 class="txt">Số lượng</h3>
                 <div>
-                    <input class="inp" type="number" min="1" id="quantity-product">
+                    <input class="inp" type="text" id="quantity-product">
                 </div>
                 <h3 class="txt">Giá bán (vnd)</h3>
                 <div>
-                    <input class="inp" type="number" min="1" id="price-product">
+                    <input class="inp" type="text" id="price-product">
                 </div>
             </div>
             <div class="img">
                 <img id="preview">
-                <img id="imgproduct" style="display: none;">//tao 1 img de lay data url luu vao localStorage
+                <img id="imgproduct" style="display: none;">
+                <!-- tao 1 img de lay data url luu vao localStorage -->
                 <input id="file-inp" type="file" accept="image/*" onchange="previewImg()">
                 <label for="file-inp">
                     <i id="upload" class="fas fa-cloud-upload-alt tm-upload-icon"></i>
@@ -129,11 +130,14 @@
                 </div>
                 <h3 class="txt">Số lượng</h3>
                 <div>
-                    <input class="inp" type="number" min="1" id="quantity-Editproduct">
+                    <input class="inp" type="text" id="quantity-Editproduct">
                 </div>
                 <h3 class="txt">Giá bán (vnd)</h3>
                 <div>
-                    <input class="inp" type="number" min="1" id="price-Editproduct">
+                    <input class="inp" type="text" id="price-Editproduct">
+                </div>
+                <div class="deleteItem">
+                    <input  type="submit" value="Xóa sản phẩm">
                 </div>
             </div>
             <div class="img">
@@ -142,7 +146,8 @@
                 <img id="Editimgproduct" style="display: none;">
                 <input id="Editfile-inp" type="file" accept="image/*" onchange="EditpreviewImg()">
                 <label for="Editfile-inp" >
-                    <i id="deteleImage" class="fas fa-regular fa-trash" title="Xoá hình ảnh" onclick="deleteImgItem()"></i>
+                    <!-- <i id="Editupload" style="display: none;" class="fas fa-cloud-upload-alt tm-upload-icon"></i> -->
+                    <i id="deteleImage" class="fas fa-regular fa-trash" title="Xoá hình ảnh"></i>
                 </label>
             </div>
             <div class="btEditPro">

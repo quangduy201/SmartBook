@@ -672,10 +672,15 @@ function checkQuatity(quantity) {
         }
     }
 }
+let productSelected;
+function getProductSelected(){
+    return productSelected;
+}
 function showdetailBestseller(products) {
     let listproduct = document.querySelectorAll("#products li");
     for (let i = 0; i < listproduct.length; i++) {
         listproduct[i].addEventListener('click', () => {
+            productSelected = products[i];
             var html = '';
             html += '<img src="' + products[i].image + '" alt="">';
             html += '<div id="detail-pro">';
@@ -691,7 +696,7 @@ function showdetailBestseller(products) {
                 html += '<li>';
                 html += 'Số lượng:';
                 html += '<input style="margin-left: 30px;" disabled type="button" name="" id="sub" value="-" onclick="sub(' + products[i].quantity + ')">';
-                html += '<input type="text" name="" id="quantity" value="0" onchange="checkQuatity(' + products[i].quantity + ')">';
+                html += '<input type="number" min="0" name="" id="quantity" value="0" onchange="checkQuatity(' + products[i].quantity + ')">';
                 html += '<input type="button" value="+" id="plus" onclick="plus(' + products[i].quantity + ')">';
     
             } else {
@@ -699,13 +704,13 @@ function showdetailBestseller(products) {
                 html += '<li>';
                 html += 'Số lượng:';
                 html += '<input style="margin-left: 30px;" disabled type="button" name="" id="sub" value="-" onclick="sub(' + products[i].quantity + ')">';
-                html += '<input type="text" name="" id="quantity" value="0" disabled>';
+                html += '<input type="number" min="0" name="" id="quantity" value="0" disabled>';
                 html += '<input disabled type="button" value="+" id="plus" onclick="plus(' + products[i].quantity + ')">';
     
             }
             html += '</li>';
-            html += '<li id="addtocart" onclick="addToCart()">';
-            html += '<div><i class="fas fa-solid fa-cart-shopping" title="Giỏ hàng"></i></div>';
+            html += '<li id="addtocart" title="Thêm vào giỏ hàng" onclick="addToCartPro(getProductSelected())">';
+            html += '<div><i class="fas fa-solid fa-cart-shopping" ></i></div>';
             html += '</li>';
             html += '</ul>';
             html += '</div>';
@@ -726,25 +731,6 @@ function getCurrentPage(currenPage,products) {
     end = currenPage * perPage;
     if (end > products.length)
         end = products.length;
-}
-function changeButton() {
-    if (currenPage < totalpage || currenPage > 1) {
-        document.getElementById("btnext").className = "button-prev-next-active";
-        document.getElementById("btprev").className = "button-prev-next-active";
-    }
-    if (currenPage == 1) {
-        document.getElementById("btprev").className = "button-prev-next";
-    }
-    if (currenPage == totalpage) {
-        document.getElementById("btnext").className = "button-prev-next";
-    }
-    const listPage = document.querySelectorAll(".number-page li");
-    listPage[currenPage - 1].id = "active";
-    for (let j = 0; j < listPage.length; j++) {
-        if (j != (currenPage - 1)) {
-            listPage[j].id = null;
-        }
-    }
 }
 function loadPage() {
     var str = window.location.href;
@@ -1092,6 +1078,44 @@ function loadPage() {
                 renderListPage();
                 changePage(books);
             }
+            if (url[0]=="shoppingcart"){
+                var html='';
+                var user= JSON.parse(localStorage.getItem('userActive'));
+                // check user active
+                if (user == null){
+                    alert("Vui lòng đăng nhập!");
+                    location.href="/index.html";
+                    return false;
+                }
+                var products=JSON.parse(localStorage.getItem('cart'));
+                html += '<div class="headline" id="headline"><h3 style="background-color: rgb(242, 120, 38); color: black;">Giỏ Hàng</h3></div>';
+                if (products.length>0){
+                    html += '<div id="listProductsBuy" >';
+                    for (var i=0; i<products.length;i++){
+                        html += '<ul class="productsBuy">';
+                        html += '<li>' + (i+1) + '</li>';
+                        html += '<li class="img-Pro">';
+                        html += '<img src="' + products[i].image +'" alt="">';
+                        html += '</li>';
+                        html += '<li>' + products[i].name + '</li>';
+                        html += '<li>Số lượng: ' + products[i].quantity + '</li>';
+                        html += '<li>' + products[i].price + '</li>';
+                        html += '<li><i class="fas fa-regular fa-trash-can" onclick="deleteProductBuy()"></i></li>';
+                        html += '</ul>';
+                    }
+                    html += '<div id="buy">';
+                    html += '<ul>';
+                    html += '<li>Tổng thanh toán <h3 style="color: black;">' + total() + '</h3></li>';
+                    html += '<li><input type="button" value="Mua hàng (' + products.length + ')" onclick="buy()"></li>';
+                    html += '</ul>';
+                    html += '</div>';
+                    document.getElementById("content").innerHTML=html;
+                    return true;
+                }
+                html += '<h1>Bạn chưa chọn sản phẩm nào</h1>';
+                document.getElementById("content").innerHTML=html;
+                return true;
+            }
         }
 
     }
@@ -1133,6 +1157,25 @@ function changePage(books) {
         });
     }
 }
+function changeButton() {
+    if (currenPage < totalpage || currenPage > 1) {
+        document.getElementById("btnext").className = "button-prev-next-active";
+        document.getElementById("btprev").className = "button-prev-next-active";
+    }
+    if (currenPage == 1) {
+        document.getElementById("btprev").className = "button-prev-next";
+    }
+    if (currenPage == totalpage) {
+        document.getElementById("btnext").className = "button-prev-next";
+    }
+    const listPage = document.querySelectorAll(".number-page li");
+    listPage[currenPage - 1].id = "active";
+    for (let j = 0; j < listPage.length; j++) {
+        if (j != (currenPage - 1)) {
+            listPage[j].id = null;
+        }
+    }
+}
 function renderListPage() {
     var html = '';
     html += '<li id="btprev" class="button-prev-next"><i class="fas fa-chevron-circle-left" onclick="prevButton()"></i></li>';
@@ -1166,6 +1209,7 @@ function showDetail(products) {
     for (let i = 0; i < listproduct.length; i++) {
         listproduct[i].addEventListener('click', () => {
             getCurrentPage(currenPage, products);
+            productSelected=products[i + start];
             var html = '';
             html += '<img src="' + products[i + start].image + '" alt="">';
             html += '<div id="detail-pro">';
@@ -1181,7 +1225,7 @@ function showDetail(products) {
                 html += '<li>';
                 html += 'Số lượng:';
                 html += '<input style="margin-left: 30px;" disabled type="button" name="" id="sub" value="-" onclick="sub(' + products[i + start].quantity + ')">';
-                html += '<input type="text" name="" id="quantity" value="0" onchange="checkQuatity(' + products[i + start].quantity + ')">';
+                html += '<input type="number" min="0" name="" id="quantity" value="0" onchange="checkQuatity(' + products[i + start].quantity + ')">';
                 html += '<input type="button" value="+" id="plus" onclick="plus(' + products[i + start].quantity + ')">';
     
             } else {
@@ -1189,13 +1233,13 @@ function showDetail(products) {
                 html += '<li>';
                 html += 'Số lượng:';
                 html += '<input style="margin-left: 30px;" disabled type="button" name="" id="sub" value="-" onclick="sub(' + products[i + start].quantity + ')">';
-                html += '<input type="text" name="" id="quantity" value="0" disabled>';
+                html += '<input type="number" min="0" name="" id="quantity" value="0" disabled>';
                 html += '<input disabled type="button" value="+" id="plus" onclick="plus(' + products[i + start].quantity + ')">';
     
             }
             html += '</li>';
-            html += '<li id="addtocart" onclick="addToCart()">';
-            html += '<div><i class="fas fa-solid fa-cart-shopping" title="Giỏ hàng"></i></div>';
+            html += '<li id="addtocart" title="Thêm vào giỏ hàng" onclick="addToCartPro(getProductSelected())">';
+            html += '<div><i class="fas fa-solid fa-cart-shopping" ></i></div>';
             html += '</li>';
             html += '</ul>';
             html += '</div>';
@@ -1204,4 +1248,55 @@ function showDetail(products) {
             document.getElementById("container").style.display = "block";
         })
     }
+}
+function createCart(){
+    var cart=[];
+    if (localStorage.getItem('cart') == null){
+        localStorage.setItem('cart', JSON.stringify(cart));
+    } 
+}
+function addToCartPro(product){
+    var user= JSON.parse(localStorage.getItem('userActive'));
+    var cart= JSON.parse(localStorage.getItem('cart'));
+    var quantity = document.getElementById("quantity").value;
+    // check user active
+    if (user == null){
+        alert("Vui lòng đăng nhập!");
+        backFromDiv();
+        return false;
+    }
+    if (quantity==0){
+        alert("Số lượng sản phẩm không hợp lệ!");
+        return false;
+    }
+    cart.push(product);
+    cart[cart.length-1].quantity =parseInt(document.getElementById("quantity").value);
+    localStorage.setItem('cart', JSON.stringify(cart));
+    backFromDiv();
+    return true;
+}
+function stringToPrice(s) {
+    var price = "";
+    var count = 0;
+    while (s.length > 0) {
+        price = s[s.length - 1] + price;
+        s = s.substring(0, s.length - 1);
+        if (++count == 3 && s.length > 0) {
+            count = 0;
+            price = "." + price;
+        }
+    }
+    price += " VND";
+    return price;
+}
+function total(){
+    var products= JSON.parse(localStorage.getItem('cart'));
+    var price=0;
+    for (var i=0; i<products.length; i++){
+        var cost=products[i].price;
+        cost=cost.split('VND');
+        cost=cost[0].replace(".","");
+        price += parseInt(cost)*products[i].quantity;
+    }
+    return stringToPrice(price.toString());
 }
