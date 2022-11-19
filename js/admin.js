@@ -119,7 +119,7 @@ function showDetailProducts(){
     for (let i = 0; i < listEditBt.length; i++) {
         getCurrentPage(currentPage,products)
         listEditBt[i].addEventListener('click',()=>{
-            showEditProducts();
+            showEditProduct();
             /*Lay thu tu nut xoa + start de lay duoc vi tri item trong mang products[] */
             var item = products[i+start];
             /* Lay hinh vao preview*/
