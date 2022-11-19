@@ -4,6 +4,7 @@ let start;
 let end;
 let totalpage;
 let products = [];
+let changeImg;
 window.onload = function() {
     var str = window.location.href;
     var url = str.split('?');
@@ -89,7 +90,7 @@ function getCurrentPage(currentPage, products) {
 function showItemsList(products) {
     var tr = '<tr class="titleList"><th class="id">ID</th><th class="image">Ảnh</th><th class="name">TÊN SẢN PHẨM</th><th class="type">THỂ LOẠI</th><th class="cost">GIÁ</th><th class="edit"><i class="fa-solid fa-folder-plus" title="Thêm sản phẩm" onclick="showAddProducts()"></i></th></tr>';
     for (var i = start; i < end; i++) {
-        tr += '<tr class="detailList"><td class="id">' + products[i].id + '</td><td class="image"><img src="' + products[i].image + '" alt=""></th><td class="name">' + products[i].name + '</td><td class="type">' + products[i].cat + '</td><td class="cost">' + products[i].price + '</td><td class="edit"><button class="button" onclick="deleteProduct(this)">Xoá</button><br><button class="button" id="editButton" onclick="showEditProduct()">Sửa</button></td></tr>'
+        tr += '<tr class="detailList"><td class="id">' + products[i].id + '</td><td class="image"><img src="' + products[i].image + '" alt=""></th><td class="name">' + products[i].name + '</td><td class="type">' + products[i].cat + '</td><td class="cost">' + products[i].price + '</td></tr>'
 
     }
     document.getElementById("productsList").innerHTML = tr;
@@ -112,33 +113,30 @@ function showEditProduct() {
     document.getElementById("container").style.display = "block";
     document.getElementById("editPro").style.display = "block";
 }
-function showDetailProducts() {
-    let listEditBt = document.querySelectorAll("#editButton ");
+function showDetailProducts(){
+    let listEditBt = document.querySelectorAll(".detailList ");
+    console.log(listEditBt);
     for (let i = 0; i < listEditBt.length; i++) {
-        getCurrentPage(currentPage, products);
-        listEditBt[i].addEventListener('click', () => {
-            /* Lay thu tu nut xoa + start de lay duoc vi tri item trong mang products[] */
+        getCurrentPage(currentPage,products)
+        listEditBt[i].addEventListener('click',()=>{
+            showEditProduct();
+            /*Lay thu tu nut xoa + start de lay duoc vi tri item trong mang products[] */
             var item = products[i+start];
             /* Lay hinh vao preview*/
             document.getElementById("Editpreview").setAttribute("src", item.image);
             document.getElementById("Editimgproduct").setAttribute("src", item.image);
             document.getElementById("upload").style.display = "none";
-            document.getElementById("id-Editproduct").value = item.id;
-            document.getElementById("name-Editproduct").value = item.name;
-            document.getElementById("cat-Editproduct").value = item.cat;
-            document.getElementById("quantity-Editproduct").value = item.quantity;
-            var price = item.price;
-            price = price.replaceAll(".", "");
-            document.getElementById("price-Editproduct").value = parseInt(price);
-
+            document.getElementById("id-Editproduct").value=item.id;
+            document.getElementById("name-Editproduct").value=item.name;
+            document.getElementById("cat-Editproduct").value=item.cat;
+            document.getElementById("quantity-Editproduct").value=item.quantity;
+            var cost=item.price;
+            cost=cost.split('VND');
+            cost=cost[0].replace(".","");
+            document.getElementById("price-Editproduct").value=parseInt(cost);
+            changeImg=false;
         })
     }
-}
-function deleteImgItem() {
-    document.getElementById("Editpreview").setAttribute("src", null);
-    document.getElementById("Editpreview").style.display = "none";
-    document.getElementById("deteleImage").style.display = "none";
-    
 }
 function renderListPage() {
     var html = '';
@@ -221,15 +219,14 @@ function previewImg() {
 function EditpreviewImg() {
     var img = document.getElementById("Editfile-inp").files;
     if (img.length > 0) {
-        var fileReader = new FileReader();
-        fileReader.onload = function(event) {
-            document.getElementById("Editpreview").setAttribute("src", event.target.result);
-            document.getElementById("Editimgproduct").setAttribute("src", event.target.result);
-        };
-        fileReader.readAsDataURL(img[0]);
-    }
-    document.getElementById("Editpreview").style.display = "block";
-    document.getElementById("deteleImage").style.display = "block";
+    var fileReader = new FileReader();
+    fileReader.onload = function(event) {
+        document.getElementById("Editpreview").setAttribute("src", event.target.result);
+        document.getElementById("Editimgproduct").setAttribute("src", event.target.result);
+    };
+    fileReader.readAsDataURL(img[0]);
+    }   
+    changeImg=true;
 }
 
 // tìm kí tự khoảng trắng
@@ -359,7 +356,9 @@ function editProduct() {
                         category[i].listcategory[j].books[k].cat = cat;
                         category[i].listcategory[j].books[k].price = stringToPrice(price);
                         category[i].listcategory[j].books[k].quantity = parseInt(quantity);
-                        category[i].listcategory[j].books[k].image = image;
+                        if (changeImg==true){
+                            category[i].listcategory[j].books[k].image = image;
+                        }
                         localStorage.setItem('category', JSON.stringify(category));
                         alert("Sản phẩm đã được sửa!");
                         return true;
