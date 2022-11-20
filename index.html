@@ -22,7 +22,7 @@
             createBook();
             createBestSeller();
             createCart();
-            renderBestseller();
+            renderBestseller(getBestseller());
             loadPage();
         }
     </script>
@@ -194,8 +194,53 @@
                 <i class="fas fa-regular fa-angle-right" title="Ảnh sau" onclick="nextBanner()"></i>
             </div>
         </div>
+        <div class="filterAndSort" id="filterAndSort">
+            <div class="tittleFilter">
+                <h4>
+                    <span>Lọc & Sắp xếp</span>
+                    <i class="fas fa-solid fa-xmark" onclick="closeFilterAndSort()"></i>
+                </h4>
+            </div>
+            <div class="mainFilter">
+                <div class="sort" id="sort">
+                    <div class="tittleFilter">
+                        <h4>
+                            <span>Sắp xếp theo</span>
+                            <i class="fa-solid fa-chevron-down" onclick="showSortBy()"></i>
+                        </h4>
+                    </div>
+                    <div class="options" id="options">
+                        <div class="sort1" onclick="sortLow_HighPrice()"><span>Giá (thấp - cao)</span></div>
+                        <div class="sort2" onclick="sortHigh_LowPrice()"><span>Giá (cao - thấp)</span></div>
+                    </div>
+                </div>
+                <div class="filter" id="filter">
+                    <div class="tittleFilter">
+                        <h4>
+                            <span>Lọc theo</span>
+                            <i class="fa-solid fa-chevron-down" onclick="showFilter()"></i>
+                        </h4>
+                    </div>
+                    <div class="options">
+                        <div class="filter1" id="filter1">
+                            <div class="tittleFilter1">
+                                <span>Giá</span>
+                                <i class="fa-solid fa-chevron-down" onclick="showPriceFilter()"></i>
+                            </div>
+                            <div class="option1">
+                                <div onclick="filterOption1()"><span>&lt;500.000 vnd</span></div>
+                                <div onclick="filterOption2()"><span>500.000 vnd - 1.000.000 vnd</span></div>
+                                <div onclick="filterOption3()"><span>&gt; 1.000.000 vnd</span></div>
+                            </div>
+                        </div>
+                        <div class="filter2" onclick="filterOption4()"><span>Sản phẩm bán chạy</span></div>
+                    </div>
+                </div>
+            </div>
+        </div>
         <div id="content">
             <div class="headline" id="headline"></div>
+            <div class="btFilter" onclick="showBtFilter()">Lọc & Sắp xếp <i class="fas fa-light fa-sliders"></i></div>
             <ul class="products" id="products">
                 <!--    innerHTML here: products * perPage
                 <li>
@@ -228,7 +273,6 @@
                 </ul>
             </div>
         </div>
-
         <div id="footer">
             <div id="aboutus">
                 <h2>Thông tin liên hệ</h2>
@@ -255,8 +299,8 @@
                     <b>”</b>
                 </p>
                 <div>
-                    <a href=""><i class="fas fa-brands fa-facebook"></i></a>
-                    <a href=""><i class="fas fa-brands fa-instagram"></i></a>
+                    <a href="https://www.facebook.com/Smart-Book-2020602218161522"><i class="fas fa-brands fa-facebook"></i></a>
+                    <a href="https://www.instagram.com/smartbookStore"><i class="fas fa-brands fa-instagram"></i></a>
                 </div>
             </div>
 
@@ -269,7 +313,7 @@
             <i class="fas fa-arrow-circle-up" onclick="backtop()"></i>
         </div>
     </div>
-    <div id="container" onclick="backFromLogin()">
+    <div id="container" onclick="backFromDiv()()">
 
     </div>
     <div id="login">
