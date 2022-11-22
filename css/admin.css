@@ -8,11 +8,6 @@
 html {
     font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Oxygen,Ubuntu, Cantarell, "Open Sans", "Helvetica Neue", sans-serif;
 }
-input::-webkit-outer-spin-button,
-input::-webkit-inner-spin-button {
-	-webkit-appearance: none;
-    margin: 0;
-}
 #leftmenu {
 	width: 85px;
 	overflow: hidden;
@@ -93,20 +88,20 @@ input::-webkit-inner-spin-button {
 	background-color: #3c434965;
 }
 .content {
-
 	padding-top: 50px;
 	text-align: center;
 	margin-left: 85px;
 }
-.tital {
+.title {
 	background-color: rgb(218, 216, 216);
 	margin-bottom: 20px;
 }
-#productsList,#usersList {
+#productsList, #usersList {
 	margin: auto;
 	border-spacing: 0px;
 	border: black solid 0.5px;
 	border-bottom: none;
+	border-right: none;
 }
 .titleList th {
 	border-left: black solid 0.5px;
@@ -114,6 +109,9 @@ input::-webkit-inner-spin-button {
 }
 .titleList th:first-child {
 	border-left: none;
+}
+.titleList th:last-child {
+	border-right: black solid 0.5px;
 }
 .titleList {
 	background-color: rgb(242, 120, 38);
@@ -130,6 +128,9 @@ input::-webkit-inner-spin-button {
 .detailList td:first-child {
 	border-left: none;
 }
+.detailList td:last-child {
+	border-right: black solid 0.5px;
+}
 
 .id,.name,.type,.cost,.edit,.status,.email {
 	padding-left: 15px;
@@ -142,12 +143,12 @@ input::-webkit-inner-spin-button {
 .image img {
 	width: 30%;
 }
-.delete {
+.button {
 	width: 50px;
 	background-color: rgb(242, 120, 38);
 	border-radius: 10px;
 }
-.delete:hover {
+.button:hover {
 	background-color: rgba(242, 120, 38, 0.471);
 	padding-bottom: 5px;
 	padding-top: 5px;
@@ -162,7 +163,8 @@ input::-webkit-inner-spin-button {
     display: none;
     background-color: rgba(0, 0, 0, 0.7);
 }
-.addProduct {
+/**/
+.addProduct, .editProduct {
 	color: #fff;
 	font-family: 'Open Sans', sans-serif;
     position: fixed;
@@ -226,7 +228,9 @@ input::-webkit-inner-spin-button {
 	float: right;
 	padding-right: 10px;
 }
-.img #file-inp {
+.img #Editfile-inp,
+.img #file-inp
+{
 	display: none;
 }
 .img label i {
@@ -242,12 +246,20 @@ input::-webkit-inner-spin-button {
 .img img {
 	width: 80%;
 }
-.btAddPro {
+.img #deteleImage {
+	text-align: center;
+	display: block;
+	font-size: 30px;
+	margin-top: 20px;
+	margin-bottom: 20px;
+	cursor: pointer;
+}
+.btAddPro, .btEditPro {
 	height: 40px;
 	width: 100%;
 	clear: both;
 }
-.btAddPro input {
+.btAddPro input, .btEditPro input, .deleteItem input{
 	border: 0px;
 	color: #fff;
 	text-transform: uppercase;
@@ -258,7 +270,7 @@ input::-webkit-inner-spin-button {
 	cursor: pointer;
 	background-color: #f5a623;
 }
-.btAddPro input:hover {
+.btAddPro input:hover, .btEditPro input:hover, .deleteItem input:hover {
 	border: solid 3px #f5a623;
 	background-color: #4e657a;
 	color: #f5a623;

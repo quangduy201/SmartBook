@@ -21,14 +21,15 @@
             initBanner();
             createBook();
             createBestSeller();
-            renderBestseller();
+            createCart();
+            renderBestseller(getBestseller());
             loadPage();
         }
     </script>
     <div>
         <div id="header">
             <div id="logo">
-               <a href="index.html"><img src="assets/images/logo.png" alt="Smart Book Logo"></a> 
+               <a href="index.html"><img src="/assets/images/logo.png" alt="Smart Book Logo"></a> 
             </div>
 
             <ul id="topmenu">
@@ -40,7 +41,7 @@
                     <a href="index.html" title="Sách"><div>Sách <i class="fas fa-solid fa-caret-down"></i></div></a>
                     <ul class="sub-topmenu">
                         <li>
-                            <a href="/index.html">Giáo dục <i class="fas fa-solid fa-caret-down"></i></a>
+                            <a href="/index.html?giaoduc">Giáo dục <i class="fas fa-solid fa-caret-down"></i></a>
                             <ul class="sub-topmenu" id="sub-topmenubook1">
                                 <li><a href="/index.html?giaoduc&sachgiaokhoa">Sách giáo khoa</a></li>
                                 <li><a href="/index.html?giaoduc&sachthamkhao">Sách tham khảo</a></li>
@@ -48,7 +49,7 @@
                             </ul>
                         </li>
                         <li>
-                            <a href="/index.html">Văn học <i class="fas fa-solid fa-caret-down"></i></a>
+                            <a href="/index.html?vanhoc">Văn học <i class="fas fa-solid fa-caret-down"></i></a>
                             <ul class="sub-topmenu" id="sub-topmenubook2">
                                 <li><a href="/index.html?vanhoc&truyenngan">Truyện ngắn</a></li>
                                 <li><a href="/index.html?vanhoc&truyendai">Truyện dài</a></li>
@@ -56,19 +57,26 @@
                                 <li><a href="/index.html?vanhoc&khac">Khác</a></li>
                             </ul>
                         </li>
-                        <li><a href="">Tiểu thuyết</a></li>
                         <li>
-                            <a href="/index.html">Kinh tế <i class="fas fa-solid fa-caret-down"></i></a>
+                            <a href="/index.html?tieuthuyet">Tiểu thuyết <i class="fas fa-solid fa-caret-down"></i></a>
+                            <ul class="sub-topmenu" id="sub-topmenubook3">
+                                <li><a href="/index.html?tieuthuyet&ngontinh">Ngôn tình</a></li>
+                                <li><a href="/index.html?tieuthuyet&giatuong">Giả tưởng</a></li>
+                                <li><a href="/index.html?tieuthuyet&lichsu">Lịch sử</a></li>
+                            </ul>
+                        </li>
+                        <li>
+                            <a href="/index.html?kinhte">Kinh tế <i class="fas fa-solid fa-caret-down"></i></a>
                             <ul class="sub-topmenu" id="sub-topmenubook4">
                                 <li><a href="/index.html?kinhte&quantri">Quản trị</a></li>
                                 <li><a href="/index.html?kinhte&marketing">Marketing</a></li>
-                                <li><a href="/index.html?kinhte&nhanvat">Nhân Vật</a></li>
+                                <li><a href="/index.html?kinhte&nhanvat">Nhân vật</a></li>
                                 <li><a href="/index.html?kinhte&khoinghiep">Khởi nghiệp</a></li>
                                 <li><a href="/index.html?kinhte&chungkhoan">Chứng khoán</a></li>
                             </ul>
                         </li>
                         <li>
-                            <a href="/index.html">Tâm lý/Kỹ năng sống <i class="fas fa-solid fa-caret-down"></i></a>
+                            <a href="/index.html?tamly/kynangsong">Tâm lý/Kỹ năng sống <i class="fas fa-solid fa-caret-down"></i></a>
                             <ul class="sub-topmenu" id="sub-topmenubook5">
                                 <li><a href="/index.html?tamly/kynangsong&tamly">Tâm lý</a></li>
                                 <li><a href="/index.html?tamly/kynangsong&kynangsong">Kỹ năng sống</a></li>
@@ -76,14 +84,14 @@
                             </ul>
                         </li>
                         <li>
-                            <a href="/index.html">Lịch sử <i class="fas fa-solid fa-caret-down"></i></a>
+                            <a href="/index.html?lichsu">Lịch sử <i class="fas fa-solid fa-caret-down"></i></a>
                             <ul class="sub-topmenu" id="sub-topmenubook6">
                                 <li><a href="/index.html?lichsu&vietnam">Việt Nam</a></li>
-                                <li><a href="/index.html?lichsu&nuocngoai">Nước ngoài</a></li>
+                                <li><a href="/index.html?lichsu&thegioi">Thế Giới</a></li>
                             </ul>
                         </li>
                         <li>
-                            <a href="/index.html">Thiếu nhi <i class="fas fa-solid fa-caret-down"></i></a>
+                            <a href="/index.html?thieunhi">Thiếu nhi <i class="fas fa-solid fa-caret-down"></i></a>
                             <ul class="sub-topmenu" id="sub-topmenubook7">
                                 <li><a href="/index.html?thieunhi&truyenthieunhi">Truyện thiếu nhi</a></li>
                                 <li><a href="/index.html?thieunhi&tomau">Tô màu</a></li>
@@ -149,11 +157,13 @@
                 <p id="username">
                     <script>
                         var user = JSON.parse(localStorage.getItem('userActive'));
-                        document.getElementById("username").innerText=user.name;
+                        if (user) {
+                            document.getElementById("username").innerText = "Hi, " + user.name;
+                        }
                     </script>
                 </p>&nbsp;
                 <a href="admin.html" id="admin"><i class="fas fa-duotone fa-gear" title="Quản lý"></i>&nbsp;</a>
-                <i class="fas fa-solid fa-cart-shopping" title="Giỏ hàng"></i>&nbsp;
+                <a href="/index.html?shoppingcart"><i class="fas fa-solid fa-cart-shopping" title="Giỏ hàng"></i>&nbsp;</a>
                 <i class="fas fa-solid fa-bell" title="Thông báo"></i>&nbsp;
                 <i class="fas fa-solid fa-user" id="icon-login" title="Đăng nhập" onclick="showLogin()"></i>
                 <i class="fas fa-solid fa-right-from-bracket" id="icon-logout" title="Đăng xuất" onclick="logout()"></i>
@@ -161,18 +171,18 @@
         </div>
         <script>
             var user = JSON.parse(localStorage.getItem('userActive'));
-            if(user==null){
-                document.getElementById("icon-login").style.display="inline";
-                document.getElementById("icon-logout").style.display="none";
-                document.getElementById("admin").style.display="none";
-            }else{
-                if(user.type=="Admin"){
-                    document.getElementById("admin").style.display="inline";
-                }else{
-                    document.getElementById("admin").style.display="none";
+            if (user == null) {
+                document.getElementById("icon-login").style.display = "inline";
+                document.getElementById("icon-logout").style.display = "none";
+                document.getElementById("admin").style.display = "none";
+            } else {
+                if (user.type == "Admin") {
+                    document.getElementById("admin").style.display = "inline";
+                } else {
+                    document.getElementById("admin").style.display = "none";
                 }
-                document.getElementById("icon-login").style.display="none";
-                document.getElementById("icon-logout").style.display="inline";
+                document.getElementById("icon-login").style.display = "none";
+                document.getElementById("icon-logout").style.display = "inline";
                 
             }
         </script>
@@ -184,8 +194,53 @@
                 <i class="fas fa-regular fa-angle-right" title="Ảnh sau" onclick="nextBanner()"></i>
             </div>
         </div>
+        <div class="filterAndSort" id="filterAndSort">
+            <div class="tittleFilter">
+                <h4>
+                    <span>Lọc & Sắp xếp</span>
+                    <i class="fas fa-solid fa-xmark" onclick="closeFilterAndSort()"></i>
+                </h4>
+            </div>
+            <div class="mainFilter">
+                <div class="sort" id="sort">
+                    <div class="tittleFilter">
+                        <h4>
+                            <span>Sắp xếp theo</span>
+                            <i class="fa-solid fa-chevron-down" onclick="showSortBy()"></i>
+                        </h4>
+                    </div>
+                    <div class="options" id="options">
+                        <div class="sort1" onclick="sortLow_HighPrice()"><span>Giá (thấp - cao)</span></div>
+                        <div class="sort2" onclick="sortHigh_LowPrice()"><span>Giá (cao - thấp)</span></div>
+                    </div>
+                </div>
+                <div class="filter" id="filter">
+                    <div class="tittleFilter">
+                        <h4>
+                            <span>Lọc theo</span>
+                            <i class="fa-solid fa-chevron-down" onclick="showFilter()"></i>
+                        </h4>
+                    </div>
+                    <div class="options">
+                        <div class="filter1" id="filter1">
+                            <div class="tittleFilter1">
+                                <span>Giá</span>
+                                <i class="fa-solid fa-chevron-down" onclick="showPriceFilter()"></i>
+                            </div>
+                            <div class="option1">
+                                <div onclick="filterOption1()"><span>&lt;500.000 vnd</span></div>
+                                <div onclick="filterOption2()"><span>500.000 vnd - 1.000.000 vnd</span></div>
+                                <div onclick="filterOption3()"><span>&gt; 1.000.000 vnd</span></div>
+                            </div>
+                        </div>
+                        <div class="filter2" onclick="filterOption4()"><span>Sản phẩm bán chạy</span></div>
+                    </div>
+                </div>
+            </div>
+        </div>
         <div id="content">
             <div class="headline" id="headline"></div>
+            <div class="btFilter" onclick="showBtFilter()">Lọc & Sắp xếp <i class="fas fa-light fa-sliders"></i></div>
             <ul class="products" id="products">
                 <!--    innerHTML here: products * perPage
                 <li>
@@ -218,7 +273,6 @@
                 </ul>
             </div>
         </div>
-
         <div id="footer">
             <div id="aboutus">
                 <h2>Thông tin liên hệ</h2>
@@ -245,8 +299,8 @@
                     <b>”</b>
                 </p>
                 <div>
-                    <a href=""><i class="fas fa-brands fa-facebook"></i></a>
-                    <a href=""><i class="fas fa-brands fa-instagram"></i></a>
+                    <a href="https://www.facebook.com/Smart-Book-2020602218161522"><i class="fas fa-brands fa-facebook"></i></a>
+                    <a href="https://www.instagram.com/smartbookStore"><i class="fas fa-brands fa-instagram"></i></a>
                 </div>
             </div>
 
@@ -259,7 +313,7 @@
             <i class="fas fa-arrow-circle-up" onclick="backtop()"></i>
         </div>
     </div>
-    <div id="container" onclick="backFromLogin()">
+    <div id="container" onclick="backFromDiv()()">
 
     </div>
     <div id="login">

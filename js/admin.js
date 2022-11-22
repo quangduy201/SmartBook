@@ -1,8 +1,10 @@
 let currentPage;
-let perPage = 10;
+let perPage = 25;
 let start;
 let end;
 let totalpage;
+let products = [];
+let changeImg;
 window.onload = function() {
     var str = window.location.href;
     var url = str.split('?');
@@ -22,7 +24,6 @@ window.onload = function() {
         html += '</table>';
         document.getElementById("content").innerHTML = html;
         var category = JSON.parse(localStorage.getItem('category'));
-        var products = [];
         for (var i = 0; i < category.length; i++) {
             for (var j = 0; j < category[i].listcategory.length; j++) {
                 for (var h = 0; h < category[i].listcategory[j].books.length; h++) {
@@ -36,6 +37,7 @@ window.onload = function() {
         showItemsList(products);
         renderListPage();
         changePage(products);
+        
     }
     if (url[1] == "hoadon") {
         var html = '';
@@ -77,7 +79,7 @@ window.onload = function() {
         html += '</table>';
         document.getElementById("content").innerHTML = html;
     }
-
+    
 }
 function getCurrentPage(currentPage, products) {
     start = (currentPage - 1) * perPage;
@@ -88,15 +90,16 @@ function getCurrentPage(currentPage, products) {
 function showItemsList(products) {
     var tr = '<tr class="titleList"><th class="id">ID</th><th class="image">Ảnh</th><th class="name">TÊN SẢN PHẨM</th><th class="type">THỂ LOẠI</th><th class="cost">GIÁ</th><th class="edit"><i class="fa-solid fa-folder-plus" title="Thêm sản phẩm" onclick="showAddProducts()"></i></th></tr>';
     for (var i = start; i < end; i++) {
-        tr += '<tr class="detailList"><td class="id">' + products[i].id + '</td><td class="image"><img src="' + products[i].image + '" alt=""></th><td class="name">' + products[i].name + '</td><td class="type">' + products[i].cat + '</td><td class="cost">' + products[i].price + '</td><td class="edit"><button class="delete" onclick="deleteItem">Xoá</button><br><button class="delete" onclick="editItem">Sửa</button></td></tr>'
+        tr += '<tr class="detailList"><td class="id">' + products[i].id + '</td><td class="image"><img src="' + products[i].image + '" alt=""></th><td class="name">' + products[i].name + '</td><td class="type">' + products[i].cat + '</td><td class="cost">' + products[i].price + '</td></tr>'
 
     }
     document.getElementById("productsList").innerHTML = tr;
+    showDetailProducts();
 }
 function showUsers(users) {
     var tr = '<tr class="titleList"><th class="id">ID</th><th class="name">TÊN KHÁCH HÀNG</th><th class="email">EMAIL</th><th class="status">TRẠNG THÁI</th><th class="edit"></th></tr>';
     for (var i = start; i < end; i++) {
-        tr += '<tr class="detailList"><td class="id">' + users[i].id + '</td><td class="name">' + users[i].name + '</td><td class="email">' + users[i].email + '</td><td class="status">' + users[i].status + '</td><td class="edit"><button class="delete" onclick="deleteItem">Xoá</button><br><button class="delete" onclick="editItem">Sửa</button></td></tr>'
+        tr += '<tr class="detailList"><td class="id">' + users[i].id + '</td><td class="name">' + users[i].name + '</td><td class="email">' + users[i].email + '</td><td class="status">' + users[i].status + '</td><td class="edit"><button class="button" onclick="deleteProduct(this)">Xoá</button><br><button class="button" onclick="showEditUser()">Sửa</button></td></tr>'
 
     }
     document.getElementById("usersList").innerHTML = tr;
@@ -104,6 +107,36 @@ function showUsers(users) {
 function showAddProducts() {
     document.getElementById("container").style.display = "block";
     document.getElementById("addPro").style.display = "block";
+    document.getElementById("upload").style.display = "block";
+}
+function showEditProduct() {
+    document.getElementById("container").style.display = "block";
+    document.getElementById("editPro").style.display = "block";
+}
+function showDetailProducts(){
+    let listEditBt = document.querySelectorAll(".detailList ");
+    console.log(listEditBt);
+    for (let i = 0; i < listEditBt.length; i++) {
+        getCurrentPage(currentPage,products)
+        listEditBt[i].addEventListener('click',()=>{
+            showEditProduct();
+            /*Lay thu tu nut xoa + start de lay duoc vi tri item trong mang products[] */
+            var item = products[i+start];
+            /* Lay hinh vao preview*/
+            document.getElementById("Editpreview").setAttribute("src", item.image);
+            document.getElementById("Editimgproduct").setAttribute("src", item.image);
+            document.getElementById("upload").style.display = "none";
+            document.getElementById("id-Editproduct").value=item.id;
+            document.getElementById("name-Editproduct").value=item.name;
+            document.getElementById("cat-Editproduct").value=item.cat;
+            document.getElementById("quantity-Editproduct").value=item.quantity;
+            var cost=item.price;
+            cost=cost.split('VND');
+            cost=cost[0].replace(".","");
+            document.getElementById("price-Editproduct").value=parseInt(cost);
+            changeImg=false;
+        })
+    }
 }
 function renderListPage() {
     var html = '';
@@ -122,16 +155,16 @@ function nextButton() {
     if (currentPage > totalpage)
         currentPage = totalpage
     changeButton();
-    getCurrentPage(currentPage,books);
-    showItemsList(books);
+    getCurrentPage(currentPage, products);
+    showItemsList(products);
 }
 function prevButton() {
     currentPage--;
     if (currentPage < 1)
         currentPage = 1
     changeButton();
-    getCurrentPage(currentPage,books);
-    showItemsList(books);
+    getCurrentPage(currentPage, products);
+    showItemsList(products);
 }
 function changeButton() {
     if (currentPage < totalpage || currentPage > 1) {
@@ -156,7 +189,7 @@ function changePage(products) {
     const listPage = document.querySelectorAll(".number-page li");
     console.log(listPage);
     for (let i = 0; i < listPage.length; i++) {
-        listPage[i].addEventListener('click',() => {
+        listPage[i].addEventListener('click', () => {
             var value = i + 1;
             console.log(value);
             currentPage = value;
@@ -169,6 +202,7 @@ function changePage(products) {
 function backFromDiv() {
     document.getElementById("container").style.display = "none";
     document.getElementById("addPro").style.display = "none";
+    document.getElementById("editPro").style.display = "none";
 }
 function previewImg() {
     var img = document.getElementById("file-inp").files;
@@ -176,11 +210,25 @@ function previewImg() {
         var fileReader = new FileReader();
         fileReader.onload = function(event) {
             document.getElementById("preview").setAttribute("src", event.target.result);
+            document.getElementById("imgproduct").setAttribute("src", event.target.result);
         };
         fileReader.readAsDataURL(img[0]);
     }
-    document.getElementById("upload").style.display = "none"
+    document.getElementById("upload").style.display = "none";
 }
+function EditpreviewImg() {
+    var img = document.getElementById("Editfile-inp").files;
+    if (img.length > 0) {
+    var fileReader = new FileReader();
+    fileReader.onload = function(event) {
+        document.getElementById("Editpreview").setAttribute("src", event.target.result);
+        document.getElementById("Editimgproduct").setAttribute("src", event.target.result);
+    };
+    fileReader.readAsDataURL(img[0]);
+    }   
+    changeImg=true;
+}
+
 // tìm kí tự khoảng trắng
 function hasWhiteSpace(s) {
     return s.indexOf(' ') >= 0;
@@ -190,8 +238,8 @@ function equalsIgnoreCaseAndBase(text1, text2) {
     return text1.localeCompare(text2, undefined, { sensitivity: 'base' }) === 0;
 }
 // chuyển từ hình ảnh sang URL
-function imageToDataURL() {
-    var srcImage = document.getElementById("preview");
+function imageToDataURL(imgProduct) {
+    var srcImage = document.getElementById(imgProduct);
     var canvas = document.createElement("canvas");
     var context = canvas.getContext("2d");
     canvas.width = srcImage.width;
@@ -221,9 +269,8 @@ function addNewProduct() {
     var cat = document.getElementById("cat-product").value.trim();
     var quantity = document.getElementById("quantity-product").value;
     var price = document.getElementById("price-product").value;
-    var image = imageToDataURL();
+    var image = imageToDataURL("imgproduct");
     var category = JSON.parse(localStorage.getItem('category'));
-    console.log(image);
     if (hasWhiteSpace(id)) {
         alert("Mã sản phẩm không được chứa khoảng trắng!");
         return false;
@@ -257,10 +304,10 @@ function addNewProduct() {
         for (var j = 0; j < category[i].listcategory.length; j++) {
             if (equalsIgnoreCaseAndBase(cat, category[i].listcategory[j].name)) {
                 id = parseInt(id);
+                cat = category[i].listcategory[j].name;
                 quantity = parseInt(quantity);
                 price = stringToPrice(price);
                 category[i].listcategory[j].books.push({ id, name, cat, price, quantity, image });
-                console.log(category);
                 localStorage.setItem('category', JSON.stringify(category));
                 alert("Sản phẩm mới đã được thêm vào!");
                 return true;
@@ -269,4 +316,77 @@ function addNewProduct() {
     }
     alert("Không tìm thấy thể loại sản phẩm!");
     return false;
+}
+function editProduct() {
+    var id = document.getElementById("id-Editproduct").value.trim();
+    var name = document.getElementById("name-Editproduct").value.trim();
+    var cat = document.getElementById("cat-Editproduct").value.trim();
+    var quantity = document.getElementById("quantity-Editproduct").value;
+    var price = document.getElementById("price-Editproduct").value;
+    var image = imageToDataURL("Editimgproduct");
+    var category = JSON.parse(localStorage.getItem('category'));
+    if (name == "") {
+        alert("Vui lòng nhập tên sản phẩm");
+        return false;
+    } else if (cat == "") {
+        alert("Vui lòng nhập thể loại sản phẩm");
+        return false;
+    } else if (quantity == "") {
+        alert("Vui lòng nhập số lượng sản phẩm");
+        return false;
+    } else if (price == "") {
+        alert("Vui lòng nhập giá sản phẩm");
+        return false;
+    }
+    var checkCatogory = false;
+    for (var i = 0; i < category.length; i++) {
+        for (var j = 0; j < category[i].listcategory.length; j++) {
+            if (equalsIgnoreCaseAndBase(cat, category[i].listcategory[j].name)) {
+                cat = category[i].listcategory[j].name;
+                checkCatogory = true;
+            }
+        }
+    }
+    if (checkCatogory) {
+        for (var i = 0; i < category.length; i++) {
+            for (var j = 0; j < category[i].listcategory.length; j++) {
+                for (var k = 0; k < category[i].listcategory[j].books.length; k++) {
+                    if (id == category[i].listcategory[j].books[k].id) {
+                        category[i].listcategory[j].books[k].name = name;
+                        category[i].listcategory[j].books[k].cat = cat;
+                        category[i].listcategory[j].books[k].price = stringToPrice(price);
+                        category[i].listcategory[j].books[k].quantity = parseInt(quantity);
+                        if (changeImg==true){
+                            category[i].listcategory[j].books[k].image = image;
+                        }
+                        localStorage.setItem('category', JSON.stringify(category));
+                        alert("Sản phẩm đã được sửa!");
+                        return true;
+                    }
+                }
+            }
+        }
+    }
+    alert("Không tìm thấy thể loại sản phẩm!");
+    return false;
+}
+function deleteProduct() {
+    var ok = confirm("Chắc chắn muốn xóa sản phẩm?");
+    if (!ok)
+        return;
+    var id = document.getElementById("id-Editproduct").value;
+    var category = JSON.parse(localStorage.getItem('category'));
+    for (var i = 0; i < category.length; i++) {
+        for (var j = 0; j < category[i].listcategory.length; j++) {
+            for (var k = 0; k < category[i].listcategory[j].books.length; k++) {
+                if (id == category[i].listcategory[j].books[k].id) {
+                    category[i].listcategory[j].books.splice(k, 1);
+                    localStorage.setItem('category', JSON.stringify(category));
+                    alert("Sản phẩm đã được xóa!");
+                    window.location.reload();
+                    return;
+                }
+            }
+        }
+    }
 }
