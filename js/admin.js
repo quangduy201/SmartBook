@@ -370,12 +370,11 @@ function editProduct() {
     alert("Không tìm thấy thể loại sản phẩm!");
     return false;
 }
-function deleteProduct(obj) { // obj là <button>
+function deleteProduct() {
     var ok = confirm("Chắc chắn muốn xóa sản phẩm?");
     if (!ok)
         return;
-    var temp = obj.parentElement.parentElement; // lấy tag <tr>
-    var id = temp.firstChild.innerHTML; // lấy id từ tag <td> đầu tiên của <tr>
+    var id = document.getElementById("id-Editproduct").value;
     var category = JSON.parse(localStorage.getItem('category'));
     for (var i = 0; i < category.length; i++) {
         for (var j = 0; j < category[i].listcategory.length; j++) {
