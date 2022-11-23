@@ -96,7 +96,7 @@ html {
 	background-color: rgb(218, 216, 216);
 	margin-bottom: 20px;
 }
-#productsList, #usersList {
+#productsList, #usersList, #billList {
 	margin: auto;
 	border-spacing: 0px;
 	border: black solid 0.5px;
@@ -131,8 +131,32 @@ html {
 .detailList td:last-child {
 	border-right: black solid 0.5px;
 }
-
-.id,.name,.type,.cost,.edit,.status,.email {
+#billList .detailList td{
+	color: white;
+	border-top: black solid 0.5px;
+	border-bottom: none;
+}
+#billList tr th{
+	border-bottom: none;
+}
+#billList{
+	border-bottom: black solid 0.5px;
+}
+#billList th{
+	border-top: black solid 0.5px;
+}
+#billList .status select, #usersList .status select{
+	border: black solid 1px;
+	border-radius: 5px;
+	text-align: center;
+	margin-top: 10px;
+	margin-bottom: 10px;
+	height: 30px;
+}
+#billList .detailList td:last-child{
+	cursor: pointer;
+}
+.id,.name,.type,.quantity,.cost,.edit,.status,.email,.date,.totalPrice,.detailBill {
 	padding-left: 15px;
 	padding-right: 15px;
 }
@@ -164,7 +188,7 @@ html {
     background-color: rgba(0, 0, 0, 0.7);
 }
 /**/
-.addProduct, .editProduct {
+.addProduct, .editProduct, .showOrder {
 	color: #fff;
 	font-family: 'Open Sans', sans-serif;
     position: fixed;
@@ -335,4 +359,45 @@ html {
 .number-page li:hover {
     cursor: pointer;
     background-color: rgba(0, 0, 0, 0.296);
+}
+/*detail bill*/
+#listProductsBuy{
+    border: black solid 0.5px;
+}
+#listProductsBuy .productsBuy{
+    width: 100%;
+    display: flex;
+    list-style: none;
+    text-align: center;
+    border-bottom: black solid 0.5px;
+}
+#listProductsBuy ul:last-child{
+
+    border-bottom: none;
+}
+#listProductsBuy .productsBuy li{
+    margin: auto;
+    font-weight: 500;
+    font-size: 15px;
+    flex-basis: 16.667%;
+}
+#listProductsBuy .img-Pro{
+    padding-top: 5px;
+    padding-bottom: 5px;
+    width: 100%;
+}
+#listProductsBuy .img-Pro img {
+    width: 40%;
+}
+#listProductsBuy .productsBuy i{
+    font-size: 20px;
+    cursor: pointer;
+}
+#listProductsBuy .productsBuy i:hover{
+    color: rgb(242, 120, 38);
+    padding-bottom: 5px;
+}
+#nameCustomer h3{
+	margin-top: 10px;
+	margin-left: 10px;
 }

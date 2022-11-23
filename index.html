@@ -22,6 +22,7 @@
             createBook();
             createBestSeller();
             createCart();
+            createOrder();
             renderBestseller(getBestseller());
             loadPage();
         }
@@ -37,7 +38,7 @@
                     <a href="index.html"><div>Trang Chủ</div></a>
                 </li>
 
-                <li class="parent-menu">
+                <li class="parent-menu" style="">
                     <a href="index.html" title="Sách"><div>Sách <i class="fas fa-solid fa-caret-down"></i></div></a>
                     <ul class="sub-topmenu">
                         <li>
@@ -370,7 +371,7 @@
             </div>
         </form>
     </div>
-    
+    <input type="number" min="0" value="">
     <div id="wrapper">
         <div id="close">
             <i class="fa-solid fa-xmark" onclick="backFromDiv()"></i>

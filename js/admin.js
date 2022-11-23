@@ -4,6 +4,8 @@ let start;
 let end;
 let totalpage;
 let products = [];
+let bills = [];
+var users = [];
 let changeImg;
 window.onload = function() {
     var str = window.location.href;
@@ -44,9 +46,19 @@ window.onload = function() {
         html += '<div class="title">';
         html += '<h1>Danh sách hoá đơn</h3>';
         html += '</div>';
-        html += '<table id="productsList">';
+        html += '<table id="billList" style="border-top: none;">';
         html += '</table>';
         document.getElementById("content").innerHTML = html;
+        var orderNoteList = JSON.parse(localStorage.getItem('orderNoteList'));
+        for (var i=0; i<orderNoteList.length; i++){
+            bills.push(orderNoteList[i]);
+        }
+        currentPage = 1;
+        totalpage = Math.ceil(bills.length / perPage);
+        getCurrentPage(currentPage, bills);
+        showBillList(bills);
+        renderListPage();
+        changePage(bills);
     }
     if (url[1] == "khachhang") {
         var html = '';
@@ -57,7 +69,6 @@ window.onload = function() {
         html += '</table>';
         document.getElementById("content").innerHTML = html;
         currentPage = 1;
-        var users = [];
         var user = JSON.parse(localStorage.getItem('user'));
         for (var i = 0; i < user.length; i++) {
             if (user[i].type=="Customer") {
@@ -88,21 +99,42 @@ function getCurrentPage(currentPage, products) {
         end = products.length;
 }
 function showItemsList(products) {
-    var tr = '<tr class="titleList"><th class="id">ID</th><th class="image">Ảnh</th><th class="name">TÊN SẢN PHẨM</th><th class="type">THỂ LOẠI</th><th class="cost">GIÁ</th><th class="edit"><i class="fa-solid fa-folder-plus" title="Thêm sản phẩm" onclick="showAddProducts()"></i></th></tr>';
+    var tr = '<tr class="titleList"><th class="id">MÃ SẢN PHẨM</th><th class="image">Ảnh</th><th class="name">TÊN SẢN PHẨM</th><th class="type">THỂ LOẠI</th><th class="quantity">TỒN KHO</th><th class="cost">GIÁ</th><th class="edit"><i class="fa-solid fa-folder-plus" title="Thêm sản phẩm" onclick="showAddProducts()"></i></th></tr>';
     for (var i = start; i < end; i++) {
-        tr += '<tr class="detailList"><td class="id">' + products[i].id + '</td><td class="image"><img src="' + products[i].image + '" alt=""></th><td class="name">' + products[i].name + '</td><td class="type">' + products[i].cat + '</td><td class="cost">' + products[i].price + '</td></tr>'
-
+        if (i%2==1){ 
+            tr += '<tr class="detailList" style="background-color: rgb(221, 177, 149);"><td class="id">' + products[i].id + '</td><td class="image"><img src="' + products[i].image + '" alt=""></th><td class="name">' + products[i].name + '</td><td class="type">' + products[i].cat + '</td><td class="quantity">' + products[i].quantity + '</td><td class="cost">' + products[i].price + '</td></tr>'
+        }else{
+            tr += '<tr class="detailList"><td class="id">' + products[i].id + '</td><td class="image"><img src="' + products[i].image + '" alt=""></th><td class="name">' + products[i].name + '</td><td class="type">' + products[i].cat + '</td><td class="quantity">' + products[i].quantity +'</td><td class="cost">' + products[i].price + '</td></tr>'
+        }
     }
     document.getElementById("productsList").innerHTML = tr;
     showDetailProducts();
 }
 function showUsers(users) {
-    var tr = '<tr class="titleList"><th class="id">ID</th><th class="name">TÊN KHÁCH HÀNG</th><th class="email">EMAIL</th><th class="status">TRẠNG THÁI</th><th class="edit"></th></tr>';
+    var tr = '<tr class="titleList"><th class="id">TÀI KHOẢN</th><th class="name">TÊN KHÁCH HÀNG</th><th class="email">EMAIL</th><th class="status">TRẠNG THÁI</th></tr>';
     for (var i = start; i < end; i++) {
-        tr += '<tr class="detailList"><td class="id">' + users[i].id + '</td><td class="name">' + users[i].name + '</td><td class="email">' + users[i].email + '</td><td class="status">' + users[i].status + '</td><td class="edit"><button class="button" onclick="deleteProduct(this)">Xoá</button><br><button class="button" onclick="showEditUser()">Sửa</button></td></tr>'
-
+        if (users[i].status == "enabled"){
+            tr += '<tr class="detailList"><td class="id">' + users[i].username + '</td><td class="name">' + users[i].name + '</td><td class="email">' + users[i].email + '</td><td class="status"><select class="status_selection"><option value="'+ users[i].status +'"selected>'+ users[i].status +'</option><option value="disabled">disabled</option></select></td></tr>'
+        }else{
+            tr += '<tr class="detailList"><td class="id">' + users[i].username + '</td><td class="name">' + users[i].name + '</td><td class="email">' + users[i].email + '</td><td class="status"><select class="status_selection"><option value="enabled">enabled</option><option value="'+ users[i].status +'"selected>'+ users[i].status +'</option></select></td></tr>'
+        }
     }
     document.getElementById("usersList").innerHTML = tr;
+    setStatusUser();
+}
+function showBillList(bills) {
+    var tr = '<tr class="titleList" ><th class="id">MÃ HÓA ĐƠN</th><th class="date">THỜI GIAN</th><th class="name">TÌNH TRẠNG</th><th class="type">TỔNG TIỀN</th></tr>';
+    for (var i = start; i < end; i++) {
+        if (bills[i].status=="Đã xử lý"){
+            tr += '<tr class="detailList" style="background-color:#69C9BC"><td class="id">' + bills[i].orderID + '</td><td class="date">' + bills[i].date + '</th><td class="status"><select class="orderNote_selection"><option value="Chưa xử lý">Chưa xử lý</option><option value="'+ bills[i].status +'"selected>'+ bills[i].status +'</option></select></td><td class="totalPrice">' + bills[i].totalPrice + '</td><td class="detailBill">Chi tiết</td></tr>'
+        }else{
+            tr += '<tr class="detailList" style="background-color:#FE4134"><td class="id">' + bills[i].orderID + '</td><td class="date">' + bills[i].date + '</th><td class="status"><select class="orderNote_selection"><option value="'+ bills[i].status +'"selected>'+ bills[i].status +'</option><option value="Đã xử lý">Đã xử lý</option></select></td><td class="totalPrice">' + bills[i].totalPrice + '</td><td class="detailBill">Chi tiết</td></tr>'
+
+        }
+    }
+    document.getElementById("billList").innerHTML = tr;
+    setStatusOrder();
+    showDetailBill();
 }
 function showAddProducts() {
     document.getElementById("container").style.display = "block";
@@ -113,9 +145,12 @@ function showEditProduct() {
     document.getElementById("container").style.display = "block";
     document.getElementById("editPro").style.display = "block";
 }
+function showBill() {
+    document.getElementById("container").style.display = "block";
+    document.getElementById("showOrder").style.display = "block";
+}
 function showDetailProducts(){
     let listEditBt = document.querySelectorAll(".detailList ");
-    console.log(listEditBt);
     for (let i = 0; i < listEditBt.length; i++) {
         getCurrentPage(currentPage,products)
         listEditBt[i].addEventListener('click',()=>{
@@ -138,16 +173,47 @@ function showDetailProducts(){
         })
     }
 }
+function showDetailBill (){
+    let orders = document.querySelectorAll(".detailBill ");
+    var orderNoteList = JSON.parse(localStorage.getItem('orderNoteList'));
+    for (let i = 0; i < orders.length; i++) {
+        getCurrentPage(currentPage,bills)
+        orders[i].addEventListener('click',()=>{
+            showBill();
+            var html='';
+            html += '<div id="listProductsBuy" >';
+            html += '<div id="nameCustomer"><h3>Tên khách hàng: '+orderNoteList[i+start].customerName+'</h3></div>';
+            for (var j=0; j<orderNoteList[i+start].buyItems.length;j++){
+                html += '<ul class="productsBuy">';
+                html += '<li>' + (j+1) + '</li>';
+                html += '<li class="img-Pro">';
+                html += '<img src="' + orderNoteList[i+start].buyItems[j].image +'" alt="">';
+                html += '</li>';
+                html += '<li>' + orderNoteList[i+start].buyItems[j].name + '</li>';
+                html += '<li>Số lượng: ' + orderNoteList[i+start].buyItems[j].quantity + '</li>';
+                html += '<li>' + orderNoteList[i+start].buyItems[j].price + '</li>';
+                html += '</ul>';
+            }
+            console.log(html);
+            document.getElementById("detailOrder").innerHTML=html;
+        })
+    }
+}
 function renderListPage() {
     var html = '';
     html += '<li id="btprev" class="button-prev-next"><i class="fas fa-chevron-circle-left" onclick="prevButton()"></i></li>';
     html += '<div class="number-page" id="number-page">'
     html += '<li id="active"><b>' + 1 + '</b></li>';
-    for (var i = 2; i <= totalpage; i++) {
-        html += '<li><b>' + i + '</b></li>';
+    if (totalpage <=1){
+        html += '</div>';
+        html += '<li id="btnext" class="button-prev-next"><i class="fas fa-chevron-circle-right" onclick="nextButton()"></i></li>'
+    }else{
+        for (var i = 2; i <= totalpage; i++) {
+            html += '<li><b>' + i + '</b></li>';
+        }
+        html += '</div>';
+        html += '<li id="btnext" class="button-prev-next-active"><i class="fas fa-chevron-circle-right" onclick="nextButton()"></i></li>'
     }
-    html += '</div>';
-    html += '<li id="btnext" class="button-prev-next-active"><i class="fas fa-chevron-circle-right" onclick="nextButton()"></i></li>'
     document.getElementById("page").innerHTML = html;
 }
 function nextButton() {
@@ -203,6 +269,7 @@ function backFromDiv() {
     document.getElementById("container").style.display = "none";
     document.getElementById("addPro").style.display = "none";
     document.getElementById("editPro").style.display = "none";
+    document.getElementById("showOrder").style.display = "none";
 }
 function previewImg() {
     var img = document.getElementById("file-inp").files;
@@ -388,5 +455,39 @@ function deleteProduct() {
                 }
             }
         }
+    }
+}
+function setStatusOrder(){
+    var statusbills = document.querySelectorAll(".orderNote_selection");
+    for(let i=0; i<statusbills.length; i++){
+        getCurrentPage(currentPage,bills)
+        console.log(i);
+        statusbills[i].addEventListener('change',()=>{
+            bills[i+start].status = statusbills[i].value;
+            localStorage.setItem('bills', JSON.stringify(bills));
+            if (bills[i+start].status == "Đã xử lý"){
+                statusbills[i].parentNode.parentNode.setAttribute("style", "background-color: #69C9BC");
+            }else{
+                statusbills[i].parentNode.parentNode.setAttribute("style", "background-color: #FE4134");
+            }
+        });
+    }
+    
+}
+function setStatusUser(){
+    var statususers = document.querySelectorAll(".status_selection");
+    var user = JSON.parse(localStorage.getItem('user'));
+    for(let i=0; i<statususers.length; i++){
+        getCurrentPage(currentPage,users)
+        console.log(i);
+        statususers[i].addEventListener('change',()=>{
+            users[i+start].status = statususers[i].value;
+            for (var j=0; j<user.length; j++){
+                if (user[j].username == users[i+start].username){
+                    user[j].status = users[i+start].status;
+                }
+            }
+            localStorage.setItem('user', JSON.stringify(user));
+        });
     }
 }
