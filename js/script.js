@@ -1723,7 +1723,7 @@ function addOrder(){
         orderID: orderNoteList.length+1,
         userID: userActive.id,
         customerName: userActive.name,
-        date: new Date().toLocaleString(),
+        date: new Date().toJSON().slice(0, 10),
         buyItems: cart,
         status: "Chưa xử lý",
         totalPrice: total(),

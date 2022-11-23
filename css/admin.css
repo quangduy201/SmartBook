@@ -92,9 +92,22 @@ html {
 	text-align: center;
 	margin-left: 85px;
 }
-.title {
+.title, .orderNoteFilter {
 	background-color: rgb(218, 216, 216);
 	margin-bottom: 20px;
+}
+.orderNoteFilter{
+	height: 30px;
+	line-height: 30px;
+}
+.orderNoteFilter button{
+	cursor: pointer;
+	margin-left: 20px;
+	width: 50px;
+	padding-top: 5px;
+	line-height: 20px;
+	background-color: rgb(242, 120, 38);
+	border: black solid 0.5px;
 }
 #productsList, #usersList, #billList {
 	margin: auto;

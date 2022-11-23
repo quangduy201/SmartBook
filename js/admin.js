@@ -20,7 +20,7 @@ window.onload = function() {
     if (url[1] == "sanpham") {
         var html = '';
         html += '<div class="title">';
-        html += '<h1>Danh sách sản phẩm</h3>';
+        html += '<h1>Danh sách sản phẩm</h1>';
         html += '</div>';
         html += '<table id="productsList">';
         html += '</table>';
@@ -44,7 +44,10 @@ window.onload = function() {
     if (url[1] == "hoadon") {
         var html = '';
         html += '<div class="title">';
-        html += '<h1>Danh sách hoá đơn</h3>';
+        html += '<h1>Danh sách hoá đơn</h1>';
+        html += '</div>';
+        html += '<div class="orderNoteFilter">';
+        html += '<label for="orderNote_time">Khoảng thời gian:</label><input type="date" id="orderNote_time-from"> đến <input type="date" id="orderNote_time-to"><button id="filterBill">Lọc</button>';
         html += '</div>';
         html += '<table id="billList" style="border-top: none;">';
         html += '</table>';
@@ -63,7 +66,7 @@ window.onload = function() {
     if (url[1] == "khachhang") {
         var html = '';
         html += '<div class="title">';
-        html += '<h1>Danh sách khách hàng</h3>';
+        html += '<h1>Danh sách khách hàng</h1>';
         html += '</div>';
         html += '<table id="usersList">';
         html += '</table>';
@@ -84,7 +87,7 @@ window.onload = function() {
     if (url[1] == "quanlithongtin") {
         var html = '';
         html += '<div class="title">';
-        html += '<h1>Quản lí thông tin</h3>';
+        html += '<h1>Quản lí thông tin</h1>';
         html += '</div>';
         html += '<table id="productsList">';
         html += '</table>';
@@ -135,6 +138,7 @@ function showBillList(bills) {
     document.getElementById("billList").innerHTML = tr;
     setStatusOrder();
     showDetailBill();
+    orderfilter();
 }
 function showAddProducts() {
     document.getElementById("container").style.display = "block";
@@ -459,13 +463,14 @@ function deleteProduct() {
 }
 function setStatusOrder(){
     var statusbills = document.querySelectorAll(".orderNote_selection");
+    var orderNoteList = JSON.parse(localStorage.getItem('orderNoteList'));
     for(let i=0; i<statusbills.length; i++){
-        getCurrentPage(currentPage,bills)
+        getCurrentPage(currentPage,statusbills)
         console.log(i);
         statusbills[i].addEventListener('change',()=>{
-            bills[i+start].status = statusbills[i].value;
-            localStorage.setItem('bills', JSON.stringify(bills));
-            if (bills[i+start].status == "Đã xử lý"){
+            orderNoteList[i+start].status = statusbills[i].value;
+            localStorage.setItem('orderNoteList', JSON.stringify(orderNoteList));
+            if (orderNoteList[i+start].status == "Đã xử lý"){
                 statusbills[i].parentNode.parentNode.setAttribute("style", "background-color: #69C9BC");
             }else{
                 statusbills[i].parentNode.parentNode.setAttribute("style", "background-color: #FE4134");
@@ -473,6 +478,27 @@ function setStatusOrder(){
         });
     }
     
+}
+function orderfilter(){
+    document.getElementById("filterBill").addEventListener("click",()=>{
+        var dayStart = document.getElementById("orderNote_time-from").value;
+        var dayEnd = document.getElementById("orderNote_time-to").value;
+        var orderNoteList = JSON.parse(localStorage.getItem('orderNoteList'));
+        var filteredBills = [];
+        console.log(dayStart);
+        console.log(dayEnd);
+        for (var i=0; i<orderNoteList.length; i++){
+            if (dayStart <= orderNoteList[i].date && orderNoteList[i].date <= dayEnd){
+                filteredBills.push(orderNoteList[i]);
+            }
+        }
+        currentPage = 1;
+        getCurrentPage(currentPage,filteredBills)
+        totalpage = Math.ceil(filteredBills.length / perPage);
+        showBillList(filteredBills);
+        renderListPage();
+        changePage(filteredBills);
+    })
 }
 function setStatusUser(){
     var statususers = document.querySelectorAll(".status_selection");
