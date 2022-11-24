@@ -330,12 +330,12 @@ function previewImg() {
 function EditpreviewImg() {
     var img = document.getElementById("Editfile-inp").files;
     if (img.length > 0) {
-    var fileReader = new FileReader();
-    fileReader.onload = function(event) {
-        document.getElementById("Editpreview").setAttribute("src", event.target.result);
-        document.getElementById("Editimgproduct").setAttribute("src", event.target.result);
-    };
-    fileReader.readAsDataURL(img[0]);
+        var fileReader = new FileReader();
+        fileReader.onload = function(event) {
+            document.getElementById("Editpreview").setAttribute("src", event.target.result);
+            document.getElementById("Editimgproduct").setAttribute("src", event.target.result);
+        };
+        fileReader.readAsDataURL(img[0]);
     }   
     changeImg = true;
 }

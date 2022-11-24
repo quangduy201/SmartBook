@@ -919,9 +919,6 @@ function createBestSeller() {
     bestseller.push(category[5].listcategory[0].books[0]);
     localStorage.setItem('bestseller', JSON.stringify(bestseller));
 }
-function addBill() {
-    // cái này từ từ e tìm hiểu :))
-}
 function updateQuantity(category) {
     var category = JSON.parse(localStorage.getItem('category'));
     // Tính số sách mỗi loại trước
