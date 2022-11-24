@@ -33,13 +33,13 @@ function nextBanner() {
     runBanner();
 }
 function removeVietnameseTones(str) {
-    str = str.replace(/à|á|ạ|ả|ã|â|ầ|ấ|ậ|ẩ|ẫ|ă|ằ|ắ|ặ|ẳ|ẵ/g,"a"); 
-    str = str.replace(/è|é|ẹ|ẻ|ẽ|ê|ề|ế|ệ|ể|ễ/g,"e"); 
-    str = str.replace(/ì|í|ị|ỉ|ĩ/g,"i"); 
-    str = str.replace(/ò|ó|ọ|ỏ|õ|ô|ồ|ố|ộ|ổ|ỗ|ơ|ờ|ớ|ợ|ở|ỡ/g,"o"); 
-    str = str.replace(/ù|ú|ụ|ủ|ũ|ư|ừ|ứ|ự|ử|ữ/g,"u"); 
-    str = str.replace(/ỳ|ý|ỵ|ỷ|ỹ/g,"y"); 
-    str = str.replace(/đ/g,"d");
+    str = str.replace(/à|á|ạ|ả|ã|â|ầ|ấ|ậ|ẩ|ẫ|ă|ằ|ắ|ặ|ẳ|ẵ/g, "a");
+    str = str.replace(/è|é|ẹ|ẻ|ẽ|ê|ề|ế|ệ|ể|ễ/g, "e");
+    str = str.replace(/ì|í|ị|ỉ|ĩ/g, "i");
+    str = str.replace(/ò|ó|ọ|ỏ|õ|ô|ồ|ố|ộ|ổ|ỗ|ơ|ờ|ớ|ợ|ở|ỡ/g, "o");
+    str = str.replace(/ù|ú|ụ|ủ|ũ|ư|ừ|ứ|ự|ử|ữ/g, "u");
+    str = str.replace(/ỳ|ý|ỵ|ỷ|ỹ/g, "y");
+    str = str.replace(/đ/g, "d");
     str = str.replace(/À|Á|Ạ|Ả|Ã|Â|Ầ|Ấ|Ậ|Ẩ|Ẫ|Ă|Ằ|Ắ|Ặ|Ẳ|Ẵ/g, "A");
     str = str.replace(/È|É|Ẹ|Ẻ|Ẽ|Ê|Ề|Ế|Ệ|Ể|Ễ/g, "E");
     str = str.replace(/Ì|Í|Ị|Ỉ|Ĩ/g, "I");
@@ -53,37 +53,37 @@ function removeVietnameseTones(str) {
     str = str.replace(/\u02C6|\u0306|\u031B/g, ""); // ˆ ̆ ̛  Â, Ê, Ă, Ơ, Ư
     // Remove extra spaces
     // Bỏ các khoảng trắng liền nhau
-    str = str.replace(/ + /g," ");
+    str = str.replace(/ + /g, " ");
     str = str.trim();
     // Remove punctuations
     // Bỏ dấu câu, kí tự đặc biệt
     // str = str.replace(/!|@|%|\^|\*|\(|\)|\+|\=|\<|\>|\?|\/|,|\.|\:|\;|\'|\"|\&|\#|\[|\]|~|\$|_|`|-|{|}|\||\\/g," ");
     return str;
 }
-function search(){
-    var name=document.getElementById("searchPro").value;
+function search() {
+    var name = document.getElementById("searchPro").value;
     var category = JSON.parse(localStorage.getItem('category'));
     document.getElementById("headline").innerHTML = "<h3>Sản phẩm</h3>";
-    books=[];
+    books = [];
     //kiem tra tu khoa tim kiem co dau hay khong dau
-    if (name.toLowerCase().includes(removeVietnameseTones(name).toLowerCase())){
-        name=removeVietnameseTones(name).toLowerCase();
+    if (name.toLowerCase().includes(removeVietnameseTones(name).toLowerCase())) {
+        name = removeVietnameseTones(name).toLowerCase();
         for (var i = 0; i < category.length; i++) {
             for (var j = 0; j < category[i].listcategory.length; j++) {
                 for (var k = 0; k < category[i].listcategory[j].books.length; k++) {
-                    var namebook=removeVietnameseTones(category[i].listcategory[j].books[k].name).toLowerCase()
+                    var namebook = removeVietnameseTones(category[i].listcategory[j].books[k].name).toLowerCase()
                     if (namebook.includes(name)) {
                         books.push(category[i].listcategory[j].books[k]);
                     }
                 }
             }
         }
-    }else{
-        name=name.toLowerCase();
+    } else {
+        name = name.toLowerCase();
         for (var i = 0; i < category.length; i++) {
             for (var j = 0; j < category[i].listcategory.length; j++) {
                 for (var k = 0; k < category[i].listcategory[j].books.length; k++) {
-                    var namebook=category[i].listcategory[j].books[k].name.toLowerCase()
+                    var namebook = category[i].listcategory[j].books[k].name.toLowerCase()
                     if (namebook.includes(name)) {
                         books.push(category[i].listcategory[j].books[k]);
                     }
@@ -98,65 +98,65 @@ function search(){
     renderListPage();
     changePage(books);
 }
-function showBtFilter(){
+function showBtFilter() {
     document.getElementById("filterAndSort").setAttribute("style","width: 265px");
-    document.getElementById("container").style.display="block";
+    document.getElementById("container").style.display = "block";
 }
-function closeFilterAndSort(){
+function closeFilterAndSort() {
     document.getElementById("filterAndSort").setAttribute("style","width: 1px");
-    document.getElementById("container").style.display="none";
+    document.getElementById("container").style.display = "none";
 }
-let hiddenSortBy=true;
-let hiddenFilter=true;
-let hiddenPriceFilter=true;
-let filter=false;
-function showSortBy(){
-    const sort=document.getElementById("sort");
-    const options=sort.lastElementChild;
-    if (hiddenSortBy==true){
-        options.setAttribute("style","display: block");
-        hiddenSortBy=false;
-    }else{
-        options.setAttribute("style","display: none");
-        hiddenSortBy=true;
+let hiddenSortBy = true;
+let hiddenFilter = true;
+let hiddenPriceFilter = true;
+let filter = false;
+function showSortBy() {
+    const sort = document.getElementById("sort");
+    const options = sort.lastElementChild;
+    if (hiddenSortBy == true) {
+        options.setAttribute("style", "display: block");
+        hiddenSortBy = false;
+    } else {
+        options.setAttribute("style", "display: none");
+        hiddenSortBy = true;
     }
 }
-function showFilter(){
-    const sort=document.getElementById("filter");
-    const options=sort.lastElementChild;
-    if (hiddenFilter==true){
-        options.setAttribute("style","display: block");
-        hiddenFilter=false;
-    }else{
-        options.setAttribute("style","display: none");
-        hiddenFilter=true;
+function showFilter() {
+    const sort = document.getElementById("filter");
+    const options = sort.lastElementChild;
+    if (hiddenFilter == true) {
+        options.setAttribute("style", "display: block");
+        hiddenFilter = false;
+    } else {
+        options.setAttribute("style", "display: none");
+        hiddenFilter = true;
     }
 }
-function showPriceFilter(){
-    const sort=document.getElementById("filter1");
-    const options=sort.lastElementChild;
-    if (hiddenPriceFilter==true){
-        options.setAttribute("style","display: block");
-        hiddenPriceFilter=false;
+function showPriceFilter() {
+    const sort = document.getElementById("filter1");
+    const options = sort.lastElementChild;
+    if (hiddenPriceFilter == true) {
+        options.setAttribute("style", "display: block");
+        hiddenPriceFilter = false;
     }else{
-        options.setAttribute("style","display: none");
-        hiddenPriceFilter=true;
+        options.setAttribute("style", "display: none");
+        hiddenPriceFilter = true;
     }
 }
-function sortLow_HighPrice(){
+function sortLow_HighPrice() {
     var str = window.location.href;
-    if (filter){
-        books=filteredBooks;
+    if (filter) {
+        books = filteredBooks;
     }
-    for (var i = 0; i < books.length-1; i++){
-        for (var j = i+1; j < books.length; j++){
-            var cost1=books[i].price;
-            var cost2=books[j].price;
-            cost1=cost1.split('VND');
-            cost1=cost1[0].replaceAll(".","");
-            cost2=cost2.split('VND');
-            cost2=cost2[0].replaceAll(".","");
-            if (parseInt(cost1) > parseInt(cost2)){
+    for (var i = 0; i < books.length - 1; i++) {
+        for (var j = i + 1; j < books.length; j++) {
+            var cost1 = books[i].price;
+            var cost2 = books[j].price;
+            cost1 = cost1.split('VND');
+            cost1 = cost1[0].replaceAll(".", "");
+            cost2 = cost2.split('VND');
+            cost2 = cost2[0].replaceAll(".", "");
+            if (parseInt(cost1) > parseInt(cost2)) {
                 var temp = books[i];
                 books[i] = books[j];
                 books[j] = temp;
@@ -164,29 +164,29 @@ function sortLow_HighPrice(){
         }
     }
     closeFilterAndSort();
-    if (str.includes("?")){
+    if (str.includes("?")) {
         renderProduct(books);
-    }else{
+    } else {
         renderBestseller(books);
     }
-    if (filter){
-        books=initialBooks;
+    if (filter) {
+        books = initialBooks;
     }
 }
-function sortHigh_LowPrice(){
+function sortHigh_LowPrice() {
     var str = window.location.href;
-    if (filter){
-        books=filteredBooks;
+    if (filter) {
+        books = filteredBooks;
     }
-    for (var i = 0; i < books.length-1; i++){
-        for (var j = i+1; j < books.length; j++){
-            var cost1=books[i].price;
-            var cost2=books[j].price;
-            cost1=cost1.split('VND');
-            cost1=cost1[0].replaceAll(".","");
-            cost2=cost2.split('VND');
-            cost2=cost2[0].replaceAll(".","");
-            if (parseInt(cost1) < parseInt(cost2)){
+    for (var i = 0; i < books.length - 1; i++) {
+        for (var j = i + 1; j < books.length; j++) {
+            var cost1 = books[i].price;
+            var cost2 = books[j].price;
+            cost1 = cost1.split('VND');
+            cost1 = cost1[0].replaceAll(".", "");
+            cost2 = cost2.split('VND');
+            cost2 = cost2[0].replaceAll(".", "");
+            if (parseInt(cost1) < parseInt(cost2)) {
                 var temp = books[i];
                 books[i] = books[j];
                 books[j] = temp;
@@ -194,25 +194,25 @@ function sortHigh_LowPrice(){
         }
     }
     closeFilterAndSort();
-    if (str.includes("?")){
+    if (str.includes("?")) {
         renderProduct(books);
-    }else{
+    } else {
         renderBestseller(books);
     }
-    if (filter){
-        books=initialBooks;
+    if (filter) {
+        books = initialBooks;
     }
 }
-function filterOption1(){
+function filterOption1() {
     var str = window.location.href;
-    if (str.includes("?")){
-        var temp=[];
-        initialBooks=books;
-        for (var i = 0; i < books.length; i++){
-            var cost1=books[i].price;
-            cost1=cost1.split('VND');
-            cost1=cost1[0].replaceAll(".","");
-            if (parseInt(cost1) < 500000){
+    if (str.includes("?")) {
+        var temp = [];
+        initialBooks = books;
+        for (var i = 0; i < books.length; i++) {
+            var cost1 = books[i].price;
+            cost1 = cost1.split('VND');
+            cost1 = cost1[0].replaceAll(".", "");
+            if (parseInt(cost1) < 500000) {
                 temp.push(books[i]);
             }
         }
@@ -225,16 +225,16 @@ function filterOption1(){
         renderProduct(books);
         renderListPage();
         changePage(books);
-        books=initialBooks;
-        filter=true;
-    }else{
-        var temp=[];
-        initialBooks=books;
-        for (var i = 0; i < books.length; i++){
-            var cost1=books[i].price;
-            cost1=cost1.split('VND');
-            cost1=cost1[0].replaceAll(".","");
-            if (parseInt(cost1) < 500000){
+        books = initialBooks;
+        filter = true;
+    } else {
+        var temp = [];
+        initialBooks = books;
+        for (var i = 0; i < books.length; i++) {
+            var cost1 = books[i].price;
+            cost1 = cost1.split('VND');
+            cost1 = cost1[0].replaceAll(".", "");
+            if (parseInt(cost1) < 500000) {
                 temp.push(books[i]);
             }
         }
@@ -243,19 +243,19 @@ function filterOption1(){
         closeFilterAndSort();
         renderBestseller(books);
         
-        filter=true;
+        filter = true;
     }
 }
-function filterOption2(){
+function filterOption2() {
     var str = window.location.href;
-    if (str.includes("?")){
-        var temp=[];
-        initialBooks=books;
-        for (var i = 0; i < books.length; i++){
-            var cost1=books[i].price;
-            cost1=cost1.split('VND');
-            cost1=cost1[0].replaceAll(".","");
-            if (parseInt(cost1) >= 500000 && parseInt(cost1) <= 1000000){
+    if (str.includes("?")) {
+        var temp = [];
+        initialBooks = books;
+        for (var i = 0; i < books.length; i++) {
+            var cost1 = books[i].price;
+            cost1 = cost1.split('VND');
+            cost1 = cost1[0].replaceAll(".", "");
+            if (parseInt(cost1) >= 500000 && parseInt(cost1) <= 1000000) {
                 temp.push(books[i]);
             }
         }
@@ -268,16 +268,16 @@ function filterOption2(){
         renderProduct(books);
         renderListPage();
         changePage(books);
-        books=initialBooks;
-        filter=true;
-    }else{
-        var temp=[];
-        initialBooks=books;
-        for (var i = 0; i < books.length; i++){
-            var cost1=books[i].price;
-            cost1=cost1.split('VND');
-            cost1=cost1[0].replaceAll(".","");
-            if (parseInt(cost1) >= 500000 && parseInt(cost1) <= 1000000){
+        books = initialBooks;
+        filter = true;
+    } else {
+        var temp = [];
+        initialBooks = books;
+        for (var i = 0; i < books.length; i++) {
+            var cost1 = books[i].price;
+            cost1 = cost1.split('VND');
+            cost1 = cost1[0].replaceAll(".", "");
+            if (parseInt(cost1) >= 500000 && parseInt(cost1) <= 1000000) {
                 temp.push(books[i]);
             }
         }
@@ -290,16 +290,16 @@ function filterOption2(){
     }
     
 }
-function filterOption3(){
+function filterOption3() {
     var str = window.location.href;
-    if (str.includes("?")){
-        var temp=[];
-        initialBooks=books;
-        for (var i = 0; i < books.length; i++){
-            var cost1=books[i].price;
-            cost1=cost1.split('VND');
-            cost1=cost1[0].replaceAll(".","");
-            if (parseInt(cost1) > 1000000){
+    if (str.includes("?")) {
+        var temp = [];
+        initialBooks = books;
+        for (var i = 0; i < books.length; i++) {
+            var cost1 = books[i].price;
+            cost1 = cost1.split('VND');
+            cost1 = cost1[0].replaceAll(".", "");
+            if (parseInt(cost1) > 1000000) {
                 temp.push(books[i]);
             }
         }
@@ -312,16 +312,16 @@ function filterOption3(){
         renderProduct(books);
         renderListPage();
         changePage(books);
-        books=initialBooks;
-        filter=true;
-    }else{
-        var temp=[];
-        initialBooks=books;
-        for (var i = 0; i < books.length; i++){
-            var cost1=books[i].price;
-            cost1=cost1.split('VND');
-            cost1=cost1[0].replaceAll(".","");
-            if (parseInt(cost1) > 1000000){
+        books = initialBooks;
+        filter = true;
+    } else {
+        var temp = [];
+        initialBooks = books;
+        for (var i = 0; i < books.length; i++) {
+            var cost1 = books[i].price;
+            cost1 = cost1.split('VND');
+            cost1 = cost1[0].replaceAll(".", "");
+            if (parseInt(cost1) > 1000000) {
                 temp.push(books[i]);
             }
         }
@@ -329,34 +329,34 @@ function filterOption3(){
         filteredBooks = temp;
         closeFilterAndSort();
         renderBestseller(books);
-        books=initialBooks;
-        filter=true;
+        books = initialBooks;
+        filter = true;
     }
     
 }
-function filterOption4(){
+function filterOption4() {
     var str = window.location.href;
-    if (str.includes("?")){
-        var temp=[];
-        initialBooks=books;
+    if (str.includes("?")) {
+        var temp = [];
+        initialBooks = books;
         var bestseller = JSON.parse(localStorage.getItem('bestseller'));
-        for (var i = 0; i < books.length; i++){
-            for (var j = 0; j<bestseller.length; j++){
-                if (books[i].id == bestseller[j].id){
+        for (var i = 0; i < books.length; i++) {
+            for (var j = 0; j < bestseller.length; j++) {
+                if (books[i].id == bestseller[j].id) {
                     temp.push(books[i]);
                 }
             }
         }
         books = temp;
-        filfilteredBooks = temp;
+        filteredBooks = temp;
         currenPage = 1;
         totalpage = Math.ceil(books.length / perPage)
         getCurrentPage(currenPage, books);
         renderProduct(books);
         renderListPage();
         changePage(books);
-        books=initialBooks;
-        filter=true;
+        books = initialBooks;
+        filter = true;
     }
     closeFilterAndSort();
 }
@@ -951,9 +951,9 @@ function updateQuantity(category) {
     }
     localStorage.setItem('category', JSON.stringify(category));
 }
-function getBestseller(){
+function getBestseller() {
     var bestseller = JSON.parse(localStorage.getItem('bestseller'));
-    books=bestseller;
+    books = bestseller;
     return bestseller;
 }
 function renderBestseller(bestseller) {
@@ -992,7 +992,7 @@ function sub(quantity) {
         a--;
         document.getElementById('plus').disabled = false;
         document.getElementById('sub').disabled = false;
-        document.getElementById('quantity').value =a;
+        document.getElementById('quantity').value = a;
     } else {
         document.getElementById('quantity').value = 0;
         document.getElementById('plus').disabled = false;
@@ -1031,7 +1031,7 @@ function checkQuatity(quantity) {
     }
 }
 let productSelected;
-function getProductSelected(){
+function getProductSelected() {
     return productSelected;
 }
 function showdetailBestseller(products) {
@@ -1083,10 +1083,10 @@ let perPage = 8;
 let start;
 let end;
 let totalpage;
-let books=[];
-let filteredBooks=[];
-let initialBooks=[];
-function getCurrentPage(currenPage,products) {
+let books = [];
+let filteredBooks = [];
+let initialBooks = [];
+function getCurrentPage(currenPage, products) {
     start = (currenPage - 1) * perPage;
     end = currenPage * perPage;
     if (end > products.length)
@@ -1439,20 +1439,20 @@ function loadPage() {
                 renderListPage();
                 changePage(books);
             }
-            if (url[0]=="shoppingcart"){
-                var html='';
-                var user= JSON.parse(localStorage.getItem('userActive'));
+            if (url[0] == "shoppingcart") {
+                var html = '';
+                var user = JSON.parse(localStorage.getItem('userActive'));
                 // check user active
-                if (user == null){
+                if (user == null) {
                     alert("Vui lòng đăng nhập!");
                     location.href="/index.html";
                     return false;
                 }
-                var products=JSON.parse(localStorage.getItem('cart'));
+                var products = JSON.parse(localStorage.getItem('cart'));
                 html += '<div class="headline" id="headline"><h3 style="background-color: rgb(242, 120, 38); color: black;">Giỏ Hàng</h3></div>';
-                if (products.length>0){
+                if (products.length > 0) {
                     html += '<div id="listProductsBuy" >';
-                    for (var i=0; i<products.length;i++){
+                    for (var i = 0; i < products.length;i++) {
                         html += '<ul class="productsBuy">';
                         html += '<li>' + (i+1) + '</li>';
                         html += '<li class="img-Pro">';
@@ -1470,12 +1470,12 @@ function loadPage() {
                     html += '<li><input type="button" value="Mua hàng (' + products.length + ')" onclick="addOrder()"></li>';
                     html += '</ul>';
                     html += '</div>';
-                    document.getElementById("content").innerHTML=html;
+                    document.getElementById("content").innerHTML = html;
                     deteleFromCartPro();
                     return true;
                 }
                 html += '<h1>Bạn chưa chọn sản phẩm nào</h1>';
-                document.getElementById("content").innerHTML=html;
+                document.getElementById("content").innerHTML = html;
                 return true;
             }
         }
@@ -1544,7 +1544,7 @@ function renderListPage() {
     html += '<li id="btprev" class="button-prev-next"><i class="fas fa-chevron-circle-left" onclick="prevButton()"></i></li>';
     html += '<div class="number-page" id="number-page">'
     html += '<li id="active"><b>' + 1 + '</b></li>';
-    if (totalpage <=1){
+    if (totalpage <=1) {
         html += '</div>';
         html += '<li id="btnext" class="button-prev-next"><i class="fas fa-chevron-circle-right" onclick="nextButton()"></i></li>'
     }else{
@@ -1617,28 +1617,28 @@ function showDetail(products) {
         })
     }
 }
-function createCart(){
-    var cart=[];
-    if (localStorage.getItem('cart') == null){
+function createCart() {
+    var cart = [];
+    if (localStorage.getItem('cart') == null) {
         localStorage.setItem('cart', JSON.stringify(cart));
     } 
 }
-function addToCartPro(product){
-    var user= JSON.parse(localStorage.getItem('userActive'));
-    var cart= JSON.parse(localStorage.getItem('cart'));
+function addToCartPro(product) {
+    var user = JSON.parse(localStorage.getItem('userActive'));
+    var cart = JSON.parse(localStorage.getItem('cart'));
     var quantity = document.getElementById("quantity").value;
     // check user active
-    if (user == null){
+    if (user == null) {
         alert("Vui lòng đăng nhập!");
         backFromDiv();
         return false;
     }
-    if (quantity==0){
+    if (quantity == 0) {
         alert("Số lượng sản phẩm không hợp lệ!");
         return false;
     }
-    for (var i=0; i<cart.length; i++){
-        if (cart[i].id == product.id){
+    for (var i = 0; i < cart.length; i++) {
+        if (cart[i].id == product.id) {
             cart[i].quantity = cart[i].quantity + parseInt(document.getElementById("quantity").value);
             localStorage.setItem('cart', JSON.stringify(cart));
             backFromDiv();
@@ -1651,15 +1651,15 @@ function addToCartPro(product){
     backFromDiv();
     return true;
 }
-function deteleFromCartPro(){
+function deteleFromCartPro() {
     var cart = JSON.parse(localStorage.getItem('cart'));
     var itemsInCart = document.querySelectorAll("#deleteitemsinCart");
-    for (var i=0; i<itemsInCart.length; i++){
-        itemsInCart[i].addEventListener("click",()=>{
-            for (var j=i+1; j<cart.length; j++){
-                cart[j-1] = cart[j];
+    for (var i = 0; i < itemsInCart.length; i++) {
+        itemsInCart[i].addEventListener("click", () => {
+            for (var j = i + 1; j < cart.length; j++) {
+                cart[j - 1] = cart[j];
             }
-            cart[length-1] = null;
+            cart[length - 1] = null;
             cart.length = cart.length - 1;
             localStorage.setItem('cart', JSON.stringify(cart));
             loadPage();
@@ -1680,28 +1680,28 @@ function stringToPrice(s) {
     price += " VND";
     return price;
 }
-function total(){
-    var products= JSON.parse(localStorage.getItem('cart'));
-    var price=0;
-    for (var i=0; i<products.length; i++){
-        var cost=products[i].price;
-        cost=cost.split('VND');
-        cost=cost[0].replaceAll(".","");
+function total() {
+    var products = JSON.parse(localStorage.getItem('cart'));
+    var price = 0;
+    for (var i = 0; i < products.length; i++) {
+        var cost = products[i].price;
+        cost = cost.split('VND');
+        cost = cost[0].replaceAll(".", "");
         price += parseInt(cost)*products[i].quantity;
     }
     return stringToPrice(price.toString());
 }
-function createOrder (){
+function createOrder () {
     let orderNoteList;
-    if (JSON.parse(localStorage.getItem('orderNoteList')) == null){
-        orderNoteList=[];
-    localStorage.setItem('orderNoteList', JSON.stringify(orderNoteList));
+    if (JSON.parse(localStorage.getItem('orderNoteList')) == null) {
+        orderNoteList = [];
+        localStorage.setItem('orderNoteList', JSON.stringify(orderNoteList));
     }
 }
-function updateQuantityItems(){
-    var cart= JSON.parse(localStorage.getItem('cart'));
-    var category= JSON.parse(localStorage.getItem('category'));
-    for (var h=0; h<cart.length; h++){
+function updateQuantityItems() {
+    var cart = JSON.parse(localStorage.getItem('cart'));
+    var category = JSON.parse(localStorage.getItem('category'));
+    for (var h = 0; h < cart.length; h++) {
         for (var i = 0; i < category.length; i++) {
             for (var j = 0; j < category[i].listcategory.length; j++) {
                 for (var k = 0; k < category[i].listcategory[j].books.length; k++) {
@@ -1715,12 +1715,12 @@ function updateQuantityItems(){
     }
     localStorage.setItem('category', JSON.stringify(category));
 }
-function addOrder(){
-    var userActive= JSON.parse(localStorage.getItem('userActive'));
-    var cart= JSON.parse(localStorage.getItem('cart'));
-    var orderNoteList= JSON.parse(localStorage.getItem('orderNoteList'));
+function addOrder() {
+    var userActive = JSON.parse(localStorage.getItem('userActive'));
+    var cart = JSON.parse(localStorage.getItem('cart'));
+    var orderNoteList = JSON.parse(localStorage.getItem('orderNoteList'));
     let orderNote = {
-        orderID: orderNoteList.length+1,
+        orderID: orderNoteList.length + 1,
         userID: userActive.id,
         customerName: userActive.name,
         date: new Date().toJSON().slice(0, 10),
@@ -1732,8 +1732,8 @@ function addOrder(){
     orderNoteList.push(orderNote);
     localStorage.setItem('orderNoteList', JSON.stringify(orderNoteList));
     updateQuantityItems();
-    cart=[];
+    cart = [];
     localStorage.setItem('cart', JSON.stringify(cart));
     alert("Cảm ơn bạn đã mua hàng!!");
-    location.href="/";
+    location.href = "/";
 }

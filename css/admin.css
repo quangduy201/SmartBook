@@ -96,11 +96,11 @@ html {
 	background-color: rgb(218, 216, 216);
 	margin-bottom: 20px;
 }
-.orderNoteFilter{
+.orderNoteFilter {
 	height: 30px;
 	line-height: 30px;
 }
-.orderNoteFilter button{
+.orderNoteFilter button {
 	cursor: pointer;
 	margin-left: 20px;
 	width: 50px;
@@ -144,21 +144,21 @@ html {
 .detailList td:last-child {
 	border-right: black solid 0.5px;
 }
-#billList .detailList td{
+#billList .detailList td {
 	color: white;
 	border-top: black solid 0.5px;
 	border-bottom: none;
 }
-#billList tr th{
+#billList tr th {
 	border-bottom: none;
 }
-#billList{
+#billList {
 	border-bottom: black solid 0.5px;
 }
-#billList th{
+#billList th {
 	border-top: black solid 0.5px;
 }
-#billList .status select, #usersList .status select{
+#billList .status select, #usersList .status select {
 	border: black solid 1px;
 	border-radius: 5px;
 	text-align: center;
@@ -166,7 +166,7 @@ html {
 	margin-bottom: 10px;
 	height: 30px;
 }
-#billList .detailList td:last-child{
+#billList .detailList td:last-child {
 	cursor: pointer;
 }
 .id,.name,.type,.quantity,.cost,.edit,.status,.email,.date,.totalPrice,.detailBill {
@@ -206,7 +206,7 @@ html {
 	height: 200px;
 	border-radius: 50%;
 }
-#totalBooksSale{
+#totalBooksSale {
 	width: 500px;
 	padding-left: 10px;
 	background-color: rgb(218, 216, 216);
@@ -220,43 +220,43 @@ html {
 	margin-top: 10px;
 	margin-bottom: 20px;
 }
-#note #red .color{
+#note #red .color {
 	margin: auto;
 	background-color: red;
 	width: 15px;
 	height: 15px;
 }
-#note #yellow .color{
+#note #yellow .color {
 	margin: auto;
 	background-color: yellow;
 	width: 15px;
 	height: 15px;
 }
-#note #blue .color{
+#note #blue .color {
 	margin: auto;
 	background-color: blue;
 	width: 15px;
 	height: 15px;
 }
-#note #green .color{
+#note #green .color {
 	margin: auto;
 	background-color: green;
 	width: 15px;
 	height: 15px;
 }
-#note #purple .color{
+#note #purple .color {
 	margin: auto;
 	background-color: purple;
 	width: 15px;
 	height: 15px;
 }
-#note #pink .color{
+#note #pink .color {
 	margin: auto;
 	background-color: pink;
 	width: 15px;
 	height: 15px;
 }
-#note #gray .color{
+#note #gray .color {
 	margin: auto;
 	background-color: gray;
 	width: 15px;
@@ -358,7 +358,7 @@ html {
 	width: 100%;
 	clear: both;
 }
-.btAddPro input, .btEditPro input, .deleteItem input{
+.btAddPro input, .btEditPro input, .deleteItem input {
 	border: 0px;
 	color: #fff;
 	text-transform: uppercase;
@@ -436,27 +436,27 @@ html {
     background-color: rgba(0, 0, 0, 0.296);
 }
 /*detail bill*/
-#listProductsBuy{
+#listProductsBuy {
     border: black solid 0.5px;
 }
-#listProductsBuy .productsBuy{
+#listProductsBuy .productsBuy {
     width: 100%;
     display: flex;
     list-style: none;
     text-align: center;
     border-bottom: black solid 0.5px;
 }
-#listProductsBuy ul:last-child{
+#listProductsBuy ul:last-child {
 
     border-bottom: none;
 }
-#listProductsBuy .productsBuy li{
+#listProductsBuy .productsBuy li {
     margin: auto;
     font-weight: 500;
     font-size: 15px;
     flex-basis: 16.667%;
 }
-#listProductsBuy .img-Pro{
+#listProductsBuy .img-Pro {
     padding-top: 5px;
     padding-bottom: 5px;
     width: 100%;
@@ -464,15 +464,15 @@ html {
 #listProductsBuy .img-Pro img {
     width: 40%;
 }
-#listProductsBuy .productsBuy i{
+#listProductsBuy .productsBuy i {
     font-size: 20px;
     cursor: pointer;
 }
-#listProductsBuy .productsBuy i:hover{
+#listProductsBuy .productsBuy i:hover {
     color: rgb(242, 120, 38);
     padding-bottom: 5px;
 }
-#nameCustomer h3{
+#nameCustomer h3 {
 	margin-top: 10px;
 	margin-left: 10px;
 }

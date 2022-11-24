@@ -228,7 +228,7 @@ input::-webkit-inner-spin-button {
     color: #555;
     font-weight: 600;
 }
-#content .btFilter{
+#content .btFilter {
     cursor: pointer;
     display: block;
     margin-left: 15px;
@@ -238,10 +238,10 @@ input::-webkit-inner-spin-button {
     height: 40px;
     line-height: 40px;
 }
-#content .filter i{
+#content .filter i {
     font-size: 18px ;
 }
-.filterAndSort{
+.filterAndSort {
     top: 75px;
     z-index: 1;
     border: black solid 1px;
@@ -253,10 +253,10 @@ input::-webkit-inner-spin-button {
     transition: 0.1s;
 }
 .filterAndSort .tittleFilter,
-.filterAndSort .mainFilter .filter .options .filter1 .tittleFilter1{
+.filterAndSort .mainFilter .filter .options .filter1 .tittleFilter1 {
     border-bottom: #bebebe solid 0.5px;
 }
-.filterAndSort .tittleFilter h4{
+.filterAndSort .tittleFilter h4 {
     display: flex;
     justify-content: space-between;
     padding-top: 20px;
@@ -264,11 +264,11 @@ input::-webkit-inner-spin-button {
     padding-bottom: 20px;
     font-size: 20px;
 }
-.filterAndSort .tittleFilter h4 span{
+.filterAndSort .tittleFilter h4 span {
     line-height: 24px;
     height: 24px;
 }
-.filterAndSort .tittleFilter h4 i{
+.filterAndSort .tittleFilter h4 i {
     line-height: 24px;
     height: 24px;
     font-size: 25px;
@@ -277,7 +277,7 @@ input::-webkit-inner-spin-button {
 }
 .filterAndSort .mainFilter .sort .options .sort1,
 .filterAndSort .mainFilter .sort .options .sort2,
-.filterAndSort .mainFilter .filter .options .filter2{
+.filterAndSort .mainFilter .filter .options .filter2 {
     padding-top: 20px;
     padding-left: 20px;
     padding-bottom: 20px;
@@ -287,10 +287,10 @@ input::-webkit-inner-spin-button {
     
 }
 .filterAndSort .mainFilter .sort .options,
-.filterAndSort .mainFilter .filter .options{
+.filterAndSort .mainFilter .filter .options {
     display: none;
 }
-.filterAndSort .mainFilter .filter .options .filter1 .tittleFilter1{
+.filterAndSort .mainFilter .filter .options .filter1 .tittleFilter1 {
     display: flex;
     justify-content: space-between;
     padding-top: 20px;
@@ -298,13 +298,13 @@ input::-webkit-inner-spin-button {
     padding-bottom: 20px;
     text-transform: uppercase;
 }
-.tittleFilter1 i{
+.tittleFilter1 i {
     line-height: 24px;
     height: 24px;
     padding-right: 20px;
     cursor: pointer;
 }
-.filter1 .option1 div{
+.filter1 .option1 div {
     padding-top: 20px;
     padding-left: 20px;
     padding-bottom: 20px;
@@ -312,7 +312,7 @@ input::-webkit-inner-spin-button {
     text-transform: uppercase;
     cursor: pointer;
 }
-.filter1 .option1{
+.filter1 .option1 {
     display: none;
 }
 /* PRODUCTS */
@@ -556,7 +556,7 @@ input::-webkit-inner-spin-button {
     float: left;
     padding-bottom: 20px;
 }
-#detail-pro{  
+#detail-pro {
     padding-left: 10px;
     margin-top: 10%;
     margin-bottom: 50px;
@@ -566,7 +566,7 @@ input::-webkit-inner-spin-button {
 #detail h2 {
     color: black;
 }
-#detail ul li:first-child{
+#detail ul li:first-child {
     padding-right: 10px;
 }
 #detail-pro ul {
@@ -579,7 +579,7 @@ input::-webkit-inner-spin-button {
     text-align: center;
     width: 25px;
 }
-#detail-pro h3{
+#detail-pro h3 {
     color: red;
 }
 #detail #addtocart div {
@@ -598,28 +598,28 @@ input::-webkit-inner-spin-button {
     background-color: white;
 }
 /*shopping cart*/
-#listProductsBuy{
+#listProductsBuy {
     border: black solid 0.5px;
     margin-bottom: 40px;
 }
-#listProductsBuy .productsBuy{
+#listProductsBuy .productsBuy {
     width: 100%;
     display: flex;
     list-style: none;
     text-align: center;
     border-bottom: black solid 0.5px;
 }
-#listProductsBuy ul:last-child{
+#listProductsBuy ul:last-child {
 
     border-bottom: none;
 }
-#listProductsBuy .productsBuy li{
+#listProductsBuy .productsBuy li {
     margin: auto;
     font-weight: 500;
     font-size: 15px;
     flex-basis: 16.667%;
 }
-#listProductsBuy .img-Pro{
+#listProductsBuy .img-Pro {
     padding-top: 5px;
     padding-bottom: 5px;
     width: 100%;
@@ -627,34 +627,34 @@ input::-webkit-inner-spin-button {
 #listProductsBuy .img-Pro img {
     width: 40%;
 }
-#listProductsBuy .productsBuy i{
+#listProductsBuy .productsBuy i {
     font-size: 20px;
     cursor: pointer;
 }
-#listProductsBuy .productsBuy i:hover{
+#listProductsBuy .productsBuy i:hover {
     color: rgb(242, 120, 38);
     padding-bottom: 5px;
 }
-#buy{
+#buy {
     padding-top: 10px;
     padding-bottom: 10px;
     width: 20%;
     margin: auto;
 }
-#buy ul{
+#buy ul {
     list-style: none;
     display: flex;
     text-align: center;
     width: 100%;
 }
-#buy ul li{
+#buy ul li {
     margin: auto;
 }
-#buy ul li:first-child{
+#buy ul li:first-child {
     font-size: 18px;
     font-weight: 400;
 }
-#buy ul li input{
+#buy ul li input {
     width: 100%;
     height: 40px;
     font-size: 15px;
@@ -663,7 +663,7 @@ input::-webkit-inner-spin-button {
     background-color: rgb(242, 120, 38);
     border: rgb(242, 120, 38) solid 2px;
 }
-#buy ul li input:hover{
+#buy ul li input:hover {
     margin-bottom: 5px;
     background-color: rgb(241, 129, 55);
     border: black solid 2px;
