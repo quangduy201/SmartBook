@@ -13,7 +13,7 @@ function createAdmin() {
         localStorage.setItem('user', JSON.stringify(userArray));
     }
 }
-function createNewUser(name,username, email, password) {
+function createNewUser(name, username, email, password) {
     var userArray = JSON.parse(localStorage.getItem('user'));
     var user = {
         name:     name.value,
@@ -97,9 +97,11 @@ function checkLogin() {
     var userArray = JSON.parse(localStorage.getItem('user'));
     for (var i = 0; i < userArray.length; i++) {
         if (username == userArray[i].username && password == userArray[i].password) {
-            var user = userArray[i];
-            localStorage.setItem('userActive', JSON.stringify(user));
-            return true;
+            if (userArray[i].status == "enabled") {
+                var user = userArray[i];
+                localStorage.setItem('userActive', JSON.stringify(user));
+                return true;
+            }
         }
     }
     return false

@@ -37,7 +37,7 @@
                 </li>
                 <li>
                     <i class="fas fa-solid fa-circle-info" title="Quản lí thông tin"></i>
-                    <a href="/admin.html?quanlithongtin">Quản lí thông tin</a>
+                    <a href="/admin.html?thongke">Thống kê</a>
                 </li>
                 <li>
                     <i class="fas fa-solid fa-right-from-bracket" title="Đăng xuất"></i>
@@ -137,7 +137,7 @@
                     <input class="inp" type="text" id="price-Editproduct">
                 </div>
                 <div class="deleteItem">
-                    <input  type="submit" value="Xóa sản phẩm">
+                    <input  type="button" value="Xóa sản phẩm" onclick="deleteProduct();">
                 </div>
             </div>
             <div class="img">
@@ -154,6 +154,14 @@
                 <input type="submit" value="Lưu sản phẩm">
             </div>
         </form>
+    </div>
+    <div class="showOrder" id="showOrder">
+        <div id="close">
+            <i class="fa-solid fa-xmark" onclick="backFromDiv()"></i>
+        </div>
+        <div class="detailOrder" id="detailOrder">
+
+        </div>
     </div>
 </body>
 </html>

@@ -92,11 +92,24 @@ html {
 	text-align: center;
 	margin-left: 85px;
 }
-.title {
+.title, .orderNoteFilter {
 	background-color: rgb(218, 216, 216);
 	margin-bottom: 20px;
 }
-#productsList, #usersList {
+.orderNoteFilter {
+	height: 30px;
+	line-height: 30px;
+}
+.orderNoteFilter button {
+	cursor: pointer;
+	margin-left: 20px;
+	width: 50px;
+	padding-top: 5px;
+	line-height: 20px;
+	background-color: rgb(242, 120, 38);
+	border: black solid 0.5px;
+}
+#productsList, #usersList, #billList {
 	margin: auto;
 	border-spacing: 0px;
 	border: black solid 0.5px;
@@ -131,8 +144,32 @@ html {
 .detailList td:last-child {
 	border-right: black solid 0.5px;
 }
-
-.id,.name,.type,.cost,.edit,.status,.email {
+#billList .detailList td {
+	color: white;
+	border-top: black solid 0.5px;
+	border-bottom: none;
+}
+#billList tr th {
+	border-bottom: none;
+}
+#billList {
+	border-bottom: black solid 0.5px;
+}
+#billList th {
+	border-top: black solid 0.5px;
+}
+#billList .status select, #usersList .status select {
+	border: black solid 1px;
+	border-radius: 5px;
+	text-align: center;
+	margin-top: 10px;
+	margin-bottom: 10px;
+	height: 30px;
+}
+#billList .detailList td:last-child {
+	cursor: pointer;
+}
+.id,.name,.type,.quantity,.cost,.edit,.status,.email,.date,.totalPrice,.detailBill {
 	padding-left: 15px;
 	padding-right: 15px;
 }
@@ -163,8 +200,70 @@ html {
     display: none;
     background-color: rgba(0, 0, 0, 0.7);
 }
+#circle {
+	margin: auto;
+	width: 200px;
+	height: 200px;
+	border-radius: 50%;
+}
+#totalBooksSale {
+	width: 500px;
+	padding-left: 10px;
+	background-color: rgb(218, 216, 216);
+	text-align: left;
+	margin: auto;
+}
+#note #red, #note #yellow, #note #blue, #note #green, #note #purple, #note #pink,#note #gray{
+	display: inline-flex;
+	height: 20px;
+	line-height: 20px;
+	margin-top: 10px;
+	margin-bottom: 20px;
+}
+#note #red .color {
+	margin: auto;
+	background-color: red;
+	width: 15px;
+	height: 15px;
+}
+#note #yellow .color {
+	margin: auto;
+	background-color: yellow;
+	width: 15px;
+	height: 15px;
+}
+#note #blue .color {
+	margin: auto;
+	background-color: blue;
+	width: 15px;
+	height: 15px;
+}
+#note #green .color {
+	margin: auto;
+	background-color: green;
+	width: 15px;
+	height: 15px;
+}
+#note #purple .color {
+	margin: auto;
+	background-color: purple;
+	width: 15px;
+	height: 15px;
+}
+#note #pink .color {
+	margin: auto;
+	background-color: pink;
+	width: 15px;
+	height: 15px;
+}
+#note #gray .color {
+	margin: auto;
+	background-color: gray;
+	width: 15px;
+	height: 15px;
+}
 /**/
-.addProduct, .editProduct {
+.addProduct, .editProduct, .showOrder, .piechart {
 	color: #fff;
 	font-family: 'Open Sans', sans-serif;
     position: fixed;
@@ -259,7 +358,7 @@ html {
 	width: 100%;
 	clear: both;
 }
-.btAddPro input, .btEditPro input, .deleteItem input{
+.btAddPro input, .btEditPro input, .deleteItem input {
 	border: 0px;
 	color: #fff;
 	text-transform: uppercase;
@@ -335,4 +434,45 @@ html {
 .number-page li:hover {
     cursor: pointer;
     background-color: rgba(0, 0, 0, 0.296);
+}
+/*detail bill*/
+#listProductsBuy {
+    border: black solid 0.5px;
+}
+#listProductsBuy .productsBuy {
+    width: 100%;
+    display: flex;
+    list-style: none;
+    text-align: center;
+    border-bottom: black solid 0.5px;
+}
+#listProductsBuy ul:last-child {
+
+    border-bottom: none;
+}
+#listProductsBuy .productsBuy li {
+    margin: auto;
+    font-weight: 500;
+    font-size: 15px;
+    flex-basis: 16.667%;
+}
+#listProductsBuy .img-Pro {
+    padding-top: 5px;
+    padding-bottom: 5px;
+    width: 100%;
+}
+#listProductsBuy .img-Pro img {
+    width: 40%;
+}
+#listProductsBuy .productsBuy i {
+    font-size: 20px;
+    cursor: pointer;
+}
+#listProductsBuy .productsBuy i:hover {
+    color: rgb(242, 120, 38);
+    padding-bottom: 5px;
+}
+#nameCustomer h3 {
+	margin-top: 10px;
+	margin-left: 10px;
 }

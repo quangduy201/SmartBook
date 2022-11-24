@@ -32,6 +32,334 @@ function nextBanner() {
     next = 1;
     runBanner();
 }
+function removeVietnameseTones(str) {
+    str = str.replace(/à|á|ạ|ả|ã|â|ầ|ấ|ậ|ẩ|ẫ|ă|ằ|ắ|ặ|ẳ|ẵ/g, "a");
+    str = str.replace(/è|é|ẹ|ẻ|ẽ|ê|ề|ế|ệ|ể|ễ/g, "e");
+    str = str.replace(/ì|í|ị|ỉ|ĩ/g, "i");
+    str = str.replace(/ò|ó|ọ|ỏ|õ|ô|ồ|ố|ộ|ổ|ỗ|ơ|ờ|ớ|ợ|ở|ỡ/g, "o");
+    str = str.replace(/ù|ú|ụ|ủ|ũ|ư|ừ|ứ|ự|ử|ữ/g, "u");
+    str = str.replace(/ỳ|ý|ỵ|ỷ|ỹ/g, "y");
+    str = str.replace(/đ/g, "d");
+    str = str.replace(/À|Á|Ạ|Ả|Ã|Â|Ầ|Ấ|Ậ|Ẩ|Ẫ|Ă|Ằ|Ắ|Ặ|Ẳ|Ẵ/g, "A");
+    str = str.replace(/È|É|Ẹ|Ẻ|Ẽ|Ê|Ề|Ế|Ệ|Ể|Ễ/g, "E");
+    str = str.replace(/Ì|Í|Ị|Ỉ|Ĩ/g, "I");
+    str = str.replace(/Ò|Ó|Ọ|Ỏ|Õ|Ô|Ồ|Ố|Ộ|Ổ|Ỗ|Ơ|Ờ|Ớ|Ợ|Ở|Ỡ/g, "O");
+    str = str.replace(/Ù|Ú|Ụ|Ủ|Ũ|Ư|Ừ|Ứ|Ự|Ử|Ữ/g, "U");
+    str = str.replace(/Ỳ|Ý|Ỵ|Ỷ|Ỹ/g, "Y");
+    str = str.replace(/Đ/g, "D");
+    // Some system encode vietnamese combining accent as individual utf-8 characters
+    // Một vài bộ encode coi các dấu mũ, dấu chữ như một kí tự riêng biệt nên thêm hai dòng này
+    str = str.replace(/\u0300|\u0301|\u0303|\u0309|\u0323/g, ""); // ̀ ́ ̃ ̉ ̣  huyền, sắc, ngã, hỏi, nặng
+    str = str.replace(/\u02C6|\u0306|\u031B/g, ""); // ˆ ̆ ̛  Â, Ê, Ă, Ơ, Ư
+    // Remove extra spaces
+    // Bỏ các khoảng trắng liền nhau
+    str = str.replace(/ + /g, " ");
+    str = str.trim();
+    // Remove punctuations
+    // Bỏ dấu câu, kí tự đặc biệt
+    // str = str.replace(/!|@|%|\^|\*|\(|\)|\+|\=|\<|\>|\?|\/|,|\.|\:|\;|\'|\"|\&|\#|\[|\]|~|\$|_|`|-|{|}|\||\\/g," ");
+    return str;
+}
+function search() {
+    var name = document.getElementById("searchPro").value;
+    var category = JSON.parse(localStorage.getItem('category'));
+    document.getElementById("headline").innerHTML = "<h3>Sản phẩm</h3>";
+    books = [];
+    //kiem tra tu khoa tim kiem co dau hay khong dau
+    if (name.toLowerCase().includes(removeVietnameseTones(name).toLowerCase())) {
+        name = removeVietnameseTones(name).toLowerCase();
+        for (var i = 0; i < category.length; i++) {
+            for (var j = 0; j < category[i].listcategory.length; j++) {
+                for (var k = 0; k < category[i].listcategory[j].books.length; k++) {
+                    var namebook = removeVietnameseTones(category[i].listcategory[j].books[k].name).toLowerCase()
+                    if (namebook.includes(name)) {
+                        books.push(category[i].listcategory[j].books[k]);
+                    }
+                }
+            }
+        }
+    } else {
+        name = name.toLowerCase();
+        for (var i = 0; i < category.length; i++) {
+            for (var j = 0; j < category[i].listcategory.length; j++) {
+                for (var k = 0; k < category[i].listcategory[j].books.length; k++) {
+                    var namebook = category[i].listcategory[j].books[k].name.toLowerCase()
+                    if (namebook.includes(name)) {
+                        books.push(category[i].listcategory[j].books[k]);
+                    }
+                }
+            }
+        }
+    }
+    currenPage = 1;
+    totalpage = Math.ceil(books.length / perPage)
+    getCurrentPage(currenPage, books);
+    renderProduct(books);
+    renderListPage();
+    changePage(books);
+}
+function showBtFilter() {
+    document.getElementById("filterAndSort").setAttribute("style","width: 265px");
+    document.getElementById("container").style.display = "block";
+}
+function closeFilterAndSort() {
+    document.getElementById("filterAndSort").setAttribute("style","width: 1px");
+    document.getElementById("container").style.display = "none";
+}
+let hiddenSortBy = true;
+let hiddenFilter = true;
+let hiddenPriceFilter = true;
+let filter = false;
+function showSortBy() {
+    const sort = document.getElementById("sort");
+    const options = sort.lastElementChild;
+    if (hiddenSortBy == true) {
+        options.setAttribute("style", "display: block");
+        hiddenSortBy = false;
+    } else {
+        options.setAttribute("style", "display: none");
+        hiddenSortBy = true;
+    }
+}
+function showFilter() {
+    const sort = document.getElementById("filter");
+    const options = sort.lastElementChild;
+    if (hiddenFilter == true) {
+        options.setAttribute("style", "display: block");
+        hiddenFilter = false;
+    } else {
+        options.setAttribute("style", "display: none");
+        hiddenFilter = true;
+    }
+}
+function showPriceFilter() {
+    const sort = document.getElementById("filter1");
+    const options = sort.lastElementChild;
+    if (hiddenPriceFilter == true) {
+        options.setAttribute("style", "display: block");
+        hiddenPriceFilter = false;
+    }else{
+        options.setAttribute("style", "display: none");
+        hiddenPriceFilter = true;
+    }
+}
+function sortLow_HighPrice() {
+    var str = window.location.href;
+    if (filter) {
+        books = filteredBooks;
+    }
+    for (var i = 0; i < books.length - 1; i++) {
+        for (var j = i + 1; j < books.length; j++) {
+            var cost1 = books[i].price;
+            var cost2 = books[j].price;
+            cost1 = cost1.split('VND');
+            cost1 = cost1[0].replaceAll(".", "");
+            cost2 = cost2.split('VND');
+            cost2 = cost2[0].replaceAll(".", "");
+            if (parseInt(cost1) > parseInt(cost2)) {
+                var temp = books[i];
+                books[i] = books[j];
+                books[j] = temp;
+            }
+        }
+    }
+    closeFilterAndSort();
+    if (str.includes("?")) {
+        renderProduct(books);
+    } else {
+        renderBestseller(books);
+    }
+    if (filter) {
+        books = initialBooks;
+    }
+}
+function sortHigh_LowPrice() {
+    var str = window.location.href;
+    if (filter) {
+        books = filteredBooks;
+    }
+    for (var i = 0; i < books.length - 1; i++) {
+        for (var j = i + 1; j < books.length; j++) {
+            var cost1 = books[i].price;
+            var cost2 = books[j].price;
+            cost1 = cost1.split('VND');
+            cost1 = cost1[0].replaceAll(".", "");
+            cost2 = cost2.split('VND');
+            cost2 = cost2[0].replaceAll(".", "");
+            if (parseInt(cost1) < parseInt(cost2)) {
+                var temp = books[i];
+                books[i] = books[j];
+                books[j] = temp;
+            }
+        }
+    }
+    closeFilterAndSort();
+    if (str.includes("?")) {
+        renderProduct(books);
+    } else {
+        renderBestseller(books);
+    }
+    if (filter) {
+        books = initialBooks;
+    }
+}
+function filterOption1() {
+    var str = window.location.href;
+    if (str.includes("?")) {
+        var temp = [];
+        initialBooks = books;
+        for (var i = 0; i < books.length; i++) {
+            var cost1 = books[i].price;
+            cost1 = cost1.split('VND');
+            cost1 = cost1[0].replaceAll(".", "");
+            if (parseInt(cost1) < 500000) {
+                temp.push(books[i]);
+            }
+        }
+        books = temp;
+        filteredBooks = temp;
+        closeFilterAndSort();
+        currenPage = 1;
+        totalpage = Math.ceil(books.length / perPage)
+        getCurrentPage(currenPage, books);
+        renderProduct(books);
+        renderListPage();
+        changePage(books);
+        books = initialBooks;
+        filter = true;
+    } else {
+        var temp = [];
+        initialBooks = books;
+        for (var i = 0; i < books.length; i++) {
+            var cost1 = books[i].price;
+            cost1 = cost1.split('VND');
+            cost1 = cost1[0].replaceAll(".", "");
+            if (parseInt(cost1) < 500000) {
+                temp.push(books[i]);
+            }
+        }
+        books = temp;
+        filteredBooks = temp;
+        closeFilterAndSort();
+        renderBestseller(books);
+        
+        filter = true;
+    }
+}
+function filterOption2() {
+    var str = window.location.href;
+    if (str.includes("?")) {
+        var temp = [];
+        initialBooks = books;
+        for (var i = 0; i < books.length; i++) {
+            var cost1 = books[i].price;
+            cost1 = cost1.split('VND');
+            cost1 = cost1[0].replaceAll(".", "");
+            if (parseInt(cost1) >= 500000 && parseInt(cost1) <= 1000000) {
+                temp.push(books[i]);
+            }
+        }
+        books = temp;
+        filteredBooks = temp;
+        closeFilterAndSort();
+        currenPage = 1;
+        totalpage = Math.ceil(books.length / perPage)
+        getCurrentPage(currenPage, books);
+        renderProduct(books);
+        renderListPage();
+        changePage(books);
+        books = initialBooks;
+        filter = true;
+    } else {
+        var temp = [];
+        initialBooks = books;
+        for (var i = 0; i < books.length; i++) {
+            var cost1 = books[i].price;
+            cost1 = cost1.split('VND');
+            cost1 = cost1[0].replaceAll(".", "");
+            if (parseInt(cost1) >= 500000 && parseInt(cost1) <= 1000000) {
+                temp.push(books[i]);
+            }
+        }
+        books = temp;
+        filteredBooks = temp;
+        closeFilterAndSort();
+        renderBestseller(books);
+        books=initialBooks;
+        filter=true;
+    }
+    
+}
+function filterOption3() {
+    var str = window.location.href;
+    if (str.includes("?")) {
+        var temp = [];
+        initialBooks = books;
+        for (var i = 0; i < books.length; i++) {
+            var cost1 = books[i].price;
+            cost1 = cost1.split('VND');
+            cost1 = cost1[0].replaceAll(".", "");
+            if (parseInt(cost1) > 1000000) {
+                temp.push(books[i]);
+            }
+        }
+        books = temp;
+        filteredBooks = temp;
+        closeFilterAndSort();
+        currenPage = 1;
+        totalpage = Math.ceil(books.length / perPage)
+        getCurrentPage(currenPage, books);
+        renderProduct(books);
+        renderListPage();
+        changePage(books);
+        books = initialBooks;
+        filter = true;
+    } else {
+        var temp = [];
+        initialBooks = books;
+        for (var i = 0; i < books.length; i++) {
+            var cost1 = books[i].price;
+            cost1 = cost1.split('VND');
+            cost1 = cost1[0].replaceAll(".", "");
+            if (parseInt(cost1) > 1000000) {
+                temp.push(books[i]);
+            }
+        }
+        books = temp;
+        filteredBooks = temp;
+        closeFilterAndSort();
+        renderBestseller(books);
+        books = initialBooks;
+        filter = true;
+    }
+    
+}
+function filterOption4() {
+    var str = window.location.href;
+    if (str.includes("?")) {
+        var temp = [];
+        initialBooks = books;
+        var bestseller = JSON.parse(localStorage.getItem('bestseller'));
+        for (var i = 0; i < books.length; i++) {
+            for (var j = 0; j < bestseller.length; j++) {
+                if (books[i].id == bestseller[j].id) {
+                    temp.push(books[i]);
+                }
+            }
+        }
+        books = temp;
+        filteredBooks = temp;
+        currenPage = 1;
+        totalpage = Math.ceil(books.length / perPage)
+        getCurrentPage(currenPage, books);
+        renderProduct(books);
+        renderListPage();
+        changePage(books);
+        books = initialBooks;
+        filter = true;
+    }
+    closeFilterAndSort();
+}
 window.onscroll = function() {showbacktop()};
 function showbacktop() {
     if (document.body.scrollTop > 500 || document.documentElement.scrollTop > 500) {
@@ -48,16 +376,39 @@ function showLogin() {
     document.getElementById("container").style.display = "block";
     document.getElementById("login").style.display = "block";
     document.getElementById("signup").style.display = "none";
+    document.getElementById("wrapper").style.display = "none";
 }
 function showSignUp() {
     document.getElementById("login").style.display = "none";
     document.getElementById("signup").style.display = "block";
 }
-function backFromLogin() {
-    document.getElementById("container").style.display = "none";
-    document.getElementById("login").style.display = "none";
-    document.getElementById("signup").style.display = "none";
-    document.getElementById("wrapper").style.display = "none";
+function createDevice() {
+    if (JSON.parse(localStorage.getItem('category')) != null)
+        return;
+    const devices = [
+        {id:1, name:"Dụng cụ học sinh", quantity:0, listcategory: [
+            {id:"BV", name:"Bút viết", quantity:0, devices:[]},
+            {id:"T", name:"Tẩy", quantity:0, devices:[]},
+            {id:"TK", name:"Thước kẻ", quantity:0, devices:[]},
+            {id:"MTCT", name:"Máy tính cầm tay", quantity:0, devices:[]},
+        ]},
+        {id:2, name:"Dụng cụ văn phòng", quantity:0, listcategory: [
+            {id:"NOTE", name:"Sổ tay/Ghi chú", quantity:0, devices:[]},
+            {id:"TUI", name:"Túi/Bìa đụng hồ sơ", quantity:0, devices:[]},
+            {id:"CD", name:"Cắt/Dán", quantity:0, devices:[]},
+            {id:"KHVP", name:"Khác", quantity:0, devices:[]},
+        ]},
+        {id:3, name:"Dụng cụ vẽ", quantity:0, listcategory: [
+            {id:"BV", name:"Bảng vẽ", quantity:0, devices:[]},
+            {id:"BUV", name:"Bút vẽ", quantity:0, devices:[]},
+            {id:"BUM", name:"Bút màu", quantity:0, devices:[]},
+            {id:"MN", name:"Màu nước", quantity:0, devices:[]},
+            {id:"CV", name:"Cọ vẽ", quantity:0, devices:[]},
+            {id:"KHVE", name:"Khác", quantity:0, devices:[]},
+        ]},
+        {id:4, name:"Khác", quantity:0, listcategory: []},
+    ]
+    
 }
 function createBook() {
     if (JSON.parse(localStorage.getItem('category')) != null)
@@ -435,7 +786,7 @@ function createBook() {
     
             ]},
         ]},
-        {id:"6", name:"Lịch sử", quantity:0, listcategory: [
+        {id:6, name:"Lịch sử", quantity:0, listcategory: [
             {id:"VN", name:"Lịch sử Việt Nam", quantity:0, books:[
                 {id:"VN1", name:"Lịch Sử Việt Nam Từ Nguồn Gốc Đến Thế Kỷ XIX",cat:null,price:"175.000"+" VND",quantity:10,image:"assets/images/product/Sach/LichSu/VietNam/LSu2.png"},
                 {id:"VN2", name:"Lịch Sử Nhà Tù Côn Đảo 1862 - 1975",cat:null,price:"120.000"+" VND",quantity:10,image:"assets/images/product/Sach/LichSu/VietNam/LSu4.jpeg"},
@@ -568,9 +919,6 @@ function createBestSeller() {
     bestseller.push(category[5].listcategory[0].books[0]);
     localStorage.setItem('bestseller', JSON.stringify(bestseller));
 }
-function addBill() {
-    // cái này từ từ e tìm hiểu :))
-}
 function updateQuantity(category) {
     var category = JSON.parse(localStorage.getItem('category'));
     // Tính số sách mỗi loại trước
@@ -600,9 +948,13 @@ function updateQuantity(category) {
     }
     localStorage.setItem('category', JSON.stringify(category));
 }
-function renderBestseller() {
-    document.getElementById("headline").innerHTML = '<h3>Sản phẩm bán chạy</h3>';
+function getBestseller() {
     var bestseller = JSON.parse(localStorage.getItem('bestseller'));
+    books = bestseller;
+    return bestseller;
+}
+function renderBestseller(bestseller) {
+    document.getElementById("headline").innerHTML = '<h3>Sản phẩm bán chạy</h3>';
     var html = '';
     for (var i = 0; i < bestseller.length; i++) {
         html += '<li>';
@@ -626,7 +978,10 @@ function renderBestseller() {
 }
 function backFromDiv() {
     document.getElementById("container").style.display = "none";
+    document.getElementById("login").style.display = "none";
+    document.getElementById("signup").style.display = "none";
     document.getElementById("wrapper").style.display = "none";
+    closeFilterAndSort();
 }
 function sub(quantity) {
     var a = document.getElementById('quantity').value;
@@ -634,7 +989,7 @@ function sub(quantity) {
         a--;
         document.getElementById('plus').disabled = false;
         document.getElementById('sub').disabled = false;
-        document.getElementById('quantity').value =a;
+        document.getElementById('quantity').value = a;
     } else {
         document.getElementById('quantity').value = 0;
         document.getElementById('plus').disabled = false;
@@ -673,7 +1028,7 @@ function checkQuatity(quantity) {
     }
 }
 let productSelected;
-function getProductSelected(){
+function getProductSelected() {
     return productSelected;
 }
 function showdetailBestseller(products) {
@@ -725,8 +1080,10 @@ let perPage = 8;
 let start;
 let end;
 let totalpage;
-let books=[];
-function getCurrentPage(currenPage,products) {
+let books = [];
+let filteredBooks = [];
+let initialBooks = [];
+function getCurrentPage(currenPage, products) {
     start = (currenPage - 1) * perPage;
     end = currenPage * perPage;
     if (end > products.length)
@@ -980,6 +1337,7 @@ function loadPage() {
                 changePage(books);
             }
         } else {
+            books=[];
             if (url[0] == "giaoduc") {
                 document.getElementById("headline").innerHTML = "<h3>Sách Giáo dục</h3>";
                 for (var j = 0; j < products[0].listcategory.length; j++) {
@@ -1078,20 +1436,20 @@ function loadPage() {
                 renderListPage();
                 changePage(books);
             }
-            if (url[0]=="shoppingcart"){
-                var html='';
-                var user= JSON.parse(localStorage.getItem('userActive'));
+            if (url[0] == "shoppingcart") {
+                var html = '';
+                var user = JSON.parse(localStorage.getItem('userActive'));
                 // check user active
-                if (user == null){
+                if (user == null) {
                     alert("Vui lòng đăng nhập!");
                     location.href="/index.html";
                     return false;
                 }
-                var products=JSON.parse(localStorage.getItem('cart'));
+                var products = JSON.parse(localStorage.getItem('cart'));
                 html += '<div class="headline" id="headline"><h3 style="background-color: rgb(242, 120, 38); color: black;">Giỏ Hàng</h3></div>';
-                if (products.length>0){
+                if (products.length > 0) {
                     html += '<div id="listProductsBuy" >';
-                    for (var i=0; i<products.length;i++){
+                    for (var i = 0; i < products.length;i++) {
                         html += '<ul class="productsBuy">';
                         html += '<li>' + (i+1) + '</li>';
                         html += '<li class="img-Pro">';
@@ -1100,20 +1458,21 @@ function loadPage() {
                         html += '<li>' + products[i].name + '</li>';
                         html += '<li>Số lượng: ' + products[i].quantity + '</li>';
                         html += '<li>' + products[i].price + '</li>';
-                        html += '<li><i class="fas fa-regular fa-trash-can" onclick="deleteProductBuy()"></i></li>';
+                        html += '<li><i id = "deleteitemsinCart" class="fas fa-regular fa-trash-can"></i></li>';
                         html += '</ul>';
                     }
                     html += '<div id="buy">';
                     html += '<ul>';
                     html += '<li>Tổng thanh toán <h3 style="color: black;">' + total() + '</h3></li>';
-                    html += '<li><input type="button" value="Mua hàng (' + products.length + ')" onclick="buy()"></li>';
+                    html += '<li><input type="button" value="Mua hàng (' + products.length + ')" onclick="addOrder()"></li>';
                     html += '</ul>';
                     html += '</div>';
-                    document.getElementById("content").innerHTML=html;
+                    document.getElementById("content").innerHTML = html;
+                    deteleFromCartPro();
                     return true;
                 }
                 html += '<h1>Bạn chưa chọn sản phẩm nào</h1>';
-                document.getElementById("content").innerHTML=html;
+                document.getElementById("content").innerHTML = html;
                 return true;
             }
         }
@@ -1123,6 +1482,7 @@ function loadPage() {
 }
 function renderProduct(products) {
     var html = '';
+    console.log(start,end);
     for (var i = start; i < end; i++) {
         html += '<li>';
         html += '<div class="product-item">';
@@ -1181,11 +1541,16 @@ function renderListPage() {
     html += '<li id="btprev" class="button-prev-next"><i class="fas fa-chevron-circle-left" onclick="prevButton()"></i></li>';
     html += '<div class="number-page" id="number-page">'
     html += '<li id="active"><b>' + 1 + '</b></li>';
-    for (var i = 2; i <= totalpage; i++) {
-        html += '<li><b>' + i + '</b></li>';
+    if (totalpage <=1) {
+        html += '</div>';
+        html += '<li id="btnext" class="button-prev-next"><i class="fas fa-chevron-circle-right" onclick="nextButton()"></i></li>'
+    }else{
+        for (var i = 2; i <= totalpage; i++) {
+            html += '<li><b>' + i + '</b></li>';
+        }
+        html += '</div>';
+        html += '<li id="btnext" class="button-prev-next-active"><i class="fas fa-chevron-circle-right" onclick="nextButton()"></i></li>'
     }
-    html += '</div>';
-    html += '<li id="btnext" class="button-prev-next-active"><i class="fas fa-chevron-circle-right" onclick="nextButton()"></i></li>'
     document.getElementById("page").innerHTML = html;
 }
 function nextButton() {
@@ -1249,31 +1614,54 @@ function showDetail(products) {
         })
     }
 }
-function createCart(){
-    var cart=[];
-    if (localStorage.getItem('cart') == null){
+function createCart() {
+    var cart = [];
+    if (localStorage.getItem('cart') == null) {
         localStorage.setItem('cart', JSON.stringify(cart));
     } 
 }
-function addToCartPro(product){
-    var user= JSON.parse(localStorage.getItem('userActive'));
-    var cart= JSON.parse(localStorage.getItem('cart'));
+function addToCartPro(product) {
+    var user = JSON.parse(localStorage.getItem('userActive'));
+    var cart = JSON.parse(localStorage.getItem('cart'));
     var quantity = document.getElementById("quantity").value;
     // check user active
-    if (user == null){
+    if (user == null) {
         alert("Vui lòng đăng nhập!");
         backFromDiv();
         return false;
     }
-    if (quantity==0){
+    if (quantity == 0) {
         alert("Số lượng sản phẩm không hợp lệ!");
         return false;
     }
+    for (var i = 0; i < cart.length; i++) {
+        if (cart[i].id == product.id) {
+            cart[i].quantity = cart[i].quantity + parseInt(document.getElementById("quantity").value);
+            localStorage.setItem('cart', JSON.stringify(cart));
+            backFromDiv();
+            return true;
+        }
+    }
     cart.push(product);
-    cart[cart.length-1].quantity =parseInt(document.getElementById("quantity").value);
+    cart[cart.length-1].quantity = parseInt(document.getElementById("quantity").value);
     localStorage.setItem('cart', JSON.stringify(cart));
     backFromDiv();
     return true;
+}
+function deteleFromCartPro() {
+    var cart = JSON.parse(localStorage.getItem('cart'));
+    var itemsInCart = document.querySelectorAll("#deleteitemsinCart");
+    for (var i = 0; i < itemsInCart.length; i++) {
+        itemsInCart[i].addEventListener("click", () => {
+            for (var j = i + 1; j < cart.length; j++) {
+                cart[j - 1] = cart[j];
+            }
+            cart[length - 1] = null;
+            cart.length = cart.length - 1;
+            localStorage.setItem('cart', JSON.stringify(cart));
+            loadPage();
+        })
+    }
 }
 function stringToPrice(s) {
     var price = "";
@@ -1289,14 +1677,60 @@ function stringToPrice(s) {
     price += " VND";
     return price;
 }
-function total(){
-    var products= JSON.parse(localStorage.getItem('cart'));
-    var price=0;
-    for (var i=0; i<products.length; i++){
-        var cost=products[i].price;
-        cost=cost.split('VND');
-        cost=cost[0].replace(".","");
+function total() {
+    var products = JSON.parse(localStorage.getItem('cart'));
+    var price = 0;
+    for (var i = 0; i < products.length; i++) {
+        var cost = products[i].price;
+        cost = cost.split('VND');
+        cost = cost[0].replaceAll(".", "");
         price += parseInt(cost)*products[i].quantity;
     }
     return stringToPrice(price.toString());
+}
+function createOrder () {
+    let orderNoteList;
+    if (JSON.parse(localStorage.getItem('orderNoteList')) == null) {
+        orderNoteList = [];
+        localStorage.setItem('orderNoteList', JSON.stringify(orderNoteList));
+    }
+}
+function updateQuantityItems() {
+    var cart = JSON.parse(localStorage.getItem('cart'));
+    var category = JSON.parse(localStorage.getItem('category'));
+    for (var h = 0; h < cart.length; h++) {
+        for (var i = 0; i < category.length; i++) {
+            for (var j = 0; j < category[i].listcategory.length; j++) {
+                for (var k = 0; k < category[i].listcategory[j].books.length; k++) {
+                    if (cart[h].id == category[i].listcategory[j].books[k].id) {
+                        console.log(category[i].listcategory[j].books[k]);
+                        category[i].listcategory[j].books[k].quantity = category[i].listcategory[j].books[k].quantity - cart[h].quantity;
+                    }
+                }
+            }
+        }  
+    }
+    localStorage.setItem('category', JSON.stringify(category));
+}
+function addOrder() {
+    var userActive = JSON.parse(localStorage.getItem('userActive'));
+    var cart = JSON.parse(localStorage.getItem('cart'));
+    var orderNoteList = JSON.parse(localStorage.getItem('orderNoteList'));
+    let orderNote = {
+        orderID: orderNoteList.length + 1,
+        userID: userActive.id,
+        customerName: userActive.name,
+        date: new Date().toJSON().slice(0, 10),
+        buyItems: cart,
+        status: "Chưa xử lý",
+        totalPrice: total(),
+    }
+    console.log(orderNote);
+    orderNoteList.push(orderNote);
+    localStorage.setItem('orderNoteList', JSON.stringify(orderNoteList));
+    updateQuantityItems();
+    cart = [];
+    localStorage.setItem('cart', JSON.stringify(cart));
+    alert("Cảm ơn bạn đã mua hàng!!");
+    location.href = "/";
 }
