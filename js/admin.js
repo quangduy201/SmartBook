@@ -84,14 +84,54 @@ window.onload = function() {
         renderListPage();
         changePage(users);
     }
-    if (url[1] == "quanlithongtin") {
+    if (url[1] == "thongke") {
         var html = '';
         html += '<div class="title">';
-        html += '<h1>Quản lí thông tin</h1>';
+        html += '<h1>Thống kê tình hình kinh doanh</h1>';
         html += '</div>';
-        html += '<table id="productsList">';
-        html += '</table>';
+        html += '<div class="orderNoteFilter">';
+        html += '<label for="orderNote_time">Khoảng thời gian:</label><input type="date" id="statistic_time-from"> đến <input type="date" id="statistic_time-to"><button id="filterStatistic">Lọc</button>';
+        html += '</div>';
+        html += '<div id="piechart">';
+        html += '<div id="circle"></div>';
+        html += '<div id="note">';
+        html += '<div id="red">';
+        html += '<div class="color"></div>&nbsp;';
+        html += '<p>Sách giáo dục</p>&nbsp;';
+        html += '</div>';
+        html += '<div id="yellow">';
+        html += '<div class="color"></div>&nbsp;';
+        html += '<p>Sách văn học</p>&nbsp;';
+        html += '</div>';
+        html += '<div id="blue">';
+        html += '<div class="color"></div>&nbsp;';
+        html += '<p>Tiểu thuyết</p>&nbsp;';
+        html += '</div>';
+        html += '<div id="green">';
+        html += '<div class="color"></div>&nbsp;';
+        html += '<p>Sách kinh tế</p>&nbsp;';
+        html += '</div>';
+        html += '<div id="purple">';
+        html += '<div class="color"></div>&nbsp;';
+        html += '<p>Sách tâm lý/kỹ năng sống</p>&nbsp;';
+        html += '</div>';
+        html += '<div id="pink">';
+        html += '<div class="color"></div>&nbsp;';
+        html += '<p>Sách lịch sử</p>&nbsp;';
+        html += '</div>';
+        html += '<div id="gray">';
+        html += '<div class="color"></div>&nbsp;';
+        html += '<p>Sách thiếu nhi</p>&nbsp;';
+        html += '</div>';
+        html += '</div>';
+        html += '<div class="title" id="totalBooksSale"></div>';
         document.getElementById("content").innerHTML = html;
+        var orderNoteList = JSON.parse(localStorage.getItem('orderNoteList'));
+        for (var i=0; i<orderNoteList.length; i++){
+            bills.push(orderNoteList[i]);
+        }
+        createPIEChart(bills);
+        statisticFilter();
     }
     
 }
@@ -485,8 +525,6 @@ function orderfilter(){
         var dayEnd = document.getElementById("orderNote_time-to").value;
         var orderNoteList = JSON.parse(localStorage.getItem('orderNoteList'));
         var filteredBills = [];
-        console.log(dayStart);
-        console.log(dayEnd);
         for (var i=0; i<orderNoteList.length; i++){
             if (dayStart <= orderNoteList[i].date && orderNoteList[i].date <= dayEnd){
                 filteredBills.push(orderNoteList[i]);
@@ -516,4 +554,85 @@ function setStatusUser(){
             localStorage.setItem('user', JSON.stringify(user));
         });
     }
+}
+function createPIEChart(filteredStatistic){
+    var quantityBooksSale=0;
+    var giaoduc=0;
+    var vanhoc=0;
+    var tieuthuyet=0;
+    var kinhte=0;
+    var TamLy_KyNangSong=0;
+    var lichsu=0;
+    var thieunhi=0;
+    var html ='';
+    for (var i=0; i<filteredStatistic.length; i++){
+        for (var j=0; j<filteredStatistic[i].buyItems.length; j++){
+            quantityBooksSale = quantityBooksSale + filteredStatistic[i].buyItems[j].quantity
+        }
+    }
+    for (var i=0; i<filteredStatistic.length; i++){
+        for (var j=0; j<filteredStatistic[i].buyItems.length; j++){
+            if (filteredStatistic[i].buyItems[j].cat == "Sách giáo khoa" || filteredStatistic[i].buyItems[j].cat == "Sách tham khảo" || filteredStatistic[i].buyItems[j].cat == "Từ điển"){
+                giaoduc = giaoduc + filteredStatistic[i].buyItems[j].quantity;
+            }
+            if (filteredStatistic[i].buyItems[j].cat == "Truyện ngắn" || filteredStatistic[i].buyItems[j].cat == "Truyện dài" || filteredStatistic[i].buyItems[j].cat == "Thơ" || filteredStatistic[i].buyItems[j].cat == "Khác"){
+                vanhoc = vanhoc + filteredStatistic[i].buyItems[j].quantity;
+            }
+            if (filteredStatistic[i].buyItems[j].cat == "Ngôn tình" || filteredStatistic[i].buyItems[j].cat == "Giả tưởng" || filteredStatistic[i].buyItems[j].cat == "Tiểu thuyết Lịch sử"){
+                tieuthuyet = tieuthuyet + filteredStatistic[i].buyItems[j].quantity;
+            }
+            if (filteredStatistic[i].buyItems[j].cat == "Quản trị" || filteredStatistic[i].buyItems[j].cat == "Marketing" || filteredStatistic[i].buyItems[j].cat == "Nhân Vật" || filteredStatistic[i].buyItems[j].cat == "Khởi nghiệp" || filteredStatistic[i].buyItems[j].cat == "Chứng khoán"){
+                kinhte = kinhte + filteredStatistic[i].buyItems[j].quantity;
+            }
+            if (filteredStatistic[i].buyItems[j].cat == "Tâm lý" || filteredStatistic[i].buyItems[j].cat == "Kỹ năng sống" || filteredStatistic[i].buyItems[j].cat == "Hạt giống tâm hồn"){
+                TamLy_KyNangSong = TamLy_KyNangSong + filteredStatistic[i].buyItems[j].quantity;
+            }
+            if (filteredStatistic[i].buyItems[j].cat == "Lịch sử Việt Nam" || filteredStatistic[i].buyItems[j].cat == "Lịch sử Thế giới"){
+                lichsu = lichsu + filteredStatistic[i].buyItems[j].quantity;
+            }
+            if (filteredStatistic[i].buyItems[j].cat == "Truyện thiếu nhi" || filteredStatistic[i].buyItems[j].cat == "Tô màu" || filteredStatistic[i].buyItems[j].cat == "Luyện chữ"){
+                thieunhi = thieunhi + filteredStatistic[i].buyItems[j].quantity;
+            }
+        }
+    }
+    var GD = (giaoduc/quantityBooksSale*100*3.6).toFixed(2);
+    var VH = (vanhoc/quantityBooksSale*100*3.6).toFixed(2);
+    var TT = (tieuthuyet/quantityBooksSale*100*3.6).toFixed(2);
+    var KT = (kinhte/quantityBooksSale*100*3.6).toFixed(2);
+    var TLKNS = (TamLy_KyNangSong/quantityBooksSale*100*3.6).toFixed(2);
+    var LS = (lichsu/quantityBooksSale*100*3.6).toFixed(2);
+    var TN = (thieunhi/quantityBooksSale*100*3.6).toFixed(2);
+    var backgroundImage = 'background-image: conic-gradient(';
+    backgroundImage +='red 0deg, red ' +parseFloat(GD)+'deg, '
+    backgroundImage += 'yellow '+ parseFloat(GD)+'deg, yellow '+ parseFloat(parseFloat(GD)+parseFloat(VH))+'deg, ';
+    backgroundImage += 'blue '+  parseFloat(parseFloat(GD)+parseFloat(VH)) +'deg, blue '+ parseFloat(parseFloat(GD)+parseFloat(VH)+parseFloat(TT)) +'deg, ';
+    backgroundImage += 'green '+  parseFloat(parseFloat(GD)+parseFloat(VH)+parseFloat(TT)) +'deg, green '+ parseFloat(parseFloat(GD)+parseFloat(VH)+parseFloat(TT)+parseFloat(KT)) +'deg, ';
+    backgroundImage += 'purple '+  parseFloat(parseFloat(GD)+parseFloat(VH)+parseFloat(TT)+parseFloat(KT)) +'deg, purple '+ parseFloat(parseFloat(GD)+parseFloat(VH)+parseFloat(TT)+parseFloat(KT)+parseFloat(TLKNS)) +'deg, ';
+    backgroundImage += 'pink '+  parseFloat(parseFloat(GD)+parseFloat(VH)+parseFloat(TT)+parseFloat(KT)+parseFloat(TLKNS)) +'deg, pink '+ parseFloat(parseFloat(GD)+parseFloat(VH)+parseFloat(TT)+parseFloat(KT)+parseFloat(TLKNS)+parseFloat(LS)) +'deg, ';
+    backgroundImage += 'gray '+  parseFloat(parseFloat(GD)+parseFloat(VH)+parseFloat(TT)+parseFloat(KT)+parseFloat(TLKNS)+parseFloat(LS)) +'deg, gray '+ parseFloat(parseFloat(GD)+parseFloat(VH)+parseFloat(TT)+parseFloat(KT)+parseFloat(TLKNS)+parseFloat(LS)+parseFloat(TN)) +'deg ';
+    backgroundImage += ')';
+    document.getElementById("circle").setAttribute("style",backgroundImage);
+    html += '<h3>Tổng số sản phẩm bán: '+ quantityBooksSale + '</h3>';
+    html += '<h4>Tổng số sách giáo dục bán: '+ giaoduc + '</h4>';
+    html += '<h4>Tổng số sách văn học bán: '+ vanhoc + '</h4>';
+    html += '<h4>Tổng số tiểu thuyết bán: '+ tieuthuyet + '</h4>';
+    html += '<h4>Tổng số sách kinh tế bán: '+ kinhte + '</h4>';
+    html += '<h4>Tổng số sách tâm lý/kỹ năng sống: '+ TamLy_KyNangSong + '</h4>';
+    html += '<h4>Tổng số sách lịch sử bán: '+ lichsu + '</h4>';
+    html += '<h4>Tổng số sách thiếu nhi bán: '+ thieunhi + '</h4>';
+    document.getElementById("totalBooksSale").innerHTML = html;
+}
+function statisticFilter(){
+    document.getElementById("filterStatistic").addEventListener("click",()=>{
+        var dayStart = document.getElementById("statistic_time-from").value;
+        var dayEnd = document.getElementById("statistic_time-to").value;
+        var orderNoteList = JSON.parse(localStorage.getItem('orderNoteList'));
+        var filteredStatistic = [];
+        for (var i=0; i<orderNoteList.length; i++){
+            if (dayStart <= orderNoteList[i].date && orderNoteList[i].date <= dayEnd){
+                filteredStatistic.push(orderNoteList[i]);
+            }
+        }
+        createPIEChart(filteredStatistic);
+    })
 }

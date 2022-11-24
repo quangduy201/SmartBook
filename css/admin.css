@@ -200,8 +200,70 @@ html {
     display: none;
     background-color: rgba(0, 0, 0, 0.7);
 }
+#circle {
+	margin: auto;
+	width: 200px;
+	height: 200px;
+	border-radius: 50%;
+}
+#totalBooksSale{
+	width: 500px;
+	padding-left: 10px;
+	background-color: rgb(218, 216, 216);
+	text-align: left;
+	margin: auto;
+}
+#note #red, #note #yellow, #note #blue, #note #green, #note #purple, #note #pink,#note #gray{
+	display: inline-flex;
+	height: 20px;
+	line-height: 20px;
+	margin-top: 10px;
+	margin-bottom: 20px;
+}
+#note #red .color{
+	margin: auto;
+	background-color: red;
+	width: 15px;
+	height: 15px;
+}
+#note #yellow .color{
+	margin: auto;
+	background-color: yellow;
+	width: 15px;
+	height: 15px;
+}
+#note #blue .color{
+	margin: auto;
+	background-color: blue;
+	width: 15px;
+	height: 15px;
+}
+#note #green .color{
+	margin: auto;
+	background-color: green;
+	width: 15px;
+	height: 15px;
+}
+#note #purple .color{
+	margin: auto;
+	background-color: purple;
+	width: 15px;
+	height: 15px;
+}
+#note #pink .color{
+	margin: auto;
+	background-color: pink;
+	width: 15px;
+	height: 15px;
+}
+#note #gray .color{
+	margin: auto;
+	background-color: gray;
+	width: 15px;
+	height: 15px;
+}
 /**/
-.addProduct, .editProduct, .showOrder {
+.addProduct, .editProduct, .showOrder, .piechart {
 	color: #fff;
 	font-family: 'Open Sans', sans-serif;
     position: fixed;

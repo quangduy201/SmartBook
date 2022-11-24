@@ -786,7 +786,7 @@ function createBook() {
     
             ]},
         ]},
-        {id:"6", name:"Lịch sử", quantity:0, listcategory: [
+        {id:6, name:"Lịch sử", quantity:0, listcategory: [
             {id:"VN", name:"Lịch sử Việt Nam", quantity:0, books:[
                 {id:"VN1", name:"Lịch Sử Việt Nam Từ Nguồn Gốc Đến Thế Kỷ XIX",cat:null,price:"175.000"+" VND",quantity:10,image:"assets/images/product/Sach/LichSu/VietNam/LSu2.png"},
                 {id:"VN2", name:"Lịch Sử Nhà Tù Côn Đảo 1862 - 1975",cat:null,price:"120.000"+" VND",quantity:10,image:"assets/images/product/Sach/LichSu/VietNam/LSu4.jpeg"},
