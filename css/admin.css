@@ -169,16 +169,17 @@ html {
 #billList .detailList td:last-child {
 	cursor: pointer;
 }
-.id,.name,.type,.quantity,.cost,.edit,.status,.email,.date,.totalPrice,.detailBill {
+.id,.name,.type,.quantity,.cost,.edit,.status,.email,.date,.totalPrice,.detailBill,.cat,.sale {
 	padding-left: 15px;
 	padding-right: 15px;
 }
 .image {
-	width: 400px;
+	width: 200px;
 	padding: 10px 10px;
 }
 .image img {
-	width: 30%;
+	width: 55px;
+	width: 70px;
 }
 .button {
 	width: 50px;

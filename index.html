@@ -102,7 +102,7 @@
                     </ul>
                 </li>
 
-                <li class="parent-menu">
+                <!-- <li class="parent-menu">
                     <a href="index.html" title="Dụng Cụ"><div>Dụng Cụ <i class="fas fa-solid fa-caret-down"></i></div></a>
                     <ul class="sub-topmenu">
                         <li>
@@ -136,7 +136,7 @@
                         </li>
                         <li><a href="/index.html?dungcukhac">Khác</a></li>
                     </ul>
-                </li>
+                </li> -->
 
                 <li class="parent-menu">
                     <a href="" title="Khuyến Mãi"><div>Khuyến Mãi</div></a>
@@ -209,8 +209,8 @@
                         </h4>
                     </div>
                     <div class="options" id="options">
-                        <div class="sort1" onclick="sortLow_HighPrice()"><span>Giá (thấp - cao)</span></div>
-                        <div class="sort2" onclick="sortHigh_LowPrice()"><span>Giá (cao - thấp)</span></div>
+                        <div class="sort1" id="sort1" onclick="sortLow_HighPrice()"><span>Giá (thấp - cao)</span></div>
+                        <div class="sort2" id="sort2" onclick="sortHigh_LowPrice()"><span>Giá (cao - thấp)</span></div>
                     </div>
                 </div>
                 <div class="filter" id="filter">
@@ -223,13 +223,44 @@
                     <div class="options">
                         <div class="filter1" id="filter1">
                             <div class="tittleFilter1">
-                                <span>Giá</span>
+                                <h4>Giá</h4>
                                 <i class="fa-solid fa-chevron-down" onclick="showPriceFilter()"></i>
                             </div>
                             <div class="option1">
                                 <div onclick="filterOption1()"><span>&lt;500.000 vnd</span></div>
                                 <div onclick="filterOption2()"><span>500.000 vnd - 1.000.000 vnd</span></div>
                                 <div onclick="filterOption3()"><span>&gt; 1.000.000 vnd</span></div>
+                            </div>
+                        </div>
+                        <div class="filter3" id="filter3">
+                            <div class="tittleFilter1">
+                                <h4>Loại</h4>
+                                <i class="fa-solid fa-chevron-down" onclick="showCategoryFilter()"></i>
+                            </div>
+                            <div class="option2">
+                                <div onclick="filterOption5()"><span>Sách giáo khoa</span></div>
+                                <div onclick="filterOption6()"><span>Sách tham khảo</span></div>
+                                <div onclick="filterOption7()"><span>Từ điển</span></div>
+                                <div onclick="filterOption8()"><span>Truyện ngắn</span></div>
+                                <div onclick="filterOption9()"><span>Truyện dài</span></div>
+                                <div onclick="filterOption10()"><span>Thơ</span></div>
+                                <div onclick="filterOption11()"><span>Văn học khác</span></div>
+                                <div onclick="filterOption12()"><span>Tiểu thuyết ngôn tình</span></div>
+                                <div onclick="filterOption13()"><span>Tiểu thuyết giả tưởng</span></div>
+                                <div onclick="filterOption14()"><span>Tiểu thuyết Lịch sử</span></div>
+                                <div onclick="filterOption15()"><span>Quản trị</span></div>
+                                <div onclick="filterOption16()"><span>Marketing</span></div>
+                                <div onclick="filterOption17()"><span>Nhân vật</span></div>
+                                <div onclick="filterOption18()"><span>Khởi nghiệp</span></div>
+                                <div onclick="filterOption19()"><span>Chứng khoán</span></div>
+                                <div onclick="filterOption20()"><span>Tâm lý</span></div>
+                                <div onclick="filterOption21()"><span>Kỹ năng sống</span></div>
+                                <div onclick="filterOption22()"><span>Hạt giống tâm hồn</span></div>
+                                <div onclick="filterOption23()"><span>Lịch sử Việt Nam</span></div>
+                                <div onclick="filterOption24()"><span>Lịch sử Thế giới</span></div>
+                                <div onclick="filterOption25()"><span>Truyện thiếu nhi</span></div>
+                                <div onclick="filterOption26()"><span>Tô màu</span></div>
+                                <div onclick="filterOption27()"><span>Luyện chữ</span></div>
                             </div>
                         </div>
                         <div class="filter2" onclick="filterOption4()"><span>Sản phẩm bán chạy</span></div>
@@ -239,7 +270,7 @@
         </div>
         <div id="content">
             <div class="headline" id="headline"></div>
-            <div class="btFilter" onclick="showBtFilter()">Lọc & Sắp xếp <i class="fas fa-light fa-sliders"></i></div>
+            <div class="btFilter" id="btFilter" onclick="showBtFilter()">Lọc & Sắp xếp <i class="fas fa-light fa-sliders"></i></div>
             <ul class="products" id="products">
                 <!--    innerHTML here: products * perPage
                 <li>
@@ -376,28 +407,6 @@
             <i class="fa-solid fa-xmark" onclick="backFromDiv()"></i>
         </div>
         <div id="detail">
-            <!-- <img src="/assets/images/product/product-2.jpg" alt="">
-            <div id="detail-pro">
-                <ul>
-                    <li><h2>Toi thay hoa vang tren co xanh</h2></li>
-                    <hr>
-                    <li><h3>Thể loại:</h3></li>
-                    <hr>
-                    <li><h3>Giá:</h3></li>
-                    <hr>
-                    <li><h3>Trạng thái:</h3></li>
-                    <hr>
-                    <li>
-                        <h3>Số lượng:</h3>
-                        <input style="margin-left: 30px;" type="button" name="" id="sub" value="-" onclick="sub()">
-                        <input type="text" name="" id="quantity" value="1" onchange="check()">
-                        <input type="button" value="+" id="plus" onclick="plus()">
-                    </li>
-                    <li id="addtocart">
-                        <div><i class="fas fa-solid fa-cart-shopping" title="Giỏ hàng"></i></div>
-                    </li>
-                </ul>
-            </div> -->
         </div>
     </div>
 </body>

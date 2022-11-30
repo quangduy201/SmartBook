@@ -9,7 +9,48 @@ function createAdmin() {
             status:   "enabled",
             type:     "Admin"
         };
-        userArray.push(user);
+        var user1 = {
+            name:     "Đinh Quang Duy",
+            username: "duy0701",
+            email:    "duy0701@gmail.com",
+            password: "123",
+            status:   "enabled",
+            type:     "Customer"
+        };
+        var user2 = {
+            name:     "Nguyễn Hoàng Long",
+            username: "longbott",
+            email:    "colong30082003@gmail.com",
+            password: "123",
+            status:   "enabled",
+            type:     "Customer"
+        };
+        var user3 = {
+            name:     "Nguyễn Zi Đan",
+            username: "danquatao",
+            email:    "danquatao@gmail.com",
+            password: "123",
+            status:   "enabled",
+            type:     "Customer"
+        };
+        var user4 = {
+            name:     "Trần Uyên Phương",
+            username: "phuong123",
+            email:    "phuong123@gmail.com",
+            password: "123",
+            status:   "enabled",
+            type:     "Customer"
+        };
+        var user5 = {
+            name:     "Nguyễn Văn A",
+            username: "a",
+            email:    "a@gmail.com",
+            password: "123",
+            status:   "enabled",
+            type:     "Customer"
+        };
+        
+        userArray.push(user,user1,user2,user3,user4,user5);
         localStorage.setItem('user', JSON.stringify(userArray));
     }
 }
@@ -39,7 +80,7 @@ function checkSignUp() {
             document.getElementById('username-signup').focus();
             return false;
         } else if (email == userArray[i].email) {
-            alert("email đã được sử dụng");
+            alert("Email đã được sử dụng");
             document.getElementById('email-signup').focus();
             return false;
         }
@@ -61,7 +102,7 @@ function signup() {
         username.focus();
         return false;
     } else if (hasWhiteSpace(username.value)) {
-        alert("username không được chứa khoảng trắng!");
+        alert("Username không được chứa khoảng trắng!");
         username.focus();
         return false;
     } else if (email.value == "") {
@@ -69,7 +110,7 @@ function signup() {
         email.focus();
         return false;
     } else if (hasWhiteSpace(email.value)) {
-        alert("email không được chứa khoảng trắng!");
+        alert("Email không được chứa khoảng trắng!");
         username.focus();
         return false;
     } else if (password.value == "") {
@@ -114,7 +155,7 @@ function login() {
         username.focus();
         return false;
     } else if (hasWhiteSpace(username.value)) {
-        alert("username không được chứa khoảng trắng!");
+        alert("Username không được chứa khoảng trắng!");
         username.focus();
         return false;
     } else if (password.value == "") {
@@ -122,7 +163,7 @@ function login() {
         password.focus();
         return false;
     } else if (!checkLogin()) {
-        alert("username hoặc mật khẩu không hợp lệ!");
+        alert("Username hoặc mật khẩu không hợp lệ!");
         username.focus();
         return false;
     }
