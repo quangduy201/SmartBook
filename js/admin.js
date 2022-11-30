@@ -6,7 +6,7 @@ let totalpage;
 let products = [];
 let bills = [];
 var users = [];
-let books=[];
+let books = [];
 let changeImg;
 window.onload = function() {
     var str = window.location.href;
