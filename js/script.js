@@ -29,6 +29,8 @@ function loadPage() {
     if (str.includes("&") || str.includes("?")) {
         str = str.split('?');
         var url = str[1].split('&');
+        if (url.length == 1)
+            books = [];
         var products = JSON.parse(localStorage.getItem('category'));
         if (url[0] == "giaoduc") {
             if (url.length > 1) {
@@ -1877,7 +1879,7 @@ function prevButton() {
 /////////////////////ADD TO SHOPPING CART////////////////
 
 /////////////////////////////////////////////////////////
-function createCart(){
+function createCart() {
     var cart = [];
     if (localStorage.getItem('cart') == null){
         localStorage.setItem('cart', JSON.stringify(cart));
@@ -1947,7 +1949,7 @@ function total() {
         var cost = products[i].price;
         cost = cost.split('VND');
         cost = cost[0].replaceAll(".", "");
-        price += parseInt(cost)*products[i].quantity;
+        price += parseInt(cost) * products[i].quantity;
     }
     return stringToPrice(price.toString());
 }
@@ -1956,7 +1958,7 @@ function total() {
 /////////////////////CREATE ORDER////////////////////////
 
 /////////////////////////////////////////////////////////
-function createOrder (){
+function createOrder () {
     let orderNoteList;
     if (JSON.parse(localStorage.getItem('orderNoteList')) == null) {
         orderNoteList = [];
@@ -1984,7 +1986,7 @@ function addOrder() {
     var cart = JSON.parse(localStorage.getItem('cart'));
     var orderNoteList = JSON.parse(localStorage.getItem('orderNoteList'));
     let orderNote = {
-        orderID: orderNoteList.length+1,
+        orderID: orderNoteList.length + 1,
         username: userActive.username,
         customerName: userActive.name,
         date: new Date().toJSON().slice(0, 10),
