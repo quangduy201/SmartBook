@@ -1,4 +1,4 @@
-let currenPage;
+let currentPage;
 let perPage = 8;
 let start;
 let end;
@@ -19,6 +19,7 @@ let hiddenCategoryFilter = true;
 let filter = false;
 let filterprice = false;
 let filtercategory = false;
+
 /////////////////////////////////////////////////////////
 
 /////////////////////LOAD URL PAGE///////////////////////
@@ -28,6 +29,8 @@ function loadPage() {
     var str = window.location.href;
     if (str.includes("&") || str.includes("?")) {
         str = str.split('?');
+        if (str[1] == "")   // after login the url is "/?"
+            window.location.href = "/index.html";   // redirect to "/index.html"
         var url = str[1].split('&');
         if (url.length == 1)
             books = [];
@@ -226,9 +229,40 @@ function loadPage() {
             document.getElementById("content").innerHTML = html;
             return true;
         }
-        currenPage = 1;
+        if (url[0] == "support") {
+            var html = '';
+            html += '<div class="headline" id="headline"><h3>Hỗ trợ</h3></div>' +
+                    '<div id="support">' +
+                        '<h2>Các câu hỏi thường gặp</h2><br>' +
+                        '<h3>1. Tôi có thể đến tận nơi xem sản phẩm trước khi mua không?</h3>' +
+                        '<p> - Bạn có thể đến Nhà Sách Smartbook để xem sản phẩm và trực tiếp mua hàng. Ngoài ra bạn cũng có thể mua hàng trực tuyến tại website smartbookStore@gmail.com để được giao hàng tận nơi, hoàn toàn tiện lợi.</p><br>' +
+                        '<h3>2. Trường hợp đơn hàng của tôi có sản phẩm đã hết hàng thì sao?</h3>' +
+                        '<p> - Đối với trường hợp này, bộ phận Chăm Sóc Khách Hàng sẽ liên hệ với bạn để báo về tình trạng sản phẩm ngay khi có hàng trở lại.</p><br>' +
+                        '<h3>3. Tôi muốn thêm bớt sản phẩm, thay đổi địa chỉ giao hàng?</h3>' +
+                        '<p> - Khi đã đặt hàng thành công, quý khách có thể truy cập vào tài khoản, phần Quản lý đơn hàng hoặc kiểm tra email để kiểm tra lại thông tin đơn hàng.<br><b>Trong trường hợp cần chỉnh sửa cho đơn hàng, quý khách có thể liên hệ với bộ phận hỗ trợ khách hàng bằng cách liên hệ qua Hotline: 1900 1523 để được hỗ trợ trực tiếp và nhanh nhất.</b></p><br>' +
+                        '<h3>4. Tôi có thể hủy đơn hàng đã đặt được không?</h3>' +
+                        '<p> - Quý khách chỉ có thể hủy đơn hàng khi đơn hàng chưa được gọi xác nhận từ bộ phận chăm sóc khách hàng của smartbookStore@gmail.com. Nếu không có nhu cầu nhận hàng, quý khách vui lòng tham khảo thêm chính sách đổi & trả hàng của chúng tôi.</p><br>' +
+                        '<h3>5. Tôi có thể đặt dịch vụ gói và tặng quà được không?</h3>' +
+                        '<p> - Nhà Sách Smartbook chúng tôi có cung cấp dịch vụ gói, tặng quà và gửi lời nhắn theo quà. Đối với dịch vụ này, quý khách buộc phải thanh toán hóa đơn mua hàng và phí gói quà trước khi chúng tôi thực hiện dịch vụ. Phí dịch vụ gói quà dao động từ 5.000 - 10.000đ và giấy gói ngẫu nhiên.</p><br>' +
+                        '<h3>6. Tôi có thể yêu cầu viết hóa đơn VAT cho đơn hàng của mình không?</h3>' +
+                        '<p> - Nhà sách Smartbook chúng tôi có viết hóa đơn VAT theo yêu cầu của khách hàng.<br><b>- Lưu ý: hóa đơn chỉ được gửi sau khi đơn hàng đã thực hiện thành công (đã giao hàng và thu tiền).</b></p><br>' +
+                        '<h3>7. Vì sao đơn hàng của tôi chưa tới?</h3>' +
+                        '<p> - Nếu như vì lí do nào đó đơn hàng của quý khách chưa được giao như đúng hẹn, vui lòng kiểm tra trạng thái đơn hàng trong trang Quản lý đơn hàng hoặc liên hệ với bộ phận Hỗ trợ khách hàng của chúng tôi để được hỗ trở:<br><b>[Hotline: 1900 1523, Thứ 2 - Thứ 6: 8h - 16h30; Thứ 7: 8h - 12h, CN nghỉ]</b></p><br>' +
+                        '<h3>8. Tôi ủy thác cho người khác nhận hàng và thanh toán giùm được không?</h3>' +
+                        '<p> - Quý khách có thể ủy thác cho người khác nhận hàng và thanh toán thay mình. Trong trường hợp này, người được ủy thác cần nêu đúng họ tên và số điện thoại người ủy thác. Người được ủy thác phải ký xác thực đã nhận đơn hàng thay.</p><br>' +
+                        '<h3>9. Tôi có thể đổi hoặc trả hàng đã mua không?</h3>' +
+                        '<p> - Quý khách vui lòng kiểm tra kỹ hàng hóa trước khi ký xác nhận với nhân viên giao hàng. Trường hợp sản phẩm bị hư hỏng, không sử dụng được (lỗi do phía công ty), chúng tôi sẵn lòng đổi sản phẩm khác theo yêu cầu của khách hàng trong thời gian nhanh nhất tùy theo khu vực kể từ lúc nhận hàng lỗi. Để yêu cầu đổi sản phẩm khác, vui lòng gửi yêu cầu trong trang Quản lý đơn hàng hoặc liên hệ với bộ phận chăm sóc khách hàng của chúng tôi.<br><b>Để thực hiện việc đổi hàng, quý khách vui lòng gửi hàng về địa chỉ công ty (273 An Dương Vương, Phường 3, Quận 5, Thành phố Hồ Chí Minh), hàng gửi về phải bảo đảm như hiện trạng ban đầu. Sau khi nhận được hàng quý khách gửi về, chúng tôi sẽ thực hiện gửi hàng thay thế cho quý khách. Quý khách sẽ không phải chịu chi phí nào khác.<br>Chúng tôi sẽ không thực hiện việc đổi hàng trong trường hợp sản phẩm bị hư hỏng đến từ phía của quý khách.</b></p><br>' +
+                        '<h3>10. Tôi muốn góp ý, phàn nàn về dịch vụ thì phải làm sao?</h3>' +
+                        '<p> - Chúng tôi luôn chào đón mọi góp ý, phàn nàn của quý khách để dịch vụ của chúng tôi ngày một hoàn thiện hơn. Quý khách có thể gửi mọi góp ý, khiếu nại của mình qua smartbookStore@gmail.com, chúng tôi sẽ phản hồi trong thời gian sớm nhất.</p><br>' +
+                        '<label for="email" style="font-size: 18px;">Đăng ký để nhận bản tin và những phần quà hấp dẫn đến từ Nhà Sách Smartbook</label><br>' +
+                        '<input id="email" type="email" placeholder="Nhập địa chỉ email" style="width: 200px"><button onclick="";">Gửi</button><br>' +
+                    '</div>';
+            document.getElementById("content").innerHTML = html;
+            return;
+        }
+        currentPage = 1;
         totalpage = Math.ceil(books.length / perPage);
-        getCurrentPage(currenPage, books);
+        getCurrentPage(currentPage, books);
         renderProduct(books);
         renderListPage();
         changePage(books);
@@ -241,7 +275,6 @@ function loadPage() {
 /////////////////////BANNER//////////////////////////////
 
 /////////////////////////////////////////////////////////
-
 function initBanner() {
     for (var i = 1; i <= 5; i++)
         imageArray.push("url(assets/images/banner/banner" + i + ".jpg)");
@@ -273,6 +306,7 @@ function nextBanner() {
     next = 1;
     runBanner();
 }
+
 /////////////////////////////////////////////////////////
 
 /////////////////////SEARCH//////////////////////////////
@@ -339,15 +373,16 @@ function search() {
     }
     filterpricelBooks = books;
     filtercategoryBooks = books;
-    currenPage = 1;
+    currentPage = 1;
     totalpage = Math.ceil(books.length / perPage);
-    getCurrentPage(currenPage, books);
+    getCurrentPage(currentPage, books);
     renderProduct(books);
     renderListPage();
     changePage(books);
     document.getElementById("btFilter").style.display = "block";
     document.getElementById("filter3").style.display = "block";
 }
+
 /////////////////////////////////////////////////////////
 
 /////////////////////FILTER AND SORT/////////////////////
@@ -472,9 +507,9 @@ function filterOption1() {
     filterpricelBooks = temp;
     filteredBooks = temp;
     closeFilterAndSort();
-    currenPage = 1;
+    currentPage = 1;
     totalpage = Math.ceil(books.length / perPage);
-    getCurrentPage(currenPage, books);
+    getCurrentPage(currentPage, books);
     renderProduct(books);
     renderListPage();
     changePage(books);
@@ -495,9 +530,9 @@ function filterOption2() {
     books = temp;
     filteredBooks = temp;
     closeFilterAndSort();
-    currenPage = 1;
+    currentPage = 1;
     totalpage = Math.ceil(books.length / perPage);
-    getCurrentPage(currenPage, books);
+    getCurrentPage(currentPage, books);
     renderProduct(books);
     renderListPage();
     changePage(books);
@@ -518,9 +553,9 @@ function filterOption3() {
     books = temp;
     filteredBooks = temp;
     closeFilterAndSort();
-    currenPage = 1;
+    currentPage = 1;
     totalpage = Math.ceil(books.length / perPage);
-    getCurrentPage(currenPage, books);
+    getCurrentPage(currentPage, books);
     renderProduct(books);
     renderListPage();
     changePage(books);
@@ -540,9 +575,9 @@ function filterOption4() {
     }
     books = temp;
     filteredBooks = temp;
-    currenPage = 1;
+    currentPage = 1;
     totalpage = Math.ceil(books.length / perPage);
-    getCurrentPage(currenPage, books);
+    getCurrentPage(currentPage, books);
     renderProduct(books);
     renderListPage();
     changePage(books);
@@ -560,9 +595,9 @@ function filterOption5() {
     books = temp;
     filteredBooks = temp;
     closeFilterAndSort();
-    currenPage = 1;
+    currentPage = 1;
     totalpage = Math.ceil(books.length / perPage);
-    getCurrentPage(currenPage, books);
+    getCurrentPage(currentPage, books);
     renderProduct(books);
     renderListPage();
     changePage(books);
@@ -580,9 +615,9 @@ function filterOption6() {
     books = temp;
     filteredBooks = temp;
     closeFilterAndSort();
-    currenPage = 1;
+    currentPage = 1;
     totalpage = Math.ceil(books.length / perPage);
-    getCurrentPage(currenPage, books);
+    getCurrentPage(currentPage, books);
     renderProduct(books);
     renderListPage();
     changePage(books);
@@ -600,9 +635,9 @@ function filterOption7() {
     books = temp;
     filteredBooks = temp;
     closeFilterAndSort();
-    currenPage = 1;
+    currentPage = 1;
     totalpage = Math.ceil(books.length / perPage);
-    getCurrentPage(currenPage, books);
+    getCurrentPage(currentPage, books);
     renderProduct(books);
     renderListPage();
     changePage(books);
@@ -620,9 +655,9 @@ function filterOption8() {
     books = temp;
     filteredBooks = temp;
     closeFilterAndSort();
-    currenPage = 1;
+    currentPage = 1;
     totalpage = Math.ceil(books.length / perPage);
-    getCurrentPage(currenPage, books);
+    getCurrentPage(currentPage, books);
     renderProduct(books);
     renderListPage();
     changePage(books);
@@ -640,9 +675,9 @@ function filterOption9() {
     books = temp;
     filteredBooks = temp;
     closeFilterAndSort();
-    currenPage = 1;
+    currentPage = 1;
     totalpage = Math.ceil(books.length / perPage);
-    getCurrentPage(currenPage, books);
+    getCurrentPage(currentPage, books);
     renderProduct(books);
     renderListPage();
     changePage(books);
@@ -660,9 +695,9 @@ function filterOption10() {
     books = temp;
     filteredBooks = temp;
     closeFilterAndSort();
-    currenPage = 1;
+    currentPage = 1;
     totalpage = Math.ceil(books.length / perPage);
-    getCurrentPage(currenPage, books);
+    getCurrentPage(currentPage, books);
     renderProduct(books);
     renderListPage();
     changePage(books);
@@ -680,9 +715,9 @@ function filterOption11() {
     books = temp;
     filteredBooks = temp;
     closeFilterAndSort();
-    currenPage = 1;
+    currentPage = 1;
     totalpage = Math.ceil(books.length / perPage);
-    getCurrentPage(currenPage, books);
+    getCurrentPage(currentPage, books);
     renderProduct(books);
     renderListPage();
     changePage(books);
@@ -700,9 +735,9 @@ function filterOption12() {
     books = temp;
     filteredBooks = temp;
     closeFilterAndSort();
-    currenPage = 1;
+    currentPage = 1;
     totalpage = Math.ceil(books.length / perPage);
-    getCurrentPage(currenPage, books);
+    getCurrentPage(currentPage, books);
     renderProduct(books);
     renderListPage();
     changePage(books);
@@ -720,9 +755,9 @@ function filterOption13() {
     books = temp;
     filteredBooks = temp;
     closeFilterAndSort();
-    currenPage = 1;
+    currentPage = 1;
     totalpage = Math.ceil(books.length / perPage);
-    getCurrentPage(currenPage, books);
+    getCurrentPage(currentPage, books);
     renderProduct(books);
     renderListPage();
     changePage(books);
@@ -740,9 +775,9 @@ function filterOption14() {
     books = temp;
     filteredBooks = temp;
     closeFilterAndSort();
-    currenPage = 1;
+    currentPage = 1;
     totalpage = Math.ceil(books.length / perPage);
-    getCurrentPage(currenPage, books);
+    getCurrentPage(currentPage, books);
     renderProduct(books);
     renderListPage();
     changePage(books);
@@ -760,9 +795,9 @@ function filterOption15() {
     books = temp;
     filteredBooks = temp;
     closeFilterAndSort();
-    currenPage = 1;
+    currentPage = 1;
     totalpage = Math.ceil(books.length / perPage);
-    getCurrentPage(currenPage, books);
+    getCurrentPage(currentPage, books);
     renderProduct(books);
     renderListPage();
     changePage(books);
@@ -780,9 +815,9 @@ function filterOption16() {
     books = temp;
     filteredBooks = temp;
     closeFilterAndSort();
-    currenPage = 1;
+    currentPage = 1;
     totalpage = Math.ceil(books.length / perPage);
-    getCurrentPage(currenPage, books);
+    getCurrentPage(currentPage, books);
     renderProduct(books);
     renderListPage();
     changePage(books);
@@ -800,9 +835,9 @@ function filterOption17() {
     books = temp;
     filteredBooks = temp;
     closeFilterAndSort();
-    currenPage = 1;
+    currentPage = 1;
     totalpage = Math.ceil(books.length / perPage);
-    getCurrentPage(currenPage, books);
+    getCurrentPage(currentPage, books);
     renderProduct(books);
     renderListPage();
     changePage(books);
@@ -820,9 +855,9 @@ function filterOption18() {
     books = temp;
     filteredBooks = temp;
     closeFilterAndSort();
-    currenPage = 1;
+    currentPage = 1;
     totalpage = Math.ceil(books.length / perPage);
-    getCurrentPage(currenPage, books);
+    getCurrentPage(currentPage, books);
     renderProduct(books);
     renderListPage();
     changePage(books);
@@ -840,9 +875,9 @@ function filterOption19() {
     books = temp;
     filteredBooks = temp;
     closeFilterAndSort();
-    currenPage = 1;
+    currentPage = 1;
     totalpage = Math.ceil(books.length / perPage);
-    getCurrentPage(currenPage, books);
+    getCurrentPage(currentPage, books);
     renderProduct(books);
     renderListPage();
     changePage(books);
@@ -860,9 +895,9 @@ function filterOption20() {
     books = temp;
     filteredBooks = temp;
     closeFilterAndSort();
-    currenPage = 1;
+    currentPage = 1;
     totalpage = Math.ceil(books.length / perPage);
-    getCurrentPage(currenPage, books);
+    getCurrentPage(currentPage, books);
     renderProduct(books);
     renderListPage();
     changePage(books);
@@ -880,9 +915,9 @@ function filterOption21() {
     books = temp;
     filteredBooks = temp;
     closeFilterAndSort();
-    currenPage = 1;
+    currentPage = 1;
     totalpage = Math.ceil(books.length / perPage);
-    getCurrentPage(currenPage, books);
+    getCurrentPage(currentPage, books);
     renderProduct(books);
     renderListPage();
     changePage(books);
@@ -900,9 +935,9 @@ function filterOption22() {
     books = temp;
     filteredBooks = temp;
     closeFilterAndSort();
-    currenPage = 1;
+    currentPage = 1;
     totalpage = Math.ceil(books.length / perPage);
-    getCurrentPage(currenPage, books);
+    getCurrentPage(currentPage, books);
     renderProduct(books);
     renderListPage();
     changePage(books);
@@ -920,9 +955,9 @@ function filterOption23() {
     books = temp;
     filteredBooks = temp;
     closeFilterAndSort();
-    currenPage = 1;
+    currentPage = 1;
     totalpage = Math.ceil(books.length / perPage);
-    getCurrentPage(currenPage, books);
+    getCurrentPage(currentPage, books);
     renderProduct(books);
     renderListPage();
     changePage(books);
@@ -940,9 +975,9 @@ function filterOption24() {
     books = temp;
     filteredBooks = temp;
     closeFilterAndSort();
-    currenPage = 1;
+    currentPage = 1;
     totalpage = Math.ceil(books.length / perPage);
-    getCurrentPage(currenPage, books);
+    getCurrentPage(currentPage, books);
     renderProduct(books);
     renderListPage();
     changePage(books);
@@ -960,9 +995,9 @@ function filterOption25() {
     books = temp;
     filteredBooks = temp;
     closeFilterAndSort();
-    currenPage = 1;
+    currentPage = 1;
     totalpage = Math.ceil(books.length / perPage);
-    getCurrentPage(currenPage, books);
+    getCurrentPage(currentPage, books);
     renderProduct(books);
     renderListPage();
     changePage(books);
@@ -980,9 +1015,9 @@ function filterOption26() {
     books = temp;
     filteredBooks = temp;
     closeFilterAndSort();
-    currenPage = 1;
+    currentPage = 1;
     totalpage = Math.ceil(books.length / perPage);
-    getCurrentPage(currenPage, books);
+    getCurrentPage(currentPage, books);
     renderProduct(books);
     renderListPage();
     changePage(books);
@@ -1000,9 +1035,9 @@ function filterOption27() {
     books = temp;
     filteredBooks = temp;
     closeFilterAndSort();
-    currenPage = 1;
+    currentPage = 1;
     totalpage = Math.ceil(books.length / perPage);
-    getCurrentPage(currenPage, books);
+    getCurrentPage(currentPage, books);
     renderProduct(books);
     renderListPage();
     changePage(books);
@@ -1012,7 +1047,7 @@ function filterOption27() {
 
 /////////////////////////////////////////////////////////
 
-/////////////////////BACK TO TOP/////////////////////////
+///////////////////////BACK TO TOP///////////////////////
 
 /////////////////////////////////////////////////////////
 window.onscroll = function() {showbacktop()};
@@ -1027,6 +1062,7 @@ function backtop() {
     document.body.scrollTop = 0;
     document.documentElement.scrollTop = 0;
 }
+
 /////////////////////////////////////////////////////////
 
 /////////////////////LOGIN AND SIGNUP////////////////////
@@ -1049,6 +1085,7 @@ function backFromDiv() {
     document.getElementById("wrapper").style.display = "none";
     closeFilterAndSort();
 }
+
 /////////////////////////////////////////////////////////
 
 /////////////////////CREATE BOOKS////////////////////////
@@ -1542,6 +1579,7 @@ function createBook() {
     localStorage.setItem('category', JSON.stringify(category));
     updateQuantity(category);
 }
+
 /////////////////////////////////////////////////////////
 
 /////////////////////CREATE BEST SELLER BOOKS////////////
@@ -1568,7 +1606,6 @@ function createBestSeller() {
     bestseller.push(category[5].listcategory[0].books[0]);
     localStorage.setItem('bestseller', JSON.stringify(bestseller));
 }
-
 function updateQuantity(category) {
     var category = JSON.parse(localStorage.getItem('category'));
     // Tính số sách mỗi loại trước
@@ -1603,6 +1640,7 @@ function getBestseller() {
     books = bestseller;
     return bestseller;
 }
+
 /////////////////////////////////////////////////////////
 
 /////////////////////RENDER BEST SELLER BOOKS////////////
@@ -1631,6 +1669,7 @@ function renderBestseller(bestseller) {
     document.getElementById("products").innerHTML = html;
     showdetailBestseller(bestseller);
 }
+
 /////////////////////////////////////////////////////////
 
 /////////////////////SHOW DETAIL PRODUCT/////////////////
@@ -1658,7 +1697,7 @@ function showdetailBestseller(products) {
                 html += '<li>';
                 html += 'Số lượng:';
                 html += '<input style="margin-left: 30px;" disabled type="button" name="" id="sub" value="-" onclick="sub(' + products[i].quantity + ')">';
-                html += '<input type="number" min="0" name="" id="quantity" value="0" onchange="checkQuatity(' + products[i].quantity + ')">';
+                html += '<input type="number" min="0" name="" id="quantity" value="0" onchange="checkQuantity(' + products[i].quantity + ')">';
                 html += '<input type="button" value="+" id="plus" onclick="plus(' + products[i].quantity + ')">';
     
             } else {
@@ -1686,7 +1725,7 @@ function showDetail(products) {
     let listproduct = document.querySelectorAll("#products li");
     for (let i = 0; i < listproduct.length; i++) {
         listproduct[i].addEventListener('click', () => {
-            getCurrentPage(currenPage, products);
+            getCurrentPage(currentPage, products);
             productSelected = products[i + start];
             var html = '';
             html += '<div id="imgdetailPro">';
@@ -1705,7 +1744,7 @@ function showDetail(products) {
                 html += '<li>';
                 html += 'Số lượng:';
                 html += '<input style="margin-left: 30px;" disabled type="button" name="" id="sub" value="-" onclick="sub(' + products[i + start].quantity + ')">';
-                html += '<input type="number" min="0" name="" id="quantity" value="0" onchange="checkQuatity(' + products[i + start].quantity + ')">';
+                html += '<input type="number" min="0" name="" id="quantity" value="0" onchange="checkQuantity(' + products[i + start].quantity + ')">';
                 html += '<input type="button" value="+" id="plus" onclick="plus(' + products[i + start].quantity + ')">';
     
             } else {
@@ -1756,7 +1795,7 @@ function plus(quantity) {
         document.getElementById('sub').disabled = false;
     }
 }
-function checkQuatity(quantity) {
+function checkQuantity(quantity) {
     var a = document.getElementById('quantity').value;
     if (a <= 0 || isNaN(a)) { // phai nhap so, isNaN la ki tu
         document.getElementById('quantity').value = 0;
@@ -1773,18 +1812,18 @@ function checkQuatity(quantity) {
         }
     }
 }
-
-function getProductSelected(){
+function getProductSelected() {
     return productSelected;
 }
+
 /////////////////////////////////////////////////////////
 
 /////////////////////RENDER PRODUCT//////////////////////
 
 /////////////////////////////////////////////////////////
-function getCurrentPage(currenPage, products) {
-    start = (currenPage - 1) * perPage;
-    end = currenPage * perPage;
+function getCurrentPage(currentPage, products) {
+    start = (currentPage - 1) * perPage;
+    end = currentPage * perPage;
     if (end > products.length)
         end = products.length;
 }
@@ -1815,28 +1854,28 @@ function changePage(books) {
     for (let i = 0; i < listPage.length; i++) {
         listPage[i].addEventListener('click',() => {
             var value = i + 1;
-            currenPage = value;
+            currentPage = value;
             changeButton();
-            getCurrentPage(currenPage, books);
+            getCurrentPage(currentPage, books);
             renderProduct(books);
         });
     }
 }
 function changeButton() {
-    if (currenPage < totalpage || currenPage > 1) {
+    if (currentPage < totalpage || currentPage > 1) {
         document.getElementById("btnext").className = "button-prev-next-active";
         document.getElementById("btprev").className = "button-prev-next-active";
     }
-    if (currenPage == 1) {
+    if (currentPage == 1) {
         document.getElementById("btprev").className = "button-prev-next";
     }
-    if (currenPage == totalpage) {
+    if (currentPage == totalpage) {
         document.getElementById("btnext").className = "button-prev-next";
     }
     const listPage = document.querySelectorAll(".number-page li");
-    listPage[currenPage - 1].id = "active";
+    listPage[currentPage - 1].id = "active";
     for (let j = 0; j < listPage.length; j++) {
-        if (j != (currenPage - 1)) {
+        if (j != (currentPage - 1)) {
             listPage[j].id = null;
         }
     }
@@ -1849,7 +1888,7 @@ function renderListPage() {
     if (totalpage <=1) {
         html += '</div>';
         html += '<li id="btnext" class="button-prev-next"><i class="fas fa-chevron-circle-right" onclick="nextButton()"></i></li>'
-    }else{
+    } else {
         for (var i = 2; i <= totalpage; i++) {
             html += '<li><b>' + i + '</b></li>';
         }
@@ -1859,21 +1898,22 @@ function renderListPage() {
     document.getElementById("page").innerHTML = html;
 }
 function nextButton() {
-    currenPage++;
-    if (currenPage > totalpage)
-        currenPage = totalpage
+    currentPage++;
+    if (currentPage > totalpage)
+        currentPage = totalpage
     changeButton();
-    getCurrentPage(currenPage, books);
+    getCurrentPage(currentPage, books);
     renderProduct(books);
 }
 function prevButton() {
-    currenPage--;
-    if (currenPage < 1)
-        currenPage = 1
+    currentPage--;
+    if (currentPage < 1)
+        currentPage = 1
     changeButton();
-    getCurrentPage(currenPage, books);
+    getCurrentPage(currentPage, books);
     renderProduct(books);
 }
+
 /////////////////////////////////////////////////////////
 
 /////////////////////ADD TO SHOPPING CART////////////////
@@ -1881,7 +1921,7 @@ function prevButton() {
 /////////////////////////////////////////////////////////
 function createCart() {
     var cart = [];
-    if (localStorage.getItem('cart') == null){
+    if (localStorage.getItem('cart') == null) {
         localStorage.setItem('cart', JSON.stringify(cart));
     } 
 }
@@ -1953,6 +1993,7 @@ function total() {
     }
     return stringToPrice(price.toString());
 }
+
 /////////////////////////////////////////////////////////
 
 /////////////////////CREATE ORDER////////////////////////
