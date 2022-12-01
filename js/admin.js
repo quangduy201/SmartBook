@@ -505,7 +505,7 @@ function setStatusUser() {
     var statususers = document.querySelectorAll(".status_selection");
     var user = JSON.parse(localStorage.getItem('user'));
     for(let i = 0; i < statususers.length; i++) {
-        getCurrentPage(currentPage,users);
+        getCurrentPage(currentPage, users);
         statususers[i].addEventListener('change', () => {
             users[i+start].status = statususers[i].value;
             for (var j = 0; j < user.length; j++) {
@@ -566,31 +566,31 @@ function createPIEChart(filteredStatistic, books) {
             cost = cost[0].replaceAll(".", "");
             sumtotalSelectCategory += books[i].quantity * parseInt(cost);
         }
-        if (books[i].cat == "Sách giáo khoa")   j = 0;
-        if (books[i].cat == "Sách tham khảo")   j = 1;
-        if (books[i].cat == "Từ điển")  j = 2;
-        if (books[i].cat == "Truyện ngắn")  j = 3;
-        if (books[i].cat == "Truyện dài")   j = 4;
-        if (books[i].cat == "Thơ")  j = 5;
-        if (books[i].cat == "Khác") j = 6;
-        if (books[i].cat == "Ngôn tình")    j = 7;
-        if (books[i].cat == "Giả tưởng")    j = 8;
+        if (books[i].cat == "Sách giáo khoa")       j = 0;
+        if (books[i].cat == "Sách tham khảo")       j = 1;
+        if (books[i].cat == "Từ điển")              j = 2;
+        if (books[i].cat == "Truyện ngắn")          j = 3;
+        if (books[i].cat == "Truyện dài")           j = 4;
+        if (books[i].cat == "Thơ")                  j = 5;
+        if (books[i].cat == "Khác")                 j = 6;
+        if (books[i].cat == "Ngôn tình")            j = 7;
+        if (books[i].cat == "Giả tưởng")            j = 8;
         if (books[i].cat == "Tiểu thuyết Lịch sử")  j = 9;
-        if (books[i].cat == "Quản trị") j = 10;
-        if (books[i].cat == "Marketing")    j = 11;
-        if (books[i].cat == "Nhân Vật") j = 12;
-        if (books[i].cat == "Khởi nghiệp")  j = 13;
-        if (books[i].cat == "Chứng khoán")  j = 14;
-        if (books[i].cat == "Tâm lý")   j = 15;
-        if (books[i].cat == "Kỹ năng sống") j = 16;
+        if (books[i].cat == "Quản trị")             j = 10;
+        if (books[i].cat == "Marketing")            j = 11;
+        if (books[i].cat == "Nhân Vật")             j = 12;
+        if (books[i].cat == "Khởi nghiệp")          j = 13;
+        if (books[i].cat == "Chứng khoán")          j = 14;
+        if (books[i].cat == "Tâm lý")               j = 15;
+        if (books[i].cat == "Kỹ năng sống")         j = 16;
         if (books[i].cat == "Hạt giống tâm hồn")    j = 17;
-        if (books[i].cat == "Lịch sử Việt Nam") j = 18;
-        if (books[i].cat == "Lịch sử Thế giới") j = 19;
-        if (books[i].cat == "Truyện thiếu nhi") j = 20;
-        if (books[i].cat == "Tô màu")   j = 21;
-        if (books[i].cat == "Luyện chữ")    j = 22;
+        if (books[i].cat == "Lịch sử Việt Nam")     j = 18;
+        if (books[i].cat == "Lịch sử Thế giới")     j = 19;
+        if (books[i].cat == "Truyện thiếu nhi")     j = 20;
+        if (books[i].cat == "Tô màu")               j = 21;
+        if (books[i].cat == "Luyện chữ")            j = 22;
         all[j].quantity += books[i].quantity;
-        var cost=books[i].price;
+        var cost = books[i].price;
         cost = cost.split('VND');
         cost = cost[0].replaceAll(".", "");
         all[j].sale += books[i].quantity * parseInt(cost);
@@ -664,9 +664,9 @@ function statisticFilter() {
                     }
                 }
             }
-            createPIEChart(filteredStatistic,books);
+            createPIEChart(filteredStatistic, books);
             return true;
-        }else{
+        } else {
             alert("Vui lòng nhập đầy đủ thông tin!");
             return false;
         }

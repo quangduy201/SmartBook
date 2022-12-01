@@ -30,393 +30,210 @@ function loadPage() {
         str = str.split('?');
         var url = str[1].split('&');
         var products = JSON.parse(localStorage.getItem('category'));
-        if (url.length > 1) {
-            if (url[0] == "giaoduc" && url[1] == "sachgiaokhoa") {
-                document.getElementById("headline").innerHTML = "<h3>Sách giáo khoa</h3>";
-                books = products[0].listcategory[0].books;
-                currenPage = 1;
-                totalpage = Math.ceil(books.length / perPage);
-                getCurrentPage(currenPage, books);
-                renderProduct(books);
-                renderListPage();
-                changePage(books);
-            }
-            if (url[0] == "giaoduc" && url[1] == "sachthamkhao") {
-                document.getElementById("headline").innerHTML = "<h3>Sách tham khảo</h3>";
-                books = products[0].listcategory[1].books;
-                currenPage = 1;
-                totalpage = Math.ceil(books.length / perPage);
-                getCurrentPage(currenPage, books);
-                renderProduct(books);
-                renderListPage();
-                changePage(books);
-            }
-            if (url[0] == "giaoduc" && url[1] == "tudien") {
-                document.getElementById("headline").innerHTML = "<h3>Từ điển</h3>";
-                books = products[0].listcategory[2].books;
-                currenPage = 1;
-                totalpage = Math.ceil(books.length / perPage);
-                getCurrentPage(currenPage, books);
-                renderProduct(books);
-                renderListPage();
-                changePage(books);
-            }
-            if (url[0] == "vanhoc" && url[1] == "truyenngan") {
-                document.getElementById("headline").innerHTML = "<h3>Truyện ngắn</h3>";
-                books = products[1].listcategory[0].books;
-                currenPage = 1;
-                totalpage = Math.ceil(books.length / perPage);
-                getCurrentPage(currenPage, books);
-                renderProduct(books);
-                renderListPage();
-                changePage(books);
-            }
-            if (url[0] == "vanhoc" && url[1] == "truyendai") {
-                document.getElementById("headline").innerHTML = "<h3>Truyện dài</h3>";
-                books = products[1].listcategory[1].books;
-                currenPage = 1;
-                totalpage = Math.ceil(books.length / perPage);
-                getCurrentPage(currenPage, books);
-                renderProduct(books);
-                renderListPage();
-                changePage(books);
-            }
-            if (url[0] == "vanhoc" && url[1] == "tho") {
-                document.getElementById("headline").innerHTML = "<h3>Thơ</h3>";
-                books = products[1].listcategory[2].books;
-                currenPage = 1;
-                totalpage = Math.ceil(books.length / perPage);
-                getCurrentPage(currenPage, books);
-                renderProduct(books);
-                renderListPage();
-                changePage(books);
-            }
-            if (url[0] == "vanhoc" && url[1] == "khac") {
-                document.getElementById("headline").innerHTML = "<h3>Văn học Khác</h3>";
-                books = products[1].listcategory[3].books;
-                currenPage = 1;
-                totalpage = Math.ceil(books.length / perPage);
-                getCurrentPage(currenPage, books);
-                renderProduct(books);
-                renderListPage();
-                changePage(books);
-            }
-            if (url[0] == "tieuthuyet" && url[1] == "ngontinh") {
-                document.getElementById("headline").innerHTML = "<h3>Tiểu thuyết Ngôn tình</h3>";
-                books = products[2].listcategory[0].books;
-                currenPage = 1;
-                totalpage = Math.ceil(books.length / perPage);
-                getCurrentPage(currenPage, books);
-                renderProduct(books);
-                renderListPage();
-                changePage(books);
-            }
-            if (url[0] == "tieuthuyet" && url[1] == "giatuong") {
-                document.getElementById("headline").innerHTML = "<h3>Tiểu Thuyết Giả tưởng</h3>";
-                books = products[2].listcategory[1].books;
-                currenPage = 1;
-                totalpage = Math.ceil(books.length / perPage);
-                getCurrentPage(currenPage, books);
-                renderProduct(books);
-                renderListPage();
-                changePage(books);
-            }
-            if (url[0] == "tieuthuyet" && url[1] == "lichsu") {
-                document.getElementById("headline").innerHTML = "<h3>Tiểu thuyết lịch sử</h3>";
-                books = products[2].listcategory[2].books;
-                currenPage = 1;
-                totalpage = Math.ceil(books.length / perPage);
-                getCurrentPage(currenPage, books);
-                renderProduct(books);
-                renderListPage();
-                changePage(books);
-            }
-            if (url[0] == "kinhte" && url[1] == "quantri") {
-                document.getElementById("headline").innerHTML = "<h3>Sách Quản trị</h3>";
-                books = products[3].listcategory[0].books;
-                currenPage = 1;
-                totalpage = Math.ceil(books.length / perPage);
-                getCurrentPage(currenPage, books);
-                renderProduct(books);
-                renderListPage();
-                changePage(books);
-            }
-            if (url[0] == "kinhte" && url[1] == "marketing") {
-                document.getElementById("headline").innerHTML = "<h3>Sách Marketing</h3>";
-                books = products[3].listcategory[1].books;
-                currenPage = 1;
-                totalpage = Math.ceil(books.length / perPage);
-                getCurrentPage(currenPage, books);
-                renderProduct(books);
-                renderListPage();
-                changePage(books);
-            }
-            if (url[0] == "kinhte" && url[1] == "nhanvat") {
-                document.getElementById("headline").innerHTML = "<h3>Sách Nhân Vật</h3>";
-                books = products[3].listcategory[2].books;
-                currenPage = 1;
-                totalpage = Math.ceil(books.length / perPage);
-                getCurrentPage(currenPage, books);
-                renderProduct(books);
-                renderListPage();
-                changePage(books);
-            }
-            if (url[0] == "kinhte" && url[1] == "khoinghiep") {
-                document.getElementById("headline").innerHTML = "<h3>Sách Khởi nghiệp</h3>";
-                books = products[3].listcategory[3].books;
-                currenPage = 1;
-                totalpage = Math.ceil(books.length / perPage);
-                getCurrentPage(currenPage, books);
-                renderProduct(books);
-                renderListPage();
-                changePage(books);
-            }
-            if (url[0] == "kinhte" && url[1] == "chungkhoan") {
-                document.getElementById("headline").innerHTML = "<h3>Sách Chứng khoán</h3>";
-                books = products[3].listcategory[4].books;
-                currenPage = 1;
-                totalpage = Math.ceil(books.length / perPage);
-                getCurrentPage(currenPage, books);
-                renderProduct(books);
-                renderListPage();
-                changePage(books);
-            }
-            if (url[0] == "tamly/kynangsong" && url[1] == "tamly") {
-                document.getElementById("headline").innerHTML = "<h3>Sách Tâm lý</h3>";
-                books = products[4].listcategory[0].books;
-                currenPage = 1;
-                totalpage = Math.ceil(books.length / perPage);
-                getCurrentPage(currenPage, books);
-                renderProduct(books);
-                renderListPage();
-                changePage(books);
-            }
-            if (url[0] == "tamly/kynangsong" && url[1] == "kynangsong") {
-                document.getElementById("headline").innerHTML = "<h3>Sách Kỹ năng sống</h3>";
-                books = products[4].listcategory[1].books;
-                currenPage = 1;
-                totalpage = Math.ceil(books.length / perPage);
-                getCurrentPage(currenPage, books);
-                renderProduct(books);
-                renderListPage();
-                changePage(books);
-            }
-            if (url[0] == "tamly/kynangsong" && url[1] == "hatgiongtamhon") {
-                document.getElementById("headline").innerHTML = "<h3>Sách Hạt giống tâm hồn</h3>";
-                books = products[4].listcategory[2].books;
-                currenPage = 1;
-                totalpage = Math.ceil(books.length / perPage);
-                getCurrentPage(currenPage, books);
-                renderProduct(books);
-                renderListPage();
-                changePage(books);
-            }
-            if (url[0] == "lichsu" && url[1] == "vietnam") {
-                document.getElementById("headline").innerHTML = "<h3>Lịch sử Việt Nam</h3>";
-                books = products[5].listcategory[0].books;
-                currenPage = 1;
-                totalpage = Math.ceil(books.length / perPage);
-                getCurrentPage(currenPage, books);
-                renderProduct(books);
-                renderListPage();
-                changePage(books);
-            }
-            if (url[0] == "lichsu" && url[1] == "thegioi") {
-                document.getElementById("headline").innerHTML = "<h3>Lịch sử Thế giới</h3>";
-                books = products[5].listcategory[1].books;
-                currenPage = 1;
-                totalpage = Math.ceil(books.length / perPage);
-                getCurrentPage(currenPage, books);
-                renderProduct(books);
-                renderListPage();
-                changePage(books);
-            }
-            if (url[0] == "thieunhi" && url[1] == "truyenthieunhi") {
-                document.getElementById("headline").innerHTML = "<h3>Truyện thiếu nhi</h3>";
-                books = products[6].listcategory[0].books;
-                currenPage = 1;
-                totalpage = Math.ceil(books.length / perPage);
-                getCurrentPage(currenPage, books);
-                renderProduct(books);
-                renderListPage();
-                changePage(books);
-            }
-            if (url[0] == "thieunhi" && url[1] == "tomau") {
-                document.getElementById("headline").innerHTML = "<h3>Sách Tô màu</h3>";
-                books = products[6].listcategory[1].books;
-                currenPage = 1;
-                totalpage = Math.ceil(books.length / perPage);
-                getCurrentPage(currenPage, books);
-                renderProduct(books);
-                renderListPage();
-                changePage(books);
-            }
-            if (url[0] == "thieunhi" && url[1] == "luyenchu") {
-                document.getElementById("headline").innerHTML = "<h3>Sách Luyện chữ</h3>";
-                books = products[6].listcategory[2].books;
-                currenPage = 1;
-                totalpage = Math.ceil(books.length / perPage);
-                getCurrentPage(currenPage, books);
-                renderProduct(books);
-                renderListPage();
-                changePage(books);
-            }
-            if (url[0] == "thieunhi" && url[1] == "luyenchu") {
-                document.getElementById("headline").innerHTML = "<h3>Sách Luyện chữ</h3>";
-                books = products[6].listcategory[2].books;
-                currenPage = 1;
-                totalpage = Math.ceil(books.length / perPage);
-                getCurrentPage(currenPage, books);
-                renderProduct(books);
-                renderListPage();
-                changePage(books);
-            }
-            document.getElementById("btFilter").style.display = "block";
-        } else {
-            books = [];
-            if (url[0] == "giaoduc") {
+        if (url[0] == "giaoduc") {
+            if (url.length > 1) {
+                if (url[1] == "sachgiaokhoa") {
+                    document.getElementById("headline").innerHTML = "<h3>Sách giáo khoa</h3>";
+                    books = products[0].listcategory[0].books;
+                }
+                if (url[1] == "sachthamkhao") {
+                    document.getElementById("headline").innerHTML = "<h3>Sách tham khảo</h3>";
+                    books = products[0].listcategory[1].books;
+                }
+                if (url[1] == "tudien") {
+                    document.getElementById("headline").innerHTML = "<h3>Từ điển</h3>";
+                    books = products[0].listcategory[2].books;
+                }
+            } else {
                 document.getElementById("headline").innerHTML = "<h3>Sách Giáo dục</h3>";
-                for (var j = 0; j < products[0].listcategory.length; j++) {
-                    for (var h = 0; h < products[0].listcategory[j].books.length; h++) {
+                for (var j = 0; j < products[0].listcategory.length; j++)
+                    for (var h = 0; h < products[0].listcategory[j].books.length; h++)
                         books.push(products[0].listcategory[j].books[h]);
-                    }
-                }
-                currenPage = 1;
-                totalpage = Math.ceil(books.length / perPage);
-                getCurrentPage(currenPage, books);
-                renderProduct(books);
-                renderListPage();
-                changePage(books);
             }
-            if (url[0] == "vanhoc") {
+        }
+        if (url[0] == "vanhoc") {
+            if (url.length > 1) {
+                if (url[1] == "truyenngan") {
+                    document.getElementById("headline").innerHTML = "<h3>Truyện ngắn</h3>";
+                    books = products[1].listcategory[0].books;
+                }
+                if (url[1] == "truyendai") {
+                    document.getElementById("headline").innerHTML = "<h3>Truyện dài</h3>";
+                    books = products[1].listcategory[1].books;
+                }
+                if (url[1] == "tho") {
+                    document.getElementById("headline").innerHTML = "<h3>Thơ</h3>";
+                    books = products[1].listcategory[2].books;
+                }
+                if (url[1] == "khac") {
+                    document.getElementById("headline").innerHTML = "<h3>Văn học Khác</h3>";
+                    books = products[1].listcategory[3].books;
+                }
+            } else {
                 document.getElementById("headline").innerHTML = "<h3>Sách Văn học</h3>";
-                for (var j = 0; j < products[1].listcategory.length; j++) {
-                    for (var h = 0; h < products[1].listcategory[j].books.length; h++) {
+                for (var j = 0; j < products[1].listcategory.length; j++)
+                    for (var h = 0; h < products[1].listcategory[j].books.length; h++)
                         books.push(products[1].listcategory[j].books[h]);
-                    }
-                }
-                currenPage = 1;
-                totalpage = Math.ceil(books.length / perPage);
-                getCurrentPage(currenPage, books);
-                renderProduct(books);
-                renderListPage();
-                changePage(books);
             }
-            if (url[0] == "tieuthuyet") {
+        }
+        if (url[0] == "tieuthuyet") {
+            if (url.length > 1) {
+                if (url[1] == "ngontinh") {
+                    document.getElementById("headline").innerHTML = "<h3>Tiểu thuyết Ngôn tình</h3>";
+                    books = products[2].listcategory[0].books;
+                }
+                if (url[1] == "giatuong") {
+                    document.getElementById("headline").innerHTML = "<h3>Tiểu Thuyết Giả tưởng</h3>";
+                    books = products[2].listcategory[1].books;
+                }
+                if (url[1] == "lichsu") {
+                    document.getElementById("headline").innerHTML = "<h3>Tiểu thuyết lịch sử</h3>";
+                    books = products[2].listcategory[2].books;
+                }
+            } else {
                 document.getElementById("headline").innerHTML = "<h3>Sách Tiểu thuyết</h3>";
-                for (var j = 0; j < products[2].listcategory.length; j++) {
-                    for (var h = 0; h < products[2].listcategory[j].books.length; h++) {
+                for (var j = 0; j < products[2].listcategory.length; j++)
+                    for (var h = 0; h < products[2].listcategory[j].books.length; h++)
                         books.push(products[2].listcategory[j].books[h]);
-                    }
-                }
-                currenPage = 1;
-                totalpage = Math.ceil(books.length / perPage);
-                getCurrentPage(currenPage, books);
-                renderProduct(books);
-                renderListPage();
-                changePage(books);
             }
-            if (url[0] == "kinhte") {
+        }
+        if (url[0] == "kinhte") {
+            if (url.length > 1) {
+                if (url[1] == "quantri") {
+                    document.getElementById("headline").innerHTML = "<h3>Sách Quản trị</h3>";
+                    books = products[3].listcategory[0].books;
+                }
+                if (url[1] == "marketing") {
+                    document.getElementById("headline").innerHTML = "<h3>Sách Marketing</h3>";
+                    books = products[3].listcategory[1].books;
+                }
+                if (url[1] == "nhanvat") {
+                    document.getElementById("headline").innerHTML = "<h3>Sách Nhân Vật</h3>";
+                    books = products[3].listcategory[2].books;
+                }
+                if (url[1] == "khoinghiep") {
+                    document.getElementById("headline").innerHTML = "<h3>Sách Khởi nghiệp</h3>";
+                    books = products[3].listcategory[3].books;
+                }
+                if (url[1] == "chungkhoan") {
+                    document.getElementById("headline").innerHTML = "<h3>Sách Chứng khoán</h3>";
+                    books = products[3].listcategory[4].books;
+                }
+            } else {
                 document.getElementById("headline").innerHTML = "<h3>Sách Kinh tế</h3>";
-                for (var j = 0; j < products[3].listcategory.length; j++) {
-                    for (var h = 0; h < products[3].listcategory[j].books.length; h++) {
+                for (var j = 0; j < products[3].listcategory.length; j++)
+                    for (var h = 0; h < products[3].listcategory[j].books.length; h++)
                         books.push(products[3].listcategory[j].books[h]);
-                    }
-                }
-                currenPage = 1;
-                totalpage = Math.ceil(books.length / perPage);
-                getCurrentPage(currenPage, books);
-                renderProduct(books);
-                renderListPage();
-                changePage(books);
             }
-            if (url[0] == "tamly/kynangsong") {
+        }
+        if (url[0] == "tamly/kynangsong") {
+            if (url.length > 1) {
+                if (url[1] == "tamly") {
+                    document.getElementById("headline").innerHTML = "<h3>Sách Tâm lý</h3>";
+                    books = products[4].listcategory[0].books;
+                }
+                if (url[1] == "kynangsong") {
+                    document.getElementById("headline").innerHTML = "<h3>Sách Kỹ năng sống</h3>";
+                    books = products[4].listcategory[1].books;
+                }
+                if (url[1] == "hatgiongtamhon") {
+                    document.getElementById("headline").innerHTML = "<h3>Sách Hạt giống tâm hồn</h3>";
+                    books = products[4].listcategory[2].books;
+                }
+            } else {
                 document.getElementById("headline").innerHTML = "<h3>Sách Tâm lý/Kỹ năng sống</h3>";
-                for (var j = 0; j < products[4].listcategory.length; j++) {
-                    for (var h = 0; h < products[4].listcategory[j].books.length; h++) {
+                for (var j = 0; j < products[4].listcategory.length; j++)
+                    for (var h = 0; h < products[4].listcategory[j].books.length; h++)
                         books.push(products[4].listcategory[j].books[h]);
-                    }
-                }
-                currenPage = 1;
-                totalpage = Math.ceil(books.length / perPage);
-                getCurrentPage(currenPage, books);
-                renderProduct(books);
-                renderListPage();
-                changePage(books);
             }
-            if (url[0] == "lichsu") {
+        }
+        if (url[0] == "lichsu") {
+            if (url.length > 1) {
+                if (url[1] == "vietnam") {
+                    document.getElementById("headline").innerHTML = "<h3>Lịch sử Việt Nam</h3>";
+                    books = products[5].listcategory[0].books;
+                }
+                if (url[1] == "thegioi") {
+                    document.getElementById("headline").innerHTML = "<h3>Lịch sử Thế giới</h3>";
+                    books = products[5].listcategory[1].books;
+                }
+            } else {
                 document.getElementById("headline").innerHTML = "<h3>Sách Lịch sử</h3>";
-                for (var j = 0; j < products[5].listcategory.length; j++) {
-                    for (var h = 0; h < products[5].listcategory[j].books.length; h++) {
+                for (var j = 0; j < products[5].listcategory.length; j++)
+                    for (var h = 0; h < products[5].listcategory[j].books.length; h++)
                         books.push(products[5].listcategory[j].books[h]);
-                    }
-                }
-                currenPage = 1;
-                totalpage = Math.ceil(books.length / perPage);
-                getCurrentPage(currenPage, books);
-                renderProduct(books);
-                renderListPage();
-                changePage(books);
             }
-            if (url[0] == "thieunhi") {
+        }
+        if (url[0] == "thieunhi") {
+            if (url.length > 1) {
+                if (url[1] == "truyenthieunhi") {
+                    document.getElementById("headline").innerHTML = "<h3>Truyện thiếu nhi</h3>";
+                    books = products[6].listcategory[0].books;
+                }
+                if (url[1] == "tomau") {
+                    document.getElementById("headline").innerHTML = "<h3>Sách Tô màu</h3>";
+                    books = products[6].listcategory[1].books;
+                }
+                if (url[1] == "luyenchu") {
+                    document.getElementById("headline").innerHTML = "<h3>Sách Luyện chữ</h3>";
+                    books = products[6].listcategory[2].books;
+                }
+            } else {
                 document.getElementById("headline").innerHTML = "<h3>Sách Thiếu nhi</h3>";
-                for (var j = 0; j < products[6].listcategory.length; j++) {
-                    for (var h = 0; h < products[6].listcategory[j].books.length; h++) {
+                for (var j = 0; j < products[6].listcategory.length; j++)
+                    for (var h = 0; h < products[6].listcategory[j].books.length; h++)
                         books.push(products[6].listcategory[j].books[h]);
-                    }
-                }
-                currenPage = 1;
-                totalpage = Math.ceil(books.length / perPage);
-                getCurrentPage(currenPage, books);
-                renderProduct(books);
-                renderListPage();
-                changePage(books);
             }
-            if (url[0] == "shoppingcart") {
-                var html = '';
-                var user = JSON.parse(localStorage.getItem('userActive'));
-                // check user active
-                if (user == null) {
-                    alert("Vui lòng đăng nhập!");
-                    location.href = "/index.html";
-                    return false;
-                }
-                var products = JSON.parse(localStorage.getItem('cart'));
-                html += '<div class="headline" id="headline"><h3 style="background-color: rgb(242, 120, 38); color: black;">Giỏ Hàng</h3></div>';
-                if (products.length > 0) {
-                    html += '<div id="listProductsBuy" >';
-                    for (var i = 0; i < products.length; i++) {
-                        html += '<ul class="productsBuy">';
-                        html += '<li>' + (i+1) + '</li>';
-                        html += '<li class="img-Pro">';
-                        html += '<img src="' + products[i].image +'" alt="">';
-                        html += '</li>';
-                        html += '<li>' + products[i].name + '</li>';
-                        html += '<li>Số lượng: ' + products[i].quantity + '</li>';
-                        html += '<li>' + products[i].price + '</li>';
-                        html += '<li><i id = "deleteitemsinCart" class="fas fa-regular fa-trash-can"></i></li>';
-                        html += '</ul>';
-                    }
-                    html += '<div id="buy">';
-                    html += '<ul>';
-                    html += '<li>Tổng <h3 style="color: black;">' + total() + '</h3></li>';
-                    html += '<li><input type="button" value="Mua hàng (' + products.length + ')" onclick="addOrder()"></li>';
+        }
+        if (url[0] == "shoppingcart") {
+            var html = '';
+            var user = JSON.parse(localStorage.getItem('userActive'));
+            // check user active
+            if (user == null) {
+                alert("Vui lòng đăng nhập!");
+                location.href = "/index.html";
+                return false;
+            }
+            var products = JSON.parse(localStorage.getItem('cart'));
+            html += '<div class="headline" id="headline"><h3 style="background-color: rgb(242, 120, 38); color: black;">Giỏ Hàng</h3></div>';
+            if (products.length > 0) {
+                html += '<div id="listProductsBuy" >';
+                for (var i = 0; i < products.length; i++) {
+                    html += '<ul class="productsBuy">';
+                    html += '<li>' + (i+1) + '</li>';
+                    html += '<li class="img-Pro">';
+                    html += '<img src="' + products[i].image +'" alt="">';
+                    html += '</li>';
+                    html += '<li>' + products[i].name + '</li>';
+                    html += '<li>Số lượng: ' + products[i].quantity + '</li>';
+                    html += '<li>' + products[i].price + '</li>';
+                    html += '<li><i id = "deleteitemsinCart" class="fas fa-regular fa-trash-can"></i></li>';
                     html += '</ul>';
-                    html += '</div>';
-                    document.getElementById("content").innerHTML = html;
-                    deteleFromCartPro();
-                    return true;
                 }
-                html += '<h1>Bạn chưa chọn sản phẩm nào</h1>';
+                html += '<div id="buy">';
+                html += '<ul>';
+                html += '<li>Tổng <h3 style="color: black;">' + total() + '</h3></li>';
+                html += '<li><input type="button" value="Mua hàng (' + products.length + ')" onclick="addOrder()"></li>';
+                html += '</ul>';
+                html += '</div>';
                 document.getElementById("content").innerHTML = html;
+                deteleFromCartPro();
                 return true;
             }
-            document.getElementById("btFilter").style.display = "block";
+            html += '<h1>Bạn chưa chọn sản phẩm nào</h1>';
+            document.getElementById("content").innerHTML = html;
+            return true;
         }
-
+        currenPage = 1;
+        totalpage = Math.ceil(books.length / perPage);
+        getCurrentPage(currenPage, books);
+        renderProduct(books);
+        renderListPage();
+        changePage(books);
+        document.getElementById("btFilter").style.display = "block";
     }
-    
 }
+    
 /////////////////////////////////////////////////////////
 
 /////////////////////BANNER//////////////////////////////
@@ -573,17 +390,6 @@ function showPriceFilter() {
     } else {
         options.setAttribute("style", "display: none");
         hiddenPriceFilter = true;
-    }
-}
-function showCategoryFilter() {
-    const sort = document.getElementById("filter3");
-    const options = sort.lastElementChild;
-    if (hiddenCategoryFilter == true) {
-        options.setAttribute("style", "display: block");
-        hiddenCategoryFilter = false;
-    } else {
-        options.setAttribute("style", "display: none");
-        hiddenCategoryFilter = true;
     }
 }
 function showCategoryFilter() {
@@ -921,7 +727,6 @@ function filterOption13() {
     books = initialBooks;
     filter = true;
 }
-
 function filterOption14() {
     initialBooks = books;
     var temp = [];
@@ -1202,7 +1007,6 @@ function filterOption27() {
     books = initialBooks;
     filter = true;
 }
-
 
 /////////////////////////////////////////////////////////
 
@@ -1881,9 +1685,11 @@ function showDetail(products) {
     for (let i = 0; i < listproduct.length; i++) {
         listproduct[i].addEventListener('click', () => {
             getCurrentPage(currenPage, products);
-            productSelected=products[i + start];
+            productSelected = products[i + start];
             var html = '';
+            html += '<div id="imgdetailPro">';
             html += '<img src="' + products[i + start].image + '" alt="">';
+            html += '</div>';
             html += '<div id="detail-pro">';
             html += '<ul>';
             html += '<li><h1>' + products[i + start].name + '</h1></li>';
@@ -1974,7 +1780,7 @@ function getProductSelected(){
 /////////////////////RENDER PRODUCT//////////////////////
 
 /////////////////////////////////////////////////////////
-function getCurrentPage(currenPage,products) {
+function getCurrentPage(currenPage, products) {
     start = (currenPage - 1) * perPage;
     end = currenPage * perPage;
     if (end > products.length)

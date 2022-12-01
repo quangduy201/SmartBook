@@ -579,10 +579,10 @@ input::-webkit-inner-spin-button {
     cursor: pointer;
     font-size: 30px;
 }
-#detail{
+#detail {
     display: flex;
 }
-#detail #imgdetailPro{
+#detail #imgdetailPro {
     text-align: center;
     width: 60%;
     padding-top: 50px;
@@ -597,7 +597,7 @@ input::-webkit-inner-spin-button {
 #detail ul li:first-child {
     padding-right: 10px;
 }
-#detail-pro{
+#detail-pro {
     width: 40%;
     display: flex;
     padding-right: 20px;
@@ -745,7 +745,7 @@ input::-webkit-inner-spin-button {
         height: 300px;
         max-width: 100%;
     }
-    #detail-pro h1{
+    #detail-pro h1 {
         font-size: 20px;
     }
 }
@@ -775,7 +775,7 @@ input::-webkit-inner-spin-button {
         box-sizing: border-box;
         margin-bottom: 30px;
     }
-    #wrapper{
+    #wrapper {
         margin-top: 150px;
     }
 }
