@@ -239,6 +239,13 @@ input::-webkit-inner-spin-button {
     color: #555;
     font-weight: 600;
 }
+#content #support h2,
+#content #support h3,
+#content #support p {
+    color: black;
+    text-align: left;
+    margin: 5px 50px;
+}
 /*              */
 /*Filter and sort*/
 /*              */
