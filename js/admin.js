@@ -173,16 +173,21 @@ function showDetailProducts(){
             document.getElementById("Editpreview").setAttribute("src", item.image);
             document.getElementById("Editimgproduct").setAttribute("src", item.image);
             document.getElementById("upload").style.display = "none";
-            document.getElementById("id-Editproduct").value=item.id;
-            document.getElementById("name-Editproduct").value=item.name;
-            document.getElementById("cat-Editproduct").value=item.cat;
-            document.getElementById("quantity-Editproduct").value=item.quantity;
-            var cost=item.price;
-            cost=cost.split('VND');
-            cost=cost[0].replace(".","");
-            document.getElementById("price-Editproduct").value=parseInt(cost);
-            changeImg=false;
-        })
+            document.getElementById("id-Editproduct").value = item.id;
+            document.getElementById("name-Editproduct").value = item.name;
+            var options = document.querySelectorAll("#cat-product option");
+            for (let i=0; i<options.length; i++){
+                if (options[i].value == item.cat){
+                    options[i].selected = true;
+                }
+            }
+            document.getElementById("quantity-Editproduct").value = item.quantity;
+            var cost = item.price;
+            cost = cost.split('VND');
+            cost = cost[0].replaceAll(".", "");
+            document.getElementById("price-Editproduct").value = parseInt(cost);
+            changeImg = false;
+        });
     }
 }
 function showDetailBill (){
@@ -342,7 +347,7 @@ function stringToPrice(s) {
 function addNewProduct() {
     var id = document.getElementById("id-product").value.trim();
     var name = document.getElementById("name-product").value.trim();
-    var cat = document.getElementById("cat-product").value.trim();
+    var cat = document.getElementById("cat-product").value;
     var quantity = document.getElementById("quantity-product").value;
     var price = document.getElementById("price-product").value;
     var image = imageToDataURL("imgproduct");
@@ -395,7 +400,7 @@ function addNewProduct() {
 function editProduct() {
     var id = document.getElementById("id-Editproduct").value.trim();
     var name = document.getElementById("name-Editproduct").value.trim();
-    var cat = document.getElementById("cat-Editproduct").value.trim();
+    var cat = document.getElementById("cat-Editproduct").value;
     var quantity = document.getElementById("quantity-Editproduct").value;
     var price = document.getElementById("price-Editproduct").value;
     var image = imageToDataURL("Editimgproduct");
@@ -468,16 +473,21 @@ function deleteProduct() {
 function setStatusOrder(){
     var statusbills = document.querySelectorAll(".orderNote_selection");
     var orderNoteList = JSON.parse(localStorage.getItem('orderNoteList'));
-    for(let i=0; i<statusbills.length; i++){
-        getCurrentPage(currentPage,statusbills)
-        statusbills[i].addEventListener('change',()=>{
-            orderNoteList[i+start].status = statusbills[i].value;
-            localStorage.setItem('orderNoteList', JSON.stringify(orderNoteList));
-            if (orderNoteList[i+start].status == "Đã xử lý"){
-                statusbills[i].parentNode.parentNode.setAttribute("style", "background-color: #69C9BC");
-            }else{
-                statusbills[i].parentNode.parentNode.setAttribute("style", "background-color: white");
+    for (let i = 0; i < statusbills.length; i++) {
+        getCurrentPage(currentPage,statusbills);
+        const temp = statusbills[i].value;
+        statusbills[i].addEventListener('change', () => {
+            if(orderNoteList[i+start].status!="Đã xử lý"){
+                orderNoteList[i+start].status = statusbills[i].value;
+                localStorage.setItem('orderNoteList', JSON.stringify(orderNoteList));
+                if (orderNoteList[i+start].status == "Đã xử lý") {
+                    statusbills[i].parentNode.parentNode.setAttribute("style", "background-color: #69C9BC");
+                }
             }
+            else{
+                statusbills[i].value=temp;
+            }
+            
         });
     }
     
