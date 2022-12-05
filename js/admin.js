@@ -6,7 +6,7 @@ let totalpage;
 let products = [];
 let bills = [];
 var users = [];
-let books=[];
+let books = [];
 let changeImg;
 window.onload = function() {
     var str = window.location.href;
@@ -53,7 +53,7 @@ window.onload = function() {
         html += '</table>';
         document.getElementById("content").innerHTML = html;
         var orderNoteList = JSON.parse(localStorage.getItem('orderNoteList'));
-        for (var i=0; i<orderNoteList.length; i++){
+        for (var i = 0; i < orderNoteList.length; i++) {
             bills.push(orderNoteList[i]);
         }
         currentPage = 1;
@@ -74,7 +74,7 @@ window.onload = function() {
         currentPage = 1;
         var user = JSON.parse(localStorage.getItem('user'));
         for (var i = 0; i < user.length; i++) {
-            if (user[i].type=="Customer") {
+            if (user[i].type == "Customer") {
                 users.push(user[i]);
             }
         }
@@ -112,9 +112,9 @@ function getCurrentPage(currentPage, products) {
 function showItemsList(products) {
     var tr = '<tr class="titleList"><th class="id">MÃ SẢN PHẨM</th><th class="image">Ảnh</th><th class="name">TÊN SẢN PHẨM</th><th class="type">THỂ LOẠI</th><th class="quantity">TỒN KHO</th><th class="cost">GIÁ</th><th class="edit"><i class="fa-solid fa-folder-plus" title="Thêm sản phẩm" onclick="showAddProducts()"></i></th></tr>';
     for (var i = start; i < end; i++) {
-        if (i%2==1){ 
+        if (i % 2 == 1) {
             tr += '<tr class="detailList" style="background-color: rgb(221, 177, 149);"><td class="id">' + products[i].id + '</td><td class="image"><img src="' + products[i].image + '" alt=""></th><td class="name">' + products[i].name + '</td><td class="type">' + products[i].cat + '</td><td class="quantity">' + products[i].quantity + '</td><td class="cost">' + products[i].price + '</td></tr>'
-        }else{
+        } else {
             tr += '<tr class="detailList"><td class="id">' + products[i].id + '</td><td class="image"><img src="' + products[i].image + '" alt=""></th><td class="name">' + products[i].name + '</td><td class="type">' + products[i].cat + '</td><td class="quantity">' + products[i].quantity +'</td><td class="cost">' + products[i].price + '</td></tr>'
         }
     }
@@ -124,9 +124,9 @@ function showItemsList(products) {
 function showUsers(users) {
     var tr = '<tr class="titleList"><th class="id">TÀI KHOẢN</th><th class="name">TÊN KHÁCH HÀNG</th><th class="email">EMAIL</th><th class="status">TRẠNG THÁI</th></tr>';
     for (var i = start; i < end; i++) {
-        if (users[i].status == "enabled"){
+        if (users[i].status == "enabled") {
             tr += '<tr class="detailList"><td class="id">' + users[i].username + '</td><td class="name">' + users[i].name + '</td><td class="email">' + users[i].email + '</td><td class="status"><select class="status_selection"><option value="'+ users[i].status +'"selected>'+ users[i].status +'</option><option value="disabled">disabled</option></select></td></tr>'
-        }else{
+        } else {
             tr += '<tr class="detailList"><td class="id">' + users[i].username + '</td><td class="name">' + users[i].name + '</td><td class="email">' + users[i].email + '</td><td class="status"><select class="status_selection"><option value="enabled">enabled</option><option value="'+ users[i].status +'"selected>'+ users[i].status +'</option></select></td></tr>'
         }
     }
@@ -136,9 +136,9 @@ function showUsers(users) {
 function showBillList(bills) {
     var tr = '<tr class="titleList" ><th class="id">MÃ HÓA ĐƠN</th><th class="date">THỜI GIAN</th><th class="name">TÌNH TRẠNG</th><th class="type">TỔNG TIỀN</th></tr>';
     for (var i = start; i < end; i++) {
-        if (bills[i].status=="Đã xử lý"){
+        if (bills[i].status == "Đã xử lý") {
             tr += '<tr class="detailList" style="background-color:#69C9BC"><td class="id">' + bills[i].orderID + '</td><td class="date">' + bills[i].date + '</th><td class="status"><select class="orderNote_selection"><option value="Chưa xử lý">Chưa xử lý</option><option value="'+ bills[i].status +'"selected>'+ bills[i].status +'</option></select></td><td class="totalPrice">' + bills[i].totalPrice + '</td><td class="detailBill">Chi tiết</td></tr>'
-        }else{
+        } else {
             tr += '<tr class="detailList" style="background-color:white"><td class="id">' + bills[i].orderID + '</td><td class="date">' + bills[i].date + '</th><td class="status"><select class="orderNote_selection"><option value="'+ bills[i].status +'"selected>'+ bills[i].status +'</option><option value="Đã xử lý">Đã xử lý</option></select></td><td class="totalPrice">' + bills[i].totalPrice + '</td><td class="detailBill">Chi tiết</td></tr>'
 
         }
@@ -161,14 +161,14 @@ function showBill() {
     document.getElementById("container").style.display = "block";
     document.getElementById("showOrder").style.display = "block";
 }
-function showDetailProducts(){
+function showDetailProducts() {
     let listEditBt = document.querySelectorAll(".detailList ");
     for (let i = 0; i < listEditBt.length; i++) {
-        getCurrentPage(currentPage,products)
-        listEditBt[i].addEventListener('click',()=>{
+        getCurrentPage(currentPage,products);
+        listEditBt[i].addEventListener('click', () => {
             showEditProduct();
             /*Lay thu tu nut xoa + start de lay duoc vi tri item trong mang products[] */
-            var item = products[i+start];
+            var item = products[i + start];
             /* Lay hinh vao preview*/
             document.getElementById("Editpreview").setAttribute("src", item.image);
             document.getElementById("Editimgproduct").setAttribute("src", item.image);
@@ -190,29 +190,29 @@ function showDetailProducts(){
         });
     }
 }
-function showDetailBill (){
+function showDetailBill() {
     let orders = document.querySelectorAll(".detailBill ");
     var orderNoteList = JSON.parse(localStorage.getItem('orderNoteList'));
     for (let i = 0; i < orders.length; i++) {
-        getCurrentPage(currentPage,bills)
-        orders[i].addEventListener('click',()=>{
+        getCurrentPage(currentPage, bills);
+        orders[i].addEventListener('click', () => {
             showBill();
-            var html='';
+            var html = '';
             html += '<div id="listProductsBuy" >';
-            html += '<div id="nameCustomer"><h3>Tài khoản: '+orderNoteList[i+start].username+'</h3></div>';
-            for (var j=0; j<orderNoteList[i+start].buyItems.length;j++){
+            html += '<div id="nameCustomer"><h3>Tài khoản: '+ orderNoteList[i+start].username + '</h3></div>';
+            for (var j = 0; j < orderNoteList[i+start].buyItems.length; j++) {
                 html += '<ul class="productsBuy">';
                 html += '<li>' + (j+1) + '</li>';
                 html += '<li class="img-Pro">';
-                html += '<img src="' + orderNoteList[i+start].buyItems[j].image +'" alt="">';
+                html += '<img src="' + orderNoteList[i+start].buyItems[j].image + '" alt="">';
                 html += '</li>';
                 html += '<li>' + orderNoteList[i+start].buyItems[j].name + '</li>';
                 html += '<li>Số lượng: ' + orderNoteList[i+start].buyItems[j].quantity + '</li>';
                 html += '<li>' + orderNoteList[i+start].buyItems[j].price + '</li>';
                 html += '</ul>';
             }
-            document.getElementById("detailOrder").innerHTML=html;
-        })
+            document.getElementById("detailOrder").innerHTML = html;
+        });
     }
 }
 function renderListPage() {
@@ -220,10 +220,10 @@ function renderListPage() {
     html += '<li id="btprev" class="button-prev-next"><i class="fas fa-chevron-circle-left" onclick="prevButton()"></i></li>';
     html += '<div class="number-page" id="number-page">'
     html += '<li id="active"><b>' + 1 + '</b></li>';
-    if (totalpage <=1){
+    if (totalpage <=1) {
         html += '</div>';
         html += '<li id="btnext" class="button-prev-next"><i class="fas fa-chevron-circle-right" onclick="nextButton()"></i></li>'
-    }else{
+    } else {
         for (var i = 2; i <= totalpage; i++) {
             html += '<li><b>' + i + '</b></li>';
         }
@@ -300,14 +300,14 @@ function previewImg() {
 function EditpreviewImg() {
     var img = document.getElementById("Editfile-inp").files;
     if (img.length > 0) {
-    var fileReader = new FileReader();
-    fileReader.onload = function(event) {
-        document.getElementById("Editpreview").setAttribute("src", event.target.result);
-        document.getElementById("Editimgproduct").setAttribute("src", event.target.result);
-    };
-    fileReader.readAsDataURL(img[0]);
+        var fileReader = new FileReader();
+        fileReader.onload = function(event) {
+            document.getElementById("Editpreview").setAttribute("src", event.target.result);
+            document.getElementById("Editimgproduct").setAttribute("src", event.target.result);
+        };
+        fileReader.readAsDataURL(img[0]);
     }   
-    changeImg=true;
+    changeImg = true;
 }
 
 // tìm kí tự khoảng trắng
@@ -436,7 +436,7 @@ function editProduct() {
                         category[i].listcategory[j].books[k].cat = cat;
                         category[i].listcategory[j].books[k].price = stringToPrice(price);
                         category[i].listcategory[j].books[k].quantity = parseInt(quantity);
-                        if (changeImg==true){
+                        if (changeImg == true) {
                             category[i].listcategory[j].books[k].image = image;
                         }
                         localStorage.setItem('category', JSON.stringify(category));
@@ -470,7 +470,7 @@ function deleteProduct() {
         }
     }
 }
-function setStatusOrder(){
+function setStatusOrder() {
     var statusbills = document.querySelectorAll(".orderNote_selection");
     var orderNoteList = JSON.parse(localStorage.getItem('orderNoteList'));
     for (let i = 0; i < statusbills.length; i++) {
@@ -492,34 +492,34 @@ function setStatusOrder(){
     }
     
 }
-function orderfilter(){
-    document.getElementById("filterBill").addEventListener("click",()=>{
+function orderfilter() {
+    document.getElementById("filterBill").addEventListener("click", () => {
         var dayStart = document.getElementById("orderNote_time-from").value;
         var dayEnd = document.getElementById("orderNote_time-to").value;
         var orderNoteList = JSON.parse(localStorage.getItem('orderNoteList'));
         var filteredBills = [];
-        for (var i=0; i<orderNoteList.length; i++){
-            if (dayStart <= orderNoteList[i].date && orderNoteList[i].date <= dayEnd){
+        for (var i = 0; i < orderNoteList.length; i++) {
+            if (dayStart <= orderNoteList[i].date && orderNoteList[i].date <= dayEnd) {
                 filteredBills.push(orderNoteList[i]);
             }
         }
         currentPage = 1;
-        getCurrentPage(currentPage,filteredBills)
+        getCurrentPage(currentPage, filteredBills);
         totalpage = Math.ceil(filteredBills.length / perPage);
         showBillList(filteredBills);
         renderListPage();
         changePage(filteredBills);
-    })
+    });
 }
-function setStatusUser(){
+function setStatusUser() {
     var statususers = document.querySelectorAll(".status_selection");
     var user = JSON.parse(localStorage.getItem('user'));
-    for(let i=0; i<statususers.length; i++){
-        getCurrentPage(currentPage,users)
-        statususers[i].addEventListener('change',()=>{
+    for(let i = 0; i < statususers.length; i++) {
+        getCurrentPage(currentPage, users);
+        statususers[i].addEventListener('change', () => {
             users[i+start].status = statususers[i].value;
-            for (var j=0; j<user.length; j++){
-                if (user[j].username == users[i+start].username){
+            for (var j = 0; j < user.length; j++) {
+                if (user[j].username == users[i+start].username) {
                     user[j].status = users[i+start].status;
                 }
             }
@@ -528,157 +528,157 @@ function setStatusUser(){
     }
 }
 
-function createPIEChart(filteredStatistic,books){
+function createPIEChart(filteredStatistic, books) {
     var selectCategory = document.getElementById("categories").value;
-    var quantityBooksSale=0;
+    var quantityBooksSale = 0;
     var quantitySelectCategory = 0;
     var sumtotal = 0;
     var sumtotalSelectCategory = 0;
-    var all = [{cat:"Sách giáo khoa", quantity : 0, sale : 0},
-      {cat:"Sách tham khảo", quantity : 0, sale : 0},
-     {cat:"Từ điển", quantity : 0, sale : 0},
-     {cat:"Truyện ngắn", quantity : 0, sale : 0},
-     {cat:"Truyện dài", quantity : 0, sale : 0},
-     {cat:"Thơ", quantity : 0, sale : 0},
-     {cat:"Khác", quantity : 0, sale : 0},
-     {cat:"Ngôn tình", quantity : 0, sale : 0},
-     {cat:"Giả tưởng", quantity : 0, sale : 0},
-     {cat:"Tiểu thuyết Lịch sử", quantity : 0, sale : 0},
-     {cat:"Quản trị", quantity : 0, sale : 0},
-     {cat:"Marketing", quantity : 0, sale : 0},
-     {cat:"Nhân Vật", quantity : 0, sale : 0},
-     {cat:"Khởi nghiệp", quantity : 0, sale : 0},
-     {cat:"Chứng khoán", quantity : 0, sale : 0},
-     {cat:"Tâm lý", quantity : 0, sale : 0},
-     {cat:"Kỹ năng sống", quantity : 0, sale : 0},
-     {cat:"Hạt giống tâm hồn", quantity : 0, sale : 0},
-     {cat:"Lịch sử Việt Nam", quantity : 0, sale : 0},
-     {cat:"Lịch sử Thế giới", quantity : 0, sale : 0},
-     {cat:"Truyện thiếu nhi", quantity : 0, sale : 0},
-     {cat:"Tô màu", quantity : 0, sale : 0},
-     {cat:"Luyện chữ", quantity : 0, sale : 0}];
+    var all = [{cat:"Sách giáo khoa", quantity: 0, sale: 0},
+        {cat:"Sách tham khảo", quantity: 0, sale: 0},
+        {cat:"Từ điển", quantity: 0, sale: 0},
+        {cat:"Truyện ngắn", quantity: 0, sale: 0},
+        {cat:"Truyện dài", quantity: 0, sale: 0},
+        {cat:"Thơ", quantity: 0, sale: 0},
+        {cat:"Khác", quantity: 0, sale: 0},
+        {cat:"Ngôn tình", quantity: 0, sale: 0},
+        {cat:"Giả tưởng", quantity: 0, sale: 0},
+        {cat:"Tiểu thuyết Lịch sử", quantity: 0, sale: 0},
+        {cat:"Quản trị", quantity: 0, sale: 0},
+        {cat:"Marketing", quantity: 0, sale: 0},
+        {cat:"Nhân Vật", quantity: 0, sale: 0},
+        {cat:"Khởi nghiệp", quantity: 0, sale: 0},
+        {cat:"Chứng khoán", quantity: 0, sale: 0},
+        {cat:"Tâm lý", quantity: 0, sale: 0},
+        {cat:"Kỹ năng sống", quantity: 0, sale: 0},
+        {cat:"Hạt giống tâm hồn", quantity: 0, sale: 0},
+        {cat:"Lịch sử Việt Nam", quantity: 0, sale: 0},
+        {cat:"Lịch sử Thế giới", quantity: 0, sale: 0},
+        {cat:"Truyện thiếu nhi", quantity: 0, sale: 0},
+        {cat:"Tô màu", quantity: 0, sale: 0},
+        {cat:"Luyện chữ", quantity: 0, sale: 0}];
     var j;
-    var html ='';
-    for (var i=0; i<filteredStatistic.length; i++){
-        for (var j=0; j<filteredStatistic[i].buyItems.length; j++){
+    var html = '';
+    for (var i = 0; i < filteredStatistic.length; i++) {
+        for (var j = 0; j < filteredStatistic[i].buyItems.length; j++) {
             quantityBooksSale = quantityBooksSale + filteredStatistic[i].buyItems[j].quantity;
         }
-        var cost=filteredStatistic[i].totalPrice;
-        cost=cost.split(' VND');
-        cost=cost[0].replaceAll(".","");
+        var cost = filteredStatistic[i].totalPrice;
+        cost = cost.split(' VND');
+        cost = cost[0].replaceAll(".", "");
         sumtotal = sumtotal + parseInt(cost);
     }
-    for (var i=0; i<books.length; i++){
-        if (books[i].cat == selectCategory){
+    for (var i = 0; i < books.length; i++) {
+        if (books[i].cat == selectCategory) {
             quantitySelectCategory += books[i].quantity;
-            var cost=books[i].price;
-            cost=cost.split('VND');
-            cost=cost[0].replaceAll(".","");
-            sumtotalSelectCategory += books[i].quantity*parseInt(cost);
+            var cost = books[i].price;
+            cost = cost.split('VND');
+            cost = cost[0].replaceAll(".", "");
+            sumtotalSelectCategory += books[i].quantity * parseInt(cost);
         }
-        if (books[i].cat == "Sách giáo khoa")   j = 0;
-        if (books[i].cat == "Sách tham khảo")   j = 1;
-        if (books[i].cat == "Từ điển")  j = 2;
-        if (books[i].cat == "Truyện ngắn")  j = 3;
-        if (books[i].cat == "Truyện dài")   j = 4;
-        if (books[i].cat == "Thơ")  j = 5;
-        if (books[i].cat == "Khác") j = 6;
-        if (books[i].cat == "Ngôn tình")    j = 7;
-        if (books[i].cat == "Giả tưởng")    j = 8;
+        if (books[i].cat == "Sách giáo khoa")       j = 0;
+        if (books[i].cat == "Sách tham khảo")       j = 1;
+        if (books[i].cat == "Từ điển")              j = 2;
+        if (books[i].cat == "Truyện ngắn")          j = 3;
+        if (books[i].cat == "Truyện dài")           j = 4;
+        if (books[i].cat == "Thơ")                  j = 5;
+        if (books[i].cat == "Khác")                 j = 6;
+        if (books[i].cat == "Ngôn tình")            j = 7;
+        if (books[i].cat == "Giả tưởng")            j = 8;
         if (books[i].cat == "Tiểu thuyết Lịch sử")  j = 9;
-        if (books[i].cat == "Quản trị") j = 10;
-        if (books[i].cat == "Marketing")    j = 11;
-        if (books[i].cat == "Nhân Vật") j = 12;
-        if (books[i].cat == "Khởi nghiệp")  j = 13;
-        if (books[i].cat == "Chứng khoán")  j = 14;
-        if (books[i].cat == "Tâm lý")   j = 15;
-        if (books[i].cat == "Kỹ năng sống") j = 16;
+        if (books[i].cat == "Quản trị")             j = 10;
+        if (books[i].cat == "Marketing")            j = 11;
+        if (books[i].cat == "Nhân Vật")             j = 12;
+        if (books[i].cat == "Khởi nghiệp")          j = 13;
+        if (books[i].cat == "Chứng khoán")          j = 14;
+        if (books[i].cat == "Tâm lý")               j = 15;
+        if (books[i].cat == "Kỹ năng sống")         j = 16;
         if (books[i].cat == "Hạt giống tâm hồn")    j = 17;
-        if (books[i].cat == "Lịch sử Việt Nam") j = 18;
-        if (books[i].cat == "Lịch sử Thế giới") j = 19;
-        if (books[i].cat == "Truyện thiếu nhi") j = 20;
-        if (books[i].cat == "Tô màu")   j = 21;
-        if (books[i].cat == "Luyện chữ")    j = 22;
+        if (books[i].cat == "Lịch sử Việt Nam")     j = 18;
+        if (books[i].cat == "Lịch sử Thế giới")     j = 19;
+        if (books[i].cat == "Truyện thiếu nhi")     j = 20;
+        if (books[i].cat == "Tô màu")               j = 21;
+        if (books[i].cat == "Luyện chữ")            j = 22;
         all[j].quantity += books[i].quantity;
-        var cost=books[i].price;
-        cost=cost.split('VND');
-        cost=cost[0].replaceAll(".","");
-        all[j].sale += books[i].quantity*parseInt(cost);
+        var cost = books[i].price;
+        cost = cost.split('VND');
+        cost = cost[0].replaceAll(".", "");
+        all[j].sale += books[i].quantity * parseInt(cost);
     }
-    if (selectCategory == "Tất cả"){
+    if (selectCategory == "Tất cả") {
         document.getElementById("circle").style.display = "none";
         document.getElementById("note").style.display = "none";
-        html += '<h3>Tổng số sản phẩm bán: '+ quantityBooksSale + '<br> Tổng doanh thu: '+ stringToPrice(sumtotal.toString()) + '</h3>';
+        html += '<h3>Tổng số sản phẩm bán: ' + quantityBooksSale + '<br> Tổng doanh thu: ' + stringToPrice(sumtotal.toString()) + '</h3>';
         html += '<table id="productsList">';
         html += '<tr class="titleList"><th class="cat">THỂ LOẠI</th><th class="quantity">SỐ LƯỢNG BÁN</th><th class="sale">DOANH THU</th></tr>';
         
-        for (var i=0; i<all.length; i++){
+        for (var i = 0; i < all.length; i++) {
             html += '<tr class="detailList"><td class="cat">' + all[i].cat + '</td><td class="quantity">' + all[i].quantity + '</td><td class="sale">' + stringToPrice(all[i].sale.toString()) + '</td></tr>';
         }
         html += '</table>';
         document.getElementById("totalBooksSale").innerHTML = html;
-    }else{
+    } else {
         document.getElementById("circle").style.display = "block";
         document.getElementById("note").style.display = "block";
-        var str ='';
+        var str = '';
         str += '<div id="pink">';
         str += '<div class="color"></div>&nbsp;';
-        str += '<p>'+selectCategory+'</p>&nbsp;';
+        str += '<p>' + selectCategory + '</p>&nbsp;';
         str += '</div>';
         str += '<div id="gray">';
         str += '<div class="color"></div>&nbsp;';
         str += '<p>Thể loại khác</p>&nbsp;';
         document.getElementById("note").innerHTML = str;
-        var deg = (sumtotalSelectCategory/sumtotal*100*3.6).toFixed(2);
+        var deg = (sumtotalSelectCategory / sumtotal*100*3.6).toFixed(2);
         var backgroundImage = 'background-image: conic-gradient(';
-        backgroundImage +='pink 0deg, pink ' +parseFloat(deg)+'deg, '
-        backgroundImage += 'gray '+ parseInt(deg) +'deg, gray 360deg';
+        backgroundImage += 'pink 0deg, pink ' + parseFloat(deg) + 'deg, '
+        backgroundImage += 'gray ' + parseInt(deg) + 'deg, gray 360deg';
         backgroundImage += ')';
-        document.getElementById("circle").setAttribute("style",backgroundImage);
-        html += '<h3>Tổng số sản phẩm bán: '+ quantityBooksSale + '<br> Tổng doanh thu: '+ stringToPrice(sumtotal.toString()) + '</h3>';
-        html += 'Tổng số thể loại "' + selectCategory +'" bán: '+ quantitySelectCategory + '<br> Doanh thu: '+ stringToPrice(sumtotalSelectCategory.toString());
+        document.getElementById("circle").setAttribute("style", backgroundImage);
+        html += '<h3>Tổng số sản phẩm bán: ' + quantityBooksSale + '<br> Tổng doanh thu: ' + stringToPrice(sumtotal.toString()) + '</h3>';
+        html += 'Tổng số thể loại "' + selectCategory + '" bán: ' + quantitySelectCategory + '<br> Doanh thu: ' + stringToPrice(sumtotalSelectCategory.toString());
         document.getElementById("totalBooksSale").innerHTML = html;
     }
 }
-function statisticFilter(){
-    document.getElementById("filterStatistic").addEventListener("click",()=>{
+function statisticFilter() {
+    document.getElementById("filterStatistic").addEventListener("click", () => {
         var dayStart = document.getElementById("statistic_time-from").value;
         var dayEnd = document.getElementById("statistic_time-to").value;
         var orderNoteList = JSON.parse(localStorage.getItem('orderNoteList'));
         var selectCategory = document.getElementById("categories").value;
         var filteredStatistic = [];
         books = [];
-        if (dayStart !='' && dayEnd != ''){
-            if (dayEnd < dayStart){
+        if (dayStart != '' && dayEnd != '') {
+            if (dayEnd < dayStart) {
                 alert("Vui lòng chọn ngày phù hợp!!");
                 return false;
             }
-            for (var i=0; i<orderNoteList.length; i++){
-                if (dayStart <= orderNoteList[i].date && orderNoteList[i].date <= dayEnd){
+            for (var i = 0; i < orderNoteList.length; i++) {
+                if (dayStart <= orderNoteList[i].date && orderNoteList[i].date <= dayEnd) {
                     filteredStatistic.push(orderNoteList[i]);
                 }
             }
             if (selectCategory == "Tất cả") {
-                for (var i=0; i<filteredStatistic.length; i++){
-                    for (var j=0; j<filteredStatistic[i].buyItems.length; j++){
+                for (var i = 0; i < filteredStatistic.length; i++) {
+                    for (var j = 0; j < filteredStatistic[i].buyItems.length; j++) {
                         books.push(filteredStatistic[i].buyItems[j]);
                     }
                 }
                 
-            }else{
-                for (var i=0; i<filteredStatistic.length; i++){
-                    for (var j=0; j<filteredStatistic[i].buyItems.length; j++){
-                        if (filteredStatistic[i].buyItems[j].cat == selectCategory){
+            } else {
+                for (var i = 0; i < filteredStatistic.length; i++) {
+                    for (var j = 0; j < filteredStatistic[i].buyItems.length; j++) {
+                        if (filteredStatistic[i].buyItems[j].cat == selectCategory) {
                             books.push(filteredStatistic[i].buyItems[j]);
                         }
                     }
                 }
             }
-            createPIEChart(filteredStatistic,books);
+            createPIEChart(filteredStatistic, books);
             return true;
-        }else{
+        } else {
             alert("Vui lòng nhập đầy đủ thông tin!");
             return false;
         }
-    })
+    });
 }

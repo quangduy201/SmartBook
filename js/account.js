@@ -54,7 +54,7 @@ function createAdmin() {
         localStorage.setItem('user', JSON.stringify(userArray));
     }
 }
-function createNewUser(name,username, email, password) {
+function createNewUser(name, username, email, password) {
     var userArray = JSON.parse(localStorage.getItem('user'));
     var user = {
         name:     name.value,
