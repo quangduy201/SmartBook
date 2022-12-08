@@ -220,7 +220,7 @@ function renderListPage() {
     html += '<li id="btprev" class="button-prev-next"><i class="fas fa-chevron-circle-left" onclick="prevButton()"></i></li>';
     html += '<div class="number-page" id="number-page">'
     html += '<li id="active"><b>' + 1 + '</b></li>';
-    if (totalpage <=1) {
+    if (totalpage <= 1) {
         html += '</div>';
         html += '<li id="btnext" class="button-prev-next"><i class="fas fa-chevron-circle-right" onclick="nextButton()"></i></li>'
     } else {
@@ -306,7 +306,7 @@ function EditpreviewImg() {
             document.getElementById("Editimgproduct").setAttribute("src", event.target.result);
         };
         fileReader.readAsDataURL(img[0]);
-    }   
+    }
     changeImg = true;
 }
 

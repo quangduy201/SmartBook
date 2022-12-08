@@ -1923,7 +1923,7 @@ function createCart() {
     var cart = [];
     if (localStorage.getItem('cart') == null) {
         localStorage.setItem('cart', JSON.stringify(cart));
-    } 
+    }
 }
 function addToCartPro(product) {
     var user = JSON.parse(localStorage.getItem('userActive'));
@@ -2018,7 +2018,7 @@ function updateQuantityItems() {
                     }
                 }
             }
-        }  
+        }
     }
     localStorage.setItem('category', JSON.stringify(category));
 }

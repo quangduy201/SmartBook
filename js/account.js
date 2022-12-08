@@ -145,7 +145,7 @@ function checkLogin() {
             }
         }
     }
-    return false
+    return false;
 }
 function login() {
     var username = document.getElementById('username-login');
